@@ -14,10 +14,15 @@ Route::get('/', function () {
     return view('home.index.home');
 });
 Route::get('home','IndexController@home');
-//注册
-Route::get('login_reg','LoginController@register');
 //登陆
 Route::get('login','LoginController@login');
+//登录判断
+Route::post('login_pro','LoginController@login_pro');
+//退出
+Route::get('login_out','LoginController@login_out');
+//注册
+Route::get('login_reg','LoginController@register');
+
 //短租自驾
 Route::get('driving','IndexController@driving');
 //长期租车
@@ -38,6 +43,10 @@ Route::get('attract','IndexController@attract');
  * 判断登陆
  * */
 Route::group(['middleware' => ['nologin']], function(){
+
     Route::get('index','AdminController@admin');
+
+
+
 });
 

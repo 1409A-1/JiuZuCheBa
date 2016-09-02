@@ -105,20 +105,23 @@
                     <div>登录</div>
                     <span>没有账号？<a href="http://www.dafang24.com/usercenter/Register">立即注册</a></span>
                 </div>
+                <form method="post" action="login_pro">
                 <div class="input_body">
-                    <div class="inputBox" id="login_name_box">
-                        <input placeholder="我的手机号" maxlength="11" id="login_name" type="tel">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="inputBox" id="login_name_box">
+                        <input placeholder="我的手机号" maxlength="11" name="user_name" type="user_name">
                         <i class="icon_login icon_l1"></i>
                     </div>
                     <div class="inputBox" id="login_pw_box">
-                        <input placeholder="我的密码" maxlength="18" id="login_pw" type="password">
-                        <input value="我的密码" maxlength="18" id="login_pw0" type="text">
+                        <input placeholder="我的密码" maxlength="6" name="password" type="password">
+                        <input value="我的密码" maxlength="6" id="login_pw0" type="text">
                         <i class="icon_login icon_l2"></i>
                     </div>
                     <span class="forgetPw">忘记密码？</span>
                     <div class="errorPrompt" id="loginError"><!--错误提示--></div>
                     <button id="login">登 录<i></i></button>
                 </div>
+                </form>
             </div>
             <!--忘记密码-->
             <div class="findPw">
@@ -446,4 +449,4 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
 
 
 
-<div style="display: none;"><form action="http://lxbjs.baidu.com/vt/lxb.gif" method="post" target="lxbHideIframe"><input name="p" value="MSwlRTUlQTQlQTclRTYlOTYlQjklRTclQTclOUYlRTglQkQlQTYlMjAlRTclOTklQkIlRTUlQkQlOTUsaHR0cCUzQSUyRiUyRmxvY2FsaG9zdCUyRm51bTFfdGVhbSUyRnB1YmxpYyUyRixodHRwJTNBJTJGJTJGd3d3LmRhZmFuZzI0LmNvbSUyRnVzZXJjZW50ZXIlMkZsb2dpbiwx"><input name="sid" value="6567291"><input name="bdcbid" value="cd2819a4-cba9-4e86-b7cf-72e892ee3838"><input name="t" value="1472605036666"></form><iframe id="lxbHideIframe" name="lxbHideIframe" src="../resources/assets/home/log/a.htm"></iframe></div></body></html>
+{{--<div style="display: none;"><form action="http://lxbjs.baidu.com/vt/lxb.gif" method="post" target="lxbHideIframe"><input name="p" value="MSwlRTUlQTQlQTclRTYlOTYlQjklRTclQTclOUYlRTglQkQlQTYlMjAlRTclOTklQkIlRTUlQkQlOTUsaHR0cCUzQSUyRiUyRmxvY2FsaG9zdCUyRm51bTFfdGVhbSUyRnB1YmxpYyUyRixodHRwJTNBJTJGJTJGd3d3LmRhZmFuZzI0LmNvbSUyRnVzZXJjZW50ZXIlMkZsb2dpbiwx"><input name="sid" value="6567291"><input name="bdcbid" value="cd2819a4-cba9-4e86-b7cf-72e892ee3838"><input name="t" value="1472605036666"></form><iframe id="lxbHideIframe" name="lxbHideIframe" src="../resources/assets/home/log/a.htm"></iframe></div></body></html>--}}
