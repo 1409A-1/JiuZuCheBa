@@ -39,7 +39,7 @@
     <!-- end navbar -->
 
     <!-- sidebar -->
-  @include('common.admin_left')
+    @include('common.admin_left')
     <!-- end sidebar -->
 
 

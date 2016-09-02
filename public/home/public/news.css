@@ -1,0 +1,32 @@
+body{background:#f2f2f2;color: #24354b}
+.listBox{width: 1180px;margin: auto;min-height: 200px;padding: 20px 0 80px 0}
+.listBox a{color:#24354b}
+.nav a:hover{color:#fe5714;}
+.title{padding-bottom:20px;font-size: 12px}
+.body>*{background: #fff}
+.nav{width: 200px;float: left;font-size: 13px}
+.nav li{width: 150px;height: 45px;line-height: 45px;border-bottom: 1px dotted #f2f2f2; padding-left: 50px;cursor: pointer}
+.nav .active{background: #fe5714;border-color: #fe5714}
+.nav .active a{color: #fff!important}
+
+.list{width: 890px;margin-left: 230px;padding: 30px;}
+.newsbody{position:relative;left:0;top:15px; border-bottom:1px solid #e0e4e8; width:100%; height:150px;}
+.newsbody img{width:168px; height:105px; position:absolute;left:0;top:23px;}
+.box{ position:absolute; left:220px; top:30px; line-height:23px; width:670px; height:105px}
+.title1{ font-size:16px; font-weight:bold; }
+.time{ color:#afafaf; font-size:12px;}
+.description{ width:570px; height:44px; font-size:12px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.list h3{border-bottom:3px solid #fe5714;display: inline-block;height:30px}
+.more{position:absolute; right:0; bottom:0;color:#fe5714!important; font-size:12px;}
+
+/*新闻详情*/
+.detail{width: 890px;margin-left: 230px;padding: 30px; }
+.detailBox{width:100%; height:65px; border-bottom:1px solid #afafaf; line-height:30px;}
+.detailBox h3{color:#fe5714;}
+.time{ color:#afafaf; font-size:12px;}
+.box1{margin-top:20px;}
+.box2{width:100%; height:100px; position:relative;left:0; top:80px;border-top:1px solid #afafaf; line-height:50px; color:#afafaf; font-size:12px;}
+.right{ position:absolute; right:0; top:0}
+
+.toPage{padding: 10px 30px;width: 890px;margin-left: 230px}
+.toPage #pagination{margin-top: 20px}
