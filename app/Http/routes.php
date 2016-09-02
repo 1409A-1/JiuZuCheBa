@@ -1,21 +1,25 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 Route::get('/', function () {
     return view('home.index.home');
 });
+
 Route::get('home','IndexController@home');
 //注册
 Route::get('login_reg','LoginController@register');
+//注册接值处理
+Route::post('reg_pro','LoginController@reg_pro');
+//前台验证注册用户名唯一
+Route::get('only_name','LoginController@only_name');
+//前台验证注册手机号唯一
+Route::get('only_tel','LoginController@only_tel');
+
+
+
+
+
+
+
 //登陆
 Route::get('login','LoginController@login');
 //短租自驾
@@ -33,12 +37,12 @@ Route::get('attract','IndexController@attract');
 /*
  * 后台
  * */
-//后台首页
-/*
- * 判断登陆
- * */
+Route::get('admin','AdminController@admin_login');
+Route::post('signin','AdminController@admin_login');
+
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('index','AdminController@index');
+
 });
 
 /*
@@ -64,3 +68,16 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('brandupdate/{id}','CarBrandController@update');
 	Route::get('branddel/{id}','CarBrandController@del');
 });
+
+    Route::get('car_type_list','AdminController@car_type_list');
+    Route::get('model_add','AdminController@model_add');
+    Route::post('type_add','AdminController@model_add');
+    Route::post('type_del','AdminController@type_del');
+    Route::get('address','AddressController@address');
+    Route::get('address_two','AddressController@address_two');
+
+
+// 微信对接
+Route::get('valid','WechatController@valid');
+Route::get('oAuth','WechatController@oAuth');
+Route::get('weChatLogin','WechatController@weChatLogin');
