@@ -1,18 +1,9 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 Route::get('/', function () {
     return view('home.index.home');
 });
+
 Route::get('home','IndexController@home');
 //注册
 Route::get('login_reg','LoginController@register');
@@ -33,11 +24,16 @@ Route::get('attract','IndexController@attract');
 /*
  * 后台
  * */
-//后台首页
-/*
- * 判断登陆
- * */
+Route::get('admin','AdminController@admin_login');
+Route::post('signin','AdminController@admin_login');
+
 Route::group(['middleware' => ['nologin']], function(){
-    Route::get('index','AdminController@admin');
+    Route::get('index','AdminController@index');
+    Route::get('car_type_list','AdminController@car_type_list');
+    Route::get('model_add','AdminController@model_add');
+    Route::post('type_add','AdminController@model_add');
+    Route::post('type_del','AdminController@type_del');
+    Route::get('address','AddressController@address');
+    Route::get('address_two','AddressController@address_two');
 });
 
