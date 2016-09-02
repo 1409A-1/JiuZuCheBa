@@ -10,15 +10,6 @@
     <script type="text/javascript" src="../resources/assets/home/log/jquery.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/ApiConfig.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/all.js"></script>
-    <script>
-        var loginIP;
-        jQuery(function ($) {
-            var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
-            $.getJSON(url, function (data) {
-                loginIP = data.Ip;
-            });
-        });
-    </script>
     <script src="../resources/assets/home/log/layer.js"></script><link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/log/layer.css" rel="stylesheet">
     <script src="../resources/assets/home/log/login.js"></script>
 <script src="../resources/assets/home/log/bsl.js" charset="UTF-8" type="text/javascript"></script><script src="../resources/assets/home/log/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script><script src="../resources/assets/home/log/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script><link href="../resources/assets/home/log/main.css" type="text/css" rel="stylesheet"><link href="../resources/assets/home/log/fix.css" type="text/css" rel="stylesheet"><style>@import "http://qiao.baidu.com/v3/asset/css/m-webim-lite.css?v=20150613";</style><script charset="utf-8" src="../resources/assets/home/log/m-webim-lite.js" type="text/javascript"></script></head>
@@ -31,15 +22,15 @@
         <ul class="top_menu">
             <li class="top_user">
                 <div class="no_user">
-                    <a href="http://www.dafang24.com/usercenter/register" rel="nofollow">注册</a>
-                    <a href="http://www.dafang24.com/usercenter/login" rel="nofollow">登录</a>
+                    <a href="" rel="nofollow">注册</a>
+                    <a href="" rel="nofollow">登录</a>
                 </div>
                 <div class="yes_user">
-                    <a href="http://www.dafang24.com/usercenter/myorder" rel="nofollow">我的大方</a>
+                    <a href="" rel="nofollow">我的大方</a>
                     <div class="arrow"><div></div></div>
                     <div class="userInfo">
-                        <a href="http://www.dafang24.com/usercenter/ordermanager" rel="nofollow">订单管理</a>
-                        <a href="http://www.dafang24.com/usercenter/myinfo" rel="nofollow">账户管理</a>
+                        <a href="" rel="nofollow">订单管理</a>
+                        <a href="" rel="nofollow">账户管理</a>
                         <a class="exitLogin" onclick="exit()">退出</a>
                     </div>
                 </div>
@@ -64,14 +55,14 @@
     <div>
         <i class="icon icon_logo"></i>
         <ul class="menu_box">
-            <li class="  "><a href="http://www.dafang24.com/">首页</a></li>
-            <li class=""><a href="http://www.dafang24.com/home/doom">短租自驾</a></li>
-            <li class=""><a href="http://www.dafang24.com/home/lease">长租服务</a></li>
-            <li class=""><a href="http://www.dafang24.com/home/firmcar">企业租车</a></li>
-            <li class=""><a href="http://usedcar.dafang24.com/" target="_blank">以租代购</a></li>
-            <li class=""><a href="http://www.dafang24.com/home/citymap">门店查询</a></li>
-            <li class=""><a href="http://www.dafang24.com/home/newslist">优惠活动</a></li>
-            <li class="" id="last_menu"><a href="http://jiameng.dafang24.com/" target="_blank">招商加盟</a></li>
+            <li class=""><a href="{{URL('/')}}">首页</a></li>
+            <li class=""><a href="">短租自驾</a></li>
+            <li class=""><a href="">长租服务</a></li>
+            <li class=""><a href="">企业租车</a></li>
+            <li class=""><a href="" target="_blank">以租代购</a></li>
+            <li class=""><a href="">门店查询</a></li>
+            <li class=""><a href="">优惠活动</a></li>
+            <li class="" id="last_menu"><a href="" target="_blank">招商加盟</a></li>
         </ul>
     </div>
 </div>
@@ -103,7 +94,7 @@
             <div class="login">
                 <div class="title">
                     <div>登录</div>
-                    <span>没有账号？<a href="http://www.dafang24.com/usercenter/Register">立即注册</a></span>
+                    <span>没有账号？<a href="{{URL('login_reg')}}">立即注册</a></span>
                 </div>
                 <div class="input_body">
                     <div class="inputBox" id="login_name_box">

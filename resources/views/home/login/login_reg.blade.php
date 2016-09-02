@@ -1,44 +1,36 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script id="c134d189_b00b_424b_8a60_aa6e4d118b8d" src="http://p0.qiao.baidu.com/Refresh.php?callback=c134d189_b00b_424b_8a60_aa6e4d118b8d&amp;bid=be9d5b8d4398540c66032803&amp;siteid=6567291&amp;ucid=2941205&amp;t=1472603364943" charset="utf-8" async=""></script><script src="../resources/assets/home/public/login/b.js" charset="utf-8"></script><script src="../resources/assets/home/public/login/lxb.js" charset="utf-8"></script><script src="../resources/assets/home/public/login/v.htm" charset="utf-8"></script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <title>注册</title>
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/login/all.css">
-    <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/login/login.css">
-    <script src="../resources/assets/home/public/login/hm.js"></script><script type="text/javascript" src="../resources/assets/home/public/login/jquery-1.js"></script>
+    <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/login.css">
+    <script src="../resources/assets/home/public/login/hm.js"></script>
+    <script type="text/javascript" src="../resources/assets/home/public/login/jquery-1.js"></script>
     <script type="text/javascript" src="../resources/assets/home/public/login/jquery.js"></script>
     <script type="text/javascript" src="../resources/assets/home/public/login/ApiConfig.js"></script>
     <script type="text/javascript" src="../resources/assets/home/public/login/all.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/login/layer.js"></script><link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/public/login/layer.css" rel="stylesheet">
-    <script>
-        var loginIP;
-        jQuery(function ($) {
-            var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
-            $.getJSON(url, function (data) {
-                loginIP = data.Ip;
-            });
-        });
-    </script>
-    <script type="text/javascript" src="../resources/assets/home/public/login/register.js"></script>
-<script src="../resources/assets/home/public/login/bsl.js" charset="UTF-8" type="text/javascript"></script><script src="../resources/assets/home/public/login/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script><script src="../resources/assets/home/public/login/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script><link href="../resources/assets/home/public/login/main.css" type="text/css" rel="stylesheet"><link href="../resources/assets/home/public/login/fix.css" type="text/css" rel="stylesheet"><style>@import "http://qiao.baidu.com/v3/asset/css/m-webim-lite.css?v=20150613";</style><script charset="utf-8" src="../resources/assets/home/public/login/m-webim-lite.js" type="text/javascript"></script></head>
+    <script type="text/javascript" src="../resources/assets/home/public/login/layer.js"></script>
+    <link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/public/layer.css" rel="stylesheet">
+    <script type="text/javascript" src="../resources/assets/home/public/jquery-validate.js"></script>
 <body>
     <!--头部-->
 <ins id="qiao-wrap"><ins style="position: fixed; bottom: 0px;" class="qiao-flash-storage" id="qiao-flash-storage"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="FlashLocalStorage" align="middle" height="5" width="5"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="movie" value="http://webim.qiao.baidu.com/f/pool/swf/local_storage.swf"><embed wmode="transparent" allowscriptaccess="always" src="../resources/assets/home/public/login/local_storage.swf" name="FlashLocalStorage" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" height="5" width="5"></object></ins><ins style="visibility: hidden; display: none;" class="qiao-invite-wrap" id="qiao-invite-wrap"><ins class="qiao-invite-decoration"></ins><ins style="visibility: hidden;" class="qiao-invite-text"><p style="font-size:12px;font-family:宋体;font-color:#000000;">欢迎您，有什么可以帮助您的么？</p></ins><ins class="qiao-invite-accept">现在咨询</ins><a class="qiao-invite-reject">稍后再说</a><a class="qiao-invite-close"></a><ins class="qiao-invite-form"><ins class="qiao-invite-form-inner"><textarea placeholder="您可直接在这里和我们联系！" class="qiao-invite-input"></textarea><a class="qiao-invite-send">发送</a></ins></ins></ins><ins style="visibility: hidden; display: none;" class="qiao-mess-wrap" id="qiao-mess-wrap"><ins class="qiao-mess-container" id="qiao-mess-container"><ins class="qiao-mess-head" id="qiao-mess-head"><ins id="qiao-mess-head-text" class="qiao-mess-head-text"></ins><a id="qiao-mess-head-close" data-status="max" class="qiao-mess-head-close"></a></ins><ins class="qiao-mess-body" id="qiao-mess-body"><iframe src="../resources/assets/home/public/login/a.htm" style="display: none;" name="qiao-mess-iframe" id="qiao-mess-iframe"></iframe><form accept-charset="utf-8" action="http://qiao.baidu.com/v3/?module=default&amp;controller=index&amp;action=doMess&amp;siteid=6567291&amp;page_id=&amp;ucid=2941205" target="qiao-mess-iframe" method="post" class="qiao-mess-form qiao-mess-clearfix"><ins class="qiao-mess-clearfix"><ins class="qiao-mess-clearfix qiao-mess-item-mess"><ins style="display:none">留言内容</ins><textarea name="bd_bp_messText" class="" placeholder="请在此输入留言内容，我们会尽快与您联系。"></textarea><ins class="qiao-mess-star">*</ins></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">姓名<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messName" class="qiao-mess-item-body" placeholder="最多100个字符"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">电话<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messPhone" class="qiao-mess-item-body" placeholder="请输入您的电话号码"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">地址<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messAddress" class="qiao-mess-item-body" placeholder="最多100个字符"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">邮箱<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messEmail" class="qiao-mess-item-body" placeholder="请输入合法邮箱名"></ins></ins><input style="display:none" value="注册" name="bd_bp_title" type="hidden"><input style="display:none" value="http://www.dafang24.com/" name="bd_bp_referer" type="hidden"><input style="display:none" value="1472603323450" name="bd_bp_tick" type="hidden"><input style="display:none" value="be9d5b8d4398540c66032803" name="bd_bp_bid" type="hidden"></form></ins><ins class="qiao-mess-foot" id="qiao-mess-foot"><a id="qiao-mess-foot-send-btn" class="qiao-mess-foot-send-btn">发送</a><ins class="qiao-mess-foot-logo"></ins></ins></ins></ins></ins><div class="top">
     <div class="top_box">
-        <a href="http://www.dafang24.com/" rel="nofollow">中国互联网连锁租车品牌</a>
+        <a href="" rel="nofollow">中国互联网连锁租车品牌</a>
         <ul class="top_menu">
             <li class="top_user">
                 <div class="no_user">
-                    <a href="http://www.dafang24.com/usercenter/register" rel="nofollow">注册</a>
-                    <a href="http://www.dafang24.com/usercenter/login" rel="nofollow">登录</a>
+                    <a href="" rel="nofollow">注册</a>
+                    <a href="" rel="nofollow">登录</a>
                 </div>
                 <div class="yes_user">
-                    <a href="http://www.dafang24.com/usercenter/myorder" rel="nofollow">我的大方</a>
+                    <a href="" rel="nofollow">我的大方</a>
                     <div class="arrow"><div></div></div>
                     <div class="userInfo">
-                        <a href="http://www.dafang24.com/usercenter/ordermanager" rel="nofollow">订单管理</a>
-                        <a href="http://www.dafang24.com/usercenter/myinfo" rel="nofollow">账户管理</a>
+                        <a href="" rel="nofollow">订单管理</a>
+                        <a href="" rel="nofollow">账户管理</a>
                         <a class="exitLogin" onclick="exit()">退出</a>
                     </div>
                 </div>
@@ -63,7 +55,7 @@
     <div>
         <i class="icon icon_logo"></i>
         <ul class="menu_box">
-            <li class="  "><a href="http://www.dafang24.com/">首页</a></li>
+            <li class="  "><a href="{{URL('/')}}">首页</a></li>
             <li class=""><a href="http://www.dafang24.com/home/doom">短租自驾</a></li>
             <li class=""><a href="http://www.dafang24.com/home/lease">长租服务</a></li>
             <li class=""><a href="http://www.dafang24.com/home/firmcar">企业租车</a></li>
@@ -74,26 +66,6 @@
         </ul>
     </div>
 </div>
-<script>
-    var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
-    jQuery(".menu_box li")[0].className = " on_menu";
-    jQuery(page).each(function (i, obj) {
-        jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
-        if (location.href.toLowerCase().indexOf(obj) > 1) {
-            jQuery(".menu_box li")[i].className += " on_menu";
-        }
-    })
-</script>
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?08e7d1515718bb729aa25f12bfbcd0d3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
     <!--登录注册-->
     <div class="infoBox noCopy">
          <div>
@@ -102,34 +74,31 @@
             <div class="register">
                 <div class="title">
                     <div>注册</div>
-                    <span>已有账号？<a href="http://www.dafang24.com/usercenter/login">立即登录</a></span>
+                    <span>已有账号？<a href="{{URL('login')}}">立即登录</a></span>
                 </div>
-                <div class="input_body">
-                    <div class="inputBox" id="reg_name_box">
-                            <input placeholder="请输入姓名" maxlength="10" id="reg_name" type="text">
-                            <i class="icon_login icon_l3"></i>
+                <form action="{{URL('reg_pro')}}" method="post" id="reg">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                    <div class="input_body">
+                        <div class="inputBox" id="reg_name_box">
+                                <input placeholder="请输入姓名" maxlength="10"  type="text" name="user_name" id="name">
+
+                        </div>
+                        <div class="inputBox" id="reg_phone_box">
+                            <input placeholder="请输入手机号码" maxlength="11" id="reg_phone" type="tel"name="tel" >
+
+                        </div>
+                        <div class="inputBox" id="reg_pw_box">
+                            <input placeholder="请输入6位以上密码" maxlength="18" id="reg_pw" type="password"  name="password">
+                        </div>
+                        <br>
+                        <button id="reg">注 册<i></i></button>
+                        <div class="Prompt">
+                            点击“立即注册”<br>
+                            即表示您同意并愿意遵守大方
+                            <b id="win">用户协议</b>
+                        </div>
                     </div>
-                    <div class="inputBox" id="reg_phone_box">
-                        <input placeholder="请输入手机号码" maxlength="11" id="reg_phone" type="tel">
-                        <i class="icon_login icon_l1"></i>
-                    </div>
-                    <div class="inputBox" id="reg_pw_box">
-                        <input placeholder="请输入6位以上密码" maxlength="18" id="reg_pw" type="password">
-                        <input value="请输入6位以上密码" maxlength="18" id="reg_pw0" type="text">
-                        <i class="icon_login icon_l2"></i>
-                    </div>
-                    <div class="dx_code">
-                        <input placeholder="请输入短信验证码" maxlength="6" id="reg_code" type="text">
-                        <button id="reg_send_code">发送验证码</button>
-                    </div>
-                    <div class="errorPrompt" id="regError"><!--错误提示--></div>
-                    <button id="reg">注 册<i></i></button>
-                    <div class="Prompt">
-                        点击“立即注册”<br>
-                        即表示您同意并愿意遵守大方
-                        <b id="win">用户协议</b>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -377,44 +346,68 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
         </div>
     </div>
 </div>
-<!--电话和QQ-->
-<div class="contact">
-    <div class="qq">
-        <img src="../resources/assets/home/public/login/QQ.png" onclick="window.location.href='tencent://message/?uin=2054275242&amp;Site=4000600112&amp;Menu=yes'" class="contact_img">
-        <p>点击联系在线客服</p>
-        <div class="contact_text">在线客服</div>
-    </div>
-    <div class="phone">
-        <img src="../resources/assets/home/public/login/lxb.png" class="contact_img">
-        <div class="contact_text">免费电话</div>
-        <h4>免费电话咨询</h4>
-        <input id="telInput" placeholder="请输入您的电话号码" type="text">
-        <input id="callBtn" value="立即免费通话" type="button">
-    </div>
-    <div class="explain">
-        <div class="explain_arrow"></div>
-        <img src="../resources/assets/home/public/login/explain_img1.png" class="explain_img1">
-        <h1>
-            手机请直接输入<br>
-            如 1861234XXXX
-        </h1>
-        <br>
-        <img src="../resources/assets/home/public/login/explain_img2.png" class="explain_img2">
-        <h2>
-            座机前加拨区号<br>
-            如 0271234XXXX
-        </h2>
-        <h3>
-            输入您的电话号码，点击通话，稍后您将接到我们的电话，该通话对您<b>完全免费</b>，请放心接听！
-        </h3>
-    </div>
-</div>
+    {{--前台验证--}}
+    <script>
+        $(function(){
+            jQuery.validator.addMethod("isMobile", function(value, element) {
+                var length = value.length;
+                var mobile = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/;
+                return this.optional(element) || (length == 11 && mobile.test(value));
+            }, "请正确填写您的手机号码");
 
+            $("#reg").validate({
+                errorElement : 'p',
+                success : function (label) {
+                    label.addClass('success');
+                },
+                    rules:{
+                        user_name:{
+                            required:true,
+                            remote:{
+                                url:"{{'only_name'}}",
+                                type:'get',
+                                //  dataType:'json',
+                                data:{   //传两个参数
+                                    name:function(){
+                                        return $('#name').val()
+                                    }
+                                }
+                            }
+                        },
+                        tel:{
+                            required:true,
+                            isMobile:true,
+                            remote:{
+                                url:"{{'only_tel'}}",
+                                type:'get',
+                                //  dataType:'json',
+                                data:{   //传两个参数
+                                    tel:function(){
+                                        return $('#reg_phone').val()
+                                    }
+                                }
+                            }
+                        },
+                        password:{
+                            required:true,
+                            minlength:6
+                        }
+                    },
+                  messages:{
+                      user_name:{
+                           required:'该用户名必填',
+                           remote:'用户名存在'
+                     },
+                      tel:{
+                          required:'手机号必填',
+                          remote:'已存在'
+                      },
+                      password:{
+                          required:'密码必填',
+                          minlength:'大于六位'
+                      }
+                  }
+            })
 
-
-
-
-
-
-
-<div style="display: none;"><form action="http://lxbjs.baidu.com/vt/lxb.gif" method="post" target="lxbHideIframe"><input name="p" value="MSwlRTYlQjMlQTglRTUlODYlOEMsaHR0cCUzQSUyRiUyRnd3dy5kYWZhbmcyNC5jb20lMkYsaHR0cCUzQSUyRiUyRnd3dy5kYWZhbmcyNC5jb20lMkZ1c2VyY2VudGVyJTJGcmVnaXN0ZXIsMA=="><input name="sid" value="6567291"><input name="bdcbid" value="ae4e15b5-689a-4cf3-8197-565595639873"><input name="t" value="1472603323344"></form><iframe id="lxbHideIframe" name="lxbHideIframe" src="../resources/assets/home/public/login/a.htm"></iframe></div></body></html>
+        })
+    </script>
