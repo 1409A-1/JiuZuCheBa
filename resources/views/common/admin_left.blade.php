@@ -19,12 +19,12 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-group"></i>
-                <span>Users</span>
+                <span>车辆管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="../resources/assets/admin/user-list.html">User list</a></li>
-                <li><a href="../resources/assets/admin/new-user.html">New user form</a></li>
+                <li><a href="{{URL('typelist')}}">车辆类型管理</a></li>
+                <li><a href="{{URL('brandlist')}}">车辆品牌管理</a></li>
                 <li><a href="../resources/assets/admin/user-profile.html">User profile</a></li>
             </ul>
         </li>

@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="index.html"><img src="../resources/assets/admin/img/logo.png" /></a>
+        <a class="brand" href="index.html"><img src="./admin/img/logo.png" /></a>
 
         <ul class="nav pull-right">
             <li class="hidden-phone">
@@ -66,7 +66,7 @@
                         <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
                         <div class="messages">
                             <a href="#" class="item">
-                                <img src="../resources/assets/admin/img/contact-img.png" class="display" />
+                                <img src="./admin/img/contact-img.png" class="display" />
                                 <div class="name">Alejandra Galván</div>
                                 <div class="msg">
                                     There are many variations of available, but the majority have suffered alterations.
@@ -74,7 +74,7 @@
                                 <span class="time"><i class="icon-time"></i> 13 min.</span>
                             </a>
                             <a href="#" class="item">
-                                <img src="../resources/assets/admin/img/contact-img2.png" class="display" />
+                                <img src="./admin/img/contact-img2.png" class="display" />
                                 <div class="name">Alejandra Galván</div>
                                 <div class="msg">
                                     There are many variations of available, have suffered alterations.
@@ -82,7 +82,7 @@
                                 <span class="time"><i class="icon-time"></i> 26 min.</span>
                             </a>
                             <a href="#" class="item last">
-                                <img src="../resources/assets/admin/img/contact-img.png" class="display" />
+                                <img src="./admin/img/contact-img.png" class="display" />
                                 <div class="name">Alejandra Galván</div>
                                 <div class="msg">
                                     There are many variations of available, but the majority have suffered alterations.

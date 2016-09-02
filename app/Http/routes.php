@@ -38,6 +38,29 @@ Route::get('attract','IndexController@attract');
  * 判断登陆
  * */
 Route::group(['middleware' => ['nologin']], function(){
-    Route::get('index','AdminController@admin');
+    Route::get('index','AdminController@index');
 });
 
+/*
+ *车辆类型管理
+ */
+Route::group(['middleware' => ['nologin']], function(){
+	Route::get('typelist','CarTypeController@list');
+	Route::get('typelistpage/{page}/{search}','CarTypeController@listpage');
+	Route::any('typeadd','CarTypeController@add');
+	Route::post('typeupdate','CarTypeController@update');
+	Route::get('typeupdate/{id}','CarTypeController@update');
+	Route::get('typedel/{id}','CarTypeController@del');
+});
+
+/*
+ *车辆品牌管理
+ */
+Route::group(['middleware' => ['nologin']], function(){
+	Route::get('brandlist','CarBrandController@list');
+	Route::get('brandlistpage/{page}/{search}','CarTypeController@listpage');
+	Route::any('brandadd','CarBrandController@add');
+	Route::post('brandupdate','CarBrandController@update');
+	Route::get('brandupdate/{id}','CarBrandController@update');
+	Route::get('branddel/{id}','CarBrandController@del');
+});

@@ -8,7 +8,7 @@ use Session;
 
 class AdminController extends Controller
 {
-    public function admin()
+    public function index()
     {
         return view('admin.admin.admin');
     }

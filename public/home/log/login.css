@@ -1,0 +1,75 @@
+.infoBox{width: 100%;height: 600px;position: relative;background: url(../images/login/s.jpg) no-repeat top center;}
+.infoBox>div{width: 1180px;margin:auto;padding-top: 40px;position: relative}
+.infoBox>div>div{width: 286px;background: #fff;float: right;padding: 30px;margin-right: 30px}
+.infoBox>div>div>div{width: 286px;padding-bottom: 10px}
+
+.infoBox input{width: 240px;height: 30px;line-height: 30px;text-indent: 10px;outline:none;border: 0;color: #949494}
+.infoBox button{width: 100%;height: 40px;background: #337bd7;color: #fff;font-size: 13px;border: 0;margin-top: 10px;position: relative;overflow: hidden}
+.infoBox button i{position: absolute;left: -100%;top: 0;width: 100%;height: 100%;background-image: -moz-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.5),rgba(255,255,255,0));background-image: -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.5),rgba(255,255,255,0));transform: skewx(-25deg);-o-transform: skewx(-25deg);-moz-transform: skewx(-25deg);-webkit-transform: skewx(-25deg)}
+.infoBox button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transition:0.5s;transition:0.5s;}
+
+/*标题*/
+.title{width: 100%;height: 38px;border-bottom: 2px solid #C5C5C5;}
+.title>div{width: 50px;height: 38px;border-bottom: 2px solid #337bd7;color: #337bd7;font-size: 25px;float: left}
+.title>span{float: right;color: #c5c5c5;font-size: 12px;margin-top: 20px}
+.title>span a{color: #337bd7;cursor: pointer}
+/*输入*/
+.input_body{margin-top: 30px;}
+.input_body .active{border-color: #337bd7;}
+.input_body .active::after,
+.input_body .active::before{background: #337bd7;}
+.input_body .active input{color: #337bd7;}
+
+.inputBox{width: 100%;height: 30px;border-bottom: 1px solid #c5c5c5;color:#c5c5c5;position: relative}
+.inputBox::after,.inputBox::before{content: ''; width: 1px ;height: 7px;background:#c5c5c5;position: absolute;bottom: 0}
+.inputBox::after{right: 0}
+.inputBox::before{left: 0}
+
+.infoBox .error{border-color: #FF6666}
+.infoBox .error::after,
+.infoBox .error::before{background: #FF6666;}
+.infoBox .error input{color: #FF6666}
+
+.errorPrompt{width: 100%;height: 16px;text-align: center;text-shadow: 2px 2px 10px #fff;font-size: 12px;color: #FF6666;margin-top:20px}
+
+#login_pw0,#reg_pw0,#ch_pw10,#ch_pw20{display: none}
+/*登录*/
+.login .inputBox{margin-top: 50px;}
+.forgetPw{float: right;color: #c5c5c5;font-size: 12px;margin-top: 10px}
+.forgetPw:hover{color: #337bd7;cursor: pointer}
+.login .errorPrompt{margin-top: 30px}
+/*注册*/
+.register .inputBox{margin-top: 30px;}
+.jy_code{width: 100%;height: 28px;padding-top: 40px}
+.jy_code h4{text-align: center;text-shadow: 2px 2px 5px #FF6666;font-size: 12px;color: #FF6666}
+.dx_code{width: 100%;color:#c5c5c5;position: relative;border: 0;height: 32px;margin-top: 30px;}
+.dx_code input{width: 50%;border-bottom: 1px solid #c5c5c5;}
+.dx_code button{width: 115px;height: 30px;border: 1px solid #c5c5c5;background: #fff;color: #949494;position: absolute;right: 0;bottom: 1px}
+.dx_code button:active{background:#c5c5c5;}
+.dx_code .active{border-color: #337bd7!important;color:#337bd7}
+.dx_code .error{border-color: #FF6666!important;color:#FF6666}
+.Prompt{width: 100%;margin-top: 10px;color:#acacac;font-size: 12px;text-align: right}
+.Prompt b{color:#555;cursor: pointer}
+.protocol{resize:none;width: 714px;height: 460px;line-height: 20px; margin: 20px 0 0 45px;background: #fff;font-size: 12px;color: gray;border: 1px solid #ccc;overflow-x:hidden;padding-left: 10px;outline: none;display: none}/*用户协议*/
+/*找回密码*/
+.findPw{display: none}
+.findPw .title>div{width: 100px;}
+/*修改密码*/
+.changePw{display: none}
+.changePw .title>div{width: 100px;}
+#ch_pw2_box{margin-top: 30px}
+
+/*icon*/
+.icon_login{display:inline-block;background: url("../images/login/icon.png") no-repeat;float: right;}
+.icon_l1{width: 12px;height: 18px;background-position:-21px 0;margin-top: 6px;margin-right: 10px}
+.icon_l11{width: 12px;height: 18px;background-position:-21px -19px;margin-top: 6px;margin-right: 10px}
+.icon_l2{width: 20px;height: 12px;background-position:-33px -3px;margin-top: 9px;margin-right: 6px}
+.icon_l22{width: 20px;height: 12px;background-position:-33px -22px;margin-top: 9px;margin-right: 6px}
+.icon_l3{width: 19px;height: 18px;background-position:0 0;margin-top: 6px;margin-right: 6px}
+.icon_l33{width: 19px;height: 18px;background-position:0 -19px;margin-top: 6px;margin-right: 6px}
+/*页脚*/
+.footerBox{padding: 0}
+
+
+
+
