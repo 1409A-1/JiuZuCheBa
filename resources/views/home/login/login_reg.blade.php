@@ -76,8 +76,8 @@
                     <div>注册</div>
                     <span>已有账号？<a href="{{URL('login')}}">立即登录</a></span>
                 </div>
-                <form action="{{URL('reg_pro')}}" method="post" id="reg">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                <form action="{{ URL('reg_pro') }}" method="post" id="reg">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     <div class="input_body">
                         <div class="inputBox" id="reg_name_box">
                                 <input placeholder="请输入姓名" maxlength="10"  type="text" name="user_name" id="name">
@@ -351,7 +351,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
         $(function(){
             jQuery.validator.addMethod("isMobile", function(value, element) {
                 var length = value.length;
-                var mobile = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/;
+                var mobile = /^(((13[0-9]{1})|(15[0-9]{1}))|(18[0-9]{1}))|(17[0-9]{1}))+\d{8})$/;
                 return this.optional(element) || (length == 11 && mobile.test(value));
             }, "请正确填写您的手机号码");
 

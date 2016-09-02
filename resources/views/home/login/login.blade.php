@@ -15,12 +15,8 @@
     <script type="text/javascript" src="../resources/assets/home/log/jquery.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/ApiConfig.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/all.js"></script>
-<<<<<<< HEAD
     <script src="../resources/assets/home/log/layer.js"></script>
     <link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/log/layer.css" rel="stylesheet">
-=======
-    <script src="../resources/assets/home/log/layer.js"></script><link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/log/layer.css" rel="stylesheet">
->>>>>>> 17d7de05f6fd2e5baa11ab2ec1fcd9c279b94285
     <script src="../resources/assets/home/log/login.js"></script>
     <script src="../resources/assets/home/log/bsl.js" charset="UTF-8" type="text/javascript"></script>
     <script src="../resources/assets/home/log/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
@@ -39,8 +35,8 @@
         <ul class="top_menu">
             <li class="top_user">
                 <div class="no_user">
-                    <a href="" rel="nofollow">注册</a>
-                    <a href="" rel="nofollow">登录</a>
+                    <a href="{{ URL('login_reg') }}" rel="nofollow">注册</a>
+                    <a href="{{ URL('login') }}" rel="nofollow">登录</a>
                 </div>
                 <div class="yes_user">
                     <a href="" rel="nofollow">我的大方</a>
@@ -72,7 +68,7 @@
     <div>
         <i class="icon icon_logo"></i>
         <ul class="menu_box">
-            <li class=""><a href="{{URL('/')}}">首页</a></li>
+            <li class=""><a href="{{ URL('/') }}">首页</a></li>
             <li class=""><a href="">短租自驾</a></li>
             <li class=""><a href="">长租服务</a></li>
             <li class=""><a href="">企业租车</a></li>
@@ -111,7 +107,7 @@
             <div class="login">
                 <div class="title">
                     <div>登录</div>
-                    <span>没有账号？<a href="{{URL('login_reg')}}">立即注册</a></span>
+                    <span>没有账号？<a href="{{ URL('login_reg') }}">立即注册</a></span>
                 </div>
                 <div class="input_body">
                     <div class="inputBox" id="login_name_box">
