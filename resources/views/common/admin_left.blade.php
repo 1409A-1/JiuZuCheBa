@@ -30,13 +30,24 @@
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
-                <i class="icon-edit"></i>
-                <span>Forms</span>
+                <i class="icon-group"></i>
+                <span>车辆类型</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="../resources/assets/admin/form-showcase.html">Form showcase</a></li>
-                <li><a href="../resources/assets/admin/form-wizard.html">Form wizard</a></li>
+                <li><a href="car_type_list">车辆类型列表</a></li>
+                <li><a href="model_add">添加车辆类型</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-edit"></i>
+                <span>服务点管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="address">服务点添加</a></li>
+                <li><a href="">服务点展示</a></li>
             </ul>
         </li>
         <li>
