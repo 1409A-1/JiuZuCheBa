@@ -75,7 +75,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('type_del','AdminController@type_del');
     Route::get('address','AddressController@address');
     Route::get('address_two','AddressController@address_two');
-});
+
 
 // 微信对接
 Route::get('valid','WechatController@valid');
