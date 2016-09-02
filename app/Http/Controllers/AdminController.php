@@ -9,7 +9,7 @@ use Validator;
 
 class AdminController extends Controller
 {
-    public function admin()
+    public function index()
     {
         return view('admin.login.admin_login');
     }

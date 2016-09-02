@@ -16,10 +16,12 @@ class LoginMiddlewarer
     public function handle($request, Closure $next)
     {
         if($request->session()->has('name')){
-            return $next($request);
+
         }else{
+            echo 2;
             return redirect('admin');
         }
+        return $next($request);
 
     }
 }

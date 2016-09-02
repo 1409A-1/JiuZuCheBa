@@ -42,6 +42,33 @@ Route::post('signin','AdminController@admin_login');
 
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('index','AdminController@index');
+
+});
+
+/*
+ *车辆类型管理
+ */
+Route::group(['middleware' => ['nologin']], function(){
+	Route::get('typelist','CarTypeController@list');
+	Route::get('typelistpage/{page}/{search}','CarTypeController@listpage');
+	Route::any('typeadd','CarTypeController@add');
+	Route::post('typeupdate','CarTypeController@update');
+	Route::get('typeupdate/{id}','CarTypeController@update');
+	Route::get('typedel/{id}','CarTypeController@del');
+});
+
+/*
+ *车辆品牌管理
+ */
+Route::group(['middleware' => ['nologin']], function(){
+	Route::get('brandlist','CarBrandController@list');
+	Route::get('brandlistpage/{page}/{search}','CarTypeController@listpage');
+	Route::any('brandadd','CarBrandController@add');
+	Route::post('brandupdate','CarBrandController@update');
+	Route::get('brandupdate/{id}','CarBrandController@update');
+	Route::get('branddel/{id}','CarBrandController@del');
+});
+
     Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');
     Route::post('type_add','AdminController@model_add');
