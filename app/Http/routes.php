@@ -41,3 +41,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('index','AdminController@admin');
 });
 
+// 微信对接
+Route::get('valid','WechatController@valid');
+Route::get('oAuth','WechatController@oAuth');
+Route::get('weChatLogin','WechatController@weChatLogin');

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="../resources/assets/home/log/b.js" charset="utf-8"></script><script src="../resources/assets/home/log/lxb.js" charset="utf-8"></script><script src="../resources/assets/home/log/v.htm" charset="utf-8"></script>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="../resources/assets/home/log/b.js" charset="utf-8"></script>
+    <script src="../resources/assets/home/log/lxb.js" charset="utf-8"></script>
+    <script src="../resources/assets/home/log/v.htm" charset="utf-8"></script>
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <title>大方租车 登录</title>
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/all.css">
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/login.css">
-    <script src="../resources/assets/home/log/hm.js"></script><script type="text/javascript" src="../resources/assets/home/log/jquery-1.js"></script>
+    <script src="../resources/assets/home/log/hm.js"></script>
+    <script type="text/javascript" src="../resources/assets/home/log/jquery-1.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/jquery.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/ApiConfig.js"></script>
     <script type="text/javascript" src="../resources/assets/home/log/all.js"></script>
-    <script>
-        var loginIP;
-        jQuery(function ($) {
-            var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
-            $.getJSON(url, function (data) {
-                loginIP = data.Ip;
-            });
-        });
-    </script>
-    <script src="../resources/assets/home/log/layer.js"></script><link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/log/layer.css" rel="stylesheet">
+    <script src="../resources/assets/home/log/layer.js"></script>
+    <link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/log/layer.css" rel="stylesheet">
     <script src="../resources/assets/home/log/login.js"></script>
-<script src="../resources/assets/home/log/bsl.js" charset="UTF-8" type="text/javascript"></script><script src="../resources/assets/home/log/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script><script src="../resources/assets/home/log/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script><link href="../resources/assets/home/log/main.css" type="text/css" rel="stylesheet"><link href="../resources/assets/home/log/fix.css" type="text/css" rel="stylesheet"><style>@import "http://qiao.baidu.com/v3/asset/css/m-webim-lite.css?v=20150613";</style><script charset="utf-8" src="../resources/assets/home/log/m-webim-lite.js" type="text/javascript"></script></head>
+    <script src="../resources/assets/home/log/bsl.js" charset="UTF-8" type="text/javascript"></script>
+    <script src="../resources/assets/home/log/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
+    <script src="../resources/assets/home/log/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
+    <link href="../resources/assets/home/log/main.css" type="text/css" rel="stylesheet">
+    <link href="../resources/assets/home/log/fix.css" type="text/css" rel="stylesheet">
+    <style>@import "http://qiao.baidu.com/v3/asset/css/m-webim-lite.css?v=20150613";</style>
+    <script charset="utf-8" src="../resources/assets/home/log/m-webim-lite.js" type="text/javascript"></script>
+</head>
 <body>
 <!--菜单-->
  <!--头部-->
@@ -118,6 +122,7 @@
                     <span class="forgetPw">忘记密码？</span>
                     <div class="errorPrompt" id="loginError"><!--错误提示--></div>
                     <button id="login">登 录<i></i></button>
+                    <button style="background-color: #00aa00" onclick="location='{{ url('oAuth') }}'">微 信 登 录</button>
                 </div>
             </div>
             <!--忘记密码-->
