@@ -846,6 +846,7 @@ function City() {
         url: city_list_url,
         dataType: 'jsonp',
         success: function (result) {
+			console.log(result[1])
             var hotCity = "",//热门城市
                 touristCity = '',//旅游城市
                 letter = [],//首字母集合
