@@ -13,7 +13,7 @@ class CarTypeController extends Controller
 	/*
 	   车辆类型展示
 	 */
-    public function list()
+    public function car_list()
     {
     	$cartype = CarType::all()->toArray()?CarType::all()->toArray():array();
     	//print_r($cartype);die;

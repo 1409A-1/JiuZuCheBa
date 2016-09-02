@@ -48,7 +48,7 @@ class AdminController extends Controller
      * @index
      * 描述：登陆后跳到首页
      * */
-    public function index()
+    public function indexs()
     {
         return view('admin.admin.admin');
     }
@@ -87,10 +87,10 @@ class AdminController extends Controller
      * time:2016/9/1
      * 描述:jquery删除
      * */
-    public function type_del()
-    {
+    public function type_del(){
+
         $id = Request::input('type_id');
-        echo $id;die;
+
         $re = DB::table('car_type')
             ->where('type_id',$id)
             ->delete();

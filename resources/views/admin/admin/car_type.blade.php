@@ -6,26 +6,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
 
     <!-- libraries -->
-    <link href="../resources/assets/admin/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="../resources/assets/admin/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
-    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
 
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -47,7 +45,7 @@
             <a href="#" class="skin first_nav selected">
                 <span class="icon"></span><span class="text">Default</span>
             </a>
-            <a href="#" class="skin second_nav" data-file="../resources/assets/admin/css/skins/dark.css">
+            <a href="#" class="skin second_nav" data-file="{{asset('admin')}}/css/skins/dark.css">
                 <span class="icon"></span><span class="text">Dark skin</span>
             </a>
         </div>
@@ -56,7 +54,7 @@
             <div id="pad-wrapper">
                 
                 <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in ../resources/assets/admin/js/theme.js -->
+                <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
@@ -77,7 +75,7 @@
                             <a class="btn-flat success new-product" id="ins">添加型号</a>
                         </div>
                     </div>
-                    <script src="../resources/assets/js.js"></script>
+                    <script src="{{asset('admin')}}/js/js.js"></script>
                     <script>
                         $(function(){
                             $("#ins").click(function(){
@@ -108,7 +106,7 @@
                                     <td>
                                         <input type="checkbox" />
                                         <div class="img">
-                                            <img src="../resources/assets/admin/img/table-img.png" />
+                                            <img src="{{asset('admin')}}/img/table-img.png" />
                                         </div>
                                         <a href="#" class="name">Generate Lorem </a>
                                     </td>
@@ -127,13 +125,13 @@
                 </div>
                 <!-- end products table -->
                 <!--jquery删除-->
-                <script src="../resources/assets/js.js"></script>
+                <script src="{{asset('admin')}}/js/js.js"></script>
                 <script>
                         function del(type_id){
                             var token = $('input[name=_token]').val();
                             $.ajax({
                                 type:"post",
-                                url:"type_del",
+                                url:"{{URL('type_del')}}",
                                 data:{type_id:type_id,_token:token},
                                 success:function(msg){
                                     if(msg == 1){
@@ -315,7 +313,7 @@
                                 <!-- row -->
                                 <tr class="first">
                                     <td>
-                                        <img src="../resources/assets/admin/img/contact-img.png" class="img-circle avatar hidden-phone" />
+                                        <img src="{{asset('admin')}}/img/contact-img.png" class="img-circle avatar hidden-phone" />
                                         <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                                         <span class="subtext">Graphic Design</span>
                                     </td>
@@ -331,7 +329,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="../resources/assets/admin/img/contact-img2.png" class="img-circle avatar hidden-phone" />
+                                        <img src="{{asset('admin')}}/img/contact-img2.png" class="img-circle avatar hidden-phone" />
                                         <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                                         <span class="subtext">Graphic Design</span>
                                     </td>
@@ -347,7 +345,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="../resources/assets/admin/img/contact-img.png" class="img-circle avatar hidden-phone" />
+                                        <img src="{{asset('admin')}}/img/contact-img.png" class="img-circle avatar hidden-phone" />
                                         <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                                         <span class="subtext">Graphic Design</span>
                                     </td>
@@ -363,7 +361,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="../resources/assets/admin/img/contact-img2.png" class="img-circle avatar hidden-phone" />
+                                        <img src="{{asset('admin')}}/img/contact-img2.png" class="img-circle avatar hidden-phone" />
                                         <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
                                         <span class="subtext">Graphic Design</span>
                                     </td>
@@ -388,9 +386,9 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="../resources/assets/admin/js/jquery-latest.js"></script>
-    <script src="../resources/assets/admin/js/bootstrap.min.js"></script>
-    <script src="../resources/assets/admin/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
+    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/js/theme.js"></script>
 
 </body>
 </html>

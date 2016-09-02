@@ -13,7 +13,7 @@ class CarBrandController extends Controller
 	/*
 	   车辆类型展示
 	 */
-    public function list()
+    public function brand_list()
     {
     	$count= CarBrand::count();
     	$page=1;
@@ -22,7 +22,7 @@ class CarBrandController extends Controller
     	$length=5;
     	$pages=ceil($count/$length);
     	$offset=($page-1)*$length;
-    	$carbrand = CarBrand::take($length)->skip($offset)->get()->toArray()? CarBrand::take(2)->skip(2)->get()->toArray(): array();
+    	$carbrand = CarBrand::take($length)->skip($offset)->get()->toArray()? CarBrand::take($length)->skip($offset)->get()->toArray(): array();
     	//print_r($carbrand);die;
         return view('admin.carbrand.list',['carbrand'=>$carbrand,'pages'=> $pages,'prev'=> $prev,'next'=> $next,'page'=>$page]);
     }

@@ -6,26 +6,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
 
     <!-- libraries -->
-    <link href="../resources/assets/admin/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="../resources/assets/admin/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
-    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
 
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -101,7 +99,7 @@
                                     <td>
                                         <input type="checkbox" />
                                         <div class="img">
-                                            <img src="../resources/assets/admin/img/table-img.png" />
+                                            <img src="{{asset('admin')}}/img/table-img.png" />
                                         </div>
                                         <a href="#" class="name">{{$v['brand_name']}} </a>
                                     </td>
@@ -150,16 +148,16 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="../resources/assets/admin/js/jquery-latest.js"></script>
-    <script src="../resources/assets/admin/js/bootstrap.min.js"></script>
-    <script src="../resources/assets/admin/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
+    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="../resources/assets/admin/js/jquery.knob.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="../resources/assets/admin/js/jquery.flot.js"></script>
-    <script src="../resources/assets/admin/js/jquery.flot.stack.js"></script>
-    <script src="../resources/assets/admin/js/jquery.flot.resize.js"></script>
-    <script src="../resources/assets/admin/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
+    <script src="{{asset('admin')}}/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {

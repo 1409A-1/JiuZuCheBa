@@ -16,10 +16,6 @@ Route::get('only_tel','LoginController@only_tel');
 
 
 
-
-
-
-
 //登陆
 Route::get('login','LoginController@login');
 //短租自驾
@@ -36,45 +32,47 @@ Route::get('attract','IndexController@attract');
 
 /*
  * 后台
- * */
-Route::get('admin','AdminController@admin_login');
+ */
+
+//后台登录
+Route::get('admins','AdminController@admin_login');
+//判断用户密码
 Route::post('signin','AdminController@admin_login');
 
 Route::group(['middleware' => ['nologin']], function(){
-    Route::get('index','AdminController@index');
-
-});
-
-/*
- *车辆类型管理
- */
-Route::group(['middleware' => ['nologin']], function(){
-	Route::get('typelist','CarTypeController@list');
-	Route::get('typelistpage/{page}/{search}','CarTypeController@listpage');
-	Route::any('typeadd','CarTypeController@add');
-	Route::post('typeupdate','CarTypeController@update');
-	Route::get('typeupdate/{id}','CarTypeController@update');
-	Route::get('typedel/{id}','CarTypeController@del');
-});
-
-/*
- *车辆品牌管理
- */
-Route::group(['middleware' => ['nologin']], function(){
-	Route::get('brandlist','CarBrandController@list');
-	Route::get('brandlistpage/{page}/{search}','CarTypeController@listpage');
-	Route::any('brandadd','CarBrandController@add');
-	Route::post('brandupdate','CarBrandController@update');
-	Route::get('brandupdate/{id}','CarBrandController@update');
-	Route::get('branddel/{id}','CarBrandController@del');
-});
-
+    Route::get('indexs','AdminController@indexs');
+//车辆类型
     Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');
     Route::post('type_add','AdminController@model_add');
     Route::post('type_del','AdminController@type_del');
     Route::get('address','AddressController@address');
     Route::get('address_two','AddressController@address_two');
+
+//车辆类型
+    Route::get('typelist','CarTypeController@car_list');//列表展示
+    Route::get('typelistpage/{page}/{search}','CarTypeController@listpage'); //列表分页
+    Route::any('typeadd','CarTypeController@add'); //添加
+    Route::post('typeupdate','CarTypeController@update'); //修改
+    Route::get('typeupdate/{id}','CarTypeController@update'); //执行修改
+    Route::get('typedel/{id}','CarTypeController@del');    //删除
+
+
+
+/*
+ *车辆品牌管理
+ */
+    Route::get('brandlist','CarBrandController@brand_list');
+    Route::get('brandlistpage/{page}/{search}','CarTypeController@listpage');
+    Route::any('brandadd','CarBrandController@add');
+    Route::post('brandupdate','CarBrandController@update');
+    Route::get('brandupdate/{id}','CarBrandController@update');
+    Route::get('branddel/{id}','CarBrandController@del');
+});
+
+
+
+
 
 
 // 微信对接
