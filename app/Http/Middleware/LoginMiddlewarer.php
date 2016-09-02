@@ -16,11 +16,9 @@ class LoginMiddlewarer
     public function handle($request, Closure $next)
     {
         if($request->session()->has('name')){
-            echo 1;
             return $next($request);
         }else{
-            echo 2;
-            return view();
+            return redirect('admin');
         }
 
     }

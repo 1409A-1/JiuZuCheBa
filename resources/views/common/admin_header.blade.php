@@ -98,7 +98,7 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
-                    Your account
+                    欢迎<?php echo Session::get('name')?>用户登陆
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
