@@ -37,38 +37,45 @@ Route::get('attract','IndexController@attract');
 /*
  * 后台
  * */
-Route::get('admin','AdminController@admin_login');
+Route::get('admins','AdminController@admin_login');
 Route::post('signin','AdminController@admin_login');
 
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('index','AdminController@index');
-
 });
 
 /*
- *车辆类型管理
+ *车辆类型&品牌管理
  */
 Route::group(['middleware' => ['nologin']], function(){
-	Route::get('typelist','CarTypeController@list');
-	Route::get('typelistpage/{page}/{search}','CarTypeController@listpage');
-	Route::any('typeadd','CarTypeController@add');
-	Route::post('typeupdate','CarTypeController@update');
-	Route::get('typeupdate/{id}','CarTypeController@update');
-	Route::get('typedel/{id}','CarTypeController@del');
+	/*
+	   类型管理
+	 */
+	Route::get('typelist','CarTypeController@type_list');//类型列表
+	Route::get('typelistpage/{page}/{search}/{del}','CarTypeController@listpage');//搜索分页
+	Route::match(['get', 'post'],'typeadd','CarTypeController@add');//添加
+	Route::post('typeupdate','CarTypeController@update');//编辑
+	Route::get('typeupdate/{id}','CarTypeController@update');//更新
+	Route::get('typedel/{id}','CarTypeController@del');//删除
+	/*
+	    品牌管理
+	 */
+	Route::get('brandlist','CarBrandController@brand_list');//品牌列表
+	Route::get('brandlistpage/{page}/{search}/{del}','CarBrandController@listpage');//搜索分页
+	Route::match(['get', 'post'],'brandadd','CarBrandController@add');//添加
+	Route::post('brandupdate','CarBrandController@update');//编辑
+	Route::get('brandupdate/{id}','CarBrandController@update');//更新
+	Route::get('branddel/{id}','CarBrandController@del');//删除
+	/*
+	    用户管理
+	 */
+	Route::get('userlist','UserController@user_list');//前台用户列表
+	Route::get('userlistpage/{page}','UserController@listpage');//用户分页
+	Route::get('adminlist','UserController@admin_list');//后台用户列表
+	Route::get('adminlistpage/{page}','UserController@adminlistpage');//后台管理分页
 });
 
-/*
- *车辆品牌管理
- */
 Route::group(['middleware' => ['nologin']], function(){
-	Route::get('brandlist','CarBrandController@list');
-	Route::get('brandlistpage/{page}/{search}','CarTypeController@listpage');
-	Route::any('brandadd','CarBrandController@add');
-	Route::post('brandupdate','CarBrandController@update');
-	Route::get('brandupdate/{id}','CarBrandController@update');
-	Route::get('branddel/{id}','CarBrandController@del');
-});
-
     Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');
     Route::post('type_add','AdminController@model_add');

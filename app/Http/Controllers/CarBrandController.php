@@ -11,9 +11,9 @@ use Validator;
 class CarBrandController extends Controller
 {
 	/*
-	   车辆类型展示
+	   车辆品牌展示
 	 */
-    public function list()
+    public function brand_list()
     {
     	$count= CarBrand::count();
     	$page=1;
@@ -22,24 +22,30 @@ class CarBrandController extends Controller
     	$length=5;
     	$pages=ceil($count/$length);
     	$offset=($page-1)*$length;
-    	$carbrand = CarBrand::take($length)->skip($offset)->get()->toArray()? CarBrand::take(2)->skip(2)->get()->toArray(): array();
+    	$carbrand = CarBrand::take($length)->skip($offset)->get()->toArray()? CarBrand::take($length)->skip($offset)->get()->toArray(): array();
     	//print_r($carbrand);die;
         return view('admin.carbrand.list',['carbrand'=>$carbrand,'pages'=> $pages,'prev'=> $prev,'next'=> $next,'page'=>$page]);
     }
 
     /*
-	   车辆类型分页展示
+	   车辆品牌分页展示
 	 */
-    public function listpage(Request $request,$page=1,$search="")
+    public function listpage(Request $request,$page=1,$search,$del)
     {
-    	$count= CarBrand::where("")->count();
+    	if($del!=0){
+    		CarBrand::where('brand_id', $del)->delete();
+    	}
+    	$search=="all" ? $search="" : $search=$search;
+    	//echo $search;die;
+    	$count= CarBrand::where("brand_name",'like',"%$search%")->count();
     	//$page=1;
     	$prev=$page==1? 1: $page-1;
     	$next=$page==$count? $count :$page+1;
     	$length=5;
     	$pages=ceil($count/$length);
+    	$page=$page>$pages ? $pages : $page;
     	$offset=($page-1)*$length;
-    	$carbrand = CarBrand::take($length)->skip($offset)->get()->toArray()? CarBrand::take(2)->skip(2)->get()->toArray(): array();
+    	$carbrand = CarBrand::where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarBrand::where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray(): array();
     	//print_r($carbrand);die;
         echo json_encode(['carbrand'=>$carbrand,'pages'=> $pages,'prev'=> $prev,'next'=> $next,'page'=>$page]);
     }

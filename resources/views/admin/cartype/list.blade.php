@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
 
     <!-- libraries -->
-    <link href="../resources/assets/admin/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="../resources/assets/admin/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
     <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
@@ -73,7 +73,7 @@
                                   <option />Active users
                                 </select>
                             </div>
-                            <input type="text" class="search" />
+                            <input type="text" class="search" id="search" />
                             <a class="btn-flat success new-product" href="typeadd">+ 添加车辆类型</a>
                         </div>
                     </div>
@@ -94,14 +94,14 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                             <tbody id="tbody">
                                 <!-- row -->
                                 @foreach($cartype as $k => $v)
                                 <tr class="first">
                                     <td>
                                         <input type="checkbox" />
                                         <div class="img">
-                                            <img src="../resources/assets/admin/img/table-img.png" />
+                                            <img src="{{asset('admin')}}/img/table-img.png" />
                                         </div>
                                         <a href="#" class="name">{{$v['type_name']}} </a>
                                     </td>
@@ -112,7 +112,7 @@
                                         <!-- <span class="label label-success">Active</span> -->
                                         <ul class="actions" style="float:left">
                                             <li><a href="typeupdate/{{$v['type_id']}}">编辑</a></li>
-                                            <li class="last"><a href="typedel/{{$v['type_id']}}">删除</a></li>
+                                            <li class="last"><a class="del" href="javascript:void(0)" bid={{$v['type_id']}}>删除</a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -123,14 +123,18 @@
                     </div>
                     <div class="pagination">
                       <ul>
-                        <li><a href="#">&#8249;</a></li>
-                        <li><a class="active" href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">&#8250;</a></li>
+                        <li><a href="javascript:void(0)" class="page" page="{{$prev}}">&#8249;</a></li>
+                        @for ($i = 1; $i <= $pages; $i++)
+                            <li><a class="
+                            @if ($page == $i)
+                            active
+                            @endif
+                             page" href="javascript:void(0)" page="{{$i}}">{{$i}}</a></li>
+                        @endfor
+                        <li><a href="javascript:void(0)" class="page" page="{{$next}}">&#8250;</a></li>
                       </ul>
                     </div>
+                    <input type="hidden" value="1" id="nowpage">
                 </div>
                 <!-- end products table -->
 
@@ -146,21 +150,105 @@
     </div>
     <!-- end main container -->
 
-	<!-- scripts -->
-    <script src="../resources/assets/admin/js/jquery-latest.js"></script>
-    <script src="../resources/assets/admin/js/bootstrap.min.js"></script>
-    <script src="../resources/assets/admin/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <!-- scripts -->
+    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
+    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="../resources/assets/admin/js/jquery.knob.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="../resources/assets/admin/js/jquery.flot.js"></script>
-    <script src="../resources/assets/admin/js/jquery.flot.stack.js"></script>
-    <script src="../resources/assets/admin/js/jquery.flot.resize.js"></script>
-    <script src="../resources/assets/admin/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
+    <script src="{{asset('admin')}}/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {
+            // Ajax搜索&分页
+            $(document).delegate(".page","click",function(){
+                page=$(this).attr('page');
+                search=$("#search").val()?$("#search").val():"all";
+                //alert(search);
+                $.get("typelistpage/"+page+"/"+search+"/0",function(msg){
+                    //alert(msg)
+                    str="";
+                    for(i=0; i<msg.cartype.length; i++){
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                    }
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $("#nowpage").val(msg.page);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                },'json')
+            })
 
+            //Ajax搜索
+            $("#search").blur(function(){
+                //alert(1)
+                search=$(this).val()=="" ? "all" :$(this).val();
+                //alert(search)
+                $.get("typelistpage/1/"+search+"/0",function(msg){
+                //alert(msg)
+                str="";
+                for(i=0; i<msg.cartype.length; i++){
+                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
+                }
+                $("#tbody").empty();
+                $("#tbody").append(str);
+                $("#nowpage").val(msg.page);
+                $(".pagination").empty();
+                str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                    for (i = 1; i <= msg.pages; i++){
+                        str2+='<li><a class="'
+                        if (msg.page == i){
+                        str2+='active';
+                        }
+                        str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                    }
+                    str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                    $(".pagination").append(str2);
+            },'json')
+            })
+
+            // Ajax搜索&分页&删除
+            $(document).delegate(".del","click",function(){
+                page=$("#nowpage").val();
+                search=$("#search").val()?$("#search").val():"all";
+                del=$(this).attr("bid");
+                //alert(search);
+                $.get("typelistpage/"+page+"/"+search+"/"+del,function(msg){
+                    //alert(msg)
+                    str="";
+                    for(i=0; i<msg.cartype.length; i++){
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                    }
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                },'json')
+            })
+
+            
             // jQuery Knobs
             $(".knob").knob();
 

@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="../resources/assets/admin/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
 
     <!-- libraries -->
-    <link rel="stylesheet" type="text/css" href="../resources/assets/admin/css/lib/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/lib/font-awesome.css" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="../resources/assets/admin/css/compiled/new-user.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/new-user.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
     <!-- <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
@@ -96,9 +96,9 @@
 
 
 	<!-- scripts -->
-    <script src="../resources/assets/admin/js/jquery-latest.js"></script>
-    <script src="../resources/assets/admin/js/bootstrap.min.js"></script>
-    <script src="../resources/assets/admin/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
+    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {
