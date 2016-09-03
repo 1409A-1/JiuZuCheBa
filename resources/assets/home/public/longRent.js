@@ -193,11 +193,11 @@ function book(){
         }
     });
 
-    
 
-    
 
-        
+
+
+
 
         //点击空白处关闭
         $(document).click(function (e) {
