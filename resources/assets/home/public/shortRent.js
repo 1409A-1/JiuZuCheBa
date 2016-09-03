@@ -18,8 +18,7 @@ function loading() {
         IN_TYPE = 1;
     } else if (shopID != "" && shopID && StartDateTime != " 10:00" && StartDateTime && EndDateTime != " 10:00" && EndDateTime) {
         IN_TYPE = 2;
-    }
-    else if (shopID != "" && shopID) {
+    } else if (shopID != "" && shopID) {
         IN_TYPE = 3;
     } 
     switch (IN_TYPE) {
@@ -841,39 +840,45 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
 
 //城市
 function City() {
-    //加载城市
-    jQuery.ajax({
-        url: city_list_url,
-        dataType: 'jsonp',
-        success: function (result) {
-			console.log(result[1])
-            var hotCity = "",//热门城市
-                touristCity = '',//旅游城市
-                letter = [],//首字母集合
-                temp;
-            for (var i = 0; i < result.length; i++) {
-                if ((result[i].city_type & 4) == 4)//旅游城市
-                {
-                    touristCity += "<span><a>" + result[i].city_name + "</a></span>";
-                }
-
-                if ((result[i].city_type & 2) == 2)//热门城市
-                {
-                    hotCity += "<span><a>" + result[i].city_name + "</a></span>";
-                }
-
-                temp = result[i].city_name;//全部城市列表
-                if (temp != "乌鲁木齐") {
-                    temp = temp.substr(0, temp.length - 1);
-                }
-
-                letter.push(result[i].city_abridge.substr(0, 1));//取第一个首字母
-
+    var _token = $('meta[name=_token]').attr('content');
+    $.post(city, {'_token': _token}, function(result){
+        //console.log(result[1])
+        alert(result);
+        var hotCity = "",//热门城市
+            touristCity = '',//旅游城市
+            letter = [],//首字母集合
+            temp;
+        for (var i = 0; i < result.length; i++) {
+            if ((result[i].city_type & 4) == 4)//旅游城市
+            {
+                touristCity += "<span><a>" + result[i].city_name + "</a></span>";
             }
 
-            bookCity(hotCity, touristCity, letter, result);
+            if ((result[i].city_type & 2) == 2)//热门城市
+            {
+                hotCity += "<span><a>" + result[i].city_name + "</a></span>";
+            }
+
+            temp = result[i].city_name;//全部城市列表
+            if (temp != "乌鲁木齐") {
+                temp = temp.substr(0, temp.length - 1);
+            }
+
+            letter.push(result[i].city_abridge.substr(0, 1));//取第一个首字母
+
         }
+
+        bookCity(hotCity, touristCity, letter, result);
     });
+
+    //加载城市
+    //jQuery.ajax({
+    //    url: city_list_url,
+    //    dataType: 'jsonp',
+    //    success: function (result) {
+    //    原始毁掉函数内容，同上
+    //    }
+    //});
 }
 
 //预订城市

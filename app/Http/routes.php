@@ -15,7 +15,6 @@ Route::get('only_name','LoginController@only_name');
 Route::get('only_tel','LoginController@only_tel');
 
 
-
 //登陆
 Route::get('login','LoginController@login');
 //短租自驾
@@ -70,12 +69,12 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('branddel/{id}','CarBrandController@del');
 });
 
+// 微信对接 授权登录
+Route::get('valid','WechatController@valid');   // 微信对接
+Route::get('oAuth','WechatController@oAuth');   // 第三方授权登录窗口
+Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
+// 常用路由
+Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
 
-
-
-
-// 微信对接
-Route::get('valid','WechatController@valid');
-Route::get('oAuth','WechatController@oAuth');
-Route::get('weChatLogin','WechatController@weChatLogin');
+// 短租
