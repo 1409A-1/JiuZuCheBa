@@ -1,9 +1,6 @@
 /vendor
 /node_modules
 /public/storage
-/storage
 Homestead.yaml
 Homestead.json
-
-#本地配置文件
-.*
+.env

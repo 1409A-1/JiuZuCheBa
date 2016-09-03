@@ -17,6 +17,10 @@ Route::get('only_tel','LoginController@only_tel');
 
 //登陆
 Route::get('login','LoginController@login');
+//登录验证
+Route::post('login_pro','LoginController@login_pro');
+//退出登录
+Route::get('login_out','LoginController@login_out');
 //短租自驾
 Route::get('driving','IndexController@driving');
 //长期租车
