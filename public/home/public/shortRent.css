@@ -1,0 +1,181 @@
+body{background: #E8E6E6;color: #24354b}
+/*导航标题*/
+.title{width: 1180px;margin: auto;height: 77px;font-size: 14px;}
+.titleL{float: left;margin-top: 29px}
+.titleR{float: right;width: 300px;height: 50px;margin-top: 20px}
+.titleR>ul{width: 300px;height: 20px;margin-top: 30px}
+.titleR>ul li{float: left;width: 100px;text-align: right}
+.titleR>ul .dns{color: #B5B5B5;}
+.titleR>div{width: 200px;height: 30px; float: right;position: relative;;margin-right: 25px}
+.titleR>div hr{border: 0;height: 5px;position: absolute;right: 0;top: 8.5px}
+.ok{width: 200px;background:#E15517;}
+.no{width: 200px;background:#B7B7B7;}
+.titleR>div h3{width: 24px;height: 24px;line-height: 24px;text-align: center;border-radius: 25px;position: absolute;color: #fff}
+.r1{background: #E15517;left: -12px}
+.r2{background: #B7B7B7;left: 88px}
+.r3{background: #B7B7B7;left: 188px}
+/*预定框*/
+.bookBox{width: 1128px;margin: auto;height: 76px;font-size: 14px;border: 1px solid #dcdcdc;background: #fff;padding: 25px;position: relative}
+.bookBox>div{width: 940px;height: 30px;line-height: 30px;float: left}
+.return{margin-top: 16px}
+/*预订按钮*/
+#startBook{width: 161px;height: 76px;background: #e15517;color: #fff;font-size: 16px;float: right;border: 0;position: relative;overflow: hidden;-moz-transition: all 1s;-o-transition: all 1s;-webkit-transition: all 1s;transition: all 1s}
+.Arrow{width: 0;height: 0;border-top: 7px solid #24354b;border-right: 5px solid transparent;border-left: 5px solid transparent;float: right;margin:12px 8px 0 0;transition:all .2s ease-in 0s;-webkit-transition:all .2s ease-in 0s;-moz-transition:all .2s ease-in 0s}
+.ArrowHover{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg)}
+.show{width: 100%;height: 100%}
+.show>a{padding-left: 10px}
+/*城市*/
+.bookBox>div>div{height: 28px;border: 1px solid #BABABA;cursor: pointer;position: relative;display: inline-block}
+.bookBox>div>hr{width: 9px;height: 1px;border: 0;background: #BABABA;display: inline-block;margin-bottom: 5px}
+.shortCity{width: 128px;margin-left: 8px}
+.shortStore{width: 219px;margin-right: 35px}
+
+/*取还车城市列表*/
+.city_list{width: 430px;position: absolute;left: -1px;top: 28px;border:1px solid #BABABA;z-index: 10;min-height: 100px;background: #fff;padding: 10px;font-size: 13px;display: none}
+.city_list_tit{width: 100%;height: 30px;line-height: 25px;border-bottom: 1px solid #EC6924;position: relative}
+.city_list_tit a{padding: 0 7px}
+.city_list_arrow{width: 0;height: 0;border-bottom: 6px solid #EC6924;border-right: 6px solid transparent;border-left: 6px solid transparent;position: absolute;left: 27px;bottom: -1px}
+.city_list_body{width: 420px;padding: 20px 5px 0 5px;}
+.city_list_body a{padding: 2px 10px;transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;-moz-transition: all 0.5s;}
+.city_list_body a:hover{background:#EA5506;color: #fff}
+.city_list_body li{display: none}
+.city_list_body li>span{display: inline-block;width: 80px;height:20px;line-height: 20px; margin-bottom: 15px;overflow: hidden}
+.city_list_body li>div{width: 395px;line-height: 20px;padding-left: 25px;margin-bottom: 15px;position: relative}
+.city_list_body li>div b{display: block;width: 20px;height:20px;line-height: 20px; font-weight: 400;color:#959595;position: absolute;left: 0;top: 0}
+.city_list_body li>div span{display: inline-block;width: 75px;height:20px;line-height: 20px; margin-bottom: 10px}
+
+/*取还车门店*/
+.store_list{width: 662px;position: absolute;left: -1px;top: 28px;border:1px solid #BABABA;z-index: 10;min-height: 100px;background: #fff;font-size: 13px;display: none}
+.store_list_tit{padding-left:15px;height: 15px}
+.area{border-bottom: 2px solid #EC6924;margin:10px 15px;padding-bottom: 10px}
+.area a{display:inline-block;height: 30px; padding: 0 10px;margin-right: 15px;transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;-moz-transition: all 0.5s;}
+.area a:hover{background:#eee;color: #EA5506}
+.store_list .active{background:#EA5506;color: #fff}
+.store{padding:0 15px;}
+.store ul{display: none}
+.store li{display: inline-block;width: 155px;height: 30px}
+.store li a{padding:0 8px;transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;-moz-transition: all 0.5s;}
+.store li a:hover{background:#EA5506;color: #fff}
+.storeInfo{margin-top: 10px;padding: 10px 18px;background:#FCEEE7;position: relative}
+.storeInfo div{width: 350px;padding-left: 80px;position: relative;}
+.storeInfo div h5{height: 19px;width: 100%}
+.storeInfo div a{display: inline-block;position: absolute;left: 0;top: 0}
+.storeInfo div p{display: inline-block}
+.toMap{display: block;width: 72px;height: 60px;position: absolute;right: 18px;top: 0;bottom: 0;margin: auto;color: #24354b;line-height: 20px;text-align: center}
+.toMap:hover{color:#EA5506}
+/*时间*/
+/*日期*/
+.shortDate{width: 236px;padding-right: 4px;margin-left: 8px;}
+.shortDate>i{padding-left: 1px}
+.shortDate>a{width: 100%;height: 100%;display:block;position: absolute;left: 0;top: 0;text-indent: 12px}
+.shortDate>span{font-size: 12px;margin:0 10px 0 0;float: right;color: #EA5506}
+/*营业时间*/
+.shortHour{width: 128px;padding-left: 4px;position: relative;margin-left:-5px;border-left-color: #EEEEEE!important;}
+.hourBox{width: 225px;position: absolute;left: -1px;top: 28px;border:1px solid #BABABA;z-index: 10;min-height: 100px;background: #fff;padding:10px;display: none;}
+.hourBox a{display: inline-block;height: 20px;line-height: 20px; padding:5px 10px;transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;-moz-transition: all 0.5s;}
+.hourBox a:hover{color: #EA5506;background: #eee}
+/*筛选*/
+.filter{width: 1128px;margin:21px auto;height: 162px;font-size: 12px;border: 1px solid #dcdcdc;background: #fff;padding:0 25px;position: relative;color: #24354b}
+.filter .active{color: #fff;background: #E15517}
+.filter>div{height: 54px;line-height: 54px;}
+.filter>div a{padding: 2px 10px;margin: 0 15px;cursor: pointer;transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;-moz-transition: all 0.5s;}
+.filter>div a:hover{background:#ddd}
+/*--------------------车辆------------------------*/
+.carBox{width: 1180px;min-height: 880px;height: auto; margin:0 auto 80px auto}
+.carBoxL{width: 857px;min-height: 179px;display: inline-block;border: 1px solid #dcdcdc;background: #fff;border-bottom: 0;position: relative}
+.carBoxR{width: 311px;height: 880px;float: right}
+/*左边*/      /*排序*/
+.sort{width: 100%;height: 49px;line-height: 49px;font-size: 14px;border-bottom: 1px solid #dcdcdc;}
+.sort>span{display:block;float: right;margin-right: 20px;color: #949494}
+.sort>span b{color: #e15517}
+.sort ul{width: 282px;height: 49px;float: left;}
+.sort ul li{width: 140px;height: 49px;float: left;border-right: 1px solid #dcdcdc;cursor: pointer; text-align: center;}
+.sort ul .active{border-bottom: 0;border-top: 4px solid #E15517;line-height: 42px;height: 45px}
+/*车型列表*/
+.carList{width: 100%;position: relative;z-index: 1}
+.carList>li{width: 857px;height: 130px;border-bottom: 1px solid #dcdcdc;position: relative;transition: all 0.4s;-webkit-transition: all 0.4s;-o-transition: all 0.4s;-moz-transition: all 0.4s;}
+.carList>.active{box-shadow: 0 0 10px #999}
+.carList>.active img{-moz-transform: translateX(5px);-ms-transform: translateX(5px);-webkit-transform: translateX(5px);transform: translateX(5px)}
+.carList>li:hover{box-shadow: 0 0 10px #999}
+.carList>li:hover img{-moz-transform: translateX(5px);-ms-transform: translateX(5px);-webkit-transform: translateX(5px);transform: translateX(5px)}
+
+.carList>li img{margin: 15px 10px;float: left;transition: all 0.4s;-webkit-transition: all 0.4s;-o-transition: all 0.4s;-moz-transition: all 0.4s;width: 195px;height: 100px}
+/*信息*/
+.info{width: 200px;height: 80px;padding: 30px 10px 20px 0;float: left}
+.info>b{color: #E15517;padding-right: 10px}
+.info>a{color: #24354b;font-size: 12px}
+.carIcon{width: 100%;height: 50px;margin-top: 10px}/*车型展示小图标*/
+.carIcon>div{width: 80px;height: 25px;line-height: 25px;float: left}
+.carIcon>div a{padding-left:5px;font-size: 12px}
+/*优惠*/
+.carDiscount{width: 180px;border: 1px solid #ff3020;float: left;font-size: 12px;margin-top: 54px}
+.carDiscount>div{float: left;text-align: center;}
+.discountName{width: 100px; background: #ff3020;color: #eee}
+.discountName>div{padding: 2px 0}
+.discountPrice{width: 80px;color: #ff3020;display: inline-table}
+/*预订*/
+.bookButton{float: right;width: 200px;height: 38px;margin:45px 20px;position: relative}
+.canBook{border: 1px solid #ff6600}
+.canBook .book{background: #ff6600;}
+.canBook .avePrice{color: #ff6600;}
+.canBook .arrow{border-top-color: #ff6600}
+
+.noBook{border: 1px solid #949494}
+.noBook .book{background: #949494;}
+.noBook .avePrice{color: #949494;}
+.noBook .arrow{border-top-color: #949494}
+
+.avePrice{width: 120px;float: left;height: 38px;line-height: 45px;text-align: center;font-size: 12px}
+.avePrice b{font-size: 30px}
+.book{float: left;height: 38px;width: 80px;color: #fff;font-size: 14px;border: 0}
+/*每日价格*/
+.daily_price{width: 16px;height: 8px;position: absolute;bottom: -12px;left: 60px}
+.arrow{width: 0;height: 0;border-top: 8px solid;border-left: 8px solid transparent;border-right: 8px solid transparent;transition: all 0.3s;-o-transition: all 0.3s;-webkit-transition: all 0.3s;-moz-transition: all 0.3s}
+.daily_price:hover .arrow{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);border-top-color: #ccc}
+.daily_price:hover .daily_price_box{display: block;opacity: 1;filter: alpha(opacity=100);}
+.daily_price_box{position: absolute;top: 8px;width: 315px;left: -163px;border: 1px solid #ccc;background: #fff;font-size: 12px;z-index: 9999;box-shadow: 0 2px 5px #999;transition: all 0.5s;-o-transition: all 0.5s;-webkit-transition: all 0.5s;-moz-transition: all 0.5s;opacity: 0; filter: alpha(opacity=0);display: none}
+.date{width: 100%;text-align: center;height: 28px;line-height: 28px}
+.daily_price_box ul{width: 100%;}
+.daily_price_box li{float: left;width: 45px;}
+.week{background: #ccc;height: 28px;line-height: 28px;text-align: center}
+.week li{height: 28px;}
+.daily_price_body{min-height: 100px;line-height: 25px;text-indent: 5px}
+.daily_price_body .active{color: #ff6600}
+.daily_price_body li{height: 49px;text-align: center;border-bottom: 1px solid #eee;border-right: 1px solid #eee;width: 44px}
+.daily_price_body li:hover{background: #eee}
+.safe{width: 295px;height: 40px;line-height: 20px;background: #ccc;text-align: right;padding-right: 20px}
+.safe a{color: #ff6600}
+/*提示*/
+.Prompt{width: 857px;height: 130px;position: absolute;left: 0;top: 50px;z-index: 0}
+/*初始化加载动画*/
+.Prompt .load{width: 100%;height: 43px;overflow: hidden;position: relative;color: #ccc;text-align: center;font-size: 13px;margin: 0 auto;padding-top: 84px}
+.Prompt .load img{position: absolute;left: 383.5px;top: 30px;animation:carLoad 2s linear infinite}
+@keyframes carLoad {from{left: -90px} to{left: 100%}}
+.noCar{text-align: center;margin: 44px auto;font-size: 14px;display: none}
+/*右边*/     /*地图*/
+#map{width: 311px;height: 261px;}
+/*取还车信息*/
+.store_info{width: 309px;height: 280px;border: 1px solid #dcdcdc;border-top: 0;overflow: hidden;background: #fff;position: relative}
+.store_info>hr{width: 1px;height: 52px;border: 0;background: #dcdcdc;position: absolute;left: 0;right: 0;top: 0;margin: auto}
+.store_info .active{border-bottom: 0;border-top: 4px solid #E15517;line-height: 44px;height: 48px}
+.store_info>div{float: left;}
+.carInfoTit{width: 50%;height: 50px;line-height: 50px;text-align: center;cursor: pointer;border-bottom:1px solid #dcdcdc;border-top:1px solid #dcdcdc}
+.carInfo{width: 289px;height: 208px;padding: 10px;position: relative}
+.carInfo h4{font-size: 16px;color: #e15517;margin-bottom: 15px}
+.carInfo p{font-size: 14px;margin: 20px 0;word-wrap:break-word;}
+.carInfo a{color: #e15517}
+.evaluate{width: 309px;height: 33px;line-height: 33px;color: #e15517;text-indent: 10px;position: absolute;left: 0;bottom: 0;font-size: 14px;border-top: 1px solid #dcdcdc;}
+.evaluate>i{float: right;margin:10px 15px}
+/*优惠活动*/
+.discount{width: 100%;height: 309px;margin-top: 12px}
+.discount ul{width:100%;height: 100%}
+.discount ul a{display: inline-block;width: 281px;height:177px;padding:5px 15px;color: #fff}
+.discount ul li,.discount img,.discount h4,.discount p{-o-transition: all 0.3s ease-in-out;-moz-transition: all 0.3s ease-in-out;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out}
+.discount ul li{position: relative;width: 100%;height: 61px;overflow: hidden}
+.discount img{position: absolute;top: 0;left: 0;z-index: -1}
+.discount h4{font-size: 15px;line-height: 28px;font-weight: 400;white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.discount p{width: 90%;font-size: 12px;height: 20px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.discount .active{height: 187px}
+.discount .active img{top:-61px}
+.discount .active p{opacity: 0;filter: alpha(opacity=0)}
+.discount .active h4{opacity: 0;filter: alpha(opacity=0)}

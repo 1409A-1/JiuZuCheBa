@@ -19,6 +19,18 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-group"></i>
+                <span>车辆管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="{{URL('typelist')}}">车辆类型管理</a></li>
+                <li><a href="{{URL('brandlist')}}">车辆品牌管理</a></li>
+                <li><a href="../resources/assets/admin/user-profile.html">User profile</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
                 <span>车辆类型</span>
                 <i class="icon-chevron-down"></i>
             </a>
