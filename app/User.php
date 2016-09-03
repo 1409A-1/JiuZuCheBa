@@ -29,7 +29,7 @@ class User extends Authenticatable
 //默认id
     protected $primaryKey = 'user_id';
 //时间戳
-    public $timestamps = false;
+    public $timestamps=false;
 
 
 
