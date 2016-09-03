@@ -29,11 +29,14 @@ Route::group(['middleware' => ['homelogin']], function(){
    });
 
 });
-//登陆
-Route::get('login',function(){
 
-    session(['user_name'=>'张三']);
-});
+//登陆
+Route::get('login','LoginController@login');
+//登录验证
+Route::post('login_pro','LoginController@login_pro');
+//退出登录
+Route::get('login_out','LoginController@login_out');
+
 //短租自驾
 Route::get('driving','IndexController@driving');
 //长期租车
@@ -86,12 +89,12 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('branddel/{id}','CarBrandController@del');
 });
 
+// 微信对接 授权登录
+Route::get('valid','WechatController@valid');   // 微信对接
+Route::get('oAuth','WechatController@oAuth');   // 第三方授权登录窗口
+Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
+// 常用路由
+Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
 
-
-
-
-// 微信对接
-Route::get('valid','WechatController@valid');
-Route::get('oAuth','WechatController@oAuth');
-Route::get('weChatLogin','WechatController@weChatLogin');
+// 短租
