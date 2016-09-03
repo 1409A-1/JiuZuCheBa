@@ -15,9 +15,25 @@ Route::get('only_name','LoginController@only_name');
 Route::get('only_tel','LoginController@only_tel');
 
 
+//前台的非法登录
+Route::group(['middleware' => ['homelogin']], function(){
+//前台的个人中心
+   Route::get('user_info','HomeUserController@user_info');
+//修改密码展示页面
+   Route::get('update_pass','HomeUserController@update_pass');
+//修改密码发送短信
+   Route::get('phone','HomeUserController@phone');
+//接值进行密码的修改
+   Route::post('password',function(){
+      echo 1;
+   });
 
+});
 //登陆
-Route::get('login','LoginController@login');
+Route::get('login',function(){
+
+    session(['user_name'=>'张三']);
+});
 //短租自驾
 Route::get('driving','IndexController@driving');
 //长期租车

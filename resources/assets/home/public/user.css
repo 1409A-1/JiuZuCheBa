@@ -1,0 +1,230 @@
+﻿body{color: #24354b}
+/*登录 状态*/
+.no_user{display: none}
+.yes_user{display: block}
+/*内容*/
+.userBox{background: #F2F2F2;}
+.userBox>div{width: 1180px; margin: auto;}
+.left{width: 120px;float: left}/*导航栏*/
+.left>*{cursor: pointer}
+.left>h5{margin-top: 30px;font-size: 15px}
+.left>a{display:block;margin: 5px 15px;color: #949494;font-size: 12px}
+.left>a:hover{color: #EA5506}
+.left .active{color: #EA5506}
+.right{width: 1060px;min-height: 300px;display: inline-block;margin-bottom: 30px}/*内容区*/
+.right>div{display: none}
+.right>.show{display: block}
+.right>div>h4{width: 1032px;height: 30px;border-bottom: 1px solid #E5E5E5;font-weight: 400;text-indent: 10px;padding-top: 20px;margin: auto}/*标题*/
+.noMore{padding: 50px;text-align: center;font-size: 12px}
+/*我的主页*/
+.index{width: 100%;padding: 30px 0}
+.index_top{width: 100%;height: 115px}
+.index_top>div{background: #fff;float: left}
+.i_t1{width: 235px;height: 113px;border: 1px solid #E5E5E5;border-radius: 113px 0 0 113px;border-right: 0;position: relative}/*用户信息*/
+.i_t1>i{margin: 17px 0 17px 25px}
+.i_t1>div{position: absolute;left: 125px;top: 20px;line-height: 25px}
+#userPhone{font-size: 12px;color: #949494}
+#userGrade{font-size: 12px;color: #337bd7}
+.i_t2{width: 20px;height: 113px;position: relative;border-top: 1px solid #E5E5E5;border-bottom: 1px solid #E5E5E5}/*图形*/
+.i_t2::before,.i_t2::after{content: ""; width: 20px;height: 20px;border-radius: 20px;background: #F2F2F2;position: absolute;left: 0;z-index: 5}
+.i_t2::before{top: -10px}
+.i_t2::after{bottom: -10px}
+.i_t2>div{width: 0;height: 115px; border-left: 1px dashed #E5E5E5;margin-left: 9.5px}
+.i_t3{width: 803px;height: 113px;border: 1px solid #E5E5E5;border-left: 0}/*订单信息*/
+.i_t3>ul{width: 750px;height: 80px;margin-top: 25px;float: right;}
+.i_t3>ul li{width: 120px;height: 80px;margin-right: 30px;float: left;font-size: 12px;text-align: center;line-height: 40px;cursor: pointer}
+.i_t3>ul li i{margin-left: 35px}
+.i_t3>ul li a{color: #ea5506}
+.index_bot{width: 1014px;border: 1px solid #E5E5E5;margin-top: 15px;padding: 15px 22px;background: #fff;}
+.i_b1{width: 100%;height: 20px;}/*最近订单*/
+.i_b1 a{float: right;font-size: 14px;color: #337bd7;cursor: pointer}
+.i_b2{border-bottom: 1px dashed #E5E5E5}
+.i_b2>div{width: 100%;}
+.i_b2 .No{padding: 30px 0 50px 0;display: none}
+.i_b2 .No .order3{width: 1030px;margin-left: -8px;}
+.i_b2 .Yes{padding: 100px 0 30px 0; text-align: center;font-size: 20px;color: #c5c5c5}
+.i_b2 .Yes i{display: inline-block;margin-right: 15px}
+.i_b2 .Yes a{display: inline-block;width: 187px;height: 44px;border: 1px solid #ea5506;color: #ea5506;text-align: center;line-height: 44px;margin-top: 15px;font-size: 16px;border-radius: 5px;transition:all .2s;-webkit-transition:all .2s;-moz-transition:all .2s;-o-transition:all .23s;}
+.i_b2 .Yes a:hover{background: #ea5506;color: #fff}
+.i_b3{width: 100%;height: 182px;padding: 40px 5px}/*优惠活动*/
+.i_b3 img{margin-right: 38px;transition:all .2s;-webkit-transition:all .2s;-moz-transition:all .2s;-o-transition:all .23s;}
+.i_b3 img:hover{-webkit-filter:brightness(.7);}
+#last_img{margin-right: 0}
+/*短租长租订单*/
+.order{width: 1060px;margin: 30px 0;background: #fff}
+.order1{margin: 10px;font-size: 12px;padding-left: 20px}/*订单数量*/
+.order1 li{display: inline-block;margin-right: 60px;line-height: 25px;border-bottom: 2px solid #fff;cursor: pointer}
+.order1 .active{border-color:#ea5506;color: #ea5506}
+.order2{width: 1028px;height:44px;background: #F2F2F2;font-size: 12px;margin: 20px auto 10px auto}/*订单标题*/
+.order2 li{width: 147px;height:44px;line-height:44px;text-align: center;float: left}
+.order3{width: 1028px;margin: auto;font-size: 12px}/*订单列表*/
+.order3>li{width: 100%;height: 160px;border: 1px solid #e5e5e5;margin-top: 7px}
+.order3>li>h5{width: 100%;height: 38px;line-height: 38px;background: #F2F2F2;text-indent: 15px;font-weight: 400}
+.order3>li>h5 a{color: #949494}
+.order3>li>div{width: 100%;height: 122px;}
+.order3>li>div img{margin: 11px 15px;float: left;transition: all 0.4s;-webkit-transition: all 0.4s;-o-transition: all 0.4s;-moz-transition: all 0.4s;width: 195px;height: 100px}
+.order3>li>div .info{width: 200px;height: 80px;padding: 25px 15px 17px 0;float: left}/*车型信息*/
+.order3>li>div .info>a{font-size: 16px}
+.carIcon{width: 100%;height: 50px;margin-top: 10px}/*车型展示小图标*/
+.carIcon>div{width: 80px;height: 25px;line-height: 25px;float: left}
+.carIcon>div a{padding-left:5px;font-size: 12px}
+.order3>li>div ul{width: 588px;height: 122px;float: right}/*时间、金额等*/
+.order3>li>div ul li{border-left: 1px solid #e5e5e5;float: left}
+.order3>li>div .time{width: 126px;height: 92px;padding: 15px 10px;color: #949494}
+.order3>li>div .time div{width: 100%;height: 40px; margin-top: 5px;line-height: 18px}
+.order3>li>div .cen,.order3>li>div .state{width: 146px;height: 122px;line-height: 122px;text-align: center}
+.order3>li>div .operation{width: 146px;height: 122px;line-height: 122px;text-align: center}
+.operation>div{margin-top: 36px;line-height: 20px;}
+.order3>li>div .operation a{color: #24354b;cursor: pointer}
+.order3>li>div .operation a:hover{text-decoration: underline}
+.order4{padding: 25px 50px 0 0;text-align: center;font-size: 12px}/*翻页*/
+.order4 a{padding: 0 10px;cursor: pointer}
+.order4 input{width: 67px;height: 24px;border: 1px solid #E5E5E5;background: #fff;font-size: 12px}
+.order4 .active{border-color: #ea5506;color: #ea5506}
+/*账户信息*/
+.user_info{width: 1060px;margin: 30px 0;background: #fff}
+.user_info>div{width: 930px;border-bottom: 1px solid #E5E5E5;margin: auto;padding: 30px 25px;}
+.user_info input{height: 25px;line-height: 25px;margin-left: 10px;border: 1px solid #e5e5e5;text-indent: 5px;color:#24354b;font-size: 12px}
+.user_info1 ul{width: 100%;height: 114px;font-size: 12px}/*基本信息*/
+.user_info1 li{width: 40%;float: left;margin-top: 30px;}
+.user_info1 a{color:#FD1E2E}
+.user_info1 input{width:200px}
+.user_info2 ul{width: 100%;height: 27px;font-size: 12px;margin-top: 30px}/*其他联系方式*/
+.user_info2 li{float: left;}
+.user_info2 input{width: 200px}
+.user_info3{position: relative}/*修改密码*/
+.user_info3 ul{width: 100%;height: 27px;font-size: 12px;margin-top: 30px}/*修改密码*/
+.user_info3 li{float: left;}
+.user_info3 input{width: 180px}
+.user_info3 a{margin-left: 20px;font-size: 12px;color:#CECECE }
+.user_info3 span{position: absolute;bottom: 30px;left: 0;right: 0;margin: auto;text-align: center;font-size: 12px;color:#FF6666}
+#confirm{width: 120px;height: 35px;color: #fff;background: #ea5506;margin: 30px 470px;border: 0}
+#confirm1{width: 120px;height: 35px;color: #fff;background: #ea5506;margin: 30px 470px;border: 0}
+/*优惠券*/
+.coupon{width: 1060px;margin: 30px 0;background: #fff}
+.coupon>h4 a{color: #337BD7;font-size: 12px;float: right}
+.coupon_tit{width: 1000px;height: 35px;line-height: 35px;padding-left: 32px;background: #F2F2F2;margin: 20px auto 0 auto;font-size: 12px}/*标题*/
+.coupon_tit span{margin-right: 30px;cursor: pointer}
+.coupon_tit .active{color: #ea5506}
+.coupon_body{font-size: 12px;display: none}/*优惠券列表*/
+#coupon2,#coupon3{display: none}
+.coupon_body>div{width: 242px;height: 344px;display: inline-block;padding: 20px 3px 20px 14px}
+.coupon_body>div>div{float: left}
+.coupon_body1{width: 242px;height: 145px;text-align: center;position: relative;overflow: hidden}
+.coupon_body1::after{content: ''; width: 40px;height: 40px;position: absolute;top: -20px;border-radius: 40px;left: 0;right: 0;margin: auto;background: #fff}
+.coupon_body1 h1{color: #fff;font-size: 50px;padding-top: 20px}
+.coupon_body1 p{color: #fff;margin-bottom: 10px}
+.coupon_body1 span{color: #949494}
+.coupon_body1 img{position: absolute;left: 0;top: 0}
+.coupon_body2{width: 220px;height: 179px;color: #949494;padding:20px 0 0 22px;line-height: 35px;position: relative;background: #f3f3f3}
+.coupon_body2 img{position: absolute;right: 5px;top: -40px;z-index: 2}
+.coupon_body2 p{float: right}
+.coupon_body2 button{width: 88px;height: 24px;border: 1px solid;background: #fff;margin: 10px 0 0 65px}
+.coupon_body .blue .coupon_body1{background: #77D7FF}
+.coupon_body .blue button{color: #77D7FF;border-color: #77D7FF}
+.coupon_body .red .coupon_body1{background: #FF6574}
+.coupon_body .red button{color: #FF6574;border-color: #FF6574}
+.coupon_body .yellow .coupon_body1{background: #F7C456}
+.coupon_body .yellow button{color: #F7C456;border-color: #F7C456}
+.coupon_body .green .coupon_body1{background: #88cb7f}
+.coupon_body .green button{color: #38b48b;border-color: #38b48b}
+.coupon_body .gray .coupon_body1{background: #c5c5c5}
+.coupon_body .gray button{color: #c5c5c5;border-color: #c5c5c5}
+
+/*评论框*/
+.reviewsBox{width: 100%;height: 100%;position: fixed;left: 0;top: 0;background: rgba(0,0,0,0.7);z-index: 99;font-size: 14px;display: none}
+.reviewsBox>div{width: 800px;height: 380px;position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;background: #F2F2F2;padding: 20px 40px}
+.score{position: relative;}
+.score>*{position: absolute;left: 55px;top: 3px}
+.score ul{width: 87px;height: 13px}
+.score li{width: 17.4px;height: 13px;float: left;cursor: pointer}
+
+.reviews{width: 798px;background: #fff;border: 1px solid #ddd;margin-top: 10px}
+.reviews>ul{width: 758px;height: 25px;margin: 10px 20px;border-bottom: 2px solid #ddd;padding-bottom: 10px}
+.reviews>ul li{border: 1px solid #ddd;padding: 2px 10px;float: left;margin-right: 20px;cursor: pointer}
+.reviews>ul .active{border: 1px solid #ea5506;color: #ea5506 }
+
+.reviews textarea{width: 758px;height: 140px;margin-left: 20px;resize: none;border: 0;outline:none;}
+.textHint{text-align: right;padding: 10px 20px}
+
+.reviewsBox button{padding: 7px 25px;float: right;margin-top: 20px;border: 1px solid #ea5506}
+#reviews{background: #ea5506;color: #fff;}
+#close{position: absolute;right: 40px;top: 20px;width: 40px;height: 40px;border-radius:40px;text-align: center;line-height: 40px;background: #fff;font-size: 12px;cursor: pointer}
+#reviewsError{margin-top: 20px;color: #FF6666;display: none}
+/*修改密码*/
+.updatePw{padding:0 20px;font-size: 12px;display: none}
+.updatePw ul{width: 280px;margin-top: 10px;float: left}
+.updatePw li{padding: 10px 0;text-align: right}
+.updatePw input{width: 180px;height:25px;}
+#updatePw{width: 120px;height: 35px;color: #fff;background: #ea5506;border: 0;float: right;margin:10px 0 0 0}
+
+
+#toUpdatePw{height: 27px;color: #24354b;background: #fff;border: 1px solid #dcdcdc;float: right;padding: 0 20px}
+#toUpho{height: 27px;color: #24354b;background: #fff;border: 1px solid #dcdcdc;float: right;padding: 0 20px}
+.updatePho{padding:0 20px;font-size: 12px;display: none}
+.updatePho ul{width: 280px;margin-top: 10px;float: left}
+.updatePho li{padding: 20px 0;text-align: right}
+.updatePho input{width: 180px; height:25px;}
+#sendmessage{height: 27px;color: #24354b;background: #fff;border: 1px solid #dcdcdc;float: right;padding: 0 20px; position:absolute; top:29px; right:70px}
+#sendmessage1{height: 27px;color: #24354b;background: #fff;border: 1px solid #dcdcdc;float: right;padding: 0 20px; position:absolute; top:29px; right:65px}
+#updatePho{width: 120px;height: 35px;color: #fff;background: #ea5506;border: 0;float: right;margin:20px 0 0 0}
+input:focus{
+
+ transition:border linear .2s,box-shadow linear .5s;
+ -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+ -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+ outline:none;border-color:rgba(100,100,100,.75);
+ box-shadow:0 0 8px rgba(100,100,100,.5);
+ -moz-box-shadow:0 0 8px rgba(100,100,100,.5);
+ -webkit-box-shadow:0 0 8px rgba(100,100,100,3);
+
+}
+/*评论内容*/
+.showpngjia { width:100%; background:#fef4ef; position:absolute; top:162px; left:0; z-index:100;border:1px solid #ea5506; padding-bottom:45px; display:none}
+.order3 > li { position:relative}
+.my_coment_xing{  margin:20px 0 0 35px; width:200px; height:20px}
+.my_coment_xing span { float:left; }
+.mycoment{ width:960px; margin:auto; text-align:left}
+.noMore5{padding: 50px;text-align: center;font-size: 12px}
+.order5{padding: 25px 50px 0 0;text-align: center;font-size: 12px;}/*翻页*/
+.order5 a{padding: 0 10px;cursor: pointer}
+.order5 input{width: 67px;height: 24px;border: 1px solid #E5E5E5;background: #fff;font-size: 12px}
+.order5 .active{border-color: #ea5506;color: #ea5506}
+#pagination1 {
+    float: right;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1px 2px 4px 2px;
+}
+#pagination1 a, #pagination1 i {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+#pagination1 a {
+    margin: 0 4px 0 4px;
+    border-radius: 2px;
+    border: 1px solid #c8c8c8;
+    cursor: pointer;
+    background-color: #c8c8c8; 
+}
+#pagination1>a:active{background: #aaa}
+#pagination i {
+    margin: 0 3px 0 3px;
+    color: #7D7D7D;
+}
+#pagination1 a.current {
+    border: 1px solid #e15517;
+    box-shadow: 0 1px 1px #999;
+    background-color: #e15517;
+}
