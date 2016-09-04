@@ -1,8 +1,9 @@
 ﻿var api_url = "http://system.dafang24.com";
 //var api_url = "http://192.168.0.252:1111/";
 //var api_url = "http://localhost:4471/";
-var city_list_url = api_url + "/api/shoplist/GetCityList";//获取存在门店的城市 
-var district_shop_list_url = api_url + "/api/shoplist/GetDistrictShop";//获取城市的区域门店列表 
+var city_list_url = api_url + "/api/shoplist/GetCityList";//获取存在门店的城市
+var city = "getCityList"; // 新从数据库获取存在门店的城市
+var district_shop_list_url = api_url + "/api/shoplist/GetDistrictShop";//获取城市的区域门店列表
 var shop_info_url = api_url + "/api/shoplist/GetShopInfo";//获取门店详细信息 
 var city_info_code_url = api_url + "/api/City/GetCityInfo";//城市信息
 var autoinfomation_url = api_url + "/api/autoinfomation";//车辆信息
