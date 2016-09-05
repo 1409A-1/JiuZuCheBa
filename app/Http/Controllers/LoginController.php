@@ -1,22 +1,64 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Benefit;
+use App\Login;
 use App\Http\Requests;
 use DB;
 
+
 class LoginController extends Controller
 {
+
 //注册的方法
     public function register(){
         return view('home.login.login_reg');
     }
-//登录
-    public function login(){
+//前台登录
+    public function login()
+    {
         return view('home.login.login');
     }
+//前台登录检验用户名密码
+    public function login_pro(Request $request)
+    {
+
+//输出提示
+switch ($_REQUEST) {
+    case empty($_REQUEST['user_name']):break;
+
+
+    case empty($_REQUEST['password']):
+        break;
+
+}
+        $info['user_name']=$request->input('user_name');
+        $info['password']=md5($request->input('password'));
+
+        $login=new Login();
+        $re=$login->where($info)->first();
+        if($re)
+        {
+            $request->session()->put('user_name',$info['user_name']);
+            $request->session()->put('user_id',$re['user_id']);
+            return redirect('/');
+        }else
+        {
+            echo "<script>alert('登录失败');history.go(-1)</script>";
+        }
+    }
+//前台登录退出
+    public function login_out(Request $request)
+    {
+        if ($request->session()->has('user_name')) {
+            session()->forget('user_id');
+            session()->forget('user_name');
+            return redirect('/');
+        }
+
+    }
+    //
 //进行注册接值
     public function reg_pro(Request $request){
       $user = new User();

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Admin_user extends Authenticatable
 {
     /**
      * The attributes that are mass assignable.
@@ -25,13 +25,9 @@ class User extends Authenticatable
 //    ];
 
 //表名
-    protected $table = 'user';
+    protected $table = 'Admin_user';
 //默认id
     protected $primaryKey = 'user_id';
 //时间戳
-    public $timestamps=false;
-
-
-
-
+    public $timestamps = false;
 }

@@ -13,12 +13,44 @@ class CarTypeController extends Controller
 	/*
 	   车辆类型展示
 	 */
-    public function car_list()
+    public function type_list()
     {
-    	$cartype = CarType::all()->toArray()?CarType::all()->toArray():array();
+    	$count= CarType::count();
+    	$page=1;
+    	$prev=$page==1? 1: $page-1;
+    	$next=$page==$count? $count :$page+1;
+    	$length=5;
+    	$pages=ceil($count/$length);
+        //echo $pages;die;
+    	$offset=($page-1)*$length;
+    	$cartype = CarType::take($length)->skip($offset)->get()->toArray()? CarType::take($length)->skip($offset)->get()->toArray(): array();
     	//print_r($cartype);die;
-        return view('admin.cartype.list',['cartype'=>$cartype]);
+        return view('admin.cartype.list',['cartype'=>$cartype,'pages'=> $pages,'prev'=> $prev,'next'=> $next,'page'=>$page]);
     }
+
+    /*
+	   车辆类型分页展示
+	 */
+    public function listpage(Request $request,$page=1,$search,$del)
+    {
+    	if($del!=0){
+    		CarType::where('type_id', $del)->delete();
+    	}
+    	$search=="all" ? $search="" : $search=$search;
+    	//echo $search;die;
+    	$count= CarType::where("type_name",'like',"%$search%")->count();
+    	//$page=1;
+    	$prev=$page==1? 1: $page-1;
+    	$next=$page==$count? $count :$page+1;
+    	$length=5;
+    	$pages=ceil($count/$length);
+    	$page=$page>$pages ? $pages : $page;
+    	$offset=($page-1)*$length;
+    	$cartype = CarType::where("type_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarType::where("type_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray(): array();
+    	//print_r($cartype);die;
+        echo json_encode(['cartype'=>$cartype,'pages'=> $pages,'prev'=> $prev,'next'=> $next,'page'=>$page]);
+    }
+
     /*
 	   车辆类型添加
 	 */

@@ -23,7 +23,6 @@
 
     <!-- open sans font -->
 
-
     <!--[if lt IE 9]>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -59,7 +58,7 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>车辆类型</h4>
+                            <h4>网站用户</h4>
                         </div>
                     </div>
 
@@ -73,7 +72,7 @@
                                 </select>
                             </div>
                             <input type="text" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="typeadd">+ 添加车辆类型</a>
+                            <!-- <a class="btn-flat success new-product" href="{{URL('brandadd')}}">+ 添加车辆品牌</a> -->
                         </div>
                     </div>
 
@@ -83,37 +82,40 @@
                                 <tr>
                                     <th class="span3">
                                         <input type="checkbox" />
-                                        车辆类型
+                                        用户账号
                                     </th>
-                                    <!-- <th class="span3">
-                                        <span class="line"></span>Description
-                                    </th> -->
                                     <th class="span3">
-                                        <span class="line"></span>操作
+                                        <span class="line"></span>手机号
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>注册时间
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>用户信用积分
                                     </th>
                                 </tr>
                             </thead>
-                             <tbody id="tbody">
+                            <tbody id="tbody">
                                 <!-- row -->
-                                @foreach($cartype as $k => $v)
+                                @foreach($user as $k => $v)
                                 <tr class="first">
                                     <td>
                                         <input type="checkbox" />
                                         <div class="img">
                                             <img src="{{asset('admin')}}/img/table-img.png" />
                                         </div>
-                                        <a href="#" class="name">{{$v['type_name']}} </a>
+                                        <a href="#" class="name">{{$v['user_name']}}</a>
                                     </td>
-                                    <!-- <td class="description">
-                                        if you are going to use a passage of Lorem Ipsum.
-                                    </td> -->
-                                    <td>
-                                        <!-- <span class="label label-success">Active</span> -->
-                                        <ul class="actions" style="float:left">
-                                            <li><a href="typeupdate/{{$v['type_id']}}">编辑</a></li>
-                                            <li class="last"><a class="del" href="javascript:void(0)" bid={{$v['type_id']}}>删除</a></li>
-                                        </ul>
+                                    <td class="description">
+                                       {{$v['tel']}}
                                     </td>
+                                    <td class="description">
+                                       {{$v['reg_time']}}
+                                    </td>
+                                    <td class="description">
+                                       {{$v['credit']}}
+                                    </td>
+                                    
                                 </tr>
                                 @endforeach
                                 <!-- row -->
@@ -149,7 +151,7 @@
     </div>
     <!-- end main container -->
 
-    <!-- scripts -->
+	<!-- scripts -->
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
@@ -163,16 +165,16 @@
 
     <script type="text/javascript">
         $(function () {
-            // Ajax搜索&分页
+            // Ajax分页
             $(document).delegate(".page","click",function(){
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("typelistpage/"+page+"/"+search+"/0",function(msg){
+                $.get("userlistpage/"+page,function(msg){
                     //alert(msg)
                     str="";
-                    for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                    for(i=0; i<msg.user.length; i++){
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.user[i].user_name+'</a></td><td class="description">'+msg.user[i].tel+'</td><td class="description">'+msg.user[i].reg_time+'</td><td class="description">'+msg.user[i].credit+'</td></tr>';
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -191,67 +193,8 @@
                 },'json')
             })
 
-            //Ajax搜索
-            $("#search").blur(function(){
-                //alert(1)
-                search=$(this).val()=="" ? "all" :$(this).val();
-                //alert(search)
-                $.get("typelistpage/1/"+search+"/0",function(msg){
-                //alert(msg)
-                str="";
-                for(i=0; i<msg.cartype.length; i++){
-                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
-                }
-                $("#tbody").empty();
-                $("#tbody").append(str);
-                $("#nowpage").val(msg.page);
-                $(".pagination").empty();
-                str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
-                    for (i = 1; i <= msg.pages; i++){
-                        str2+='<li><a class="'
-                        if (msg.page == i){
-                        str2+='active';
-                        }
-                        str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
-                    }
-                    str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
-                    $(".pagination").append(str2);
-            },'json')
-            })
-
-            // Ajax搜索&分页&删除
-            $(document).delegate(".del","click",function(){
-                page=$("#nowpage").val();
-                search=$("#search").val()?$("#search").val():"all";
-                del=$(this).attr("bid");
-                //alert(search);
-                $.get("typelistpage/"+page+"/"+search+"/"+del,function(msg){
-                    //alert(msg)
-                    str="";
-                    for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
-                    }
-                    $("#tbody").empty();
-                    $("#tbody").append(str);
-                    $(".pagination").empty();
-                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
-                        for (i = 1; i <= msg.pages; i++){
-                            str2+='<li><a class="'
-                            if (msg.page == i){
-                            str2+='active';
-                            }
-                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
-                        }
-                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
-                        $(".pagination").append(str2);
-                },'json')
-            })
-
-            
             // jQuery Knobs
             $(".knob").knob();
-
-
 
             // jQuery UI Sliders
             $(".slider-sample1").slider({
