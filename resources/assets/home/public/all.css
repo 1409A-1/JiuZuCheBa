@@ -80,7 +80,7 @@ button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transit
 
 
 /*ICON*/
-.icon{display:inline-block;background: url("../images/index/icon1.png") no-repeat;}
+.icon{display:inline-block;background: url("icon1.png") no-repeat;}
 .icon_phone{width: 8px;height: 12px;background-position:-228px 0}
 .icon_logo{width: 224px;height: 54px;background-position:0 0}
 .icon1{width: 66px;height: 64px;background-position:0 -53px}
@@ -211,7 +211,22 @@ button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transit
     background-color: #e15517;
 }
 
-
+/*****jQuery Validate 错误信息*****/
+input.error{
+    border:1px solid red;
+}
+input.valid {
+    border:1px solid #1d95f6;
+}
+span.error{
+    background : url(../public/unchecked.gif) no-repeat 0 0;
+    padding-left: 16px;
+    color: #f00;
+}
+span.success{
+    background : url(../public/checked.gif) no-repeat 0 0;
+    padding-left: 16px;
+}
 
 
 

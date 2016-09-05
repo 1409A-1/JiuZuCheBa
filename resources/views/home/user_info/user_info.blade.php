@@ -28,7 +28,7 @@
                     <div class="userInfo">
                         <a href="" rel="nofollow">订单管理</a>
                         <a href="" rel="nofollow">账户管理</a>
-                        <a class="" onclick="exit()">退出</a>
+                        <a href="login_out">退出</a>
                     </div>
                 </div>
             </li>
@@ -69,7 +69,7 @@
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
             <h5>订单管理</h5>
-            <a id="toShort">订单列表</a>
+            <a href="order_list">订单列表</a>
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
             <a id="toUser" class="active">账户信息</a>
@@ -78,16 +78,7 @@
         <div class="right">
             <!--我的主页-->
             <div class="index">
-                <!--基本信息-->
-                <div class="index_top">
-                    <div class="i_t1">
-                        <i class="icon_user icon_user3"></i>
-                        <div>
-                            <div id="userName">{{ Session::get('user_name') }}</div>
-                            <div id="userPhone">XXXXXXXXX</div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
            <!--账户信息-->
             <div class="user_info" style="display: block;">
@@ -101,7 +92,7 @@
                         </li>
                         <li style="position:relative">
                             <a>*</a> 手机号：
-                            <input value="{{ $info['tel'] }}" id="phone" style="margin-left:58px;" type="text">
+                            <input value="{{ $info['tel'] }}" disabled id="phone" style="margin-left:58px;" type="text">
                         </li>
                         <li>
                             <a>&nbsp;</a> 紧急联系人：

@@ -18,6 +18,53 @@ class HomeUserController extends Controller
     public function update_pass(){
         return view('home.user_info.user_pass');
     }
+//前台修改密码验证原密码是否正确
+    public function only_pwd(Request $request){
+      $new_pwd = md5($request->input('new_pwd'));
+      $info = $this->u_info();
+          if ($new_pwd==$info['password']){
+               echo 'true';
+          } else {
+               echo 'false';
+          }
+    }
+//前台修改密码验证手机验证码是否正确
+    public function only_mobile_code(Request $request){
+        $mobile_code = $request->input('mobile_code');
+       // echo $mobile_code;
+        $info = $this->u_info();
+        if ($mobile_code==session($info['tel'])) {
+            echo 'true';
+        } else {
+            echo 'false';
+        }
+    }
+//接值进行验证密码修改
+    public function password(Request $request){
+       // $info = $request->except('_token');
+        $new_pwd = md5($request->input('password'));  //新密码
+        $pass = md5($request->input('new_pwd'));    //旧密码
+        $mobile_code = $request->input('mobile_code');    //手机验证码
+        $info = $this->u_info();
+        if ($mobile_code == session($info['tel'])) {
+              if ($pass == $info['password']) {
+                 $result = DB::table('user')->where('user_id',$info['user_id'])->update(['password'=>$new_pwd]);
+                   if ($result) {
+                       $request->session()->forget('user_name');
+                       $request->session()->forget('user_id');
+                       return redirect('login');
+                   } else {
+                       echo "<script>alert('修改失败');history.go(-1)</script>";
+                   }
+              } else {
+                  echo "<script>alert('旧密码不正确');history.go(-1)</script>";
+              }
+        } else {
+            echo "<script>alert('验证码不正确');history.go(-1)</script>";
+        }
+
+    }
+
  //调用短息发送
     public function phone(){
             $info = $this->u_info();
@@ -28,10 +75,19 @@ class HomeUserController extends Controller
 //密码可以使用明文密码或使用32位MD5加密
             $gets =  $this->xml_to_array($this->Post($post_data, $target));
             if($gets['SubmitResult']['code']==2){
-                session(['mobile_code' => $mobile_code]);
+                session([$info['tel'] => $mobile_code]);
             }
             echo $gets['SubmitResult']['msg'];
         }
+
+    public function order_list(){
+        return view('home.user_info.order_list');
+    }
+
+
+
+
+
  //___________________________调用短信接口自带的开始____________________________
     function Post($curlPost,$url){
         $curl = curl_init();

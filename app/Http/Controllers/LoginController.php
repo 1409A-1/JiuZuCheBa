@@ -6,10 +6,11 @@ use App\Benefit;
 use App\Login;
 use App\Http\Requests;
 use DB;
-header("Content-type:text/html;charset=utf-8");
+
 
 class LoginController extends Controller
 {
+
 //注册的方法
     public function register(){
         return view('home.login.login_reg');

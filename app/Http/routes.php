@@ -24,17 +24,21 @@ Route::group(['middleware' => ['homelogin']], function(){
 //修改密码发送短信
    Route::get('phone','HomeUserController@phone');
 //接值进行密码的修改
-   Route::post('password',function(){
-      echo 1;
-   });
+   Route::post('password','HomeUserController@password');
+//前台判断原密码是否正确
+   Route::get('only_pwd','HomeUserController@only_pwd');
+//前台验证修改手机验证码是否正确
+   Route::get('only_mobile_code','HomeUserController@only_mobile_code');
+//订单列表的展示
+   Route::get('order_list','HomeUserController@order_list');
 
 });
 
-//登陆
+//前台登陆
 Route::get('login','LoginController@login');
 //登录验证
 Route::post('login_pro','LoginController@login_pro');
-//退出登录
+//前台退出登录
 Route::get('login_out','LoginController@login_out');
 
 //短租自驾

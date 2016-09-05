@@ -7,6 +7,7 @@
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/all.css">
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/user.css">
     <script type="text/javascript" src="../resources/assets/home/public/jquery-1.js"></script>
+    <script type="text/javascript" src="../resources/assets/home/public/jquery-validate.js"></script>
 <body>
     <!--头部-->
     <ins id="qiao-wrap">
@@ -29,7 +30,7 @@
                     <div class="userInfo">
                         <a href="" rel="nofollow">订单管理</a>
                         <a href="" rel="nofollow">账户管理</a>
-                        <a class="" onclick="exit()">退出</a>
+                        <a href="login_out">退出</a>
                     </div>
                 </div>
             </li>
@@ -70,7 +71,7 @@
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
             <h5>订单管理</h5>
-            <a id="toShort">订单列表</a>
+            <a href="order_list">订单列表</a>
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
             <a id="toUser" class="active">账户信息</a>
@@ -78,7 +79,7 @@
         </div>
         <div class="right">
            <!--账户信息-->
-            <form action="{{URL('password')}}" method="post">
+            <form action="{{URL('password')}}" method="post" id="reg">
                 <input type="hidden" value="{{csrf_token()}}" name="_token"/>
              <div class="user_info" style="display: block;">
                 <h4>账户信息</h4>
@@ -87,15 +88,15 @@
                     <ul>
                         <li>
                             <a>*</a> 原密码：
-                            <input  style="margin-left:45px" type="text">
+                            <input  style="margin-left:20px" type="password" name="new_pwd" id="new_pwd">
                         </li>
                         <li style="position:relative">
                             <a>*</a> 新密码：
-                            <input  style="margin-left:58px;" type="text" name="password">
+                            <input  style="margin-left:20px;" type="password" name="password">
                         </li>
                         <li>
                             <a>*</a> 验证码：
-                            <input id="name1" type="text" style="margin-left:45px;" name="mobile_code">
+                            <input type="text" style="margin-left:20px;" name="mobile_code" id="mobile_code">
                         </li>
                         <li>
                             <input id="phone" type="button" value="免费获取验证码">
@@ -210,13 +211,13 @@
 
     <script>
         $(document).delegate('#phone','click',function(){
-            {{--$.ajax({--}}
-                {{--type:'get',--}}
-                {{--url:'{{URL('phone')}}',--}}
-                {{--success: function(msg){--}}
-                    {{--alert( "Data Saved: " + msg );--}}
-                {{--}--}}
-            {{--});--}}
+            $.ajax({
+                type:'get',
+                url:'{{URL('phone')}}',
+                success: function(msg){
+                    alert( "Data Saved: " + msg );
+                }
+            });
             var wait=60;
             function time(o) {
                 if (wait == 0) {
@@ -233,13 +234,59 @@
                             1000)
                 }
             };time(this)
-
         })
 
 
-
-
-
-
-
+        $(function(){
+            $("#reg").validate({
+                errorElement : 'span',
+                success : function (label) {
+                    label.addClass('success');
+                },
+                rules:{
+                    new_pwd:{
+                        required:true,
+                        remote:{
+                            url:"{{'only_pwd'}}",
+                            type:'get',
+                            data:{   //传两个参数
+                                new_pwd:function(){
+                                    return $('#new_pwd').val()
+                                }
+                            }
+                        }
+                    },
+                    password:{
+                        required:true,
+                        minlength:6
+                    },
+                    mobile_code:{
+                        required:true,
+                        remote:{
+                            url:"{{'only_mobile_code'}}",
+                            type:'get',
+                            data:{   //传两个参数
+                                mobile_code:function(){
+                                    return $('#mobile_code').val()
+                                }
+                            }
+                        }
+                    }
+                },
+                messages:{
+                    new_pwd:{
+                        required:'原密码必填',
+                        remote:'密码不正确'
+                    },
+                    password:{
+                        required:'新密码必填',
+                        minlength:'不小于6位'
+                    },
+                    mobile_code:{
+                        required:'验证码必填',
+                        remote:'验证码不正确'
+                    }
+                }
+            })
+        })
     </script>
