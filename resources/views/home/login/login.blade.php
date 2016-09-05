@@ -7,7 +7,7 @@
     <script src="../resources/assets/home/log/v.htm" charset="utf-8"></script>
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
-    <title>大方租车 登录</title>
+    <title>就租车吧 登录</title>
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/all.css">
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/login.css">
     <script src="../resources/assets/home/log/hm.js"></script>
@@ -23,7 +23,7 @@
     <script src="../resources/assets/home/log/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
     <link href="../resources/assets/home/log/main.css" type="text/css" rel="stylesheet">
     <link href="../resources/assets/home/log/fix.css" type="text/css" rel="stylesheet">
-    <style>@import "http://qiao.baidu.com/v3/asset/css/m-webim-lite.css?v=20150613";</style>
+    <style>@import "";</style>
     <script charset="utf-8" src="../resources/assets/home/log/m-webim-lite.js" type="text/javascript"></script>
 </head>
 <body>
@@ -44,7 +44,7 @@
                     <div class="userInfo">
                         <a href="" rel="nofollow">订单管理</a>
                         <a href="" rel="nofollow">账户管理</a>
-                        <a class="exitLogin" onclick="exit()">退出</a>
+                        <a href="login_out">退出</a>
                     </div>
                 </div>
             </li>
@@ -110,12 +110,14 @@
                     <span>没有账号？<a href="{{ URL('login_reg') }}">立即注册</a></span>
                 </div>
                 <div class="input_body">
+                    <form action="login_pro" method="post">
+                        {!! csrf_field() !!}
                     <div class="inputBox" id="login_name_box">
-                        <input placeholder="我的手机号" maxlength="11" id="login_name" type="tel">
+                        <input placeholder="我的手机号" maxlength="11" name="user_name" type="tel" required="">
                         <i class="icon_login icon_l1"></i>
                     </div>
                     <div class="inputBox" id="login_pw_box">
-                        <input placeholder="我的密码" maxlength="18" id="login_pw" type="password">
+                        <input placeholder="我的密码" maxlength="18" name="password" type="password" required="">
                         <input value="我的密码" maxlength="18" id="login_pw0" type="text">
                         <i class="icon_login icon_l2"></i>
                     </div>
@@ -124,6 +126,7 @@
                     <button id="login">登 录<i></i></button>
                     <button style="background-color: #00aa00" onclick="location='{{ url('oAuth') }}'">微 信 登 录</button>
                 </div>
+                </form>
             </div>
             <!--忘记密码-->
             <div class="findPw">

@@ -91,6 +91,7 @@ function storeInfo(takeID, returnID) {
         dataType: 'jsonp',
         data: { "start_shop_id": takeID, "stop_shop_id": returnID },
         success: function (result) {
+           // console.log(result);
             var t = result.start_shop,
                 r = result.stop_shop;
             if (FirstLoad) {
@@ -857,6 +858,11 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
 function City() {
     var _token = $('meta[name=_token]').attr('content');
     $.post(city, {'_token': _token}, function(result){
+<<<<<<< HEAD
+=======
+        //console.log(result[1])
+       // alert(result);
+>>>>>>> a675549e894d07ff5c60c7ee34db1e02ced6b58f
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合

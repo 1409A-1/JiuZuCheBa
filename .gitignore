@@ -4,6 +4,4 @@
 /storage
 Homestead.yaml
 Homestead.json
-
-#本地配置文件
-.*
+.env
