@@ -41,25 +41,36 @@
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>地区管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="{{url('addr_list')}}">地区的列表</a></li>
+                <li><a href="{{url('addr_ins')}}">地区列添加</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
                 <span>服务点管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
                 <li><a href="address">服务点添加</a></li>
-                <li><a href="">服务点展示</a></li>
+                <li><a href="address_list">服务点展示</a></li>
             </ul>
         </li>
         <li>
-            <a href="../resources/assets/admin/gallery.html">
+            <a href="package">
                 <i class="icon-picture"></i>
-                <span>Gallery</span>
+                <span>套餐查看</span>
             </a>
         </li>
         <li>
-            <a href="../resources/assets/admin/calendar.html">
+            <a href="{{url('user_pack')}}">
                 <i class="icon-calendar-empty"></i>
-                <span>Calendar</span>
+                <span>用户套餐申请审核</span>
             </a>
         </li>
         <li>

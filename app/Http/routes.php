@@ -48,6 +48,16 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('type_del','AdminController@type_del');
     Route::get('address','AddressController@address');
     Route::get('address_two','AddressController@address_two');
+    Route::get('addr_list','AddressController@addr_list');//地区列表
+    Route::get('addr_ins','AddressController@addr_ins');//地区添加
+    Route::post('add_insert','AddressController@address_ins');//地区添加
+    Route::post('add_server','AddressController@add_server');//添加服务点
+    Route::get('address_list','AddressController@address_list');//服务点列表展示
+    Route::get('package','PackageController@package');//套餐列表
+    Route::get('pack_ins','PackageController@package_ins');//套餐添加
+    Route::post('pack_insert','PackageController@package_ins');//套餐添加
+    Route::get('pack_del/{pack_id}','PackageController@pack_del');//套餐删除
+    Route::get('user_pack','PackageController@user_pack');//用户套餐申请查看
 
 //车辆类型
     Route::get('typelist','CarTypeController@car_list');//列表展示
@@ -55,6 +65,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::any('typeadd','CarTypeController@add'); //添加
     Route::post('typeupdate','CarTypeController@update'); //修改
     Route::get('typeupdate/{id}','CarTypeController@update'); //执行修改
+    Route::get('typedel/{id}','CarTypeController@del');    //删除
     Route::get('typedel/{id}','CarTypeController@del');    //删除
 
 

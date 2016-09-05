@@ -83,45 +83,61 @@
                         });
                     </script>
                     <div class="row-fluid" style="width:500px;">
-                        <table class="table table-hover">
-                            <tr>
-                                <td><h1>服务点的添加</h1></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>省/直辖市:</td>
-                                <td>
-                                    <select name="" id="address_one">
-                                        <option value="0">请选择...</option>
-                                        <?php foreach($data as $k => $v){?>
-                                        <option id="address" value="<?php echo $v['address_id']?>"><?php echo $v['address_name']?></option>
-                                        <?php }?>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>市/区:</td>
-                                <td>
-                                    <select name="" id="address_two">
-                                        <option value="0">请选择...
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>县城:</td>
-                                <td>
-                                    <select name="" id="address_three">
-                                        <option value="0">请选择...
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>具体街道：</td>
-                                <td>
-                                    <textarea name="" id="" cols="10" rows="3"></textarea>
-                                </td>
-                            </tr>
-                        </table>
+                        <form action="{{url('add_server')}}" method="post">
+                            <table class="table table-hover">
+                                <tr>
+                                    <td><h1>服务点的添加</h1></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>省/直辖市:</td>
+                                    <td>
+                                        <select name="one" id="address_one">
+                                            <option value="0">请选择...</option>
+                                            <?php foreach($data as $k => $v){?>
+                                            <option id="address" value="<?php echo $v['address_id']?>"><?php echo $v['address_name']?></option>
+                                            <?php }?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>市/区:</td>
+                                    <td>
+                                        <select name="two" id="address_two">
+                                            <option value="0">请选择...
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>县城:</td>
+                                    <td>
+                                        <select name="three" id="address_three">
+                                            <option value="0">请选择...
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>服务点名称：</td>
+                                    <td>
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                        <textarea required="required" name="server_id" id="" cols="10" rows="3"></textarea>
+                                        <span id=""></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>输入坐标：</td>
+                                    <td>
+                                        <input type="text" name="" required="required" style="width: 30px;"/>&nbsp;，
+                                        <input type="text" name="" required="required" style="width: 30px;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="submit" class="btn btn-info" style="float: right;" value="添加服务点"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
                     </div>
                 </div>
                 <!-- end products table -->
