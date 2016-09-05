@@ -41,14 +41,8 @@ Route::get('admins','AdminController@admin_login');
 Route::post('signin','AdminController@admin_login');
 
 Route::group(['middleware' => ['nologin']], function(){
-    Route::get('index','AdminController@index');
-});
-
-/*
- *车辆类型&品牌管理
- */
-Route::group(['middleware' => ['nologin']], function(){
-	/*
+    Route::get('indexs','AdminController@indexs');
+    /*
 	   类型管理
 	 */
 	Route::get('typelist','CarTypeController@type_list');//类型列表
@@ -73,10 +67,8 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('userlistpage/{page}','UserController@listpage');//用户分页
 	Route::get('adminlist','UserController@admin_list');//后台用户列表
 	Route::get('adminlistpage/{page}','UserController@adminlistpage');//后台管理分页
-});
 
-Route::group(['middleware' => ['nologin']], function(){
-    Route::get('car_type_list','AdminController@car_type_list');
+	Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');
     Route::post('type_add','AdminController@model_add');
     Route::post('type_del','AdminController@type_del');
