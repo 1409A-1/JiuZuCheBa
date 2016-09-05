@@ -140,17 +140,17 @@ function book() {
     });
 
     var takeCity = $("#takeCity"),
-         takeStore = $("#takeStore"),
-         takeDate = $("#takeDate"),
-         takeHour = $("#takeHour"),
-         returnCity = $("#returnCity"),
-         returnStore = $("#returnStore"),
-         returnDate = $("#returnDate"),
-         returnHour = $("#returnHour"),
-         takeCityList = $("#takeCityList"),
-         takeStoreList = $("#takeStoreList"),
-         returnCityList = $("#returnCityList"),
-         returnStoreList = $("#returnStoreList");
+        takeStore = $("#takeStore"),
+        takeDate = $("#takeDate"),
+        takeHour = $("#takeHour"),
+        returnCity = $("#returnCity"),
+        returnStore = $("#returnStore"),
+        returnDate = $("#returnDate"),
+        returnHour = $("#returnHour"),
+        takeCityList = $("#takeCityList"),
+        takeStoreList = $("#takeStoreList"),
+        returnCityList = $("#returnCityList"),
+        returnStoreList = $("#returnStoreList");
     var tit1 = takeCity.find(".city_list_tit a"),//城市 列表 箭头 滑动
         tit2 = returnCity.find(".city_list_tit a"),
         opt_takeCity = takeCity.find(".show>a"), //取车城市
@@ -473,12 +473,16 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
         id1 = [], area1 = [], address1 = [], start1 = [], end1 = [], traffic1 = [], name1 = [], data1 = [], lng1 = [], lat1 = [],
         id2 = [], area2 = [], address2 = [], start2 = [], end2 = [], traffic2 = [], name2 = [], data2 = [], lng2 = [], lat2 = [],
         startHours, endHours, t1, t2, html = "";
-
+    var _token = $("meta[name='_token']").attr('content');
     jQuery.ajax({
-        url: district_shop_list_url,
-        dataType: 'jsonp',
-        data: { "city_name": cityName },
+        //url: district_shop_list_url,
+        //dataType: 'jsonp',
+        url:server,
+        dataType: 'json',
+        type: 'post',
+        data: { "city_name": cityName, "_token": _token },
         success: function (result) {
+            console.log(result)
             if (result.length == 0) {//当前城市无门店
                 IN_TYPE = 3;
                 storeInfo(195, 195);
@@ -489,17 +493,28 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                     case 0: {
                         //获取数据
                         for (var i = 0; i < result.length; i++) {
-                            t1 = result[i].start_work_date;
-                            t2 = result[i].stop_work_date;
-                            id[i] = result[i].id;
-                            area[i] = result[i].district;
-                            address[i] = result[i].street;
-                            start[i] = t1.substr(11, 5);
-                            end[i] = t2.substr(11, 5);
-                            traffic[i] = result[i].traffic_line;
-                            name[i] = result[i].structure_name;
-                            lng[i] = result[i].latitude;
-                            lat[i] = result[i].longitude;
+                            t1 = '2016-09-05'; // 取车日期
+                            t2 = '2016-09-05'; // 还车日期
+                            id[i] = result[i].address_id; // 门店id
+                            area[i] = result[i].district; // 地区
+                            address[i] = '这里是街道详细信息'; // 街道信息
+                            start[i] = '08:00'; // 取车时间
+                            end[i] = '22:00'; // 还车时间
+                            traffic[i] = result[i].traffic_line; // 交通路线
+                            name[i] = result[i].server_name; // 门店名
+                            lng[i] = result[i].coordinate.split(',')[0]; // 维度
+                            lat[i] = result[i].coordinate.split(',')[1]; // 经度
+                            //t1 = result[i].start_work_date; // 取车日期
+                            //t2 = result[i].stop_work_date; // 还车日期
+                            //id[i] = result[i].id; // 门店id
+                            //area[i] = result[i].district; // 地区
+                            //address[i] = result[i].street; // 街道信息
+                            //start[i] = t1.substr(11, 5); // 取车时间
+                            //end[i] = t2.substr(11, 5); // 还车时间
+                            //traffic[i] = result[i].traffic_line; // 交通路线
+                            //name[i] = result[i].structure_name; // 门店名
+                            //lng[i] = result[i].latitude; // 维度
+                            //lat[i] = result[i].longitude; // 经度
                         }
                         for (var j = 0; j < area.length; j++) {
                             if (data.indexOf(area[j]) == -1) data.push(area[j]);
@@ -842,8 +857,6 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
 function City() {
     var _token = $('meta[name=_token]').attr('content');
     $.post(city, {'_token': _token}, function(result){
-        //console.log(result[1])
-        alert(result);
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合
@@ -869,14 +882,14 @@ function City() {
         }
 
         bookCity(hotCity, touristCity, letter, result);
-    });
+    }, 'json');
 
     //加载城市
     //jQuery.ajax({
     //    url: city_list_url,
     //    dataType: 'jsonp',
     //    success: function (result) {
-    //    原始毁掉函数内容，同上
+    //    原始回调函数内容，同上
     //    }
     //});
 }
