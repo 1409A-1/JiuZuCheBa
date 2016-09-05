@@ -18,8 +18,7 @@ class LoginMiddlewarer
         if($request->session()->has('name')){
             return $next($request);
         }else{
-            //echo 2;die;
-            return redirect("admins");
+            return redirect('admins');
         }
     }
 }

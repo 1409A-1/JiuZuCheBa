@@ -15,13 +15,12 @@ Route::get('only_name','LoginController@only_name');
 Route::get('only_tel','LoginController@only_tel');
 
 
-
-
-
-
-
 //登陆
 Route::get('login','LoginController@login');
+//登录验证
+Route::post('login_pro','LoginController@login_pro');
+//退出登录
+Route::get('login_out','LoginController@login_out');
 //短租自驾
 Route::get('driving','IndexController@driving');
 //长期租车
@@ -38,6 +37,11 @@ Route::get('attract','IndexController@attract');
  * 后台
  * */
 Route::get('admins','AdminController@admin_login');
+
+//后台登录
+Route::get('admins','AdminController@admin_login');
+
+//判断用户密码
 Route::post('signin','AdminController@admin_login');
 
 Route::group(['middleware' => ['nologin']], function(){
@@ -76,7 +80,12 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('address_two','AddressController@address_two');
 });
 
-// 微信对接
-Route::get('valid','WechatController@valid');
-Route::get('oAuth','WechatController@oAuth');
-Route::get('weChatLogin','WechatController@weChatLogin');
+// 微信对接 授权登录
+Route::get('valid','WechatController@valid');   // 微信对接
+Route::get('oAuth','WechatController@oAuth');   // 第三方授权登录窗口
+Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
+
+// 常用路由
+Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
+
+// 短租
