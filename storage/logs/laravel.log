@@ -1897,6 +1897,8 @@ Stack trace:
 #74 E:\web\JiuZuCheBa\public\index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #75 {main}  
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 [2016-09-02 15:45:16] local.ERROR: Symfony\Component\Debug\Exception\FatalThrowableError: Parse error: syntax error, unexpected '}', expecting end of file in F:\test\JiuZuCheBa\app\Http\routes.php:78
 Stack trace:
 #0 [internal function]: App\Providers\RouteServiceProvider->App\Providers\{closure}(Object(Illuminate\Routing\Router))
@@ -6980,4 +6982,3 @@ Stack trace:
 [2016-09-03 09:36:00] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'public' (T_PUBLIC)' in F:\phpstudy\WWW\JiuZuCheBa\app\Http\Controllers\LoginController.php:50
 Stack trace:
 #0 {main}  
->>>>>>> e2cf6f12ed66a0d47e0dcbbe27a62cff69693823

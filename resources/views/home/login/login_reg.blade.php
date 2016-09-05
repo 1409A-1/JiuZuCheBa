@@ -6,13 +6,13 @@
     <title>注册</title>
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/login/all.css">
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/login.css">
-    <script src="../resources/assets/home/public/login/hm.js"></script>
+    {{--<script src="../resources/assets/home/public/login/hm.js"></script>--}}
     <script type="text/javascript" src="../resources/assets/home/public/login/jquery-1.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/login/jquery.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/login/ApiConfig.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/login/all.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/login/layer.js"></script>
-    <link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/public/layer.css" rel="stylesheet">
+    {{--<script type="text/javascript" src="../resources/assets/home/public/login/jquery.js"></script>--}}
+    {{--<script type="text/javascript" src="../resources/assets/home/public/login/ApiConfig.js"></script>--}}
+    {{--<script type="text/javascript" src="../resources/assets/home/public/login/all.js"></script>--}}
+    {{--<script type="text/javascript" src="../resources/assets/home/public/login/layer.js"></script>--}}
+    {{--<link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/public/layer.css" rel="stylesheet">--}}
     <script type="text/javascript" src="../resources/assets/home/public/jquery-validate.js"></script>
 <body>
     <!--头部-->

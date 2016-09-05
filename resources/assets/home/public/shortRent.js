@@ -91,6 +91,7 @@ function storeInfo(takeID, returnID) {
         dataType: 'jsonp',
         data: { "start_shop_id": takeID, "stop_shop_id": returnID },
         success: function (result) {
+           // console.log(result);
             var t = result.start_shop,
                 r = result.stop_shop;
             if (FirstLoad) {
@@ -843,7 +844,7 @@ function City() {
     var _token = $('meta[name=_token]').attr('content');
     $.post(city, {'_token': _token}, function(result){
         //console.log(result[1])
-        alert(result);
+       // alert(result);
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合
