@@ -26,8 +26,8 @@
                     <a href="" rel="nofollow">{{ Session::get('user_name') }}</a>
                     <div class="arrow"><div></div></div>
                     <div class="userInfo">
-                        <a href="" rel="nofollow">订单管理</a>
-                        <a href="" rel="nofollow">账户管理</a>
+                        <a href="user_info" rel="nofollow">账户管理</a>
+                        <a href="message" rel="nofollow">公开留言</a>
                         <a href="login_out">退出</a>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
             <a id="toUser" class="active">账户信息</a>
-            <a id="toCoupon">优惠券</a>
+            <a href="benefit_list">优惠券</a>
         </div>
         <div class="right">
             <!--我的主页-->

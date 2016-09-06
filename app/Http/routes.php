@@ -31,7 +31,14 @@ Route::group(['middleware' => ['homelogin']], function(){
    Route::get('only_mobile_code','HomeUserController@only_mobile_code');
 //订单列表的展示
    Route::get('order_list','HomeUserController@order_list');
-
+//优惠券的展示
+   Route::get('benefit_list','HomeUserController@benefit_list');
+//公开留言页面的展示
+   Route::get('message','HomeUserController@message');
+//ajax进行留言的添加
+   Route::get('message_add','HomeUserController@message_add');
+//滑动鼠标进行加载
+   Route::get('message_down','HomeUserController@message_down');
 });
 
 //前台登陆
@@ -115,5 +122,5 @@ Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
 // 常用路由
 Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
+Route::post('getServerList','PublicController@getServerList');  // 获取城市列表
 
-// 短租
