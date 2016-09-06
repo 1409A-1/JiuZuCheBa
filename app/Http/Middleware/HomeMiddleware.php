@@ -18,7 +18,7 @@ class HomeMiddleware
         if ($request->session()->has('user_name')) {
             return $next($request);
         } else {
-            echo 1;
+           return redirect('login');
         }
 
     }
