@@ -114,5 +114,7 @@ Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
 // 常用路由
 Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
+Route::post('getServerList','PublicController@getServerList');  // 获取城市列表
 
 // 短租
+// 长租
