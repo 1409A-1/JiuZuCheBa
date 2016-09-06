@@ -59,7 +59,7 @@
                 @else
                     欢迎 <span style="color:#ff0000"><?php echo Session::get('user_name')?></span>
                     <a href="" rel="nofollow">订单信息</a>
-                    <a href="" rel="nofollow">账户管理</a>
+                    <a href="{{URL('user_info')}}" rel="nofollow">账户管理</a>
                     <a href="login_out" rel="nofollow">退出</a>
                 @endif
                 {{--<div class="no_users">--}}

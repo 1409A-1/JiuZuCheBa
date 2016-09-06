@@ -55,9 +55,9 @@
             </ul>
         </li>
         <li>
-            <a href="{{asset('admin')}}/gallery.html">
-                <i class="icon-picture"></i>
-                <span>Gallery</span>
+            <a href="message">
+                <i class="icon-edit"></i>
+                <span>用户留言管理</span>
             </a>
         </li>
         <li>

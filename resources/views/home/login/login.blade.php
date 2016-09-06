@@ -23,7 +23,7 @@
     <script src="../resources/assets/home/log/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
     <link href="../resources/assets/home/log/main.css" type="text/css" rel="stylesheet">
     <link href="../resources/assets/home/log/fix.css" type="text/css" rel="stylesheet">
-    <style>@import "http://qiao.baidu.com/v3/asset/css/m-webim-lite.css?v=20150613";</style>
+    <style>@import "";</style>
     <script charset="utf-8" src="../resources/assets/home/log/m-webim-lite.js" type="text/javascript"></script>
 </head>
 <body>
