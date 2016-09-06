@@ -3,7 +3,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
-    <title>会员中心-个人信息</title>
+    <title>会员中心-订单信息</title>
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/all.css">
     <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/user.css">
     <script type="text/javascript" src="../resources/assets/home/public/jquery-1.js"></script>
@@ -27,8 +27,8 @@
                     <a href="" rel="nofollow">{{ Session::get('user_name') }}</a>
                     <div class="arrow"><div></div></div>
                     <div class="userInfo">
-                        <a href="" rel="nofollow">订单管理</a>
-                        <a href="" rel="nofollow">账户管理</a>
+                        <a href="user_info" rel="nofollow">账户管理</a>
+                        <a href="message" rel="nofollow">公开留言</a>
                         <a href="login_out">退出</a>
                     </div>
                 </div>
@@ -73,15 +73,15 @@
             <a href="order_list" class="active">订单列表</a>
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
-            <a id="toUser" >账户信息</a>
-            <a id="toCoupon">优惠券</a>
+            <a href="user_info" >账户信息</a>
+            <a href="benefit_list" >优惠券</a>
         </div>
         <div class="right">
             <!--我的主页-->
             <div class="order shortOrder show">
                 <h4>短租订单</h4>
                 <ul class="order1">
-                    <li class="active">全部订单<a>(0)</a></li>
+                    <li class="active">全部订单</li>
                     <li>预约中<a></a></li>
                     <li>租赁中<a></a></li>
                     <li>已完成<a></a></li>
@@ -98,9 +98,89 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-                        <p class="noMore">暂无订单1...</p>
+                            @if(array_key_exists('all',$order))
+                               @foreach($order['all'] as $k=>$v)
+                                 <div class="No">
+                                    <ul class="order3">
+                                        <li>
+                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <div>
+                                                <img src="" alt="{{$v['car_img']}}">
+                                                <div class="info">
+                                                    <a>{{$v['car_name']}}</a>
+                                                    <div class="carIcon">
+                                                        <div>
+                                                            <i class="icon icon_car1"></i>
+                                                            <a>三厢</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car2"></i>
+                                                            <a>手动</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car3"></i>
+                                                            <a>1.4L</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car4"></i>
+                                                            <a>乘坐5人</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul>
+                                                    <li class="time">
+                                                        <div>
+                                                            取车时间<br>
+                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                        </div>
+                                                        <div>
+                                                            还车时间<br>
+                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                        </div>
+                                                    </li>
+                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="state">
+                                                       @if($v['ord_pay']==0)
+                                                            <a>未付款</a>
+                                                       @elseif($v['ord_pay']==1)
+                                                            <a>已付款 未提车</a>
+                                                       @elseif($v['ord_pay']==2)
+                                                            <a>车辆使用中</a>
+                                                       @elseif($v['ord_pay']==3)
+                                                            <a>完成</a>
+                                                       @elseif($v['ord_pay']==4)
+                                                            <a>待评价</a>
+                                                       @elseif($v['ord_pay']==5)
+                                                            <a>订单已取消</a>
+                                                       @elseif($v['ord_pay']==6)
+                                                            <a> 预约中</a>
+                                                       @endif
+                                                    </li>
+                                                    @if($v['ord_pay']==0)
+                                                        <li class="cen">取消订单</li>
+                                                    @elseif($v['ord_pay']==1)
+                                                        <li class="cen">取消订单</li>
+                                                    @elseif($v['ord_pay']==2)
+                                                        <li class="cen">车辆使用中</li>
+                                                    @elseif($v['ord_pay']==3)
+                                                        <li class="cen">去评价</li>
+                                                    @elseif($v['ord_pay']==4)
+                                                        <li class="cen">去评价</li>
+                                                    @elseif($v['ord_pay']==5)
+                                                        <li class="cen">删除订单</li>
+                                                    @elseif($v['ord_pay']==6)
+                                                        <li class="cen">查看详情</li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                               @endforeach
+                            @else
+                                <p class="noMore">暂无订单...</p>
+                            @endif
                     </span>
-
                     {{--预约中--}}
                     <span style="display: none">
                         <ul class="order2">
@@ -111,57 +191,60 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-          {{--订单展示页面              --}}
-                        <div class="No">
-                            <ul class="order3">
-                                <li>
-                                    <h5><a>订单号：</a>123456789123456</h5>
-                                    <div>
-                                        <img src="">
-                                        <div class="info">
-                                            <a>新捷达 2014款 手动时尚</a>
-                                            <div class="carIcon">
-                                                <div>
-                                                    <i class="icon icon_car1"></i>
-                                                    <a>三厢</a>
+                        {{--订单展示页面--}}
+                        @if(array_key_exists(6,$order))
+                            @foreach($order['6'] as $k=>$v)
+                                <div class="No">
+                                    <ul class="order3">
+                                        <li>
+                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <div>
+                                                <img src="" alt="{{$v['car_img']}}">
+                                                <div class="info">
+                                                    <a>{{$v['car_name']}}</a>
+                                                    <div class="carIcon">
+                                                        <div>
+                                                            <i class="icon icon_car1"></i>
+                                                            <a>三厢</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car2"></i>
+                                                            <a>手动</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car3"></i>
+                                                            <a>1.4L</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car4"></i>
+                                                            <a>乘坐5人</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <i class="icon icon_car2"></i>
-                                                    <a>手动</a>
-                                                </div>
-                                                <div>
-                                                    <i class="icon icon_car3"></i>
-                                                    <a>1.4L</a>
-                                                </div>
-                                                <div>
-                                                    <i class="icon icon_car4"></i>
-                                                    <a>乘坐5人</a>
-                                                </div>
+                                                <ul>
+                                                    <li class="time">
+                                                        <div>
+                                                            取车时间<br>
+                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                        </div>
+                                                        <div>
+                                                            还车时间<br>
+                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                        </div>
+                                                    </li>
+                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="state">
+                                                            <a> 预约中</a></li>
+                                                        <li class="cen">取消订单</li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <ul>
-                                            <li class="time">
-                                                <div>
-                                                    取车时间<br>
-                                                    2015-10-10 09:00
-                                                </div>
-                                                <div>
-                                                    还车时间<br>
-                                                    2015-10-12 09:00
-                                                </div>
-                                            </li>
-                                            <li class="cen">总额：￥100</li>
-                                            <li class="state">
-                                                <a>已完成</a>
-                                                <div>订单详情</div>
-                                            </li>
-                                            <li class="cen">立即评价</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endforeach
+                        @else
+                            <p class="noMore">暂无订单...</p>
+                        @endif
                     </span>
 
                     {{--租赁中--}}
@@ -174,7 +257,59 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-                        <p class="noMore">暂无订单3...</p>
+                        @if(array_key_exists(2,$order))
+                            @foreach($order['2'] as $k=>$v)
+                                <div class="No">
+                                    <ul class="order3">
+                                        <li>
+                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <div>
+                                                <img src="" alt="{{$v['car_img']}}">
+                                                <div class="info">
+                                                    <a>{{$v['car_name']}}</a>
+                                                    <div class="carIcon">
+                                                        <div>
+                                                            <i class="icon icon_car1"></i>
+                                                            <a>三厢</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car2"></i>
+                                                            <a>手动</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car3"></i>
+                                                            <a>1.4L</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car4"></i>
+                                                            <a>乘坐5人</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul>
+                                                    <li class="time">
+                                                        <div>
+                                                            取车时间<br>
+                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                        </div>
+                                                        <div>
+                                                            还车时间<br>
+                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                        </div>
+                                                    </li>
+                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="state">
+                                                        <a> 租赁中</a></li>
+                                                    <li class="cen">详情查看</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endforeach
+                        @else
+                            <p class="noMore">暂无订单...</p>
+                        @endif
                     </span>
 
                     {{--已完成--}}
@@ -187,11 +322,63 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-                        <p class="noMore">暂无订单4...</p>
+                        @if(array_key_exists(3,$order))
+                            @foreach($order['3'] as $k=>$v)
+                                <div class="No">
+                                    <ul class="order3">
+                                        <li>
+                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <div>
+                                                <img src="" alt="{{$v['car_img']}}">
+                                                <div class="info">
+                                                    <a>{{$v['car_name']}}</a>
+                                                    <div class="carIcon">
+                                                        <div>
+                                                            <i class="icon icon_car1"></i>
+                                                            <a>三厢</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car2"></i>
+                                                            <a>手动</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car3"></i>
+                                                            <a>1.4L</a>
+                                                        </div>
+                                                        <div>
+                                                            <i class="icon icon_car4"></i>
+                                                            <a>乘坐5人</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul>
+                                                    <li class="time">
+                                                        <div>
+                                                            取车时间<br>
+                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                        </div>
+                                                        <div>
+                                                            还车时间<br>
+                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                        </div>
+                                                    </li>
+                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="state">
+                                                        <a> 完成</a></li>
+                                                    <li class="cen">详情查看</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endforeach
+                        @else
+                            <p class="noMore">暂无订单...</p>
+                        @endif
                     </span>
 
                     {{--已取消 --}}
-                <span style="display: none">
+                    <span style="display: none">
                     <ul class="order2">
                         <li style="width: 440px">订单详情</li>
                         <li>时间</li>
@@ -200,8 +387,61 @@
                         <li>操作</li>
                     </ul>
                     <ul class="order3"></ul>
-                    <p class="noMore">暂无订单5...</p>
+                    @if(array_key_exists(5,$order))
+                        @foreach($order['5'] as $k=>$v)
+                            <div class="No">
+                                <ul class="order3">
+                                    <li>
+                                        <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                        <div>
+                                            <img src="" alt="{{$v['car_img']}}">
+                                            <div class="info">
+                                                <a>{{$v['car_name']}}</a>
+                                                <div class="carIcon">
+                                                    <div>
+                                                        <i class="icon icon_car1"></i>
+                                                        <a>三厢</a>
+                                                    </div>
+                                                    <div>
+                                                        <i class="icon icon_car2"></i>
+                                                        <a>手动</a>
+                                                    </div>
+                                                    <div>
+                                                        <i class="icon icon_car3"></i>
+                                                        <a>1.4L</a>
+                                                    </div>
+                                                    <div>
+                                                        <i class="icon icon_car4"></i>
+                                                        <a>乘坐5人</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul>
+                                                <li class="time">
+                                                    <div>
+                                                        取车时间<br>
+                                                        {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                    </div>
+                                                    <div>
+                                                        还车时间<br>
+                                                        {{date('Y/m/d H:i',$v['des_time'])}}
+                                                    </div>
+                                                </li>
+                                                <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                <li class="state">
+                                                    <a> 订单已取消</a></li>
+                                                <li class="cen">详情查看</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="noMore">暂无订单...</p>
+                    @endif
                 </span>
+
               </div>
             </div>
         </div>

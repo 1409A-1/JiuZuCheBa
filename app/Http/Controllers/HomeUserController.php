@@ -80,13 +80,94 @@ class HomeUserController extends Controller
             echo $gets['SubmitResult']['msg'];
         }
 
+//订单列表的展示
     public function order_list(){
-        return view('home.user_info.order_list');
+   //好几个表联查
+       $id = session('user_id');
+       $order =  DB::table('order')
+            ->leftJoin('order_info','order.ord_id','=','order_info.ord_id')
+            ->leftJoin('car_info','order_info.car_id','=','car_info.car_id')
+            ->where('order.user_id',$id)
+            ->get();
+        if ($order) {
+            foreach($order as $k=>$v) {
+                $arr['all'][]=$v;           //全部的订单
+                if($v['ord_pay']==6){       //订单申请中
+                    $arr['6'][]=$v;
+                }
+                if($v['ord_pay']==2){
+                    $arr['2'][]=$v;
+                }
+                if($v['ord_pay']==3){
+                    $arr['3'][]=$v;
+                }
+                if($v['ord_pay']==5){
+                    $arr['5'][]=$v;
+                }
+            }
+        } else {
+            $arr[]='';
+        }
+
+       // print_r($arr);die;
+        return view('home.user_info.order_list',['order'=>$arr]);
     }
 
+//个人优惠券列表的展示
+    public function benefit_list(){
+        $id = session('user_id');
+        $benefit = DB::table('benefit')
+              ->where('user_id',$id)
+              ->get();
+
+        if ($benefit) {
+            foreach($benefit as $k=>$v){
+                if ($v['end_time']<=time()) {
+                    $yh['old'][] = $v;
+                }
+                if ($v['type']==0&&$v['end_time']>time()) {
+                   $yh['0'][] = $v;
+                }
+                if ($v['type']==1&&$v['end_time']>time()) {
+                   $yh['1'][] = $v;
+                }
+
+            }
+        } else {
+            $yh[]='';
+        }
+        return view('home.user_info.user_benefit',['yh'=>$yh]);
+    }
+
+//留言页面的展示
+    public function message(){
+       $result =  DB::select("select * from message ORDER BY message_id desc limit ?,?",[0,6]);
+           return view('home.message.message',['message'=>$result]);
+    }
+//滑动鼠标进行查询
+    public function message_down(Request $request){
+       $page = $request->input('page');
+       $nextpage = $page*1+1;
+       $page=$page*6;
+       $result['str'] =  DB::select("select * from message ORDER BY message_id desc limit ?,?",[$page,6]);
+        if($result['str']){
+            $result['nextpage'] = $nextpage;
+            echo json_encode($result);
+        } else{
+
+        }
 
 
-
+    }
+//进行留言的ajax添加
+    public function message_add(Request $request){
+        $message['user_name'] = $request->input('name');
+        $message['message_con'] = $request->input('con');
+        $message['user_id'] = session('user_id');
+        $message['add_time'] = time();
+        DB::table('message')
+            ->insert($message);
+    }
 
  //___________________________调用短信接口自带的开始____________________________
     function Post($curlPost,$url){
