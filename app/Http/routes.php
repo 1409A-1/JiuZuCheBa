@@ -99,6 +99,14 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('adminlist','UserController@admin_list');//后台用户列表
 	Route::get('adminlistpage/{page}','UserController@adminlistpage');//后台管理分页
 
+	/*
+	    用户留言管理
+	 */
+	Route::get('message','UserController@message');//留言展示
+	Route::get('messagepage/{page}/{del}','UserController@messagepage');//留言分页&删除
+	Route::get('messageset/{id}','UserController@messageset');//留言审核
+	Route::get('messageaccept/{id}','UserController@messageaccept');//留言采纳
+
 	Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');
     Route::post('type_add','AdminController@model_add');
@@ -116,5 +124,3 @@ Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
 Route::post('getServerList','PublicController@getServerList');  // 获取城市列表
 
-// 短租
-// 长租
