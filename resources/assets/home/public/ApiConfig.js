@@ -1,6 +1,9 @@
 ﻿var api_url = "http://system.dafang24.com";
 //var api_url = "http://192.168.0.252:1111/";
 //var api_url = "http://localhost:4471/";
+
+var getCarTypeList = "getCarTypeList"; // 获取车辆类型
+
 var city_list_url = api_url + "/api/shoplist/GetCityList";//获取存在门店的城市
 var city = "getCityList"; // 新从数据库获取存在门店的城市
 

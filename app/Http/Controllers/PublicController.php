@@ -44,19 +44,21 @@ class PublicController extends Controller
     // 服务点列表，返回 json 格式数据
     public function getCarList(Request $request)
     {
-//                "start_time": start_time,
-//                "stop_time": stop_time,
-//                "begin_date": begin_date,
-//                "end_date": end_date,
         $car = DB::table('car_number as n')
             ->leftJoin('car_info as i', 'n.car_id', '=', 'i.car_id')
             ->leftJoin('car_type as t', 'i.type_id', '=', 't.type_id')
             ->leftJoin('car_brand as b', 'i.brand_id', '=', 'b.brand_id')
             ->where('server_id', $request->input('shop_id'))
-            ->where('number', '<>', 0)
             ->get();
 
         echo json_encode($car, JSON_UNESCAPED_UNICODE);
+    }
+
+    // 获取车辆类型
+    public function getCarTypeList()
+    {
+        $carTypeList = DB::table('car_type')->get();
+        echo json_encode($carTypeList, JSON_UNESCAPED_UNICODE);
     }
 
     // 无限极分类

@@ -124,4 +124,5 @@ Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
 Route::post('getServerList','PublicController@getServerList');  // 获取服务点列表
 Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
+Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
 
