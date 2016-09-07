@@ -83,7 +83,7 @@
 	user-select: none;
 }
 .i_pre,.i_next,.ta_calendar td.ta_dateRangeSelected,.ta_calendar td.first,.ta_calendar td.last,.ta_calendar td.today{
-	background:url(../images/calendar/calendar_all.png) no-repeat;
+	background:url(../images/calendar_all.png) no-repeat;
 	cursor:pointer;
 }
 .i_pre,.i_next{ width:23px; height:23px;display:inline-block; }

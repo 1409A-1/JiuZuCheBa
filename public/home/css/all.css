@@ -80,7 +80,7 @@ button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transit
 
 
 /*ICON*/
-.icon{display:inline-block;background: url("icon1.png") no-repeat;}
+.icon{display:inline-block;background: url("../images/icon1.png") no-repeat;}
 .icon_phone{width: 8px;height: 12px;background-position:-228px 0}
 .icon_logo{width: 224px;height: 54px;background-position:0 0}
 .icon1{width: 66px;height: 64px;background-position:0 -53px}
@@ -99,7 +99,7 @@ button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transit
 .icon_car4{width: 10px;height: 14px;background-position:-241px -26px}
 .icon_message{width: 74px;height: 65px;background-position:0 -119px}
 /*2*/
-.icon_2{display:inline-block;background: url("../images/index/icon2.jpg") no-repeat;width: 94px;height: 31px;}
+.icon_2{display:inline-block;background: url("../images/icon2.jpg") no-repeat;width: 94px;height: 31px;}
 .icon2_baidu{background-position:0 0}
 .icon2_163{background-position:-94px 0}
 .icon2_sohu{background-position:0 -62px}
@@ -109,7 +109,7 @@ button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transit
 .icon2_kx{background-position:-0 -93px}
 .icon2_360{background-position:-94px -93px}
 /*评价分数*/
-.icon_eva{display:inline-block;background: url("../images/shortRent/evaluate.png") no-repeat;width: 87px;height: 13px}
+.icon_eva{display:inline-block;background: url("../images/evaluate.png") no-repeat;width: 87px;height: 13px}
 .icon_eva5{background-position:0 0}
 .icon_eva4{background-position:-17.4px 0}
 .icon_eva3{background-position:-34.8px 0}
@@ -117,7 +117,7 @@ button .active{left:100%;-moz-transition:0.5s;-o-transition:0.5s;-webkit-transit
 .icon_eva1{background-position:-69.6px 0}
 .icon_eva0{background-position:-87px 0}
 /*ICON  会员中心、用户等级*/
-.icon_user{display:block;background: url("../images/user/icon.png") no-repeat;}
+.icon_user{display:block;background: url("../images/icon.png") no-repeat;}
 .icon_user6{width: 79px;height: 79px;background-position:-160px 0}
 .icon_user4{width: 79px;height: 79px;background-position:0 -84px}
 .icon_user5{width: 79px;height: 79px;background-position:-80px -84px}
@@ -219,12 +219,12 @@ input.valid {
     border:1px solid #1d95f6;
 }
 span.error{
-    background : url(../public/unchecked.gif) no-repeat 0 0;
+    background : url(../images/unchecked.gif) no-repeat 0 0;
     padding-left: 16px;
     color: #f00;
 }
 span.success{
-    background : url(../public/checked.gif) no-repeat 0 0;
+    background : url(../images/checked.gif) no-repeat 0 0;
     padding-left: 16px;
 }
 

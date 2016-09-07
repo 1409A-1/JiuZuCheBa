@@ -4,24 +4,22 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script src="home/js/b.js" charset="utf-8"></script>
     <meta charset="UTF-8">
-    
+    <meta name="_token" content="{{ csrf_token() }}"/>
     <title>就租车吧—中国互联网租车领跑者,全国连锁.神速预订,48元起！</title>
     <meta name="description" content="SEO：描述内容">
     <meta name="keywords" content="SEO：站点关键字">
     <link type="text/css" rel="stylesheet" href="home/css/all.css">
-    <link type="text/css" rel="stylesheet" href="home/css/index.css">
     <link type="text/css" rel="stylesheet" href="home/css/calendar.css">
+    <link type="text/css" rel="stylesheet" href="home/css/layer.css">
     <script type="text/javascript" src="home/js/jquery-1.js"></script>
+    <script type="text/javascript" src="home/js/jquery.js"></script>
     <script type="text/javascript" src="home/js/api"></script>
     <script type="text/javascript" src="home/js/getscript"></script>
     <script type="text/javascript" src="home/js/ApiConfig.js"></script>
     <script type="text/javascript" src="home/js/layer.js"></script>
-    <link style="" id="" href="home/css/layer.css" rel="stylesheet">
-    <script type="text/javascript" src="home/js/jquery.js"></script>
     <script type="text/javascript" src="home/js/dateRange.js"></script>
     <script type="text/javascript" src="home/js/dateTools.js"></script>
     <script type="text/javascript" src="home/js/all.js"></script>
-    <script type="text/javascript" src="home/js/index.js"></script>
     <script>
         var rh='';
         function IsPC() {
@@ -45,7 +43,7 @@
     <link href="home/css/fix.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-    <!--头部-->
+<!--头部-->
 <ins id="qiao-wrap">
     <ins style="position: fixed; bottom: 0px;" class="qiao-flash-storage" id="qiao-flash-storage">
         <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="FlashLocalStorage" align="middle" height="5" width="5">
@@ -60,13 +58,13 @@
         <ul class="top_menu">
             <li class="top_user">
                 @if(empty(Session::get('user_name')))
-                <div class="no_users">
+                <div class="">
                     <a href="login_reg" rel="nofollw">注册</a>
                     <a href="login" rel="nofollw">登陆</a>
                 </div>
                 @else
-                <div class="yes_user">
-                    欢迎 <span style="color:#ff0000"><?php echo Session::get('user_name')?></span>
+                <div class="">
+                    欢迎 <span style="color:#ff0000">{{ Session::get('user_name') }}</span>
                     <a href="" rel="nofollow">订单信息</a>
                     <a href="{{URL('user_info')}}" rel="nofollow">账户管理</a>
                     <a href="login_out" rel="nofollow">退出</a>

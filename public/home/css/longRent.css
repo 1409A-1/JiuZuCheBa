@@ -148,7 +148,7 @@ body{color: #24354b}
 .L0{margin-left: 0!important}
 
 /*3*/
-.icon_3{display:inline-block;background: url("../images/longRent/icon.png") no-repeat;width: 53px;height: 53px;}
+.icon_3{display:inline-block;background: url("../images/icon.png") no-repeat;width: 53px;height: 53px;}
 .icon_31{background-position:0 0}
 .icon_32{background-position:-54px 0}
 .icon_33{background-position:-108px 0}
@@ -165,15 +165,3 @@ body{color: #24354b}
 .ul2>li input{width: 280px; height: 30px; padding: 0 10px;border: 1px solid #ddd;font-size: 12px}
 .longRentApply button{display: block;width: 330px;height: 35px;color: #fff;background: #ea5506;margin:auto;border: 0;font-size: 15px}
 .longRentApply div{text-align: right;margin: 20px;color: #ff3020;font-size: 12px}
-
-
-
-
-
-
-
-
-
-
-
-

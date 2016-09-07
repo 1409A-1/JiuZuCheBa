@@ -29,13 +29,12 @@
     var offer_list_ = [];
     var order_info_;
 </script>
+
+<link type="text/css" rel="stylesheet" href="home/css/shortRent.css">
 <script type="text/javascript" src="home/js/shortRent.js"></script>
-<script src="home/js/bsl.js" charset="UTF-8" type="text/javascript"></script>
-<script src="home/js/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
-<script src="home/js/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
-<link href="home/css/main.css" type="text/css" rel="stylesheet">
-<link href="home/css/fix.css" type="text/css" rel="stylesheet">
-<script charset="utf-8" src="home/js/m-webim-lite.js" type="text/javascript"></script>
+<script type="text/javascript" src="home/js/linq.js"></script>
+<script type="text/javascript" src="home/js/m-webim-lite.js"></script>
+<script type="text/javascript" src="home/js/special_offers.js"></script>
 
 <script>
     var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
@@ -282,7 +281,7 @@
     <!--门店信息 优惠活动-->
     <div class="carBoxR">
         <!--地图-->
-        <div style="overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;" id="map"></div>
+        <div id="map"></div>
         <!--门店信息-->
         <div class="store_info">
             <div class="carInfoTit active" id="takeCarTit">取车</div>

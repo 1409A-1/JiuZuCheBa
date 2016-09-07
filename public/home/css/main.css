@@ -112,15 +112,6 @@
     line-height: 0px;
 }
 
-
-
-
-
-
-
-
-
-
 /*解析背景-title*/
 
 /*close hover样式*/
@@ -461,7 +452,8 @@ ins#qiao-invite-wrap {
     color: #000;
     text-align: center;
     cursor: pointer;
-}
+}
+
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;
@@ -734,4 +726,4 @@ ins#qiao-mess-wrap {
             width: 194px;
     }
 #qiao-mess-wrap .qiao-mess-container .qiao-mess-foot-logo {
-    }
+    }

@@ -102,7 +102,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	/*
 	    用户留言管理
 	 */
-	Route::get('message','UserController@message');//留言展示
+	Route::get('messageList','UserController@message');//留言展示
 	Route::get('messagepage/{page}/{del}','UserController@messagepage');//留言分页&删除
 	Route::get('messageset/{id}','UserController@messageset');//留言审核
 	Route::get('messageaccept/{id}','UserController@messageaccept');//留言采纳

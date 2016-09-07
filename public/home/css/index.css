@@ -81,7 +81,7 @@
 .setMeal>div{width: 100%;height: 74px;border: 1px solid #ddd;margin: 20px auto;cursor: pointer;border-radius: 10px;color: #FF9A36}
 .setMeal>div>div{float: left;}
 .sM_L{width: 110px;height: 40px;padding: 17px 0;line-height: 20px;text-align: center;}
-.setMeal .hr{width: 1px;height: 72px;margin-top: 1px;background: url("../images/index/hr.png") 0 0;}
+.setMeal .hr{width: 1px;height: 72px;margin-top: 1px;background: url("../images/hr.png") 0 0;}
 .sM_R{width: 170px;height: 40px;padding: 17px 0;line-height: 40px;overflow: hidden;position: relative;text-indent: 30px}
 .sM_R a{font-size: 40px}
 .sM_R button{float: right;margin-right: 20px;width: 40px;height: 40px;border-radius: 40px;color: #fff;background: #FF9A36;border: 0;font-size: 12px;overflow: hidden;text-indent: 0;line-height: 15px}
@@ -136,12 +136,12 @@
 .recCar>div{float: left; width: 20%;height: 287px}
 .recCarBox{width: 200px;height: 285px;margin: auto;color: #24354b;background: #fff}
 .recCarBox:hover{box-shadow: 0 0 20px #333}
-.recCarBox:hover .carImg{background: url("../images/index/222.png")}
-.recCarBox:hover .noImg{background: url("../images/index/444.png")}
+.recCarBox:hover .carImg{background: url("../images/222.png")}
+.recCarBox:hover .noImg{background: url("../images/444.png")}
 .recCarBox:hover .carImg p{color: #fff}
 .recCarBox:hover .price{color: #ea5506}
 .recCarBox,.carImg,.carImg p,.price{transition:all .2s ;-webkit-transition:all .2s;-moz-transition:all .2s}
-.carImg{width: 100%;height: 170px;background: url("../images/index/111.png");overflow: hidden}
+.carImg{width: 100%;height: 170px;background: url("../images/111.png");overflow: hidden}
 .carImg p{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size: 14px;color: #24354b;text-align: center;margin-top: 15px}
 .carImg img{width: 167px;display: block;margin:15px auto;}
 .price{width: 100%;height: 85px;color: #24354b;border-bottom: 1px dashed #CFCFCF;text-align: center}/*日期、价格*/
@@ -155,7 +155,7 @@
 .noRecCar{margin-left: 472px}
 .button{display: block;margin: 30px auto;width: 140px;height: 35px;border: 1px solid #24354b;color: #24354b;text-align: center;line-height: 35px;font-size: 13px;box-shadow: 0 0 1px #24354b;transition: 0.5s;-o-transition: 0.5s;-webkit-transition: 0.5s;-moz-transition: 0.5s}
 .button:hover{background: #24354b;color: #fff}
-.noImg{width: 166px;height: 66px;margin: 60px auto 0 auto;background: url("../images/index/333.png");}
+.noImg{width: 166px;height: 66px;margin: 60px auto 0 auto;background: url("../images/333.png");}
 /*其他*/
 .other{width: 100%;height: 1550px;background: #E8E6E6}
 .oBox1{width: 1180px;margin: auto}
@@ -238,7 +238,7 @@
 /*页脚*/
 .footTop{height: 160px;width: 100%;background: #767271}
 /*广告图*/
-.Advertisement{position: fixed;left: 0;bottom: 0;background: url("../images/index/advertisement.png") no-repeat top center;width: 100%;height: 279px;z-index: 99;transition:0.8s;-moz-transition:0.8s;-o-transition:0.8s;-webkit-transition:0.8s}
+.Advertisement{position: fixed;left: 0;bottom: 0;background: url("../images/advertisement.png") no-repeat top center;width: 100%;height: 279px;z-index: 99;transition:0.8s;-moz-transition:0.8s;-o-transition:0.8s;-webkit-transition:0.8s}
 .Advertisement>div{width: 1180px;height: 100%;margin: auto;position: relative}
 .AdvertisementExit{width: 22px;height: 22px;position: absolute;right: -22px;bottom: 117px;cursor: pointer}
 .AdvertisementExit:hover{background-color: #000;filter: alpha(opacity=30);background-color: rgba(0,0,0,0.3)}
@@ -261,7 +261,7 @@
 #storeMap .seaBut{width: 100px!important;}
 #storeMap .go,.search{display: none}
 /*ICON*/
-.iconMap{display:inline-block;background: url("../images/storeMap/icon.png") no-repeat;position: absolute;left: 10px;top: 3px}
+.iconMap{display:inline-block;background: url("../images/icon.png") no-repeat;position: absolute;left: 10px;top: 3px}
 .icon_M1{width: 89px;height: 66px;background-position:0 0}
 .icon_M2{width: 12px;height: 17px;background-position:-90px 0}
 .icon_M3{width: 12px;height: 17px;background-position:-90px -17px}

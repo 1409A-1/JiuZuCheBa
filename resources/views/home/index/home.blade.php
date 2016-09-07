@@ -1,4 +1,7 @@
 @include('common.home_header')
+<link type="text/css" rel="stylesheet" href="home/css/index.css">
+<script type="text/javascript" src="home/js/index.js"></script>
+
 <script>
     var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
     jQuery(".menu_box li")[0].className = " on_menu";
