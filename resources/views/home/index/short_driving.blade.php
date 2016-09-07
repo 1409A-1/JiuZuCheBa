@@ -4,7 +4,6 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="_token" content="{{ csrf_token() }}"/>
     <script src="../resources/assets/home/public/b.js" charset="utf-8"></script>
-    <script src="../resources/assets/home/public/lxb.js" charset="utf-8"></script><script src="../resources/assets/home/public/v.htm" charset="utf-8"></script>
     <meta charset="UTF-8">
     <title>短期租车|短期自驾租车|价格 - 就租车吧</title>
     <meta name="description" content="SEO：这里写上页面描述">
@@ -27,7 +26,7 @@
     <script type="text/javascript" src="../resources/assets/home/public/all.js"></script>
     <script type="text/javascript" src="../resources/assets/home/public/special_offers.js"></script>
     <script>
-        var shopID = "";
+        var shopID = "1";
         var StartDateTime = ""+" 10:00";
         var EndDateTime = "" + " 10:00";
         var carID = "";
@@ -159,7 +158,7 @@
         <!--城市-->
         <div class="shortCity" id="takeCity">
             <div class="show">
-                <a>武汉市</a>
+                <a>北京市</a>
                 <div class="Arrow"></div>
             </div>
             <div class="city_list" id="takeCityList">
@@ -190,14 +189,14 @@
         <!--门店-->
         <div class="shortStore" id="takeStore">
             <div class="show">
-                <a store_id="195">楚河汉街店</a>
+                <a store_id="1">冬冬服务点</a>
                 <div class="Arrow"></div>
             </div>
             <div class="store_list" id="takeStoreList">
                 <!--行政区域-->
-                <div class="area"><a>武昌区</a><a>洪山区</a><a>江汉区</a><a>汉阳区</a><a>硚口区</a><a>新洲区</a><a>黄陂区</a><a>江岸区</a><a>青山区</a><a>东西湖区</a></div>
+                <div class="area"></div>
                 <!--门店-->
-                <div class="store"><ul><li><a store_id="195" num="0" lng="114.35065" lat="30.56421" '="">楚河汉街店</a></li><li><a store_id="457" num="14" lng="114.306479" lat="30.545612" '="">阅马场服务点</a></li><li><a store_id="475" num="16" lng="114.35186" lat="30.598871" '="">徐东店</a></li><li><a store_id="488" num="18" lng="114.352848" lat="30.558644" '="">嘉华酒店服务点</a></li><li><a store_id="489" num="19" lng="114.366829" lat="30.580985" '="">岳家嘴服务点</a></li><li><a store_id="490" num="20" lng="114.35065" lat="30.554477" '="">水果湖广场服务点</a></li><li><a store_id="599" num="36" lng="114.338564" lat="30.584806" '="">湖北大学服务点</a></li></ul><ul><li><a store_id="305" num="1" lng="114.402906" lat="30.51176" '="">光谷广场便捷店</a></li><li><a store_id="462" num="15" lng="114.359115" lat="30.532536" '="">街道口服务点</a></li><li><a store_id="491" num="21" lng="114.419888" lat="30.513326" '="">华科正门服务点</a></li><li><a store_id="492" num="22" lng="114.443029" lat="30.511566" '="">森林公园服务点</a></li><li><a store_id="493" num="23" lng="114.384322" lat="30.526087" '="">武汉体院服务点</a></li></ul><ul><li><a store_id="199" num="2" lng="114.284545" lat="30.586841" '="">友谊路便捷店</a></li><li><a store_id="439" num="13" lng="114.264759" lat="30.621742" '="">汉口火车站店</a></li></ul><ul><li><a store_id="202" num="3" lng="114.215413" lat="30.564594" '="">王家湾便捷店</a></li><li><a store_id="224" num="6" lng="114.18285" lat="30.51282" '="">经开万达店</a></li><li><a store_id="311" num="11" lng="114.277151" lat="30.555977" '="">钟家村店</a></li><li><a store_id="552" num="26" lng="114.211797" lat="30.557874" '="">人信汇服务点</a></li><li><a store_id="553" num="27" lng="114.233496" lat="30.56329" '="">七里庙服务点</a></li></ul><ul><li><a store_id="203" num="4" lng="114.218521" lat="30.595325" '="">古田四路店</a></li><li><a store_id="551" num="25" lng="114.224446" lat="30.624233" '="">园博园服务点</a></li><li><a store_id="584" num="30" lng="114.174287" lat="30.623512" '="">宜家购物中心服务点</a></li><li><a store_id="585" num="31" lng="114.228429" lat="30.593122" '="">南国大武汉家装服务点</a></li><li><a store_id="587" num="33" lng="114.195777" lat="30.595385" '="">古田桥陈家墩服务点</a></li></ul><ul><li><a store_id="223" num="5" lng="114.57158" lat="30.66198" '="">新洲阳逻店</a></li><li><a store_id="302" num="10" lng="114.809957" lat="30.836516" '="">新洲齐安大道店</a></li></ul><ul><li><a store_id="225" num="7" lng="114.325427" lat="30.707439" '="">黄陂汉口北店</a></li><li><a store_id="229" num="8" lng="114.37635" lat="30.86983" '="">黄陂前川欣城店</a></li></ul><ul><li><a store_id="298" num="9" lng="114.32499" lat="30.631003" '="">二七轻轨站店</a></li><li><a store_id="586" num="32" lng="114.304765" lat="30.620982" '="">解放公园店</a></li><li><a store_id="590" num="34" lng="114.314532" lat="30.657988" '="">汉口城市广场服务点</a></li><li><a store_id="591" num="35" lng="114.327657" lat="30.649561" '="">百步亭花园路服务点</a></li></ul><ul><li><a store_id="387" num="12" lng="114.387754" lat="30.62349" '="">青山友谊大道店</a></li><li><a store_id="487" num="17" lng="114.431271" lat="30.613033" '="">武汉火车站服务点</a></li><li><a store_id="573" num="28" lng="114.409531" lat="30.64489" '="">青山百货商场服务点</a></li><li><a store_id="574" num="29" lng="114.367025" lat="30.626733" '="">奥山世纪城服务点</a></li></ul><ul><li><a store_id="544" num="24" lng="114.24875" lat="30.65718" '="">金银潭地铁站送车点</a></li></ul></div>
+                <div class="store"><ul></ul></div>
                 <!--门店信息-->
                 <div class="storeInfo">
                     <div>
@@ -237,7 +236,7 @@
         <!--城市-->
         <div class="shortCity" id="returnCity">
             <div class="show">
-                <a>武汉市</a>
+                <a>北京市</a>
                 <div class="Arrow"></div>
             </div>
             <div class="city_list" id="returnCityList">
@@ -268,14 +267,14 @@
         <!--门店-->
         <div class="shortStore" id="returnStore">
             <div class="show">
-                <a store_id="195">楚河汉街店</a>
+                <a store_id="1">冬冬服务点</a>
                 <div class="Arrow"></div>
             </div>
             <div class="store_list" id="returnStoreList">
                 <!--行政区域-->
-                <div class="area"><a>武昌区</a><a>洪山区</a><a>江汉区</a><a>汉阳区</a><a>硚口区</a><a>新洲区</a><a>黄陂区</a><a>江岸区</a><a>青山区</a><a>东西湖区</a></div>
+                <div class="area"></div>
                 <!--门店-->
-                <div class="store"><ul><li><a store_id="195" num="0" lng="114.35065" lat="30.56421" '="">楚河汉街店</a></li><li><a store_id="457" num="14" lng="114.306479" lat="30.545612" '="">阅马场服务点</a></li><li><a store_id="475" num="16" lng="114.35186" lat="30.598871" '="">徐东店</a></li><li><a store_id="488" num="18" lng="114.352848" lat="30.558644" '="">嘉华酒店服务点</a></li><li><a store_id="489" num="19" lng="114.366829" lat="30.580985" '="">岳家嘴服务点</a></li><li><a store_id="490" num="20" lng="114.35065" lat="30.554477" '="">水果湖广场服务点</a></li><li><a store_id="599" num="36" lng="114.338564" lat="30.584806" '="">湖北大学服务点</a></li></ul><ul><li><a store_id="305" num="1" lng="114.402906" lat="30.51176" '="">光谷广场便捷店</a></li><li><a store_id="462" num="15" lng="114.359115" lat="30.532536" '="">街道口服务点</a></li><li><a store_id="491" num="21" lng="114.419888" lat="30.513326" '="">华科正门服务点</a></li><li><a store_id="492" num="22" lng="114.443029" lat="30.511566" '="">森林公园服务点</a></li><li><a store_id="493" num="23" lng="114.384322" lat="30.526087" '="">武汉体院服务点</a></li></ul><ul><li><a store_id="199" num="2" lng="114.284545" lat="30.586841" '="">友谊路便捷店</a></li><li><a store_id="439" num="13" lng="114.264759" lat="30.621742" '="">汉口火车站店</a></li></ul><ul><li><a store_id="202" num="3" lng="114.215413" lat="30.564594" '="">王家湾便捷店</a></li><li><a store_id="224" num="6" lng="114.18285" lat="30.51282" '="">经开万达店</a></li><li><a store_id="311" num="11" lng="114.277151" lat="30.555977" '="">钟家村店</a></li><li><a store_id="552" num="26" lng="114.211797" lat="30.557874" '="">人信汇服务点</a></li><li><a store_id="553" num="27" lng="114.233496" lat="30.56329" '="">七里庙服务点</a></li></ul><ul><li><a store_id="203" num="4" lng="114.218521" lat="30.595325" '="">古田四路店</a></li><li><a store_id="551" num="25" lng="114.224446" lat="30.624233" '="">园博园服务点</a></li><li><a store_id="584" num="30" lng="114.174287" lat="30.623512" '="">宜家购物中心服务点</a></li><li><a store_id="585" num="31" lng="114.228429" lat="30.593122" '="">南国大武汉家装服务点</a></li><li><a store_id="587" num="33" lng="114.195777" lat="30.595385" '="">古田桥陈家墩服务点</a></li></ul><ul><li><a store_id="223" num="5" lng="114.57158" lat="30.66198" '="">新洲阳逻店</a></li><li><a store_id="302" num="10" lng="114.809957" lat="30.836516" '="">新洲齐安大道店</a></li></ul><ul><li><a store_id="225" num="7" lng="114.325427" lat="30.707439" '="">黄陂汉口北店</a></li><li><a store_id="229" num="8" lng="114.37635" lat="30.86983" '="">黄陂前川欣城店</a></li></ul><ul><li><a store_id="298" num="9" lng="114.32499" lat="30.631003" '="">二七轻轨站店</a></li><li><a store_id="586" num="32" lng="114.304765" lat="30.620982" '="">解放公园店</a></li><li><a store_id="590" num="34" lng="114.314532" lat="30.657988" '="">汉口城市广场服务点</a></li><li><a store_id="591" num="35" lng="114.327657" lat="30.649561" '="">百步亭花园路服务点</a></li></ul><ul><li><a store_id="387" num="12" lng="114.387754" lat="30.62349" '="">青山友谊大道店</a></li><li><a store_id="487" num="17" lng="114.431271" lat="30.613033" '="">武汉火车站服务点</a></li><li><a store_id="573" num="28" lng="114.409531" lat="30.64489" '="">青山百货商场服务点</a></li><li><a store_id="574" num="29" lng="114.367025" lat="30.626733" '="">奥山世纪城服务点</a></li></ul><ul><li><a store_id="544" num="24" lng="114.24875" lat="30.65718" '="">金银潭地铁站送车点</a></li></ul></div>
+                <div class="store"><ul></ul></div>
                 <!--门店信息-->
                 <div class="storeInfo">
                     <div>
@@ -323,6 +322,9 @@
         <a>SUV</a>
         <a>6至15座商务车</a>
         <a>其他</a>
+        @foreach($type as $v)
+        <a>{{ $v['type_name'] }}</a>
+        @endforeach
     </div>
     <div class="brand" num="0">
         <b>品牌：</b>
@@ -546,102 +548,68 @@
         </div>
     </div>
 </div>
-<!--电话和QQ-->
-<div class="contact">
-    <div class="qq">
-        <img src="../resources/assets/home/public/QQ.png" onclick="window.location.href='tencent://message/?uin=2054275242&amp;Site=4000600112&amp;Menu=yes'" class="contact_img">
-        <p>点击联系在线客服</p>
-        <div class="contact_text">在线客服</div>
-    </div>
-    <div class="phone">
-        <img src="../resources/assets/home/public/lxb.png" class="contact_img">
-        <div class="contact_text">免费电话</div>
-        <h4>免费电话咨询</h4>
-        <input id="telInput" placeholder="请输入您的电话号码" type="text">
-        <input id="callBtn" value="立即免费通话" type="button">
-    </div>
-    <div class="explain">
-        <div class="explain_arrow"></div>
-        <img src="../resources/assets/home/public/explain_img1.png" class="explain_img1">
-        <h1>
-            手机请直接输入<br>
-            如 1861234XXXX
-        </h1>
-        <br>
-        <img src="../resources/assets/home/public/explain_img2.png" class="explain_img2">
-        <h2>
-            座机前加拨区号<br>
-            如 0271234XXXX
-        </h2>
-        <h3>
-            输入您的电话号码，点击通话，稍后您将接到我们的电话，该通话对您<b>完全免费</b>，请放心接听！
-        </h3>
-    </div>
-</div>
-
-
 
 <script>
 //车辆预订
-    function carBook(n) {
-        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").html())) {
-            var cus = JSON.parse(jQuery.cookie("login_user"));
-            var li = $(".carList>li").eq(n);
-            var out_id = $("#takeStore").find(".show a").attr("store_id"),
-                out_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html(),
-                in_id = $("#returnStore").find(".show a").attr("store_id"),
-                in_time = $("#endDate").html() + " " + $("#returnHour").find(".show a").html(),
-                car_id = li.attr("car_id"),
-                offers_id = [];
-
-            var nowTime = new Date(), outTime, inTime;
-            nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
-            outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
-            inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
-
-            //春节等特殊时期 租期限制！
-            if (checked_price_list(CarList[n].prices, outTime, inTime)) {
-                //判断时间
-                if (date_subtract(nowTime, outTime).times >= 0) {//取车时间 须 大于 当前时间
-                    //活动信息
-                    for (var i = 0; i < li.find(".discountName div").length; i++) {
-                        offers_id.push(li.find(".discountName div").eq(i).attr("dis_id"));
-                    }
-                    $("#start_shop_id").val(out_id);
-                    $("#stop_shop_id").val(in_id);
-                    $("#start_date").val(out_time);
-                    $("#stop_date").val(in_time);
-                    $("#class_id").val(car_id);
-                    $("#offersid").val(offers_id);
-
-                    localStorage.setItem("page_jump", 503);
-
-                    localStorage.setItem("start_shop_id", out_id);
-                    localStorage.setItem("stop_shop_id", in_id);
-                    localStorage.setItem("start_date", out_time);
-                    localStorage.setItem("stop_date", in_time);
-                    localStorage.setItem("class_id", car_id);
-                    localStorage.setItem("offersid", offers_id);
-
-                    if (cus && cus.customer_id > 0) {
-                        $("#order_fm").submit();
-                    } else {
-                        layer.open({
-                            type: 2,
-                            scrollbar: false,
-                            area: ['346px', '368px'],
-                            shade: [0.8, '#000'],
-                            title: false,
-                            content: ['/Home/DialogLogin', 'no']
-                        });
-                    }
-                }
-                else {
-                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
-                }
-            }
-        }
-    }
+//    function carBook(n) {
+//        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").html())) {
+//            var cus = JSON.parse(jQuery.cookie("login_user"));
+//            var li = $(".carList>li").eq(n);
+//            var out_id = $("#takeStore").find(".show a").attr("store_id"),
+//                out_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html(),
+//                in_id = $("#returnStore").find(".show a").attr("store_id"),
+//                in_time = $("#endDate").html() + " " + $("#returnHour").find(".show a").html(),
+//                car_id = li.attr("car_id"),
+//                offers_id = [];
+//
+//            var nowTime = new Date(), outTime, inTime;
+//            nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
+//            outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
+//            inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
+//
+//            //春节等特殊时期 租期限制！
+//            if (checked_price_list(CarList[n].prices, outTime, inTime)) {
+//                //判断时间
+//                if (date_subtract(nowTime, outTime).times >= 0) {//取车时间 须 大于 当前时间
+//                    //活动信息
+//                    for (var i = 0; i < li.find(".discountName div").length; i++) {
+//                        offers_id.push(li.find(".discountName div").eq(i).attr("dis_id"));
+//                    }
+//                    $("#start_shop_id").val(out_id);
+//                    $("#stop_shop_id").val(in_id);
+//                    $("#start_date").val(out_time);
+//                    $("#stop_date").val(in_time);
+//                    $("#class_id").val(car_id);
+//                    $("#offersid").val(offers_id);
+//
+//                    localStorage.setItem("page_jump", 503);
+//
+//                    localStorage.setItem("start_shop_id", out_id);
+//                    localStorage.setItem("stop_shop_id", in_id);
+//                    localStorage.setItem("start_date", out_time);
+//                    localStorage.setItem("stop_date", in_time);
+//                    localStorage.setItem("class_id", car_id);
+//                    localStorage.setItem("offersid", offers_id);
+//
+//                    if (cus && cus.customer_id > 0) {
+//                        $("#order_fm").submit();
+//                    } else {
+//                        layer.open({
+//                            type: 2,
+//                            scrollbar: false,
+//                            area: ['346px', '368px'],
+//                            shade: [0.8, '#000'],
+//                            title: false,
+//                            content: ['/Home/DialogLogin', 'no']
+//                        });
+//                    }
+//                }
+//                else {
+//                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
+//                }
+//            }
+//        }
+//    }
 
     function _callback()
     {
@@ -663,7 +631,8 @@
         autoclass_list_.to_date = stop_time;//还车时间
         var in_id = $("#returnStore .show a").attr("store_id");
 
-        if (offer_list_) {
+//        if (offer_list_) {
+        if (false) {
             for (var i = 0; i < autoclass_list_.length; i++) {
                 var offers_amount = 0;
                 var enabled_offers = get_enabled_offers(offer_list_, autoclass_list_[i].ac.class_id, start_time, stop_time, in_id, total, type, grade, autoclass_list_[i].prices);

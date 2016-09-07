@@ -14,10 +14,9 @@ class IndexController extends Controller
     }
     //短租
     public function driving(){
-        return view('home.index.short_driving');
+        $type = DB::table('car_type')->get();
+        return view('home.index.short_driving', compact('type'));
     }
-
-
 
     //长租
     public function lease_car(){
