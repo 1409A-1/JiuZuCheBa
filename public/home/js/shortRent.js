@@ -1512,6 +1512,7 @@ function add_car(car_list, start, end) {
             rent = 1,//判断是否可租
             basic = car_list[i].standard_price ? car_list[i].standard_price.basic_insurance : 0,//基本保险
             car_id = car_list[i].type_name;//车型id
+            car_info_id = car_list[i].car_id;//车型id
 
         if (rent == 0) {
             if (car_id == carID) {
@@ -1521,9 +1522,9 @@ function add_car(car_list, start, end) {
             }
         } else {
             if (car_id == carID) {
-                add_html += "<li car_id='" + car_id + "' class='active'>";
+                add_html += "<li car_info_id='" + car_info_id + "' car_id='" + car_id + "' class='active'>";
             } else {
-                add_html += "<li car_id='" + car_id + "'>";
+                add_html += "<li car_info_id='" + car_info_id + "' car_id='" + car_id + "'>";
             }
         }
 
