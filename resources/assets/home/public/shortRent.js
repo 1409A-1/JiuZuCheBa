@@ -1500,12 +1500,12 @@ function add_car(car_list, start, end) {
         //    basic = car_list[i].standard_price ? car_list[i].standard_price.basic_insurance : 0,//基本保险
         //    car_id = car_list[i].ac.class_id,//车型id
         //    offers = car_list[i].offers_name;//可参与的活动
-        var brand = car_list[i].brand_name,//品牌
+        var brand = car_list[i].car_name,//品牌
             honda = Math.floor(Math.random()*10) + '型',//型号
-            con = Math.floor(Math.random()*10),//厢数
-            vol = Math.floor(Math.random()*10) + 'L',//排量
+            con = 2,//厢数
+            vol = '1.6L',//排量
             gear = '手动挡',//手自动
-            seat_count =  Math.floor(Math.random()*10),//乘坐人数
+            seat_count =  5,//乘坐人数
             type = car_list[i].type_name,// 车辆类型
             img = car_list[i].car_img,//图片
             deposit = car_list[i].standard_price ? car_list[i].standard_price.deposit : 0,//预授权
@@ -1768,6 +1768,17 @@ function Filter(n1, n2, n3) {
     var carList = $(".carList>li"),
         TYPE = ["0", "紧凑型轿车", "舒适型轿车", "商务型轿车", "豪华型轿车", "SUV", "6至15座商务车", "其他"],
         BRAND = brand_List;
+
+    //$.post(getCarTypeList, {"_token": _token}, function(msg){
+    //    var TYPE = ["0"];
+    //    for (var k = 0; k <  msg.length; k++) {
+    //        alert(msg[k].type_name);
+    //        TYPE.push(msg[k].type_name);
+    //    }
+    //    TYPE.push("其他");
+    //    return TYPE;
+    //}, 'json');
+
     carList.show();
     for (var i = 0; i < carList.length; i++) {
         var car = carList.eq(i),

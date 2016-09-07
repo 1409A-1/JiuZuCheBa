@@ -217,7 +217,7 @@
         取车时间
         <div class="shortDate" id="takeDate">
             <i></i>
-            <a id="startDate">2016-09-01</a>
+            <a id="startDate"></a>
             <div class="Arrow"></div>
             <span id="takeWeek">明天</span>
         </div>
@@ -296,7 +296,7 @@
         还车时间
         <div class="shortDate" id="returnDate">
             <i></i>
-            <a id="endDate">2016-09-03</a>
+            <a id="endDate"></a>
             <div class="Arrow"></div>
             <span id="duration">2天</span>
         </div>
@@ -315,16 +315,10 @@
     <div class="type" num="0">
         <b>类型：</b>
         <a class="active">全部</a>
-        <a>紧凑型轿车</a>
-        <a>舒适型轿车</a>
-        <a>商务型轿车</a>
-        <a>豪华型轿车</a>
-        <a>SUV</a>
-        <a>6至15座商务车</a>
-        <a>其他</a>
         @foreach($type as $v)
         <a>{{ $v['type_name'] }}</a>
         @endforeach
+        <a>其他</a>
     </div>
     <div class="brand" num="0">
         <b>品牌：</b>
