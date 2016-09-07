@@ -1,112 +1,4 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="../resources/assets/home/public/b.js" charset="utf-8"></script><script src="../resources/assets/home/public/lxb.js" charset="utf-8"></script><script src="../resources/assets/home/public/v.htm" charset="utf-8"></script>
-    <meta charset="UTF-8">
-        <title>大方租车—中国互联网租车领跑者,全国连锁.神速预订,48元起！</title>
-        <meta name="description" content="网上租车、手机租车就找大方租车！门店遍布全国,专业汽车租赁,连锁标准化,可靠无忧.新会员首日0租金!可提前30天预订租车,微信预订更便捷!租车热线400-0600-112">
-        <meta name="keywords" content="租车，租车网，租车公司，武汉租车，武汉租车网，武汉租车公司，长沙租车，郑州租车">
-    <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/all.css">
-    <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/index.css">
-    <link type="text/css" rel="stylesheet" href="../resources/assets/home/public/calendar.css">
-    <script src="../resources/assets/home/public/hm.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/jquery-1.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/api"></script><script type="text/javascript" src="../resources/assets/home/public/getscript"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/ApiConfig.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/layer.js"></script><link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/public/layer.css" rel="stylesheet">
-    <script type="text/javascript" src="../resources/assets/home/public/jquery.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/dateRange.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/dateTools.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/all.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/public/index.js"></script>
-    <script>
-        var rh='';
-        function IsPC() {
-            var userAgentInfo = navigator.userAgent;
-            var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
-            var flag = true;
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
-            }
-            return flag;
-        }
-        if (rh != 'pc') {
-            if (!IsPC())
-                location.href = "http://m.dafang24.com";
-        }
-    </script>
-<script src="../resources/assets/home/public/bsl.js" charset="UTF-8" type="text/javascript"></script>
-<script src="../resources/assets/home/public/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
-<script src="../resources/assets/home/public/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
-<link href="../resources/assets/home/public/main.css" type="text/css" rel="stylesheet"><link href="../resources/assets/home/public/fix.css" type="text/css" rel="stylesheet">
-<body>
-    <!--头部-->
-<ins id="qiao-wrap">
-    <ins style="position: fixed; bottom: 0px;" class="qiao-flash-storage" id="qiao-flash-storage">
-        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="FlashLocalStorage" align="middle" height="5" width="5">
-            <param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="movie" value="http://webim.qiao.baidu.com/f/pool/swf/local_storage.swf">
-            <embed wmode="transparent" allowscriptaccess="always" src="../resources/assets/home/public/local_storage.swf" name="FlashLocalStorage" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" height="5" width="5">
-        </object></ins><ins style="visibility: hidden; display: none;" class="qiao-invite-wrap" id="qiao-invite-wrap"><ins class="qiao-invite-decoration"></ins><ins style="visibility: hidden;" class="qiao-invite-text"><p style="font-size:12px;font-family:宋体;font-color:#000000;">欢迎您，有什么可以帮助您的么？</p>
-        </ins><ins class="qiao-invite-accept">现在咨询</ins><a class="qiao-invite-reject">稍后再说</a><a class="qiao-invite-close"></a><ins class="qiao-invite-form"><ins class="qiao-invite-form-inner"><textarea placeholder="您可直接在这里和我们联系！" class="qiao-invite-input"></textarea><a class="qiao-invite-send">发送</a></ins></ins></ins><ins style="visibility: hidden; display: none;" class="qiao-mess-wrap" id="qiao-mess-wrap"><ins class="qiao-mess-container" id="qiao-mess-container"><ins class="qiao-mess-head" id="qiao-mess-head"><ins id="qiao-mess-head-text" class="qiao-mess-head-text"></ins><a id="qiao-mess-head-close" data-status="max" class="qiao-mess-head-close"></a></ins><ins class="qiao-mess-body" id="qiao-mess-body"><iframe src="../resources/assets/home/public/a.htm" style="display: none;" name="qiao-mess-iframe" id="qiao-mess-iframe"></iframe><form accept-charset="utf-8" action="http://qiao.baidu.com/v3/?module=default&amp;controller=index&amp;action=doMess&amp;siteid=6567291&amp;page_id=&amp;ucid=2941205" target="qiao-mess-iframe" method="post" class="qiao-mess-form qiao-mess-clearfix"><ins class="qiao-mess-clearfix"><ins class="qiao-mess-clearfix qiao-mess-item-mess"><ins style="display:none">留言内容</ins><textarea name="bd_bp_messText" class="" placeholder="请在此输入留言内容，我们会尽快与您联系。"></textarea><ins class="qiao-mess-star">*</ins></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">姓名<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messName" class="qiao-mess-item-body" placeholder="最多100个字符"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">电话<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messPhone" class="qiao-mess-item-body" placeholder="请输入您的电话号码"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">地址<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messAddress" class="qiao-mess-item-body" placeholder="最多100个字符"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">邮箱<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messEmail" class="qiao-mess-item-body" placeholder="请输入合法邮箱名"></ins></ins><input style="display:none" value="大方租车—中国互联网租车领跑者,全国连锁.神速预订,48元起！" name="bd_bp_title" type="hidden"><input style="display:none" value="https://www.baidu.com/link?url=rBH8duhEszxR6WomeRnDLFrl4bnR8jhj-C2noO_xI2p_W5tZzyGs2rBgLdMEsVLj&amp;wd=&amp;eqid=e84d05c40006e7ee0000000257c61d1c" name="bd_bp_referer" type="hidden"><input style="display:none" value="1472601430611" name="bd_bp_tick" type="hidden"><input style="display:none" value="" name="bd_bp_bid" type="hidden"></form></ins><ins class="qiao-mess-foot" id="qiao-mess-foot"><a id="qiao-mess-foot-send-btn" class="qiao-mess-foot-send-btn">发送</a><ins class="qiao-mess-foot-logo"></ins></ins></ins></ins></ins><div class="top">
-        <a id="ibangkf" href="http://www.ibangkf.com">客服系统</a>
-        <script language="javascript" src="http://c.ibangkf.com/i/c-hhyhhy.js"></script>
-    <div class="top_box">
-        <a href="" rel="nofollow">中国互联网连锁租车品牌</a>
-        <ul class="top_menu">
-            <li class="top_user">
-                @if(empty(Session::get('user_name')))
-                    <a href="login_reg" rel="nofollw">注册</a>
-                    <a href="login" rel="nofollw">登陆</a>
-                @else
-                    欢迎 <span style="color:#ff0000"><?php echo Session::get('user_name')?></span>
-                    <a href="" rel="nofollow">订单信息</a>
-                    <a href="{{URL('user_info')}}" rel="nofollow">账户管理</a>
-                    <a href="login_out" rel="nofollow">退出</a>
-                @endif
-                {{--<div class="no_users">--}}
-                    {{--<a href="login_reg" rel="nofollow">注册</a>--}}
-                    {{--<a href="login" rel="nofollow">登录</a>--}}
-                {{--</div>--}}
-                {{--<div class="yes_user">--}}
-                    {{--<a href="http://www.dafang24.com/usercenter/myorder" rel="nofollow">我的大方</a>--}}
-                    {{--<div class="arrow"><div></div></div>--}}
-                    {{--<div class="userInfo">--}}
-                        {{--<a href="http://www.dafang24.com/usercenter/ordermanager" rel="nofollow">订单管理</a>--}}
-                        {{--<a href="http://www.dafang24.com/usercenter/myinfo" rel="nofollow">账户管理</a>--}}
-                        {{--<a class="exitLogin" onclick="exit()">退出</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            </li>
-            <li class="top_mobile">
-                <a href="http://app.dafang24.com/" target="_blank" rel="nofollow">
-                    <i class="icon icon_phone"></i>
-                    手机预订
-                    <div class="QR_code">
-                        <div class="QR_code_caret"></div>
-                        <div class="QR_code_img"><img src="../resources/assets/home/public/code.png"></div>
-                        <div class="QR_code_text">扫一扫，即刻体验</div>
-                    </div>
-                </a>
-            </li>
-            <li class="top_phone">400-060-0112</li>
-        </ul>
-    </div>
-</div>
-<!--菜单-->
-<div class="menu">
-    <div>
-        <i class="icon icon_logo"></i>
-        <ul class="menu_box">
-            <li class=" on_menu"><a href="home">首页</a></li>
-            <li class=""><a href="driving">短租自驾</a></li>
-            <li class=""><a href="lease_car">长租服务</a></li>
-            <li class=""><a href="e_rent_car">企业租车</a></li>
-            <li class=""><a href="http://usedcar.dafang24.com/" target="_blank">以租代购</a></li>
-            <li class=""><a href="http://www.dafang24.com/home/citymap">门店查询</a></li>
-            <li class=""><a href="pre_activity">优惠活动</a></li>
-            <li class="" id="last_menu"><a href="attract" target="_blank">招商加盟</a></li>
-        </ul>
-    </div>
-</div>
+@include('common.home_header')
 <script>
     var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
     jQuery(".menu_box li")[0].className = " on_menu";
@@ -117,15 +9,6 @@
         }
     })
 </script>
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?08e7d1515718bb729aa25f12bfbcd0d3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
 
 <!--预定框-->
 <div class="bookBox noCopy">
@@ -135,7 +18,7 @@
                 自驾短租<a>(1-29天)</a>
             </div>
             <div class="longRent">
-                优惠套餐<img src="../resources/assets/home/public/hot.gif">
+                优惠套餐<img src="home/images/hot.gif">
             </div>
         </div>
         <div class="bookBody">
@@ -201,7 +84,7 @@
                                     <p class="storeWay"></p>
                                 </div>
                                 <a class="toMap">
-                                    <img src="../resources/assets/home/public/toMap.png"><br>
+                                    <img src="home/images/toMap.png"><br>
                                     查看位置
                                 </a>
                             </div>
@@ -309,7 +192,7 @@
                     </div>
                 </div>
 
-                
+
                 <form id="fm" method="post" action="/Home/doom" onsubmit="return check();">
                     <input id="take_id" name="take_id" type="hidden">
                     <input id="week" name="takeWeek" type="hidden">
@@ -371,10 +254,10 @@
     <!--图片-->
     <div class="bd">
         <ul class="img">
-                <li><a href="http://huodong2.dafang24.com/" style="background:url(../resources/assets/home/public/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
-                <li><a href="http://huodong2.dafang24.com/" style="background:url(../resources/assets/home/public/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
-                <li><a href="http://huodong2.dafang24.com/" style="background:url(../resources/assets/home/public/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
-                <li><a href="http://huodong2.dafang24.com/" style="background:url(../resources/assets/home/public/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
         </ul>
     </div>
     <!--索引-->
@@ -440,19 +323,19 @@
 
                             <li>
                             <a href="http://www.dafang24.com/home/newsdetail/93" target="_blank">
-                            <img src="../resources/assets/home/public/20160122055927177.jpg">
+                            <img src="home/images/20160122055927177.jpg">
                             <div>早订更省钱，提前预订享特价！</div>
                             </a>
                             </li>
                             <li>
                             <a href="http://phone.dafang24.com/" target="_blank">
-                            <img src="../resources/assets/home/public/20160118080407266.jpg">
+                            <img src="home/images/20160118080407266.jpg">
                             <div>微信下单立减10元</div>
                             </a>
                             </li>
                             <li class="active">
                             <a href="http://www.dafang24.com/home/newsdetail/1533" target="_blank">
-                            <img src="../resources/assets/home/public/20160824094140057.jpg">
+                            <img src="home/images/20160824094140057.jpg">
                             <div>节假日不涨价！长租最划算！</div>
                             </a>
                             </li>
@@ -463,8 +346,8 @@
         <div class="around">
             <a class="o_tit">附近门店</a>
             <div class="aroundBox oBox2">
-                <div style="overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;" id="map"><div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: grab;"><div style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; width: 436px; height: 269px;" class="BMap_mask"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;"><label style="position: absolute; -moz-user-select: none; display: none; cursor: inherit; background-color: rgb(190, 190, 190); border: 1px solid rgb(190, 190, 190); padding: 1px; white-space: nowrap; font: 12px arial,simsun,sans-serif; z-index: -20000; color: rgb(190, 190, 190);" unselectable="on" class="BMapLabel">shadow</label></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 201;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"></div></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;"><div style="position: absolute; overflow: visible; z-index: -100; left: 218px; top: 135px; display: block;"><img src="../resources/assets/home/public/a.png" style="-moz-user-select: none; position: absolute; border: medium none; width: 256px; height: 256px; left: 0px; top: 0px; max-width: none; opacity: 1;"><img src="../resources/assets/home/public/a_003.png" style="-moz-user-select: none; position: absolute; border: medium none; width: 256px; height: 256px; left: -256px; top: 0px; max-width: none; opacity: 1;"><img src="../resources/assets/home/public/a_004.png" style="-moz-user-select: none; position: absolute; border: medium none; width: 256px; height: 256px; left: 0px; top: -256px; max-width: none; opacity: 1;"><img src="../resources/assets/home/public/a_002.png" style="-moz-user-select: none; position: absolute; border: medium none; width: 256px; height: 256px; left: -256px; top: -256px; max-width: none; opacity: 1;"></div></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 2; display: none;"><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 0; display: none;"></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 10; display: none;"></div></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 3;"></div></div><div title="退出全景" style="z-index: 1201; display: none;" class="pano_close"></div><a title="退出室内景" style="z-index: 1201; display: none;" class="pano_pc_indoor_exit"><span style="float:right;margin-right:12px;">出口</span></a><div class=" anchorBL" style="height: 32px; position: absolute; z-index: 30; -moz-user-select: none; bottom: 0px; right: auto; top: auto; left: 1px;"><a style="outline: medium none;" href="http://map.baidu.com/?sr=1" target="_blank" title="到百度地图查看此区域"><img style="border:none;width:77px;height:32px" src="../resources/assets/home/public/copyright_logo.png"></a></div><div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:-moz-grab"><div class="BMap_zoomer" style="top:0;left:0;"></div><div class="BMap_zoomer" style="top:0;right:0;"></div><div class="BMap_zoomer" style="bottom:0;left:0;"></div><div class="BMap_zoomer" style="bottom:0;right:0;"></div></div><div style="width: 22px; height: 42px; bottom: auto; right: 10px; top: 10px; left: auto; position: absolute; z-index: 1100; -moz-user-select: none;" class=" BMap_stdMpCtrl BMap_stdMpType3 BMap_noprint anchorTR" unselectable="on"><div class="BMap_stdMpPan"><div class="BMap_button BMap_panN" title="向上平移"></div><div class="BMap_button BMap_panW" title="向左平移"></div><div class="BMap_button BMap_panE" title="向右平移"></div><div class="BMap_button BMap_panS" title="向下平移"></div><div class="BMap_stdMpPanBg BMap_smcbg"></div></div><div style="height: 42px; width: 22px;" class="BMap_stdMpZoom"><div style="left: 0px;" class="BMap_button BMap_stdMpZoomIn" title="放大一级"><div class="BMap_smcbg"></div></div><div style="top: 21px; left: 0px;" class="BMap_button BMap_stdMpZoomOut" title="缩小一级"><div class="BMap_smcbg"></div></div><div style="height: 0px;" class="BMap_stdMpSlider"><div style="height: 0px;" class="BMap_stdMpSliderBgTop"><div class="BMap_smcbg"></div></div><div class="BMap_stdMpSliderBgBot"></div><div class="BMap_stdMpSliderMask" title="放置到此级别"></div><div style="cursor: grab;" class="BMap_stdMpSliderBar" title="拖动缩放"><div class="BMap_smcbg"></div></div></div><div class="BMap_zlHolder"><div class="BMap_zlSt"><div class="BMap_smcbg"></div></div><div class="BMap_zlCity"><div class="BMap_smcbg"></div></div><div class="BMap_zlProv"><div class="BMap_smcbg"></div></div><div class="BMap_zlCountry"><div class="BMap_smcbg"></div></div></div></div><div class="BMap_stdMpGeolocation" style="position: initial; display: none; margin-top: 43px; margin-left: 10px;"><div class="BMap_geolocationContainer" style="position: initial; width: 24px; height: 24px; overflow: hidden; margin: 0px; box-sizing: border-box;"><div class="BMap_geolocationIconBackground" style="width: 24px; height: 24px; background-image: url(../resources/assets/home/public/navigation-control/geolocation-control/pc/bg-20x20.png); background-size: 20px 20px; background-position: 3px 3px; background-repeat: no-repeat;"><div class="BMap_geolocationIcon" style="position: initial; width: 24px; height: 24px; cursor: pointer; background-image: url('../resources/assets/home/public/navigation-control/geolocation-control/pc/success-10x10.png'); background-size: 10px 10px; background-repeat: no-repeat; background-position: center;"></div></div></div></div></div><div style="cursor: default; white-space: nowrap; -moz-user-select: none; color: black; background: transparent none repeat scroll 0% 0%; font: 11px/15px arial,simsun,sans-serif; bottom: 2px; right: auto; top: auto; left: 81px; position: absolute; z-index: 10;" class=" BMap_cpyCtrl BMap_noprint anchorBL" unselectable="on"><span style="display: inline;" _cid="1"><span style="font-size:11px">© 2016 Baidu&nbsp;- Data © <a target="_blank" href="http://www.navinfo.com/" style="display:inline;">NavInfo</a> &amp; <a target="_blank" href="http://www.cennavi.com.cn/" style="display:inline;">CenNavi</a> &amp; <a target="_blank" href="http://www.365ditu.com/" style="display:inline;">道道通</a></span></span></div></div>
-                <a class="moreStore" href="http://www.dafang24.com/home/citymap">更多门店</a>
+                <div id="map"></div>
+                <a class="moreStore" href="citymap">更多门店</a>
                 <div class="aroundStore">
                     <a>当前城市：<b>北京市</b></a>
                     <ul>
@@ -474,7 +357,7 @@
                         <li></li>
                     </ul>
                 </div>
-        </div>
+            </div>
         </div>
         <!--大方新闻-->
         <div class="news1">
@@ -483,7 +366,7 @@
 
                     <a href="http://www.dafang24.com/Home/NewsDetail/1117" target="_blank">
                     <div class="news1_L">
-                        <img src="../resources/assets/home/public/20160119101501966.jpg">
+                        <img src="home/images/20160119101501966.jpg">
                         <div>大方租车A轮融资新闻发布会</div>
                     </div>
                     </a>
@@ -492,19 +375,19 @@
 
                         <div>
                             <a href="http://www.dafang24.com/home/newsdetail/1278" target="_blank">
-                            <img src="../resources/assets/home/public/20160118074532813.jpg">
+                            <img src="home/images/20160118074532813.jpg">
                             <div> 长江日报</div>
                             </a>
                         </div>
                          <div style="margin: 3px 0">
                             <a href="http://www.dafang24.com/home/newsdetail/1268" target="_blank">
-                            <img src="../resources/assets/home/public/20160118074546907.jpg">
+                            <img src="home/images/20160118074546907.jpg">
                             <div> 第一财经</div>
                             </a>
                         </div>
                         <div>
                             <a href="http://www.dafang24.com/home/newsdetail/1284" target="_blank">
-                            <img src="../resources/assets/home/public/20160118074603970.jpg">
+                            <img src="home/images/20160118074603970.jpg">
                             <div> 中国新闻网</div>
                             </a>
                         </div>
@@ -545,7 +428,7 @@
             <a class="o_tit">大方用户与您分享不同的租车体验</a>
             <div class="experience1Box oBox2">
                 <div class="evaluate1">
-                    <img src="../resources/assets/home/public/comment.jpg">
+                    <img src="home/images/comment.jpg">
                     <div>
                         <h4>致力于成为中国最受欢迎的</h4>
                         <p>
@@ -556,7 +439,7 @@
                     </div>
                 </div>
                 <div class="cityShow">
-                    <img src="../resources/assets/home/public/store.png">
+                    <img src="home/images/store.png">
                 </div>
             </div>
         </div>
@@ -580,107 +463,7 @@
             </ul>
         </div>
         <!--城市列表-->
-        <div class="cityList">
-            <a class="o_tit">租车城市列表</a>
-            <div class="cityListBox">
-                    <a href="http://www.dafang24.com/home/citymap?city_id=420100">武汉租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=430100">长沙租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=410100">郑州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=130100">石家庄租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=610800">榆林租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=130200">唐山租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=140100">太原租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=420900">孝感租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=421100">黄冈租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=421000">荆州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=320900">盐城租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=370100">济南租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=430500">邵阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=411300">南阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=500100">重庆租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=230100">哈尔滨租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=211000">辽阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=370700">潍坊租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=620800">平凉租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=511300">南充租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=610400">咸阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=440900">茂名租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=360800">吉安租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=650100">乌鲁木齐</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=350700">南平租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=430600">岳阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=321200">泰州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=411500">信阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=450100">南宁租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=140500">晋城租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=341500">六安租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=310100">上海租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=321300">宿迁租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=430800">张家界租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=511600">广安租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=510300">自贡租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=140200">大同租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=360200">景德镇租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=410900">濮阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=220200">吉林租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=610900">安康租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=131100">衡水租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=360100">南昌租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=350200">厦门租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=520100">贵阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=422800">恩施租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=320100">南京租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=621100">定西租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=530100">昆明租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=620100">兰州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=370800">济宁租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=350100">福州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=361100">上饶租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=350600">漳州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=510100">成都租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=320500">苏州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=410300">洛阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=320300">徐州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=130800">承德租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=130300">秦皇岛租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=440800">湛江租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=420700">鄂州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=630100">西宁租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=450700">钦州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=522600">凯里租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=460300">澄迈县</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=360900">宜春租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=370200">青岛租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=140700">晋中租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=371500">聊城租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=620500">天水租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=621000">庆阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=222400">延边朝鲜族自治州</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=451000">百色租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=421200">咸宁租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=450900">玉林租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=410500">安阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=130600">保定租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=513400">凉山彝族自治州</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=610700">汉中租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=440500">汕头租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=620600">武威租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=621200">陇南租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=140400">长治租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=460100">海口租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=431000">郴州租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=131000">廊坊租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=430400">衡阳租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=420500">宜昌租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=231000">牡丹江租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=371000">威海租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=654000">伊犁哈萨克自治州</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=652800">巴音郭楞蒙古自治州</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=450300">桂林租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=320200">无锡租车</a>
-                    <a href="http://www.dafang24.com/home/citymap?city_id=340100">合肥租车</a>
-            </div>
-        </div>
+        @include('common.home_city_list')
     </div>
 </div>
 <form id="fmtuijian" method="post" action="/Home/doom">
@@ -690,148 +473,18 @@
    <input id="EndDateTime" name="EndDateTime" type="hidden">
 </form>
 {{--<div class="footTop"></div>--}}
-<!--广告图-->
+{{--<!--广告图-->--}}
 {{--<div style="left: -100%;" class="Advertisement">--}}
     {{--<div>--}}
         {{--<div class="AdvertisementExit"></div>--}}
     {{--</div>--}}
-    {{--<img style="left: 0px;" src="../resources/assets/home/public/advertisement1.png">--}}
+    {{--<img style="left: 0px;" src="home/images/advertisement1.png">--}}
 {{--</div>--}}
-<!--门店地图查看-->
+{{--<!--门店地图查看-->--}}
 {{--<div id="storeMap"></div>--}}
-    <!--底部-->
-<div class="footer">
-    <div class="footerBox">
-        <ul class="f1">
-            <li>
-                <h4>租车预订说明</h4>
-                <a href="http://www.dafang24.com/Home/HelpDetails/1" target="_blank">服务时间</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/2" target="_blank">服务预订</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/3" target="_blank">租车资格</a><br>
-                <a href="http://www.dafang24.com/Home/HelpDetails/5" target="_blank">预定流程</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/6" target="_blank">取还车说明</a>
-            </li>
-            <li>
-                <h4>会员管理</h4>
-                <a href="http://www.dafang24.com/Home/HelpDetails/7" target="_blank">会员章程</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/8" target="_blank">会员细则</a>
-            </li>
-            <li>
-                <h4>紧急事务处理</h4>
-                <a href="http://www.dafang24.com/Home/HelpDetails/9" target="_blank">保险责任</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/18" target="_blank">事故处理</a><br>
-                <a href="http://www.dafang24.com/Home/HelpDetails/19" target="_blank">紧急救援</a>
-            </li>
-            <li>
-                <h4>费用及理赔</h4>
-                <a href="http://www.dafang24.com/Home/HelpDetails/10" target="_blank">费用说明</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/11" target="_blank">理赔说明</a><br>
-                <a href="http://www.dafang24.com/Home/HelpDetails/14" target="_blank">常见问题</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/13" target="_blank">注意事项</a>
-            </li>
-            <li>
-                <h4>帮助中心</h4>
-                <a href="http://www.dafang24.com/Home/HelpDetails/17" target="_blank">联系我们</a>
-                <a href="http://www.dafang24.com/Home/HelpDetails/22" target="_blank">招聘英才</a><br>
-                <a href="http://www.dafang24.com/Home/HelpDetails/35" target="_blank">关于我们</a>
-            </li>
-        </ul>
-        <div class="f2">
-            <div class="f3">
-                <div>
-                    <a href="http://www.dafang24.com/Home/NewsList?t_id=3">新闻资讯</a>
-                    <a href="http://www.dafang24.com/home/appraise">客户评价</a>
-                    <a href="http://www.dafang24.com/Home/NewsList?t_id=43">租车攻略</a>
-                </div>
-                <p>
-                    COPYRIGHT©2011-2016 DAFANG24.COM ALL RIGHTS RESERVED.&nbsp;&nbsp;
-                    武汉大方汽车租赁有限公司&nbsp;&nbsp;
-                    版权所有&nbsp;&nbsp;
-                    鄂ICP备&nbsp;11005157号-3
-                </p>
-            </div>
-            <div class="f4">
-                <i class="icon icon_message"></i>
-                <h1>400 060 0112</h1>
-                <h2>WEB@DAFANG24.COM</h2>
-            </div>
-        </div>
-        <div class="f5">
-            <div class="f6">
-                <span>战略合作伙伴</span>
-                <i class="icon_2 icon2_baidu"></i>
-                <i class="icon_2 icon2_163"></i>
-                <i class="icon_2 icon2_sohu"></i>
-                <i class="icon_2 icon2_58"></i>
-                <i class="icon_2 icon2_sina"></i>
-                <i class="icon_2 icon2_jrtt"></i>
-            </div>
-            <div class="f7">
-                <span>资质证书</span>
-                <i class="icon_2 icon2_kx"></i>
-                <i class="icon_2 icon2_360"></i>
-            </div>
-        </div>
-        <div class="f8">
-            友情链接：
-            <div>
-                    <a href="http://www.fuhai68.com/" target="_blank">黄江二手车</a>
-                    <a href="http://www.weihk.cn/" target="_blank">香港购物</a>
-                    <a href="http://www.kaihuacar.com/" target="_blank">事故车交易网</a>
-                    <a href="http://www.zyczg.com/" target="_blank">专用车中国</a>
-                    <a href="http://travel.ptotour.com/" target="_blank">旅游攻略</a>
-                    <a href="http://www.baicheng.com/" target="_blank">百程旅行网</a>
-                    <a href="http://www.qulv.com/" target="_blank">趣旅网</a>
-                    <a href="http://sh.zyue.com/" target="_blank">上海学车网</a>
-                    <a href="http://www.shiyan.cc/" target="_blank">十堰旅行社</a>
-                    <a href="http://www.huizuche.com/" target="_blank">国际租车</a>
-                    <a href="http://www.cx580.com/" target="_blank">违章代办</a>
-                    <a href="http://jiaxiao.jsyks.com/" target="_blank">驾校考试网</a>
-                    <a href="http://www.023yts.com/" target="_blank">重庆旅行社报价</a>
-                    <a href="http://wuhan.gongjiao.com/" target="_blank">武汉公交</a>
-                    <a href="http://www.hbcct.com.cn/" target="_blank">武汉旅行社</a>
-                    <a href="http://wuhan.cncn.com/" target="_blank">武汉旅游攻略</a>
-                    <a href="http://www.99ly.com.cn/" target="_blank">青年旅行社</a>
-                    <a href="http://www.ganji.com/sunata/" target="_blank">二手索纳塔</a>
-                    <a href="http://www.ganji.com/qida/" target="_blank">二手骐达 </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!--电话和QQ-->
-<div class="contact">
-    <div class="qq">
-        <img src="../resources/assets/home/public/QQ.png" onclick="window.location.href='tencent://message/?uin=2054275242&amp;Site=4000600112&amp;Menu=yes'" class="contact_img">
-        <p>点击联系在线客服</p>
-        <div class="contact_text">在线客服</div>
-    </div>
-    <div class="phone">
-        <img src="../resources/assets/home/public/lxb.png" class="contact_img">
-        <div class="contact_text">免费电话</div>
-        <h4>免费电话咨询</h4>
-        <input id="telInput" placeholder="请输入您的电话号码" type="text">
-        <input id="callBtn" value="立即免费通话" type="button">
-    </div>
-    <div class="explain">
-        <div class="explain_arrow"></div>
-        <img src="../resources/assets/home/public/explain_img1.png" class="explain_img1">
-        <h1>
-            手机请直接输入<br>
-            如 1861234XXXX
-        </h1>
-        <br>
-        <img src="../resources/assets/home/public/explain_img2.png" class="explain_img2">
-        <h2>
-            座机前加拨区号<br>
-            如 0271234XXXX
-        </h2>
-        <h3>
-            输入您的电话号码，点击通话，稍后您将接到我们的电话，该通话对您<b>完全免费</b>，请放心接听！
-        </h3>
-    </div>
-</div>
 
-
+<!--底部-->
+@include('common.home_footer')
 
 <script>
     //预订按钮
@@ -888,4 +541,4 @@
        $("#begin_date").val(begin_date);
        $("#end_date").val(end_date);
     }
-</script><div style="z-index: 9999; display: none;" id="calendar_1472601429431" class="ta_calendar ta_calendar2 cf"><div class="ta_calendar_cont cf" id="dateRangePicker_1472601429431"><table class="dateRangeDateTable"><caption>2016年8月</caption><thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead><tbody><tr><td style="text-align: center;" colspan="7"><a href="javascript:void(0);" id="dateRangePreMonth_1472601429431"><i class="i_pre"></i></a></td></tr><tr><td class="ta_dateRangeGray">31</td><td class="ta_dateRangeGray">1</td><td class="ta_dateRangeGray">2</td><td class="ta_dateRangeGray">3</td><td class="ta_dateRangeGray">4</td><td class="ta_dateRangeGray">5</td><td class="ta_dateRangeGray">6</td></tr><tr><td class="ta_dateRangeGray">7</td><td class="ta_dateRangeGray">8</td><td class="ta_dateRangeGray">9</td><td class="ta_dateRangeGray">10</td><td class="ta_dateRangeGray">11</td><td class="ta_dateRangeGray">12</td><td class="ta_dateRangeGray">13</td></tr><tr><td class="ta_dateRangeGray">14</td><td class="ta_dateRangeGray">15</td><td class="ta_dateRangeGray">16</td><td class="ta_dateRangeGray">17</td><td class="ta_dateRangeGray">18</td><td class="ta_dateRangeGray">19</td><td class="ta_dateRangeGray">20</td></tr><tr><td class="ta_dateRangeGray">21</td><td class="ta_dateRangeGray">22</td><td class="ta_dateRangeGray">23</td><td class="ta_dateRangeGray">24</td><td class="ta_dateRangeGray">25</td><td class="ta_dateRangeGray">26</td><td class="ta_dateRangeGray">27</td></tr><tr><td class="ta_dateRangeGray">28</td><td class="ta_dateRangeGray">29</td><td class="ta_dateRangeGray">30</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-8-31" class="ta_dateRangeToday">31</td><td class="ta_dateRangeGray">1</td><td class="ta_dateRangeGray">2</td><td class="ta_dateRangeGray">3</td></tr></tbody></table><table class="dateRangeDateTable"><caption>2016年9月</caption><thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead><tbody><tr><td style="text-align: center;" colspan="7"><a href="javascript:void(0);" id="dateRangeNextMonth_1472601429431"><i class="i_next"></i></a></td></tr><tr><td class="ta_dateRangeGray">28</td><td class="ta_dateRangeGray">29</td><td class="ta_dateRangeGray">30</td><td class="ta_dateRangeGray">31</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-1">1</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-2">2</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-3">3</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-4">4</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-5">5</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-6">6</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-7">7</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-8">8</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-9">9</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-10">10</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-11">11</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-12">12</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-13">13</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-14">14</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-15">15</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-16">16</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-17">17</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-18">18</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-19">19</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-20">20</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-21">21</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-22">22</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-23">23</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-24">24</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-25">25</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-26">26</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-27">27</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-28">28</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-29">29</td><td style="cursor: pointer;" id="calendar_1472601429431_2016-9-30">30</td><td class="ta_dateRangeGray">1</td></tr></tbody></table></div><div class="ta_calendar_footer cf" style="display:none"><div class="frm_msg"><div id="dateRangeDiv_1472601429431"><input style="background-repeat: repeat;" class="ta_ipt_text_s ta_dateRangeSelected" name="startDate_1472601429431" id="startDate_1472601429431" readonly="readonly" type="text"><span class="joinLine"> - </span><input class="ta_ipt_text_s" name="endDate_1472601429431" id="endDate_1472601429431" readonly="readonly" type="text"><br></div><div style="display: none;" id="dateRangeCompareDiv_1472601429431"><input disabled="disabled" class="ta_ipt_text_s" name="startCompareDate_1472601429431" id="startCompareDate_1472601429431" readonly="readonly" type="text"><span class="joinLine"> - </span><input disabled="disabled" class="ta_ipt_text_s" name="endCompareDate_1472601429431" id="endCompareDate_1472601429431" readonly="readonly" type="text"></div></div><div class="frm_btn"><input class="ta_btn ta_btn_primary" name="submit_1472601429431" id="submit_1472601429431" value="确定" type="button"><input class="ta_btn" id="closeBtn_1472601429431" value="取消" type="button"></div></div></div><input id="needCompare" name="needCompare" value="0" style="display:none;" type="checkbox"><div style="z-index: 9999; display: none;" id="calendar_1472601429456" class="ta_calendar ta_calendar2 cf"><div class="ta_calendar_cont cf" id="dateRangePicker_1472601429456"><table class="dateRangeDateTable"><caption>2016年8月</caption><thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead><tbody><tr><td style="text-align: center;" colspan="7"><a href="javascript:void(0);" id="dateRangePreMonth_1472601429456"><i class="i_pre"></i></a></td></tr><tr><td class="ta_dateRangeGray">31</td><td class="ta_dateRangeGray">1</td><td class="ta_dateRangeGray">2</td><td class="ta_dateRangeGray">3</td><td class="ta_dateRangeGray">4</td><td class="ta_dateRangeGray">5</td><td class="ta_dateRangeGray">6</td></tr><tr><td class="ta_dateRangeGray">7</td><td class="ta_dateRangeGray">8</td><td class="ta_dateRangeGray">9</td><td class="ta_dateRangeGray">10</td><td class="ta_dateRangeGray">11</td><td class="ta_dateRangeGray">12</td><td class="ta_dateRangeGray">13</td></tr><tr><td class="ta_dateRangeGray">14</td><td class="ta_dateRangeGray">15</td><td class="ta_dateRangeGray">16</td><td class="ta_dateRangeGray">17</td><td class="ta_dateRangeGray">18</td><td class="ta_dateRangeGray">19</td><td class="ta_dateRangeGray">20</td></tr><tr><td class="ta_dateRangeGray">21</td><td class="ta_dateRangeGray">22</td><td class="ta_dateRangeGray">23</td><td class="ta_dateRangeGray">24</td><td class="ta_dateRangeGray">25</td><td class="ta_dateRangeGray">26</td><td class="ta_dateRangeGray">27</td></tr><tr><td class="ta_dateRangeGray">28</td><td class="ta_dateRangeGray">29</td><td class="ta_dateRangeGray">30</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-8-31" class="ta_dateRangeToday">31</td><td class="ta_dateRangeGray">1</td><td class="ta_dateRangeGray">2</td><td class="ta_dateRangeGray">3</td></tr></tbody></table><table class="dateRangeDateTable"><caption>2016年9月</caption><thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead><tbody><tr><td style="text-align: center;" colspan="7"><a href="javascript:void(0);" id="dateRangeNextMonth_1472601429456"><i class="i_next"></i></a></td></tr><tr><td class="ta_dateRangeGray">28</td><td class="ta_dateRangeGray">29</td><td class="ta_dateRangeGray">30</td><td class="ta_dateRangeGray">31</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-1">1</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-2">2</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-3">3</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-4">4</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-5">5</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-6">6</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-7">7</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-8">8</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-9">9</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-10">10</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-11">11</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-12">12</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-13">13</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-14">14</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-15">15</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-16">16</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-17">17</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-18">18</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-19">19</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-20">20</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-21">21</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-22">22</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-23">23</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-24">24</td></tr><tr><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-25">25</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-26">26</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-27">27</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-28">28</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-29">29</td><td style="cursor: pointer;" id="calendar_1472601429456_2016-9-30">30</td><td class="ta_dateRangeGray">1</td></tr></tbody></table></div><div class="ta_calendar_footer cf" style="display:none"><div class="frm_msg"><div id="dateRangeDiv_1472601429456"><input style="background-repeat: repeat;" class="ta_ipt_text_s ta_dateRangeSelected" name="startDate_1472601429456" id="startDate_1472601429456" readonly="readonly" type="text"><span class="joinLine"> - </span><input class="ta_ipt_text_s" name="endDate_1472601429456" id="endDate_1472601429456" readonly="readonly" type="text"><br></div><div style="display: none;" id="dateRangeCompareDiv_1472601429456"><input disabled="disabled" class="ta_ipt_text_s" name="startCompareDate_1472601429456" id="startCompareDate_1472601429456" readonly="readonly" type="text"><span class="joinLine"> - </span><input disabled="disabled" class="ta_ipt_text_s" name="endCompareDate_1472601429456" id="endCompareDate_1472601429456" readonly="readonly" type="text"></div></div><div class="frm_btn"><input class="ta_btn ta_btn_primary" name="submit_1472601429456" id="submit_1472601429456" value="确定" type="button"><input class="ta_btn" id="closeBtn_1472601429456" value="取消" type="button"></div></div></div><div style="display: none;"><form action="http://lxbjs.baidu.com/vt/lxb.gif" method="post" target="lxbHideIframe"><input name="p" value="MSwlRTUlQTQlQTclRTYlOTYlQjklRTclQTclOUYlRTglQkQlQTYlRTIlODAlOTQlRTQlQjglQUQlRTUlOUIlQkQlRTQlQkElOTIlRTglODElOTQlRTclQkQlOTElRTclQTclOUYlRTglQkQlQTYlRTklQTIlODYlRTglQjclOTElRTglODAlODUlMkMlRTUlODUlQTglRTUlOUIlQkQlRTglQkYlOUUlRTklOTQlODEuJUU3JUE1JTlFJUU5JTgwJTlGJUU5JUEyJTg0JUU4JUFFJUEyJTJDNDglRTUlODUlODMlRTglQjUlQjclRUYlQkMlODEsaHR0cHMlM0ElMkYlMkZ3d3cuYmFpZHUuY29tJTJGbGluayUzRnVybCUzRHJCSDhkdWhFc3p4UjZXb21lUm5ETEZybDRiblI4amhqLUMybm9PX3hJMnBfVzV0Wnp5R3MyckJnTGRNRXNWTGolMjZ3ZCUzRCUyNmVxaWQlM0RlODRkMDVjNDAwMDZlN2VlMDAwMDAwMDI1N2M2MWQxYyxodHRwJTNBJTJGJTJGd3d3LmRhZmFuZzI0LmNvbSUyRiwx"><input name="sid" value="6567291"><input name="bdcbid" value="8b6203a9-80ad-45f7-9e96-9f21b84076c6"><input name="t" value="1472601429562"></form><iframe id="lxbHideIframe" name="lxbHideIframe" src="../resources/assets/home/public/a.htm"></iframe></div></body></html>
+</script>
