@@ -5,9 +5,9 @@ var city_list_url = api_url + "/api/shoplist/GetCityList";//获取存在门店�
 var city = "getCityList"; // 新从数据库获取存在门店的城市
 
 var district_shop_list_url = api_url + "/api/shoplist/GetDistrictShop";//获取城市的区域门店列表
-var server = 'getServerList'; // 获取城市的区域门店列表
+var shop_info_url = api_url + "/api/shoplist/GetShopInfo";//获取门店详细信息
+var server = 'getServerList'; // 获取城市的区域门店列表  +  获取门店详细信息
 
-var shop_info_url = api_url + "/api/shoplist/GetShopInfo";//获取门店详细信息 
 var city_info_code_url = api_url + "/api/City/GetCityInfo";//城市信息
 var autoinfomation_url = api_url + "/api/autoinfomation";//车辆信息
 var autoinfomation_detail_url = api_url + "/api/AutoInformation/GetAutoInformation";//二手车辆详细信息
@@ -25,7 +25,10 @@ var gearbox_auto_url = api_url + "/api/AutoConfig/GetGearbox";//车辆变速器
 var maxrent_auto_url = api_url + "/api/AutoConfig/GetMaxRentDay";//最大租期
 var brand_auto_url = api_url + "/api/Brand/GetBrandList";//车辆品牌 
 var class_auto_url = api_url + "/api/AutoClass/List2";//所有车型列表
+
 var class_list_auto_url = api_url + "/api/AutoClass/List";//车型列表
+var car = 'getCarList'; // 车型列表
+
 var autoclass_info_url = api_url + "/api/AutoClass/GetAutoClassInfo";//获取车型信息
 var price_list_url = api_url + "/api/AutoClass/GetPriceList";//获取门店车型价格列表
 var special_class_list_url = api_url + "/api/AutoClass/GetSpecialClassList";//获取特价专区列表

@@ -2,6 +2,7 @@ var shortCalendarNum = 0, FirstLoad = true;
 var LNG1, LNG2, LAT1, LAT2;//取还车门店坐标
 var brand_List = ["0"];//当前门店 车辆品牌 列表
 var CarList;//车型列表
+var _token = $("meta[name='_token']").attr('content');
 
 $(function () {
     index_Of();
@@ -50,8 +51,7 @@ function loading() {
                 shopHours(startHours2, endHours2, 2);
                 //门店信息获取
                 storeInfo(take_id, return_id);
-            }
-            else {
+            } else {
                 position();
             }
         } break;
@@ -86,14 +86,29 @@ function loading() {
 //获取门店信息
 function storeInfo(takeID, returnID) {
     jQuery.ajax({
-        url: shop_info_url,
-        type: "get",
-        dataType: 'jsonp',
-        data: { "start_shop_id": takeID, "stop_shop_id": returnID },
+        //url: shop_info_url,
+        //type: "get",
+        //dataType: 'jsonp',
+        url: server,
+        type: "post",
+        dataType: 'json',
+        data: { "start_shop_id": takeID, "stop_shop_id": returnID, "_token": _token },
         success: function (result) {
-           // console.log(result);
             var t = result.start_shop,
                 r = result.stop_shop;
+
+            t.city = t.city_name;
+            t.shop_name = t.server_name;
+            t.street = '这里是详细街道信息！';
+            t.count = '0';
+            t.score = '5 icon_eva4';
+
+            r.city = r.city_name;
+            r.shop_name = r.server_name;
+            r.street = '这里是详细街道信息！';
+            r.count = '0';
+            r.score = '5 icon_eva3';
+
             if (FirstLoad) {
                 if (IN_TYPE == 2 || IN_TYPE == 3) {
                     city_store(t.city, 0);
@@ -122,10 +137,16 @@ function storeInfo(takeID, returnID) {
             $("#returnCarInfo").find("i").attr({ "class": "" })
                 .addClass("icon_eva icon_eva" + r.score);
 
-            LNG1 = t.lat;
-            LAT1 = t.lng;
-            LNG2 = r.lat;
-            LAT2 = r.lng;
+            //LNG1 = t.lat;
+            //LAT1 = t.lng;
+            //LNG2 = r.lat;
+            //LAT2 = r.lng;
+
+            LNG1 = t.coordinate.split(',')[0];
+            LAT1 = t.coordinate.split(',')[1];
+            LNG2 = r.coordinate.split(',')[0];
+            LAT2 = r.coordinate.split(',')[1];
+
             initMap(new BMap.Point(LNG1, LAT1));
         }
     });
@@ -474,7 +495,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
         id1 = [], area1 = [], address1 = [], start1 = [], end1 = [], traffic1 = [], name1 = [], data1 = [], lng1 = [], lat1 = [],
         id2 = [], area2 = [], address2 = [], start2 = [], end2 = [], traffic2 = [], name2 = [], data2 = [], lng2 = [], lat2 = [],
         startHours, endHours, t1, t2, html = "";
-    var _token = $("meta[name='_token']").attr('content');
+
     jQuery.ajax({
         //url: district_shop_list_url,
         //dataType: 'jsonp',
@@ -483,7 +504,6 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
         type: 'post',
         data: { "city_name": cityName, "_token": _token },
         success: function (result) {
-            console.log(result)
             if (result.length == 0) {//当前城市无门店
                 IN_TYPE = 3;
                 storeInfo(195, 195);
@@ -503,8 +523,8 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                             end[i] = '22:00'; // 还车时间
                             traffic[i] = result[i].traffic_line; // 交通路线
                             name[i] = result[i].server_name; // 门店名
-                            lng[i] = result[i].coordinate.split(',')[0]; // 维度
-                            lat[i] = result[i].coordinate.split(',')[1]; // 经度
+                            lng[i] = result[i].coordinate.split(',')[0]; // 经度
+                            lat[i] = result[i].coordinate.split(',')[1]; // 维度
                             //t1 = result[i].start_work_date; // 取车日期
                             //t2 = result[i].stop_work_date; // 还车日期
                             //id[i] = result[i].id; // 门店id
@@ -530,7 +550,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var l = 0; l < area.length; l++) {
                             for (var m = 0; m < data.length; m++) {
                                 if (area[l] == data[m]) {
-                                    html = "<li><a store_id='" + id[l] + "' num='" + l + "' lng='" + lng[l] + "' lat='" + lat[l] + "''>" + name[l] + "</a></li>";
+                                    html = "<li><a store_id='" + id[l] + "' num='" + l + "' lng='" + lng[l] + "' lat='" + lat[l] + "'>" + name[l] + "</a></li>";
                                     $(".store ul").eq(m).append(html);
                                 }
                             }
@@ -682,17 +702,28 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         $("#takeStore .store").html("");
                         //获取数据
                         for (i = 0; i < result.length; i++) {
-                            t1 = result[i].start_work_date;
-                            t2 = result[i].stop_work_date;
-                            id1[i] = result[i].id;
-                            area1[i] = result[i].district;
-                            address1[i] = result[i].street;
-                            start1[i] = t1.substr(11, 5);
-                            end1[i] = t2.substr(11, 5);
-                            traffic1[i] = result[i].traffic_line;
-                            name1[i] = result[i].structure_name;
-                            lng1[i] = result[i].latitude;
-                            lat1[i] = result[i].longitude;
+                            t1 = '2016-09-05'; // 取车日期
+                            t2 = '2016-09-05'; // 还车日期
+                            id1[i] = result[i].address_id; // 门店id
+                            area1[i] = result[i].district; // 地区
+                            address1[i] = '这里是街道详细信息'; // 街道信息
+                            start1[i] = '08:00'; // 取车时间
+                            end1[i] = '22:00'; // 还车时间
+                            traffic1[i] = result[i].traffic_line; // 交通路线
+                            name1[i] = result[i].server_name; // 门店名
+                            lng1[i] = result[i].coordinate.split(',')[0]; // 经度
+                            lat1[i] = result[i].coordinate.split(',')[1]; // 维度
+                            //t1 = result[i].start_work_date;
+                            //t2 = result[i].stop_work_date;
+                            //id1[i] = result[i].id;
+                            //area1[i] = result[i].district;
+                            //address1[i] = result[i].street;
+                            //start1[i] = t1.substr(11, 5);
+                            //end1[i] = t2.substr(11, 5);
+                            //traffic1[i] = result[i].traffic_line;
+                            //name1[i] = result[i].structure_name;
+                            //lng1[i] = result[i].latitude;
+                            //lat1[i] = result[i].longitude;
                         }
                         for (j = 0; j < area1.length; j++) {
                             if (data1.indexOf(area1[j]) == -1) data1.push(area1[j]);
@@ -707,7 +738,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (l = 0; l < area1.length; l++) {
                             for (var m = 0; m < data1.length; m++) {
                                 if (area1[l] == data1[m]) {
-                                    html = "<li><a store_id='" + id1[l] + "' num='" + l + "' lng='" + lng1[l] + "' lat='" + lat1[l] + "''>" + name1[l] + "</a></li>";
+                                    html = "<li><a store_id='" + id1[l] + "' num='" + l + "' lng='" + lng1[l] + "' lat='" + lat1[l] + "'>" + name1[l] + "</a></li>";
                                     $("#takeStore .store ul").eq(m).append(html);
                                 }
                             }
@@ -771,17 +802,28 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         $("#returnStore .store").html("");
                         //获取数据
                         for (var i = 0; i < result.length; i++) {
-                            t1 = result[i].start_work_date;
-                            t2 = result[i].stop_work_date;
-                            id2[i] = result[i].id;
-                            area2[i] = result[i].district;
-                            address2[i] = result[i].street;
-                            start2[i] = t1.substr(11, 5);
-                            end2[i] = t2.substr(11, 5);
-                            traffic2[i] = result[i].traffic_line;
-                            name2[i] = result[i].structure_name;
-                            lng2[i] = result[i].latitude;
-                            lat2[i] = result[i].longitude;
+                            t1 = '2016-09-05'; // 取车日期
+                            t2 = '2016-09-05'; // 还车日期
+                            id2[i] = result[i].address_id; // 门店id
+                            area2[i] = result[i].district; // 地区
+                            address2[i] = '这里是街道详细信息'; // 街道信息
+                            start2[i] = '08:00'; // 取车时间
+                            end2[i] = '22:00'; // 还车时间
+                            traffic2[i] = result[i].traffic_line; // 交通路线
+                            name2[i] = result[i].server_name; // 门店名
+                            lng2[i] = result[i].coordinate.split(',')[0]; // 经度
+                            lat2[i] = result[i].coordinate.split(',')[1]; // 维度
+                            //t1 = result[i].start_work_date;
+                            //t2 = result[i].stop_work_date;
+                            //id2[i] = result[i].id;
+                            //area2[i] = result[i].district;
+                            //address2[i] = result[i].street;
+                            //start2[i] = t1.substr(11, 5);
+                            //end2[i] = t2.substr(11, 5);
+                            //traffic2[i] = result[i].traffic_line;
+                            //name2[i] = result[i].structure_name;
+                            //lng2[i] = result[i].latitude;
+                            //lat2[i] = result[i].longitude;
                         }
                         for (var j = 0; j < area2.length; j++) {
                             if (data2.indexOf(area2[j]) == -1) data2.push(area2[j]);
@@ -856,13 +898,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
 
 //城市
 function City() {
-    var _token = $('meta[name=_token]').attr('content');
     $.post(city, {'_token': _token}, function(result){
-<<<<<<< HEAD
-=======
-        //console.log(result[1])
-       // alert(result);
->>>>>>> a675549e894d07ff5c60c7ee34db1e02ced6b58f
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合
@@ -1319,29 +1355,37 @@ function gain_info(data) {
         order_info;//订单信息
 
     var total_rent_times = 0, customer_type = 1, customer_grade = 3;//用户登录信息
-    var cus = JSON.parse(jQuery.cookie("login_user"));
+    var cus = JSON.parse(jQuery.cookie("user_name"));
     if (cus) {
         total_rent_times = cus.total_rent_times;
         customer_type = cus.customer_type;
         customer_grade = cus.customer_grade;
     }
+
+    data._token = _token;
     jQuery.ajax({
-        url: class_list_auto_url,
-        dataType: 'jsonp',
+        //url: class_list_auto_url,
+        //dataType: 'jsonp',
+        url: car,
+        dataType: 'json',
+        type: 'post',
         data: data,
         success: function (result) {
             //计算取车日期是星期几
             start_week = new Date(start).getDay();
             //计算价格
-            car_list = result.clazz;
-            offer_list = result.offers;
-            order_info = result.order_info;
-            autoclass_list_=result.clazz;
-            offer_list_ = result.offers;
-            order_info_ = result.order_info;
+            //car_list = result.clazz; // 获取到的所有车型列表
+            //offer_list = result.offers; // 优惠活动列表
+            //order_info = result.order_info;//订单信息
+            car_list = result;
+            offer_list = result;
+            order_info = result;
+
             //计算租期
             var total_days = date_subtract(start, end).totaldays;
             term = parseInt(total_days);   //租期
+
+            order_info.time_out_max_minute = 1;
             if (term + order_info.time_out_max_minute / (60 * 24) <= total_days) {
                 term++;//超出最大超时时间则租期加一天
             }
@@ -1356,9 +1400,14 @@ function gain_info(data) {
             var in_id = $("#returnStore .show a").attr("store_id");
             //计算价格
             for (var i = 0; i < car_list.length; i++) {
+
+                // 价格
+                car_list[i].offers_amount = result[i].car_price;
+
                 var offers_amount = 0;
-                if (offer_list) {
-                    //活动列表、车型ID、取车时间、根据租期计算的还车时间、还车门店ID、当前租车用户信息3个、车型价格
+                //if (offer_list) {
+                if (false) {
+                        //活动列表、车型ID、取车时间、根据租期计算的还车时间、还车门店ID、当前租车用户信息3个、车型价格
                     var enabled_offers = get_enabled_offers(offer_list, car_list[i].ac.class_id, form_datetime, to_datetime, in_id, total_rent_times, customer_type, customer_grade, car_list[i].prices);
                     if (enabled_offers) {
                         var combine = offers_combine(enabled_offers);
@@ -1403,14 +1452,14 @@ function gain_info(data) {
                 else
                     car_list[i].is_offer = false;
 
-                if (car_list[i].ac.auto_count > 0 && car_list[i].ac.auto_count)
-                    car_list[i].is_rent = true;
-                else
-                    car_list[i].is_rent = false;
+                //if (car_list[i].ac.auto_count > 0 && car_list[i].ac.auto_count)
+                //    car_list[i].is_rent = true;
+                //else
+                //    car_list[i].is_rent = false;
                 //平均价格 总价格
-                var aggr = aggregation(car_list[i].prices, start, end);
-                car_list[i].avg = Math.round(aggr.avg);
-                car_list[i].sum = Math.round(aggr.sum + offers_amount);
+                //var aggr = aggregation(car_list[i].prices, start, end);
+                //car_list[i].avg = Math.round(aggr.avg);
+                //car_list[i].sum = Math.round(aggr.sum + offers_amount);
             }
 
             //根据 价格、活动、是否满租 来排序
@@ -1422,6 +1471,7 @@ function gain_info(data) {
                 return a.is_rent
             }).ToArray();
             CarList = car_list;
+
             add_brand(car_list);//添加品牌
             add_car(car_list, start, end);//添加车型
         }
@@ -1432,22 +1482,36 @@ function gain_info(data) {
 function add_car(car_list, start, end) {
     var add_html = "", checked = true;//判断活动
     for (var i = 0; i < car_list.length; i++) {
-        if (checked) {
-            checked = checked_price_list(car_list[i].prices, start, end);
-        }
-        var brand = car_list[i].ac.brand.brand_name,//品牌
-            honda = car_list[i].ac.honda,//型号
-            con = car_list[i].ac.body_construction,//厢数
-            vol = car_list[i].ac.let_litre,//排量
-            gear = car_list[i].ac.gearbox,//手自动
-            seat_count = car_list[i].ac.seat_count,//乘坐人数
-            type = car_list[i].ac.class_category,//乘坐人数
-            img = car_list[i].ac.class_image.substr(1),//图片
+        car_list[i].car_price = Math.round(car_list[i].car_price);
+        //if (checked) {
+            //checked = checked_price_list(car_list[i].prices, start, end);
+            //checked = checked_price_list(car_list[i].car_price, start, end);
+        //}
+        //var brand = car_list[i].ac.brand.brand_name,//品牌
+        //    honda = car_list[i].ac.honda,//型号
+        //    con = car_list[i].ac.body_construction,//厢数
+        //    vol = car_list[i].ac.let_litre,//排量
+        //    gear = car_list[i].ac.gearbox,//手自动
+        //    seat_count = car_list[i].ac.seat_count,//乘坐人数
+        //    type = car_list[i].ac.class_category,
+        //    img = car_list[i].ac.class_image.substr(1),//图片
+        //    deposit = car_list[i].standard_price ? car_list[i].standard_price.deposit : 0,//预授权
+        //    rent = car_list[i].ac.auto_count,//判断是否可租
+        //    basic = car_list[i].standard_price ? car_list[i].standard_price.basic_insurance : 0,//基本保险
+        //    car_id = car_list[i].ac.class_id,//车型id
+        //    offers = car_list[i].offers_name;//可参与的活动
+        var brand = car_list[i].brand_name,//品牌
+            honda = Math.floor(Math.random()*10) + '型',//型号
+            con = Math.floor(Math.random()*10),//厢数
+            vol = Math.floor(Math.random()*10) + 'L',//排量
+            gear = '手动挡',//手自动
+            seat_count =  Math.floor(Math.random()*10),//乘坐人数
+            type = car_list[i].type_name,// 车辆类型
+            img = car_list[i].car_img,//图片
             deposit = car_list[i].standard_price ? car_list[i].standard_price.deposit : 0,//预授权
-            rent = car_list[i].ac.auto_count,//判断是否可租
+            rent = 1,//判断是否可租
             basic = car_list[i].standard_price ? car_list[i].standard_price.basic_insurance : 0,//基本保险
-            car_id = car_list[i].ac.class_id,//车型id
-            offers = car_list[i].offers_name;//可参与的活动
+            car_id = car_list[i].type_name;//车型id
 
         if (rent == 0) {
             if (car_id == carID) {
@@ -1463,7 +1527,7 @@ function add_car(car_list, start, end) {
             }
         }
 
-        add_html += "<img src='" + api_url + img + "'>" +
+        add_html += "<img src='" + img + "'>" +
             "<div class='info'>" +
             "<b><a>" + brand + "</a> " + honda + "</b>" +
             " <a>" + type + "</a>" +
@@ -1477,30 +1541,34 @@ function add_car(car_list, start, end) {
 
         if (rent == 0) {
             add_html += "<div class='bookButton noBook'>" +
-                "<div class='avePrice'>日均 <b>" + car_list[i].avg + "</b> 元</div>" +
+                "<div class='avePrice'>日均 <b>" + car_list[i].car_price + "</b> 元</div>" +
             "<input type='button' value='满 租' class='book'>";
         }
         else {
             add_html += "<div class='bookButton canBook'>" +
-                "<div class='avePrice'>日均 <b>" + car_list[i].avg + "</b> 元</div>" +
+                "<div class='avePrice'>日均 <b>" + car_list[i].car_price + "</b> 元</div>" +
                 "<input type='button' value='预 订' class='book' " +
                 "onclick='carBook(" + i + ")'>";
         }
 
-        add_html += add_daily_price(car_list, i, start, end);//每日价格添加
-        add_html += "</ul><div class='safe'>";
+        //add_html += add_daily_price(car_list, i, start, end);//每日价格添加
+        //add_html += "</ul><div class='safe'>";
 
-        var offersAmount = Math.round(car_list[i].offers_amount),
-            sumAmount = Math.round(car_list[i].sum);
-        if (offersAmount && offersAmount > 0) {
-            add_html += "原价 <s><a>" + Math.round(sumAmount) + "</a></s> 元&nbsp;&nbsp;" +
-                "节省 <a>" + Math.round(offersAmount) + "</a> 元";
-        } else {
-            add_html += "总价 <a>" + sumAmount + "</a> 元";
-        }
+        //var offersAmount = Math.round(car_list[i].offers_amount),
+        //    sumAmount = Math.round(car_list[i].sum);
 
-        add_html += "<br/>基本险 <a>" + basic + "</a> 元/天 " +
-            "&nbsp;&nbsp;预授权 <a>" + deposit + "</a> 元</div></div></div></div></li>";
+        //var offersAmount = 0,
+        //    sumAmount = Math.round(car_list[i].car_price);
+        //
+        //if (offersAmount && offersAmount > 0) {
+        //    add_html += "原价 <s><a>" + Math.round(sumAmount) + "</a></s> 元&nbsp;&nbsp;" +
+        //        "节省 <a>" + Math.round(offersAmount) + "</a> 元";
+        //} else {
+        //    add_html += "总价 <a>" + sumAmount + "</a> 元";
+        //}
+        //
+        //add_html += "<br/>基本险 <a>" + basic + "</a> 元/天 " +
+        //    "&nbsp;&nbsp;预授权 <a>" + deposit + "</a> 元</div></div></div></div></li>";
 
     }
 
@@ -1523,8 +1591,6 @@ function add_car(car_list, start, end) {
     carFilter();//车辆筛选
     $(".load").hide();
     $("#startBook").attr("disabled", false).css({ "background": "#e15517" });
-
-
 }
 
 //添加品牌
@@ -1532,7 +1598,8 @@ function add_brand(car_list) {
     var brand = [], temp = [], html = "";
     brand_List = ["0"];
     for (var i = 0; i < car_list.length; i++) {
-        brand.push(car_list[i].ac.brand.brand_name);
+        //brand.push(car_list[i].ac.brand.brand_name);
+        brand.push(car_list[i].brand_name);
     }
     for (var j = 0; j < brand.length; j++) {
         if (temp.indexOf(brand[j]) == -1) {
