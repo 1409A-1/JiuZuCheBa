@@ -31,7 +31,14 @@ Route::group(['middleware' => ['homelogin']], function(){
    Route::get('only_mobile_code','HomeUserController@only_mobile_code');
 //订单列表的展示
    Route::get('order_list','HomeUserController@order_list');
-
+//优惠券的展示
+   Route::get('benefit_list','HomeUserController@benefit_list');
+//公开留言页面的展示
+   Route::get('message','HomeUserController@message');
+//ajax进行留言的添加
+   Route::get('message_add','HomeUserController@message_add');
+//滑动鼠标进行加载
+   Route::get('message_down','HomeUserController@message_down');
 });
 
 //前台登陆
@@ -92,6 +99,14 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('adminlist','UserController@admin_list');//后台用户列表
 	Route::get('adminlistpage/{page}','UserController@adminlistpage');//后台管理分页
 
+	/*
+	    用户留言管理
+	 */
+	Route::get('message','UserController@message');//留言展示
+	Route::get('messagepage/{page}/{del}','UserController@messagepage');//留言分页&删除
+	Route::get('messageset/{id}','UserController@messageset');//留言审核
+	Route::get('messageaccept/{id}','UserController@messageaccept');//留言采纳
+
 	Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');
     Route::post('type_add','AdminController@model_add');
@@ -110,5 +125,3 @@ Route::post('getCityList','PublicController@getCityList');  // 获取城市列�
 Route::post('getServerList','PublicController@getServerList');  // 获取服务点列表
 Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
 
-// 短租
-// 长租

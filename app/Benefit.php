@@ -12,4 +12,6 @@ class Benefit extends Model
     protected $primaryKey = 'benefit_id';
 //时间戳
     public $timestamps = false;
+//白名单
+protected $fillable = ['user_id', 'benefit_name','ord_price','begin_time','end_time'];
 }

@@ -577,66 +577,6 @@
                         <a class="time">2016-01-12</a>
                     </div>
                 </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">黄先生</a>
-                        <span class="order">订单号：<a>DC*********17</a></span>
-                        <p>
-                            拿到驾照一年了，还没计划买车，经朋友推荐到大方租车。手续很方便，服务到位，租了辆新捷达，车况不错，开的也顺手。特爽！过瘾！
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>湖北省荆州市</a>
-                        </span>
-                        <a class="time">2015-12-28</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">李先生</a>
-                        <span class="order">订单号：<a>DC*********82</a></span>
-                        <p>
-                            十月底租车自驾游，这是我第一次租车，白色速腾，车很干净无异味，全家玩的很开心，车子省油！下次还会光顾，并推荐朋友也来这里租车！！！
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>甘肃省兰州市</a>
-                        </span>
-                        <a class="time">2015-12-22</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">赵先生</a>
-                        <span class="order">订单号：<a>DC*********37</a></span>
-                        <p>
-                            天气不错，租车出去玩的也很开心，门店服务很好，车况好还蛮新的，对本次租车很满意，所以给大方点个赞，下次还会再来租你的车。
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>河北省石家庄市</a>
-                        </span>
-                        <a class="time">2015-12-17</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">陈女士</a>
-                        <span class="order">订单号：<a>DC*********82</a></span>
-                        <p>
-                            门店的工作人员很热情，手续便捷迅速，我在路上遇到了些状况，致电客服，能够耐心积极，周到的解决问题，非常感谢，下次还会光顾。
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>重庆市</a>
-                        </span>
-                        <a class="time">2015-12-12</a>
-                    </div>
-                </li>
             </ul>
         </div>
         <!--城市列表-->
