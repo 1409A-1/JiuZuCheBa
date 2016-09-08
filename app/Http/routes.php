@@ -37,10 +37,17 @@ Route::group(['middleware' => ['homelogin']], function(){
    Route::get('messageAdd','HomeUserController@messageAdd');
 //滑动鼠标进行加载
    Route::get('messageDown','HomeUserController@messageDown');
+//提交订单页面
+   Route::post('subOrder','HomeOrderController@subOrder');
 });
 
 //前台登陆页面的展示
 Route::get('login','LoginController@login');
+//选车页面进行登录loginBox
+Route::get('loginBox',function(){ return view('home.login.loginBox');});
+//loginBox接值验证登录
+Route::get('loginBoxPro','LoginController@loginBoxPro');
+
 //前台登录接值验证
 Route::post('loginPro','LoginController@loginPro');
 //前台退出登录
