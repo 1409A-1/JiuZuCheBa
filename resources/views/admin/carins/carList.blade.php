@@ -21,9 +21,8 @@
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
-    <!-- open sans font -->
-
     <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -83,63 +82,72 @@
                             });
                         });
                     </script>
-                    <div class="row-fluid">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="span3">
-                                        <input type="checkbox" />
-                                        车辆型号编号
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>车辆型号
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>编辑
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- row -->
-                                <?php foreach($data as $k => $v){?>
-                                <tr class="first" id="del<?php echo $v['type_id']?>">
-                                    <td>
-                                        <input type="checkbox" />
-                                        <div class="img">
-                                            <img src="{{asset('admin')}}/img/table-img.png" />
-                                        </div>
-                                        <a href="#" class="name">Generate Lorem </a>
-                                    </td>
-                                    <td>
-                                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                                        <a href="#" class="name"><?php echo $v['type_name']?></a>
-                                    </td><td>
-                                        <a href="javascript:void(0)"  class="name" onclick="del(<?php echo $v['type_id']?>)">删除</a>
-                                        <a href="#" class="name">详情</a>
-                                    </td>
-                                </tr>
-                                <?php }?>
-                            </tbody>
+                    <div class="row-fluid" style="width:500px;">
+                        <table class="table">
+                            <tr>
+                                <th>车辆名字</th>
+                                <th>车辆类型</th>
+                                <th>车辆品牌</th>
+                                <th>车辆图片</th>
+                                <th>车辆单日价格</th>
+                                <th>操作</th>
+                            </tr>
+                            <?php foreach($data as $k => $v){?>
+                            <tr>
+                                <td><?php echo $v['car_name']?></td>
+                                <td><?php echo $v['type_name']?></td>
+                                <td><?php echo $v['brand_name']?></td>
+                                <td><a href="<?php echo $v['car_img']?>" target="_Blank"><img src="<?php echo $v['car_img']?>" alt="" width="50" height="50"/><a></td>
+                                <td><?php echo $v['car_price']?></td>
+                                <td>
+                                    <a href="{{url('carDel')}}/<?php echo $v['car_id']?>">删除</a>
+                                </td>
+                            </tr>
+                            <?php }?>
                         </table>
                     </div>
                 </div>
                 <!-- end products table -->
-                <!--jquery删除-->
-                <script src="{{asset('admin')}}/js/js.js"></script>
+                <!--三级联动-->
                 <script>
-                        function del(type_id){
-                            var token = $('input[name=_token]').val();
-                            $.ajax({
-                                type:"post",
-                                url:"{{URL('type_del')}}",
-                                data:{type_id:type_id,_token:token},
-                                success:function(msg){
-                                    if(msg == 1){
-                                        $('#del'+type_id).remove();
-                                    }
-                                }
-                            });
-                        }
+                       $(function(){
+                           $("#address_one").change(function(){
+                               var id = $(this).val();
+                               $.getJSON("address_two",{id:id},function(msg){
+                                   if(msg == 0){
+                                       $("#address_three").empty();
+                                       $("#address_two").empty();
+                                       $("#address_three").html("<option value='0'>请选择...</option>");
+                                       $("#address_two").html("<option value='0'>请选择...</option>");
+                                   }else{
+                                       //alert(msg);
+                                       str ="<option value='0'>请选择...</option>";
+                                       for(i=0;i<msg.length;i++){
+                                           str +="<option value="+msg[i].address_id+">"+msg[i].address_name+"</option>"
+                                       }
+                                       $("#address_two").html(str);
+                                       $("#address_three").empty();
+                                       $("#address_three").html("<option value='0'>请选择...</option>");
+                                   }
+                               });
+                           });
+                           $("#address_two").change(function(){
+                               var id = $(this).val();
+                               $.getJSON("address_two",{id:id},function(msg){
+                                   if(msg == 0){
+                                       $("#address_three").empty();
+                                       $("#address_three").html("<option value='0'>请选择...</option>");
+                                   }else{
+                                       //alert(msg);
+                                       str ="<option value='0'>请选择...</option>";
+                                       for(i=0;i<msg.length;i++){
+                                           str +="<option value="+msg[i].address_id+">"+msg[i].address_name+"</option>"
+                                       }
+                                       $("#address_three").html(str);
+                                   }
+                               });
+                           });
+                       });
                 </script>
                 <!-- orders table -->
                 <div class="table-wrapper orders-table section">

@@ -21,8 +21,9 @@
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
+    <!-- open sans font -->
+
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -54,14 +55,14 @@
                 
                 <!-- products table-->
                 <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
-                <div class="table-wrapper products-table section"  >
+                <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
                             <h4>Products</h4>
                         </div>
                     </div>
 
-                    <div class="row-fluid filter-block" >
+                    <div class="row-fluid filter-block">
                         <div class="pull-right">
                             <div class="ui-select">
                                 <select>
@@ -82,146 +83,63 @@
                             });
                         });
                     </script>
-                    <div class="row-fluid" style="width:500px;float:left;">
-                        <form action="{{url('add_server')}}" method="post">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                            <table class="table table-hover" >
+                    <div class="row-fluid">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
-                                    <td><h1>服务点的添加</h1></td>
-                                    <td></td>
+                                    <th class="span3">
+                                        <input type="checkbox" />
+                                        车辆型号编号
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>车辆型号
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>编辑
+                                    </th>
                                 </tr>
-                                <tr>
-                                    <td>服务点名称:</td>
-                                    <td><input type="text" required="" name="server_name"/></td>
-                                </tr>
-                                <tr>
-                                    <td>省/直辖市:</td>
+                            </thead>
+                            <tbody>
+                                <!-- row -->
+                                <?php foreach($data as $k => $v){?>
+                                <tr class="first" id="del<?php echo $v['type_id']?>">
                                     <td>
-                                        <select name="one" id="address_one" >
-                                            <option value="0">请选择...</option>
-                                            <?php foreach($data as $k => $v){?>
-                                            <option id="address" value="<?php echo $v['address_id']?>" s="{{$v['address_name']}}"><?php echo $v['address_name']?></option>
-                                            <?php }?>
-                                        </select>
+                                        <input type="checkbox" />
+                                        <div class="img">
+                                            <img src="{{asset('admin')}}/img/table-img.png" />
+                                        </div>
+                                        <a href="#" class="name">Generate Lorem </a>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>市/区:</td>
-                                    <td>
-                                        <select name="two" id="address_two">
-                                            <option value="0">请选择...
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>服务点地址：</td>
                                     <td>
                                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                                        <textarea required="required" name="server_id" id="add" cols="10" rows="3"></textarea>
-                                        <span id=""></span>
+                                        <a href="#" class="name"><?php echo $v['type_name']?></a>
+                                    </td><td>
+                                        <a href="javascript:void(0)"  class="name" onclick="del(<?php echo $v['type_id']?>)">删除</a>
+                                        <a href="#" class="name">详情</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>输入坐标：</td>
-                                    <td>
-                                        <input type="text" name="coordinate1" required="required" style="width: 83px;"/>&nbsp;，
-                                        <input type="text" name="coordinate2" required="required" style="width: 83px;"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <input type="submit" class="btn btn-info" style="float: right;" value="添加服务点"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                    <div class="row-fluid" style="width: 500px;height: 400px;float:right;">
-                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-                        <style type="text/css">
-                            body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
-                        </style>
-                        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4Illl9vffDsxg3qPNzDIm6wrtsXMNWP2"></script>
-                        <div id="allmap"></div>
+                                <?php }?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <!-- end products table -->
-                <!--百度地图接口-->
-                <script type="text/javascript">
-                    $("#address_two").change(function(){
-                       s_one =  $("#address_one").find("option:selected").text();
-                       s_two =  $("#address_two").find("option:selected").text();
-                       s = s_one+s_two;
-
-                    // 百度地图API功能
-                    var map = new BMap.Map("allmap");  // 创建Map实例
-                    var point = new BMap.Point(116.331398,39.897445);
-                    map.centerAndZoom(point,12);
-                    var geoc = new BMap.Geocoder();
-                    map.centerAndZoom(s,15);      // 初始化地图,用城市名设置地图中心点
-                    map.centerAndZoom(new BMap.Point(116.4035,39.915),8);
-                    setTimeout(function(){
-                        map.setZoom(14);
-                    }, 2000);  //2秒后放大到14级
-                    //单击获取点击的经纬度
-                    map.addEventListener("click",function(e){
-                        $("input[name=coordinate1]").val(e.point.lng);
-                        $("input[name=coordinate2]").val(e.point.lat);
-                    });
-                    map.enableScrollWheelZoom(true);
-                    map.addEventListener("click", function(e){
-                        var pt = e.point;
-                        geoc.getLocation(pt, function(rs){
-                            var addComp = rs.addressComponents;
-                            var add = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
-                            $("#add").val(add);
-                        });
-                    });
-
-                    })
-                </script>
-
-                <!--联动-->
+                <!--jquery删除-->
+                <script src="{{asset('admin')}}/js/js.js"></script>
                 <script>
-                       $(function(){
-                           $("#address_one").change(function(){
-                               var id = $(this).val();
-                               $.getJSON("{{ url('addressTwo') }}",{id:id},function(msg){
-                                   if(msg == 0){
-                                       $("#address_three").empty();
-                                       $("#address_two").empty();
-                                       $("#address_three").html("<option value='0'>请选择...</option>");
-                                       $("#address_two").html("<option value='0'>请选择...</option>");
-                                   }else{
-                                       //alert(msg);
-                                       str ="<option value='0'>请选择...</option>";
-                                       for(i=0;i<msg.length;i++){
-                                           str +="<option value="+msg[i].address_id+">"+msg[i].address_name+"</option>"
-                                       }
-                                       $("#address_two").html(str);
-                                       $("#address_three").empty();
-                                       $("#address_three").html("<option value='0'>请选择...</option>");
-                                   }
-                               });
-                           });
-                           $("#address_two").change(function(){
-                               var id = $(this).val();
-                               $.getJSON("{{ url('addressTwo') }}",{id:id},function(msg){
-                                   if(msg == 0){
-                                       $("#address_three").empty();
-                                       $("#address_three").html("<option value='0'>请选择...</option>");
-                                   }else{
-                                       //alert(msg);
-                                       str ="<option value='0'>请选择...</option>";
-                                       for(i=0;i<msg.length;i++){
-                                           str +="<option value="+msg[i].address_id+">"+msg[i].address_name+"</option>"
-                                       }
-                                       $("#address_three").html(str);
-                                   }
-                               });
-                           });
-                       });
+                        function del(type_id){
+                            var token = $('input[name=_token]').val();
+                            $.ajax({
+                                type:"post",
+                                url:"{{URL('typeDel')}}",
+                                data:{type_id:type_id,_token:token},
+                                success:function(msg){
+                                    if(msg == 1){
+                                        $('#del'+type_id).remove();
+                                    }
+                                }
+                            });
+                        }
                 </script>
                 <!-- orders table -->
                 <div class="table-wrapper orders-table section">

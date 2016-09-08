@@ -170,7 +170,7 @@
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("userlistpage/"+page,function(msg){
+                $.get("userListPage/"+page,function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.user.length; i++){

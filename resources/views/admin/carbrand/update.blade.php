@@ -60,7 +60,7 @@
                     <!-- left column -->
                     <div class="span9 with-sidebar">
                         <div class="container">
-                            <form class="new_user_form inline-input" method="post" action="{{URL('brandupdate')}}" />
+                            <form class="new_user_form inline-input" method="post" action="{{URL('brandUpdate')}}" />
                                 <div class="span12 field-box">
                                     <label>品牌:</label>
                                     <input class="span9" type="text" required name="brand_name" value="{{$brand['brand_name']}}" />

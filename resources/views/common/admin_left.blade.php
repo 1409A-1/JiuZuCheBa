@@ -17,19 +17,19 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{URL('userlist')}}">前台用户列表</a></li>
-                <li><a href="{{URL('adminlist')}}">后台用户列表</a></li>
+                <li><a href="{{URL('userList')}}">前台用户列表</a></li>
+                <li><a href="{{URL('adminList')}}">后台用户列表</a></li>
             </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-cog"></i>
-                <span>车辆管理</span>
+                <span>车辆类型管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{URL('typelist')}}">车辆类型管理</a></li>
-                <li><a href="{{URL('brandlist')}}">车辆品牌管理</a></li>
+                <li><a href="{{URL('typeList')}}">车辆类型管理</a></li>
+                <li><a href="{{URL('brandList')}}">车辆品牌管理</a></li>
             </ul>
         </li>
         <li>
@@ -39,8 +39,19 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="car_type_list">车辆类型列表</a></li>
-                <li><a href="model_add">添加车辆类型</a></li>
+                <li><a href="{{url('carTypeList')}}">车辆类型列表</a></li>
+                <li><a href="{{url('modelAdd')}}">添加车辆类型</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>地区管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="{{url('addrList')}}">地区的列表</a></li>
+                <li><a href="{{url('addrIns')}}">地区列添加</a></li>
             </ul>
         </li>
         <li>
@@ -50,8 +61,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="address">服务点添加</a></li>
-                <li><a href="">服务点展示</a></li>
+                <li><a href="{{ url('address') }}">服务点添加</a></li>
+                <li><a href="{{ url('addressList') }}">服务点展示</a></li>
             </ul>
         </li>
         <li>
@@ -61,9 +72,9 @@
             </a>
         </li>
         <li>
-            <a href="{{asset('admin')}}/calendar.html">
+            <a href="{{url('userPack')}}">
                 <i class="icon-calendar-empty"></i>
-                <span>Calendar</span>
+                <span>用户套餐申请审核</span>
             </a>
         </li>
         <li>
@@ -75,12 +86,12 @@
         <li>
             <a class="dropdown-toggle ui-elements" href="#">
                 <i class="icon-code-fork"></i>
-                <span>UI Elements</span>
+                <span>车辆管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{asset('admin')}}/ui-elements.html">UI Elements</a></li>
-                <li><a href="{{asset('admin')}}/icons.html">Icons</a></li>
+                <li><a href="{{url('carIns')}}">车辆添加</a></li>
+                <li><a href="{{url('carList')}}">车辆列表</a></li>
             </ul>
         </li>
         <li>
