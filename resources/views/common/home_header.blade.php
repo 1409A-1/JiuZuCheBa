@@ -59,15 +59,15 @@
             <li class="top_user">
                 @if(empty(Session::get('user_name')))
                 <div class="">
-                    <a href="login_reg" rel="nofollw">注册</a>
+                    <a href="loginReg" rel="nofollw">注册</a>
                     <a href="login" rel="nofollw">登陆</a>
                 </div>
                 @else
                 <div class="">
                     欢迎 <span style="color:#ff0000">{{ Session::get('user_name') }}</span>
                     <a href="" rel="nofollow">订单信息</a>
-                    <a href="{{URL('user_info')}}" rel="nofollow">账户管理</a>
-                    <a href="login_out" rel="nofollow">退出</a>
+                    <a href="{{URL('userInfo')}}" rel="nofollow">账户管理</a>
+                    <a href="loginOut" rel="nofollow">退出</a>
                 </div>
                 @endif
             </li>

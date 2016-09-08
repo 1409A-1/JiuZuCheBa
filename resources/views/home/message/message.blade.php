@@ -186,7 +186,7 @@
                     $("#cha").before( str );
                     get.byTagName("form", oMsgBox)[0].reset();
         //ajax进行提交
-                    $.get("{{URL('message_add')}}", { name: name, con: con } );
+                    $.get("{{URL('messageAdd')}}", { name: name, con: con } );
 
                 }
             };
@@ -224,7 +224,7 @@
                 if ((bot + $(window).scrollTop()) >= ($(document).height() - $(window).height())) {
                     //当底部基本距离+滚动的高度〉=文档的高度-窗体的高度时；
                     //我们需要去异步加载数据了
-                    $.getJSON("{{URL('message_down')}}", { page: y }, function (str) {
+                    $.getJSON("{{URL('messageDown')}}", { page: y }, function (str) {
                        if(str){
 
                            $.each( str['str'], function(i, n){

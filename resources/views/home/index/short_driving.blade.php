@@ -366,9 +366,9 @@
 
 <script>
 //车辆预订
-//    function carBook(n) {
-//        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").html())) {
-//            var cus = JSON.parse(jQuery.cookie("login_user"));
+    function carBook(n) {
+        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").html())) {
+           // var cus = JSON.parse(jQuery.cookie("login_user"));
 //            var li = $(".carList>li").eq(n);
 //            var out_id = $("#takeStore").find(".show a").attr("store_id"),
 //                out_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html(),
@@ -423,8 +423,8 @@
 //                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
 //                }
 //            }
-//        }
-//    }
+        }
+    }
 
     function _callback()
     {

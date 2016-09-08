@@ -10,9 +10,9 @@
             <div class="register">
                 <div class="title">
                     <div>注册</div>
-                    <span>已有账号？<a href="{{URL('login')}}">立即登录</a></span>
+                    <span>已有账号？<a href="{{ URL('login') }}">立即登录</a></span>
                 </div>
-                <form action="{{ URL('reg_pro') }}" method="post" id="reg">
+                <form action="{{ URL('regPro') }}" method="post" id="reg">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     <div class="input_body">
                         <div class="inputBox" id="reg_name_box">
@@ -300,7 +300,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
                         user_name:{
                             required:true,
                             remote:{
-                                url:"{{'only_name'}}",
+                                url:"{{'onlyName'}}",
                                 type:'get',
                                 //  dataType:'json',
                                 data:{   //传两个参数
@@ -314,7 +314,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
                             required:true,
                             isMobile:true,
                             remote:{
-                                url:"{{'only_tel'}}",
+                                url:"{{'onlyTel'}}",
                                 type:'get',
                                 //  dataType:'json',
                                 data:{   //传两个参数

@@ -5,7 +5,7 @@ use App\User;
 use App\Benefit;
 use App\Login;
 use App\Http\Requests;
-use DB;
+use DB,Session;
 
 
 class LoginController extends Controller
@@ -21,46 +21,36 @@ class LoginController extends Controller
         return view('home.login.login');
     }
 //前台登录检验用户名密码
-    public function login_pro(Request $request)
+    public function loginPro(Request $request)
     {
-
 //输出提示
-switch ($_REQUEST) {
-    case empty($_REQUEST['user_name']):break;
-
-
-    case empty($_REQUEST['password']):
-        break;
-
-}
-        $info['user_name']=$request->input('user_name');
-        $info['password']=md5($request->input('password'));
-
-        $login=new Login();
-        $re=$login->where($info)->first();
-        if($re)
-        {
-            $request->session()->put('user_name',$info['user_name']);
-            $request->session()->put('user_id',$re['user_id']);
+        switch ($_REQUEST) {
+            case empty($_REQUEST['user_name']):break;
+            case empty($_REQUEST['password']):break;
+        }
+        $info['user_name'] = $request->input('user_name');
+        $info['password'] = md5($request->input('password'));
+        $login = new Login();
+        $re = $login->where($info)->first();
+        if ($re) {
+            Session::put('user_name', $info['user_name']);
+            Session::put('user_id', $re['user_id']);
             return redirect('/');
-        }else
-        {
-            echo "<script>alert('登录失败');history.go(-1)</script>";
+        } else {
+            echo "<script>alert('登录失败');location.href='login';</script>";
         }
     }
 //前台登录退出
-    public function login_out(Request $request)
+    public function loginOut(Request $request)
     {
         if ($request->session()->has('user_name')) {
             session()->forget('user_id');
             session()->forget('user_name');
             return redirect('/');
         }
-
     }
-    //
 //进行注册接值
-    public function reg_pro(Request $request){
+    public function regPro(Request $request){
       $user = new User();
       $user->tel = $request->input('tel');
       $name = $user->user_name = $request->input('user_name');
@@ -70,8 +60,8 @@ switch ($_REQUEST) {
       $user_id = $user->user_id;               //获取刚添加的自增的id
         if ($result) {
             $benefit = new Benefit();             //实例化优惠券表
-            $request->session()->put('user_name', $name);
-            $request->session()->put('user_id',$user_id);
+            Session::put('user_name', $name);
+            Session::put('user_id', $user_id);
             $benefit->user_id = $user_id;
             $benefit->benefit_name = '新人大礼包';
             $benefit->ord_price = '100';
@@ -80,11 +70,11 @@ switch ($_REQUEST) {
             $benefit->save();
             return redirect('/');
         } else {
-            echo "<script>alert('注册失败');history.go(-1)</script>";
+            echo "<script>alert('注册失败');location.href='register'</script>";
         }
     }
 //前台验证用户名唯一
-    public function only_name(Request $request){
+    public function onlyName(Request $request){
         $user = new User();
         $name = $request->input('name');
        $result =  $user->where('user_name',$name)->first();
@@ -95,8 +85,8 @@ switch ($_REQUEST) {
         }
 
     }
-    //前台验证用户名唯一
-    public function only_tel(Request $request){
+//前台验证用户名唯一
+    public function onlyTel(Request $request){
         $user = new User();
         $tel = $request->input('tel');
         $result =  $user->where('tel',$tel)->first();

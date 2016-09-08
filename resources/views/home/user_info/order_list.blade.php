@@ -7,11 +7,11 @@
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
             <h5>订单管理</h5>
-            <a href="order_list" class="active">订单列表</a>
+            <a href="{{ url('orderList') }}" class="active">订单列表</a>
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
-            <a href="user_info">账户信息</a>
-            <a href="benefit_list">优惠券</a>
+            <a href="{{ url('userInfo') }}">账户信息</a>
+            <a href="{{ url('benefitList') }}">优惠券</a>
         </div>
         <div class="right">
             <!--我的主页-->
@@ -35,16 +35,16 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-                            @if(array_key_exists('all',$order))
+                            @if(array_key_exists('all', $order))
                                @foreach($order['all'] as $k=>$v)
                                  <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{$v['car_img']}}">
+                                                <img src="" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
-                                                    <a>{{$v['car_name']}}</a>
+                                                    <a>{{ $v['car_name'] }}</a>
                                                     <div class="carIcon">
                                                         <div>
                                                             <i class="icon icon_car1"></i>
@@ -68,14 +68,14 @@
                                                     <li class="time">
                                                         <div>
                                                             取车时间<br>
-                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['dep_time']) }}
                                                         </div>
                                                         <div>
                                                             还车时间<br>
-                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['des_time']) }}
                                                         </div>
                                                     </li>
-                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                     <li class="state">
                                                        @if($v['ord_pay']==0)
                                                             <a>未付款</a>
@@ -129,14 +129,14 @@
                         </ul>
                         <ul class="order3"></ul>
                         {{--订单展示页面--}}
-                        @if(array_key_exists(6,$order))
+                        @if(array_key_exists(6, $order))
                             @foreach($order['6'] as $k=>$v)
                                 <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{$v['car_img']}}">
+                                                <img src="" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
                                                     <a>{{$v['car_name']}}</a>
                                                     <div class="carIcon">
@@ -162,14 +162,14 @@
                                                     <li class="time">
                                                         <div>
                                                             取车时间<br>
-                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['dep_time']) }}
                                                         </div>
                                                         <div>
                                                             还车时间<br>
-                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['des_time']) }}
                                                         </div>
                                                     </li>
-                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                     <li class="state">
                                                             <a> 预约中</a></li>
                                                         <li class="cen">取消订单</li>
@@ -194,16 +194,16 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-                        @if(array_key_exists(2,$order))
+                        @if(array_key_exists(2, $order))
                             @foreach($order['2'] as $k=>$v)
                                 <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{$v['car_img']}}">
+                                                <img src="" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
-                                                    <a>{{$v['car_name']}}</a>
+                                                    <a>{{ $v['car_name'] }}</a>
                                                     <div class="carIcon">
                                                         <div>
                                                             <i class="icon icon_car1"></i>
@@ -227,14 +227,14 @@
                                                     <li class="time">
                                                         <div>
                                                             取车时间<br>
-                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['dep_time'] )}}
                                                         </div>
                                                         <div>
                                                             还车时间<br>
-                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['des_time'] )}}
                                                         </div>
                                                     </li>
-                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="cen">总额：￥{{ $v['ord_price']  }}</li>
                                                     <li class="state">
                                                         <a> 租赁中</a></li>
                                                     <li class="cen">详情查看</li>
@@ -264,11 +264,11 @@
                                 <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{$v['car_img']}}">
+                                                <img src="" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
-                                                    <a>{{$v['car_name']}}</a>
+                                                    <a>{{ $v['car_name'] }}</a>
                                                     <div class="carIcon">
                                                         <div>
                                                             <i class="icon icon_car1"></i>
@@ -292,14 +292,14 @@
                                                     <li class="time">
                                                         <div>
                                                             取车时间<br>
-                                                            {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                            {{ date('Y/m/d H:i', $v['dep_time']) }}
                                                         </div>
                                                         <div>
                                                             还车时间<br>
-                                                            {{date('Y/m/d H:i',$v['des_time'])}}
+                                                            {{date('Y/m/d H:i', $v['des_time'])}}
                                                         </div>
                                                     </li>
-                                                    <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                    <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                     <li class="state">
                                                         <a> 完成</a></li>
                                                     <li class="cen">详情查看</li>
@@ -324,16 +324,16 @@
                         <li>操作</li>
                     </ul>
                     <ul class="order3"></ul>
-                    @if(array_key_exists(5,$order))
+                    @if(array_key_exists(5, $order))
                         @foreach($order['5'] as $k=>$v)
                             <div class="No">
                                 <ul class="order3">
                                     <li>
-                                        <h5><a>订单号：</a>{{$v['ord_sn']}}</h5>
+                                        <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                         <div>
-                                            <img src="" alt="{{$v['car_img']}}">
+                                            <img src="" alt="{{ $v['car_img'] }}">
                                             <div class="info">
-                                                <a>{{$v['car_name']}}</a>
+                                                <a>{{ $v['car_name'] }}</a>
                                                 <div class="carIcon">
                                                     <div>
                                                         <i class="icon icon_car1"></i>
@@ -357,14 +357,14 @@
                                                 <li class="time">
                                                     <div>
                                                         取车时间<br>
-                                                        {{date('Y/m/d H:i',$v['dep_time'])}}
+                                                        {{date('Y/m/d H:i', $v['dep_time'])}}
                                                     </div>
                                                     <div>
                                                         还车时间<br>
-                                                        {{date('Y/m/d H:i',$v['des_time'])}}
+                                                        {{date('Y/m/d H:i', $v['des_time'])}}
                                                     </div>
                                                 </li>
-                                                <li class="cen">总额：￥{{$v['ord_price']}}</li>
+                                                <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                 <li class="state">
                                                     <a> 订单已取消</a></li>
                                                 <li class="cen">详情查看</li>
