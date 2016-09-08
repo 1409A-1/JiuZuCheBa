@@ -73,7 +73,7 @@
                                 </select>
                             </div>
                             <input type="text" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="typeadd">+ 添加车辆类型</a>
+                            <a class="btn-flat success new-product" href="typeAdd">+ 添加车辆类型</a>
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@
                                     <td>
                                         <!-- <span class="label label-success">Active</span> -->
                                         <ul class="actions" style="float:left">
-                                            <li><a href="typeupdate/{{$v['type_id']}}">编辑</a></li>
+                                            <li><a href="typeUpdate/{{$v['type_id']}}">编辑</a></li>
                                             <li class="last"><a class="del" href="javascript:void(0)" bid={{$v['type_id']}}>删除</a></li>
                                         </ul>
                                     </td>
@@ -168,11 +168,11 @@
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("typelistpage/"+page+"/"+search+"/0",function(msg){
+                $.get("typeListPage/"+page+"/"+search+"/0",function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -196,11 +196,11 @@
                 //alert(1)
                 search=$(this).val()=="" ? "all" :$(this).val();
                 //alert(search)
-                $.get("typelistpage/1/"+search+"/0",function(msg){
+                $.get("typeListPage/1/"+search+"/0",function(msg){
                 //alert(msg)
                 str="";
                 for(i=0; i<msg.cartype.length; i++){
-                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
+                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
                 }
                 $("#tbody").empty();
                 $("#tbody").append(str);
@@ -225,11 +225,11 @@
                 search=$("#search").val()?$("#search").val():"all";
                 del=$(this).attr("bid");
                 //alert(search);
-                $.get("typelistpage/"+page+"/"+search+"/"+del,function(msg){
+                $.get("typeListPage/"+page+"/"+search+"/"+del,function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeupdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
