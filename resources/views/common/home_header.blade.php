@@ -11,35 +11,22 @@
     <link type="text/css" rel="stylesheet" href="home/css/all.css">
     <link type="text/css" rel="stylesheet" href="home/css/calendar.css">
     <link type="text/css" rel="stylesheet" href="home/css/layer.css">
+
+    <script type="text/javascript" src="home/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="home/js/jquery-1.js"></script>
     <script type="text/javascript" src="home/js/jquery.js"></script>
     <script type="text/javascript" src="home/js/api"></script>
     <script type="text/javascript" src="home/js/getscript"></script>
-    <script type="text/javascript" src="home/js/ApiConfig.js"></script>
+    <script type="text/javascript" src="home/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="home/js/layer.js"></script>
+    <script type="text/javascript" src="home/js/ApiConfig.js"></script>
     <script type="text/javascript" src="home/js/dateRange.js"></script>
     <script type="text/javascript" src="home/js/dateTools.js"></script>
-    <script type="text/javascript" src="home/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="home/js/all.js"></script>
-    <script>
-        var rh='';
-        function IsPC() {
-            var userAgentInfo = navigator.userAgent;
-            var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
-            var flag = true;
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }
-            }
-            return flag;
-        }
-        if (rh != 'pc') {
-            if (!IsPC())
-                location.href = "http://m.dafang24.com";
-        }
-    </script>
+
     <script src="home/js/bsl.js" charset="UTF-8" type="text/javascript"></script>
     <script src="home/js/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
-    <script src="home/js/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
+
     <link href="home/css/main.css" type="text/css" rel="stylesheet">
     <link href="home/css/fix.css" type="text/css" rel="stylesheet">
 </head>
@@ -65,7 +52,7 @@
                     <div class="userInfo">
                         <p><a href="{{ url('order') }}" rel="nofollow">订单管理</a></p>
                         <p><a href="{{ url('userInfo')}}" rel="nofollow">账户管理</a></p>
-                        <p><a href="{{ url('logOut') }}">退出</a></p>
+                        <p><a href="{{ url('logout') }}">退出</a></p>
                     </div>
                 </div>
                 @endif
@@ -91,14 +78,14 @@
         <i class="icon icon_logo"></i>
         <ul class="menu_box">
             <li class=" on_menu"><a href="{{ url('/') }}">首页</a></li>
-            <li class=""><a href="{{ url('driving') }}">短租自驾</a></li>
-            <li class=""><a href="lease_car">长租服务</a></li>
+            <li class=""><a href="{{ url('short') }}">短租自驾</a></li>
+            <li class=""><a href="{{ url('long') }}">长租服务</a></li>
         </ul>
     </div>
 </div>
 
 <script>
-    var page = ['index', 'driving', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
+    var page = ['index', 'short', 'long'];
     jQuery(".menu_box li")[0].className = " on_menu";
     jQuery(page).each(function (i, obj) {
         jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");

@@ -40,15 +40,15 @@ Route::group(['middleware' => ['homelogin']], function(){
 });
 
 //前台登陆页面的展示
-Route::get('login','LoginController@login');
+Route::get('login', 'LoginController@login');
 //前台登录接值验证
-Route::post('loginPro','LoginController@loginPro');
+Route::post('loginPro', 'LoginController@loginPro');
 //前台退出登录
-Route::get('logout','LoginController@loginOut');
-//短租自驾
-Route::get('driving','IndexController@driving');
-
-
+Route::get('logout', 'LoginController@loginOut');
+//短租
+Route::get('short', 'IndexController@short');
+//长租
+Route::get('long', 'IndexController@long');
 
 
 //后台登录
@@ -58,8 +58,9 @@ Route::get('admins','AdminController@adminLogin');
 Route::post('signin','AdminController@adminLogin');
 
 Route::group(['middleware' => ['nologin']], function(){
-    Route::get('indexs','AdminController@indexs');
-    /*
+  Route::get('indexs','AdminController@indexs');
+  
+  /*
 	   类型管理
 	 */
 	Route::get('typeList','CarTypeController@typeList');//类型列表
@@ -68,7 +69,8 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::post('typeUpdate','CarTypeController@update');//编辑
 	Route::get('typeUpdate/{id}','CarTypeController@update');//更新
 	Route::get('typeDel/{id}','CarTypeController@del');//删除
-	/*
+	
+  /*
 	    品牌管理
 	 */
 	Route::get('brandList','CarBrandController@brandList');//品牌列表
@@ -77,7 +79,8 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::post('brandUpdate','CarBrandController@update');//编辑
 	Route::get('brandUpdate/{id}','CarBrandController@update');//更新
 	Route::get('brandDel/{id}','CarBrandController@del');//删除
-	/*
+	
+  /*
 	    用户管理
 	 */
 	Route::get('userList','UserController@userList');//前台用户列表
@@ -94,40 +97,38 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('messageAccept/{id}','UserController@messageAccept');//留言采纳
 
 	Route::get('carTypeList','AdminController@carTypeList');
-    Route::get('modelAdd','AdminController@modelAdd');
-    Route::post('typeAdd','AdminController@modelAdd');
-    Route::post('typeDel','AdminController@typeDel');
-    Route::get('address','AddressController@address');//服务点添加
-    Route::get('addressTwo','AddressController@addressTwo');
+  Route::get('modelAdd','AdminController@modelAdd');
+  Route::post('typeAdd','AdminController@modelAdd');
+  Route::post('typeDel','AdminController@typeDel');
+  Route::get('address','AddressController@address');//服务点添加
+  Route::get('addressTwo','AddressController@addressTwo');
 
-    Route::get('addrList','AddressController@addrList');//地区列表
-    Route::get('addrIns','AddressController@addrIns');//地区添加页面
-    Route::post('typeIns','AddressController@typeIns');//地区的添加
-    Route::post('ping','AddressController@ping');//汉语转换拼音
-    Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
-    Route::post('addServer','AddressController@add_server');//添加服务点
-    Route::get('addressList','AddressController@addressList');//服务点列表展示
-    Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
-    Route::get('package','PackageController@package');//套餐列表
-    Route::get('packIns','PackageController@package_ins');//套餐添加
-    Route::post('packInsert','PackageController@package_ins');//套餐添加
-    Route::get('packDel/{pack_id}','PackageController@pack_del');//套餐删除
-    Route::get('userPack','PackageController@user_pack');//用户套餐申请查看
+  Route::get('addrList','AddressController@addrList');//地区列表
+  Route::get('addrIns','AddressController@addrIns');//地区添加页面
+  Route::post('typeIns','AddressController@typeIns');//地区的添加
+  Route::post('ping','AddressController@ping');//汉语转换拼音
+  Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
+  Route::post('addServer','AddressController@add_server');//添加服务点
+  Route::get('addressList','AddressController@addressList');//服务点列表展示
+  Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
+  Route::get('package','PackageController@package');//套餐列表
+  Route::get('packIns','PackageController@package_ins');//套餐添加
+  Route::post('packInsert','PackageController@package_ins');//套餐添加
+  Route::get('packDel/{pack_id}','PackageController@pack_del');//套餐删除
+  Route::get('userPack','PackageController@user_pack');//用户套餐申请查看
 
-
-
-    Route::any('carIns','CarController@carIns');//车辆的添加
-    Route::get('carList','CarController@carList');//车辆展示列表
-    Route::get('carDel/{car_id}','CarController@carDel');//车辆删除
+  Route::any('carIns','CarController@carIns');//车辆的添加
+  Route::get('carList','CarController@carList');//车辆展示列表
+  Route::get('carDel/{car_id}','CarController@carDel');//车辆删除
 
 //车辆类型
-    Route::get('typelist','CarTypeController@car_list');//列表展示
-    Route::get('typelistpage/{page}/{search}','CarTypeController@listpage'); //列表分页
-    Route::any('typeadd','CarTypeController@add'); //添加
-    Route::post('typeupdate','CarTypeController@update'); //修改
-    Route::get('typeupdate/{id}','CarTypeController@update'); //执行修改
-    Route::get('typedel/{id}','CarTypeController@del');    //删除
-    Route::get('typedel/{id}','CarTypeController@del');    //删除
+  Route::get('typelist','CarTypeController@car_list');//列表展示
+  Route::get('typelistpage/{page}/{search}','CarTypeController@listpage'); //列表分页
+  Route::any('typeadd','CarTypeController@add'); //添加
+  Route::post('typeupdate','CarTypeController@update'); //修改
+  Route::get('typeupdate/{id}','CarTypeController@update'); //执行修改
+  Route::get('typedel/{id}','CarTypeController@del');    //删除
+  Route::get('typedel/{id}','CarTypeController@del');    //删除
 });
 
 // 微信对接 授权登录

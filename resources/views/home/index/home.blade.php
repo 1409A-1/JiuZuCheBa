@@ -2,17 +2,6 @@
 <link type="text/css" rel="stylesheet" href="home/css/index.css">
 <script type="text/javascript" src="home/js/index.js"></script>
 
-<script>
-    var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
-    jQuery(".menu_box li")[0].className = " on_menu";
-    jQuery(page).each(function (i, obj) {
-        jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
-        if (location.href.toLowerCase().indexOf(obj) > 1) {
-            jQuery(".menu_box li")[i].className += " on_menu";
-        }
-    })
-</script>
-
 <!--预定框-->
 <div class="bookBox noCopy">
     <div class="book">
