@@ -20,9 +20,9 @@ class AdminController extends Controller
      * */
     public function adminLogin(Request $request)
     {
-        if($request -> has('username')){
-            $name = $request -> input('username');
-            $pwd = $request -> input('password');
+        if ($request->has('username')) {
+            $name = $request->input('username');
+            $pwd = $request->input('password');
             $re = DB::table('admin_user')
                 ->where(['user_name' => $name])
                 ->first();

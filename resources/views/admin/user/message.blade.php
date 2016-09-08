@@ -58,7 +58,7 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>后台用户</h4>
+                            <h4>用户留言</h4>
                         </div>
                     </div>
 
@@ -82,16 +82,25 @@
                                 <tr>
                                     <th class="span3">
                                         <input type="checkbox" />
-                                        用户账号
+                                        评论用户
                                     </th>
                                     <th class="span3">
-                                        <span class="line"></span>密码
+                                        <span class="line"></span>评论内容
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>评论时间
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>状态
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>操作
                                     </th>
                                 </tr>
                             </thead>
                             <tbody id="tbody">
                                 <!-- row -->
-                                @foreach($user as $k => $v)
+                                @foreach($message as $k => $v)
                                 <tr class="first">
                                     <td>
                                         <input type="checkbox" />
@@ -100,7 +109,32 @@
                                         </div>
                                         <a href="#" class="name">{{$v['user_name']}}</a>
                                     </td>
-                                    <td class="description">******</td>
+                                    <td class="description">
+                                       {{$v['message_con']}}
+                                    </td>
+                                    <td class="description">
+                                       {{$v['add_time']}}
+                                    </td>
+                                    <td class="description">
+                                    @if ($v['type'] == 0)
+                                    <span class="label label-success">显示</span>
+                                    @elseif($v['type'] == 2)
+                                    <span class="label label-success">显示</span><span class="label label-success">被采纳</span>
+                                    @else
+                                    <span class="label label-info">不显示</span>
+                                    @endif
+                                    </td>
+                                    <td>
+                                       <ul class="actions" style="float:left">
+                                            @if ($v['type'] != 2)
+                                            <li><a href="javascript:void(0)" class="edit" mid="{{$v['message_id']}}">不显示</a></li>
+                                            <li><a href="javascript:void(0)" class="del" mid="{{$v['message_id']}}">删除</a></li>
+                                            @endif
+                                            @if ($v['type'] == 0)
+                                            <li><a href="javascript:void(0)" class="accept" mid="{{$v['message_id']}}">采纳</a></li>
+                                            @endif
+                                        </ul>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 <!-- row -->
@@ -153,13 +187,28 @@
             // Ajax分页
             $(document).delegate(".page","click",function(){
                 page=$(this).attr('page');
-                search=$("#search").val()?$("#search").val():"all";
+                //search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("adminListPage/"+page,function(msg){
+                del=0
+                $.get("messagePage/"+page+"/"+del,function(msg){
                     //alert(msg)
                     str="";
-                    for(i=0; i<msg.user.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.user[i].user_name+'</a></td><td class="description">******</td></tr>';
+                    for(i=0; i<msg.message.length; i++){
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.message[i].user_name+'</a></td><td class="description">'+msg.message[i].message_con+'</td><td class="description">'+msg.message[i].add_time+'</td> <td class="description">';
+                        if(msg.message[i].type==0){
+                            str+='<span class="label label-success">显示</span>';
+                        }else if(msg.message[i].type==2){
+                            str+='<span class="label label-success">显示</span><span class="label label-success">被采纳</span>';
+                        }else{
+                            str+='<span class="label label-info">不显示</span>';
+                        }
+                        str+='</td><td><ul class="actions" style="float:left">';
+                        if(msg.message[i].type!=2){
+                            str+='<li><a href="javascript:void(0)" class="edit" mid="'+msg.message[i].message_id+'">不显示</a></li><li><a href="javascript:void(0)" class="del" mid="'+msg.message[i].message_id+'">删除</a></li>';
+                        if(msg.message[i].type==0){
+                            str+='<li><a href="javascript:void(0)" class="accept">采纳</a></li></ul></td></tr>';
+                        }
+                        }
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -176,6 +225,80 @@
                         str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
                         $(".pagination").append(str2);
                 },'json')
+            })
+
+            // Ajax搜索&分页&删除
+            $(document).delegate(".del","click",function(){
+                page=$("#nowpage").val();
+                //search=$("#search").val()?$("#search").val():"all";
+                del=$(this).attr("mid");
+                //alert(search);
+                $.get("messagePage/"+page+"/"+del,function(msg){
+                    //alert(msg)
+                    str="";
+                    for(i=0; i<msg.message.length; i++){
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.message[i].user_name+'</a></td><td class="description">'+msg.message[i].message_con+'</td><td class="description">'+msg.message[i].add_time+'</td> <td class="description">'
+                        if(msg.message[i].type==0){
+                            str+='<span class="label label-success">显示</span>';
+                        }else if(msg.message[i].type==2){
+                            str+='<span class="label label-success">显示</span><span class="label label-success">被采纳</span>';
+                        }else{
+                            str+='<span class="label label-info">不显示</span>';
+                        }
+                        str+='</td><td><ul class="actions" style="float:left">';
+                        if(msg.message[i].type!=2){
+                            str+='<li><a href="javascript:void(0)" class="edit" mid="'+msg.message[i].message_id+'">不显示</a></li><li><a href="javascript:void(0)" class="del" mid="'+msg.message[i].message_id+'">删除</a></li>';
+                        if(msg.message[i].type==0){
+                            str+='<li><a href="javascript:void(0)" class="accept">采纳</a></li>';
+                        }
+                        str+='</ul></td></tr>';
+                        }
+                    }
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                },'json')
+            })
+
+            //Ajax审核
+            $(document).delegate(".edit",'click',function(){
+                var she=$(this);
+                mid=$(this).attr('mid');
+                $.get("messageSet/"+mid,function(msg){
+                    //alert(msg);
+                    if(msg=="unshow"){
+                        she.parents("td").prev().html('<span class="label label-info">不显示</span>');
+                        she.parent().next().next().remove();
+                        she.html("显示");
+                    }else if(msg=="show"){
+                        she.parents("td").prev().html('<span class="label label-success">显示</span>');
+                        she.html("不显示");
+                        she.parents("ul").append('<li><a href="javascript:void(0)" class="accept">采纳</a></li>')
+                    }
+                })
+            })
+
+            //Ajax采纳
+            $(document).delegate(".accept","click",function(){
+                she=$(this);
+                mid=$(this).parent().prev().children().attr("mid");
+                $.get("messageAccept/"+mid,function(msg){
+                    if(msg=="success"){
+                        she.parents("td").prev().html('<span class="label label-success">显示</span><span class="label label-success">被采纳</span>');
+                        she.parent().prevAll().remove();
+                        she.parent().remove();
+                    }
+                })
             })
 
             // jQuery Knobs
