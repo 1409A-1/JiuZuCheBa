@@ -31,7 +31,6 @@
 </script>
 
 <link type="text/css" rel="stylesheet" href="home/css/shortRent.css">
-<script type="text/javascript" src="home/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="home/js/shortRent.js"></script>
 <script type="text/javascript" src="home/js/linq.js"></script>
 <script type="text/javascript" src="home/js/m-webim-lite.js"></script>
@@ -418,8 +417,6 @@
 
     function _callback()
     {
-
-
         var in_id, start_time, stop_time, total, type, grade;
         in_id = $("#returnStore").find(".show a").attr("store_id");
         start_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html() + ":00";

@@ -19,6 +19,7 @@
     <script type="text/javascript" src="home/js/layer.js"></script>
     <script type="text/javascript" src="home/js/dateRange.js"></script>
     <script type="text/javascript" src="home/js/dateTools.js"></script>
+    <script type="text/javascript" src="home/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="home/js/all.js"></script>
     <script>
         var rh='';
@@ -92,11 +93,6 @@
             <li class=" on_menu"><a href="{{ url('/') }}">首页</a></li>
             <li class=""><a href="{{ url('driving') }}">短租自驾</a></li>
             <li class=""><a href="lease_car">长租服务</a></li>
-            <li class=""><a href="e_rent_car">企业租车</a></li>
-            <li class=""><a href="" target="_blank">以租代购</a></li>
-            <li class=""><a href="">门店查询</a></li>
-            <li class=""><a href="">优惠活动</a></li>
-            <li class="" id="last_menu"><a href="" target="_blank">招商加盟</a></li>
         </ul>
     </div>
 </div>
