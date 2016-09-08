@@ -9,17 +9,17 @@ use App\Http\Controllers\Controller;
 //------------------------用户信息的控制器---------------------------------//
 class HomeUserController extends Controller
 {
-    public function user_info(){
+    public function userInfo(){
        //加载页面
         $user_info = $this->u_info();
         return view('home.user_info.user_info',['info'=>$user_info]);
     }
  //密码修改展示页面
-    public function update_pass(){
+    public function updatePass(){
         return view('home.user_info.user_pass');
     }
 //前台修改密码验证原密码是否正确
-    public function only_pwd(Request $request){
+    public function onlyPwd(Request $request){
       $new_pwd = md5($request->input('new_pwd'));
       $info = $this->u_info();
           if ($new_pwd==$info['password']){
@@ -29,7 +29,7 @@ class HomeUserController extends Controller
           }
     }
 //前台修改密码验证手机验证码是否正确
-    public function only_mobile_code(Request $request){
+    public function onlyMobileCode(Request $request){
         $mobile_code = $request->input('mobile_code');
        // echo $mobile_code;
         $info = $this->u_info();
@@ -81,7 +81,7 @@ class HomeUserController extends Controller
         }
 
 //订单列表的展示
-    public function order_list(){
+    public function orderList(){
    //好几个表联查
        $id = session('user_id');
        $order =  DB::table('order')
@@ -114,7 +114,7 @@ class HomeUserController extends Controller
     }
 
 //个人优惠券列表的展示
-    public function benefit_list(){
+    public function benefitList(){
         $id = session('user_id');
         $benefit = DB::table('benefit')
               ->where('user_id',$id)
@@ -145,7 +145,7 @@ class HomeUserController extends Controller
            return view('home.message.message',['message'=>$result]);
     }
 //滑动鼠标进行查询
-    public function message_down(Request $request){
+    public function messageDown(Request $request){
        $page = $request->input('page');
        $nextpage = $page*1+1;
        $page=$page*6;
@@ -160,7 +160,7 @@ class HomeUserController extends Controller
 
     }
 //进行留言的ajax添加
-    public function message_add(Request $request){
+    public function messageAdd(Request $request){
         $message['user_name'] = $request->input('name');
         $message['message_con'] = $request->input('con');
         $message['user_id'] = session('user_id');

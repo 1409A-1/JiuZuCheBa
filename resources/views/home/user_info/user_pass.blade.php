@@ -8,18 +8,18 @@
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
             <h5>订单管理</h5>
-            <a href="order_list">订单列表</a>
+            <a href="orderList">订单列表</a>
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
-            <a id="toUser" class="active">账户信息</a>
-            <a href="benefit_list" >优惠券</a>
+            <a href="userInfo" class="active">账户信息</a>
+            <a href="benefitList" >优惠券</a>
         </div>
         <div class="right">
             <!--账户信息-->
             <div class="order shortOrder show">
                 <h4>修改密码</h4>
-                <form action="{{URL('password')}}" method="post" id="reg">
-                <input type="hidden" value="{{csrf_token()}}" name="_token"/>
+                <form action="{{ URL('password') }}" method="post" id="reg">
+                <input type="hidden" value="{{ csrf_token() }}" name="_token"/>
                 <div class="user_info" style="display: block;">
                     <div class="user_info1">
                         
@@ -90,7 +90,7 @@
                     new_pwd:{
                         required:true,
                         remote:{
-                            url:"{{'only_pwd'}}",
+                            url:"{{'onlyPwd'}}",
                             type:'get',
                             data:{   //传两个参数
                                 new_pwd:function(){
@@ -106,7 +106,7 @@
                     mobile_code:{
                         required:true,
                         remote:{
-                            url:"{{'only_mobile_code'}}",
+                            url:"{{'onlyMobileCode'}}",
                             type:'get',
                             data:{   //传两个参数
                                 mobile_code:function(){
