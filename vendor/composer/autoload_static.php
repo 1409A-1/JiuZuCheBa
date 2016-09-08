@@ -786,6 +786,7 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UpdateAddressTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_02_021111_update_address_table.php',
+        'UpdateApplyTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_07_162135_update_apply_table.php',
         'UpdateServerTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_142206_update_server_table.php',
     );
 

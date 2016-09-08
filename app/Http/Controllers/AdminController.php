@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use DB;
 use Session;
 use Validator;
@@ -18,27 +18,26 @@ class AdminController extends Controller
      * time:2016/8/31
      * @admin_user
      * */
-    public function admin_login()
+    public function adminLogin(Request $request)
     {
-        if($_POST){
-            $arr = Request::all();
-            $name = $arr['username'];
-            $pwd = $arr['password'];
+        if($request -> has('username')){
+            $name = $request -> input('username');
+            $pwd = $request -> input('password');
             $re = DB::table('admin_user')
                 ->where(['user_name' => $name])
                 ->first();
-            if($re){
-                if($pwd == $re['password']){
+            if ($re) {
+                if ($pwd == $re['password']) {
                     Session::put('name',$re['user_name']);
                     Session::put('id',$re['user_id']);
                     echo 1;
-                }else{
+                } else {
                     echo 2;
                 }
-            }else{
+            } else {
                 echo 3;
             }
-        }else{
+        } else {
            return view('admin.login.admin_login');
         }
     }
@@ -58,28 +57,27 @@ class AdminController extends Controller
      * @car_type
      * 描述:车辆类型管理
      * */
-    public function car_type_list()
+    public function carTypeList()
     {
         $arr = DB::table('car_type')
             ->get();
-        return view('admin.admin.car_type',['data' => $arr]);
+        return view('admin.admin.carType',['data' => $arr]);
     }
     /*
      * name:wanghu
      * time:2016/9/1
      * 描述：添加车辆的型号，判断是否值过来没有的话就跳到添加页面
      * */
-    public function model_add()
+    public function modelAdd(Request $request)
     {
-        if($_POST){
-            $arr = Request::all();
+        if($request -> has('type_name')){
             DB::table('car_type')
                 ->insert([
-                    'type_name'  => $arr['type_name']
+                    'type_name'  => $request->input('type_name')
                 ]);
-            return redirect('car_type_list');
+            return redirect('carTypeList');
         }else{
-            return view('admin.admin.model_add');
+            return view('admin.admin.modelAdd');
         }
     }
     /*
@@ -87,9 +85,9 @@ class AdminController extends Controller
      * time:2016/9/1
      * 描述:jquery删除
      * */
-    public function type_del(){
+    public function typeDel(Request $request){
 
-        $id = Request::input('type_id');
+        $id = $request->input('type_id');
 
         $re = DB::table('car_type')
             ->where('type_id',$id)

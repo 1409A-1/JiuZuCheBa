@@ -528,5 +528,6 @@ return array(
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'UpdateAddressTable' => $baseDir . '/database/migrations/2016_09_02_021111_update_address_table.php',
+    'UpdateApplyTable' => $baseDir . '/database/migrations/2016_09_07_162135_update_apply_table.php',
     'UpdateServerTable' => $baseDir . '/database/migrations/2016_09_05_142206_update_server_table.php',
 );

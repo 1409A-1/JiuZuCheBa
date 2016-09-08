@@ -40,7 +40,6 @@ Route::get('login','LoginController@login');
 Route::post('login_pro','LoginController@login_pro');
 //前台退出登录
 Route::get('login_out','LoginController@login_out');
-
 //短租自驾
 Route::get('driving','IndexController@driving');
 //长期租车
@@ -53,16 +52,13 @@ Route::get('pre_activity','IndexController@pre_activity');
 Route::get('attract','IndexController@attract');
 
 
-/*
- * 后台
- * */
-Route::get('admins','AdminController@admin_login');
+
 
 //后台登录
-Route::get('admins','AdminController@admin_login');
+Route::get('admins','AdminController@adminLogin');
 
 //判断用户密码
-Route::post('signin','AdminController@admin_login');
+Route::post('signin','AdminController@adminLogin');
 
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('indexs','AdminController@indexs');
@@ -92,23 +88,32 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('adminlist','UserController@admin_list');//后台用户列表
 	Route::get('adminlistpage/{page}','UserController@adminlistpage');//后台管理分页
 
-	Route::get('car_type_list','AdminController@car_type_list');
-    Route::get('model_add','AdminController@model_add');
-    Route::post('type_add','AdminController@model_add');
-    Route::post('type_del','AdminController@type_del');
-    Route::get('address','AddressController@address');
-    Route::get('address_two','AddressController@address_two');
+	Route::get('carTypeList','AdminController@carTypeList');
+    Route::get('modelAdd','AdminController@modelAdd');
+    Route::post('typeAdd','AdminController@modelAdd');
+    Route::post('typeDel','AdminController@typeDel');
+    Route::get('address','AddressController@address');//服务点添加
+    Route::get('addressTwo','AddressController@addressTwo');
 
-    Route::get('addr_list','AddressController@addr_list');//地区列表
-    Route::get('addr_ins','AddressController@addr_ins');//地区添加
-    Route::post('add_insert','AddressController@address_ins');//地区添加
-    Route::post('add_server','AddressController@add_server');//添加服务点
-    Route::get('address_list','AddressController@address_list');//服务点列表展示
+    Route::get('addrList','AddressController@addrList');//地区列表
+    Route::get('addrIns','AddressController@addrIns');//地区添加页面
+    Route::post('typeIns','AddressController@typeIns');//地区的添加
+    Route::post('ping','AddressController@ping');//汉语转换拼音
+    Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
+    Route::post('addServer','AddressController@add_server');//添加服务点
+    Route::get('addressList','AddressController@addressList');//服务点列表展示
+    Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
     Route::get('package','PackageController@package');//套餐列表
-    Route::get('pack_ins','PackageController@package_ins');//套餐添加
-    Route::post('pack_insert','PackageController@package_ins');//套餐添加
-    Route::get('pack_del/{pack_id}','PackageController@pack_del');//套餐删除
-    Route::get('user_pack','PackageController@user_pack');//用户套餐申请查看
+    Route::get('packIns','PackageController@package_ins');//套餐添加
+    Route::post('packInsert','PackageController@package_ins');//套餐添加
+    Route::get('packDel/{pack_id}','PackageController@pack_del');//套餐删除
+    Route::get('userPack','PackageController@user_pack');//用户套餐申请查看
+
+
+
+    Route::any('carIns','CarController@carIns');//车辆的添加
+    Route::get('carList','CarController@carList');//车辆展示列表
+    Route::get('carDel/{car_id}','CarController@carDel');//车辆删除
 
 //车辆类型
     Route::get('typelist','CarTypeController@car_list');//列表展示

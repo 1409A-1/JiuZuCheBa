@@ -24,7 +24,7 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-cog"></i>
-                <span>车辆管理</span>
+                <span>车辆类型管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
@@ -39,8 +39,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="car_type_list">车辆类型列表</a></li>
-                <li><a href="model_add">添加车辆类型</a></li>
+                <li><a href="{{url('carTypeList')}}">车辆类型列表</a></li>
+                <li><a href="{{url('modelAdd')}}">添加车辆类型</a></li>
             </ul>
         </li>
         <li>
@@ -50,8 +50,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{url('addr_list')}}">地区的列表</a></li>
-                <li><a href="{{url('addr_ins')}}">地区列添加</a></li>
+                <li><a href="{{url('addrList')}}">地区的列表</a></li>
+                <li><a href="{{url('addrIns')}}">地区列添加</a></li>
             </ul>
         </li>
         <li>
@@ -61,8 +61,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="address">服务点添加</a></li>
-                <li><a href="address_list">服务点展示</a></li>
+                <li><a href="{{ url('address') }}">服务点添加</a></li>
+                <li><a href="{{ url('addressList') }}">服务点展示</a></li>
             </ul>
         </li>
         <li>
@@ -72,7 +72,7 @@
             </a>
         </li>
         <li>
-            <a href="{{url('user_pack')}}">
+            <a href="{{url('userPack')}}">
                 <i class="icon-calendar-empty"></i>
                 <span>用户套餐申请审核</span>
             </a>
@@ -86,12 +86,12 @@
         <li>
             <a class="dropdown-toggle ui-elements" href="#">
                 <i class="icon-code-fork"></i>
-                <span>UI Elements</span>
+                <span>车辆管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{asset('admin')}}/ui-elements.html">UI Elements</a></li>
-                <li><a href="{{asset('admin')}}/icons.html">Icons</a></li>
+                <li><a href="{{url('carIns')}}">车辆添加</a></li>
+                <li><a href="{{url('carList')}}">车辆列表</a></li>
             </ul>
         </li>
         <li>
