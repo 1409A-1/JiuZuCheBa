@@ -57,7 +57,7 @@
                 <div class="table-wrapper products-table section"  >
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>Products</h4>
+                            <h4>服务点添加</h4>
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@
                         });
                     </script>
                     <div class="row-fluid" style="width:500px;float:left;">
-                        <form action="{{url('add_server')}}" method="post">
+                        <form action="{{url('addServer')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <table class="table table-hover" >
                                 <tr>
@@ -136,11 +136,11 @@
                             </table>
                         </form>
                     </div>
-                    <div class="row-fluid" style="width: 500px;height: 400px;float:right;">
+                    <div class="row-fluid" style="width: 50%;height: 400px;float:right;">
                         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
                         <style type="text/css">
-                            body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+                            body, html,#allmap {width: 100%;height: 100%; margin:0;font-family:"微软雅黑";}
                         </style>
                         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4Illl9vffDsxg3qPNzDIm6wrtsXMNWP2"></script>
                         <div id="allmap"></div>
@@ -223,245 +223,6 @@
                            });
                        });
                 </script>
-                <!-- orders table -->
-                <div class="table-wrapper orders-table section">
-                    <div class="row-fluid head">
-                        <div class="span12">
-                            <h4>Orders</h4>
-                        </div>
-                    </div>
-
-                    <div class="row-fluid filter-block">
-                        <div class="pull-right">
-                            <div class="btn-group pull-right">
-                                <button class="glow left large">All</button>
-                                <button class="glow middle large">Pending</button>
-                                <button class="glow right large">Completed</button>
-                            </div>
-                            <input type="text" class="search order-search" placeholder="Search for an order.." />
-                        </div>
-                    </div>
-
-                    <div class="row-fluid">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="span2">
-                                        Order ID
-                                    </th>
-                                    <th class="span3">
-                                        Date
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>
-                                        Name
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>
-                                        Status
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>
-                                        Items
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>
-                                        Total amount
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- row -->
-                                <tr class="first">
-                                    <td>
-                                        <a href="#">#459</a>
-                                    </td>
-                                    <td>
-                                        Jan 03, 2014
-                                    </td>
-                                    <td>
-                                        <a href="#">John Smith</a>
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Completed</span>
-                                    </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        $ 3,500.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">#510</a>
-                                    </td>
-                                    <td>
-                                        Feb 22, 2014
-                                    </td>
-                                    <td>
-                                        <a href="#">Anna Richards</a>
-                                    </td>
-                                    <td>
-                                        <span class="label label-info">Pending</span>
-                                    </td>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        $ 800.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">#590</a>
-                                    </td>
-                                    <td>
-                                        Mar 03, 2014
-                                    </td>
-                                    <td>
-                                        <a href="#">Steven McFly</a>
-                                    </td>
-                                    <td>
-                                        <span class="label label-success">Completed</span>
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        $ 1,350.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">#618</a>
-                                    </td>
-                                    <td>
-                                        Jan 03, 2014
-                                    </td>
-                                    <td>
-                                        <a href="#">George Williams</a>
-                                    </td>
-                                    <td>
-                                        <span class="label">Canceled</span>
-                                    </td>
-                                    <td>
-                                        8
-                                    </td>
-                                    <td>
-                                        $ 3,499.99
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- end orders table -->
-
-                <!-- users table -->
-                <div class="table-wrapper users-table section">
-                    <div class="row-fluid head">
-                        <div class="span12">
-                            <h4>Users</h4>
-                        </div>
-                    </div>
-
-                    <div class="row-fluid filter-block">
-                        <div class="pull-right">
-                            <a class="btn-flat pull-right success new-product add-user">+ Add user</a>
-                            <input type="text" class="search user-search" placeholder="Search for users.." />
-                        </div>
-                    </div>
-
-                    <div class="row-fluid">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="span4">
-                                        Name
-                                    </th>
-                                    <th class="span3">
-                                        <span class="line"></span>Signed up
-                                    </th>
-                                    <th class="span2">
-                                        <span class="line"></span>Total spent
-                                    </th>
-                                    <th class="span3 align-right">
-                                        <span class="line"></span>Email
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- row -->
-                                <tr class="first">
-                                    <td>
-                                        <img src="{{asset('admin')}}/img/contact-img.png" class="img-circle avatar hidden-phone" />
-                                        <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                                        <span class="subtext">Graphic Design</span>
-                                    </td>
-                                    <td>
-                                        Jan 11, 2012
-                                    </td>
-                                    <td>
-                                        $ 500.00
-                                    </td>
-                                    <td class="align-right">
-                                        <a href="#">alejandra@gmail.com</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="{{asset('admin')}}/img/contact-img2.png" class="img-circle avatar hidden-phone" />
-                                        <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                                        <span class="subtext">Graphic Design</span>
-                                    </td>
-                                    <td>
-                                        Apr 23, 2012
-                                    </td>
-                                    <td>
-                                        $ 3,210.00
-                                    </td>
-                                    <td class="align-right">
-                                        <a href="#">alejandra@gmail.com</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="{{asset('admin')}}/img/contact-img.png" class="img-circle avatar hidden-phone" />
-                                        <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                                        <span class="subtext">Graphic Design</span>
-                                    </td>
-                                    <td>
-                                        Feb 03, 2014
-                                    </td>
-                                    <td>
-                                        $ 890.00
-                                    </td>
-                                    <td class="align-right">
-                                        <a href="#">alejandra@gmail.com</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="{{asset('admin')}}/img/contact-img2.png" class="img-circle avatar hidden-phone" />
-                                        <a href="user-profile.html" class="name">Alejandra Galvan Castillo</a>
-                                        <span class="subtext">Graphic Design</span>
-                                    </td>
-                                    <td>
-                                        Sep 19, 2012
-                                    </td>
-                                    <td>
-                                        $ 899.99
-                                    </td>
-                                    <td class="align-right">
-                                        <a href="#">alejandra@gmail.com</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- end users table -->
             </div>
         </div>
     </div>
