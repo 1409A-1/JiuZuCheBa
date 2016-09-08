@@ -20,8 +20,8 @@ class UserController extends Controller
     {
     	$count = User::count();
     	$page = 1;
-    	$prev = $page == 1? 1: $page-1;
-    	$next = $page == $count? $count :$page+1;
+    	$prev = $page==1? 1: $page-1;
+    	$next = $page== $count? $count: $page+1;
     	$length = 5;
     	$pages = ceil($count/$length);
     	$offset = ($page-1)*$length;
@@ -32,6 +32,7 @@ class UserController extends Controller
      /*
        网站用户列表分页展示
      */
+
     public function listPage(Request $request,$page = 1)
     {
         $count = User::count();
@@ -42,7 +43,7 @@ class UserController extends Controller
         $page = $page>$pages ? $pages : $page;
         $offset = ($page-1)*$length;
         $user = User::take($length)->skip($offset)->get()->toArray()? User::take($length)->skip($offset)->get()->toArray(): array();
-        echo json_encode(['user' => $user,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+        return json_encode(['user' => $user,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
 
     /*
@@ -74,7 +75,7 @@ class UserController extends Controller
         $page = $page>$pages? $pages: $page;
         $offset = ($page-1)*$length;
         $admin = Admin_user::take($length)->skip($offset)->get()->toArray()? Admin_user::take($length)->skip($offset)->get()->toArray(): array();
-        echo json_encode(['user' => $admin,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+        return json_encode(['user' => $admin,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
 
     /*
@@ -115,7 +116,7 @@ class UserController extends Controller
         foreach ($message as $key => $val) {
             $message[$key]['add_time']=date("Y/m/d h:i:s",$message[$key]['add_time']);
         }
-        echo json_encode(['message' => $message,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+        return json_encode(['message' => $message,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
 
     /*

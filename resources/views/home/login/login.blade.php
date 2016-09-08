@@ -1,84 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <script src="../resources/assets/home/log/b.js" charset="utf-8"></script>
-    <script src="../resources/assets/home/log/lxb.js" charset="utf-8"></script>
-    <script src="../resources/assets/home/log/v.htm" charset="utf-8"></script>
-    <meta charset="UTF-8">
-    <meta name="renderer" content="webkit">
-    <title>就租车吧 登录</title>
-    <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/all.css">
-    <link type="text/css" rel="stylesheet" href="../resources/assets/home/log/login.css">
-    <script src="../resources/assets/home/log/hm.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/log/jquery-1.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/log/jquery.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/log/ApiConfig.js"></script>
-    <script type="text/javascript" src="../resources/assets/home/log/all.js"></script>
-    <script src="../resources/assets/home/log/layer.js"></script>
-    <link style="" id="layui_layer_skinlayercss" href="../resources/assets/home/log/layer.css" rel="stylesheet">
-    <script src="../resources/assets/home/log/login.js"></script>
-    <script src="../resources/assets/home/log/bsl.js" charset="UTF-8" type="text/javascript"></script>
-    <script src="../resources/assets/home/log/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
-    <script src="../resources/assets/home/log/main_icon_invite_mess_api.js" charset="UTF-8" type="text/javascript"></script>
-    <link href="../resources/assets/home/log/main.css" type="text/css" rel="stylesheet">
-    <link href="../resources/assets/home/log/fix.css" type="text/css" rel="stylesheet">
-    <style>@import "";</style>
-    <script charset="utf-8" src="../resources/assets/home/log/m-webim-lite.js" type="text/javascript"></script>
-</head>
-<body>
-<!--菜单-->
- <!--头部-->
-<ins id="qiao-wrap"><ins style="position: fixed; bottom: 0px;" class="qiao-flash-storage" id="qiao-flash-storage"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="FlashLocalStorage" align="middle" height="5" width="5"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="movie" value="http://webim.qiao.baidu.com/f/pool/swf/local_storage.swf"><embed wmode="transparent" allowscriptaccess="always" src="../resources/assets/home/log/local_storage.swf" name="FlashLocalStorage" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" align="middle" height="5" width="5"></object></ins><ins style="visibility: hidden; display: none;" class="qiao-invite-wrap" id="qiao-invite-wrap"><ins class="qiao-invite-decoration"></ins><ins style="visibility: hidden;" class="qiao-invite-text"><p style="font-size:12px;font-family:宋体;font-color:#000000;">欢迎您，有什么可以帮助您的么？</p></ins><ins class="qiao-invite-accept">现在咨询</ins><a class="qiao-invite-reject">稍后再说</a><a class="qiao-invite-close"></a><ins class="qiao-invite-form"><ins class="qiao-invite-form-inner"><textarea placeholder="您可直接在这里和我们联系！" class="qiao-invite-input"></textarea><a class="qiao-invite-send">发送</a></ins></ins></ins><ins style="visibility: hidden; display: none;" class="qiao-mess-wrap" id="qiao-mess-wrap"><ins class="qiao-mess-container" id="qiao-mess-container"><ins class="qiao-mess-head" id="qiao-mess-head"><ins id="qiao-mess-head-text" class="qiao-mess-head-text"></ins><a id="qiao-mess-head-close" data-status="max" class="qiao-mess-head-close"></a></ins><ins class="qiao-mess-body" id="qiao-mess-body"><iframe src="../resources/assets/home/log/a.htm" style="display: none;" name="qiao-mess-iframe" id="qiao-mess-iframe"></iframe><form accept-charset="utf-8" action="http://qiao.baidu.com/v3/?module=default&amp;controller=index&amp;action=doMess&amp;siteid=6567291&amp;page_id=&amp;ucid=2941205" target="qiao-mess-iframe" method="post" class="qiao-mess-form qiao-mess-clearfix"><ins class="qiao-mess-clearfix"><ins class="qiao-mess-clearfix qiao-mess-item-mess"><ins style="display:none">留言内容</ins><textarea name="bd_bp_messText" class="" placeholder="请在此输入留言内容，我们会尽快与您联系。"></textarea><ins class="qiao-mess-star">*</ins></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">姓名<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messName" class="qiao-mess-item-body" placeholder="最多100个字符"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">电话<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messPhone" class="qiao-mess-item-body" placeholder="请输入您的电话号码"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">地址<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messAddress" class="qiao-mess-item-body" placeholder="最多100个字符"></ins></ins><ins class="qiao-mess-item qiao-mess-clearfix"><ins class="qiao-mess-item-head">邮箱<ins class="qiao-mess-star" style="display:none">*</ins></ins><ins class="qiao-mess-input-wrap"><input name="bd_bp_messEmail" class="qiao-mess-item-body" placeholder="请输入合法邮箱名"></ins></ins><input style="display:none" value="大方租车 登录" name="bd_bp_title" type="hidden"><input style="display:none" value="http://localhost/num1_team/public/" name="bd_bp_referer" type="hidden"><input style="display:none" value="1472605036542" name="bd_bp_tick" type="hidden"><input style="display:none" value="be9d5b8d4398540c66032803" name="bd_bp_bid" type="hidden"></form></ins><ins class="qiao-mess-foot" id="qiao-mess-foot"><a id="qiao-mess-foot-send-btn" class="qiao-mess-foot-send-btn">发送</a><ins class="qiao-mess-foot-logo"></ins></ins></ins></ins></ins><div class="top">
-    <div class="top_box">
-        <a href="http://www.dafang24.com/" rel="nofollow">中国互联网连锁租车品牌</a>
-        <ul class="top_menu">
-            <li class="top_user">
-                <div class="no_user">
-                    <a href="{{ URL('login_reg') }}" rel="nofollow">注册</a>
-                    <a href="{{ URL('login') }}" rel="nofollow">登录</a>
-                </div>
-                <div class="yes_user">
-                    <a href="" rel="nofollow">我的大方</a>
-                    <div class="arrow"><div></div></div>
-                    <div class="userInfo">
-                        <a href="" rel="nofollow">订单管理</a>
-                        <a href="" rel="nofollow">账户管理</a>
-                        <a href="login_out">退出</a>
-                    </div>
-                </div>
-            </li>
-            <li class="top_mobile">
-                <a href="http://app.dafang24.com/" target="_blank" rel="nofollow">
-                    <i class="icon icon_phone"></i>
-                    手机预订
-                    <div class="QR_code">
-                        <div class="QR_code_caret"></div>
-                        <div class="QR_code_img"><img src="../resources/assets/home/log/code.png"></div>
-                        <div class="QR_code_text">扫一扫，即刻体验</div>
-                    </div>
-                </a>
-            </li>
-            <li class="top_phone">400-060-0112</li>
-        </ul>
-    </div>
-</div>
-<!--菜单-->
-<div class="menu">
-    <div>
-        <i class="icon icon_logo"></i>
-        <ul class="menu_box">
-            <li class=""><a href="{{ URL('/') }}">首页</a></li>
-            <li class=""><a href="">短租自驾</a></li>
-            <li class=""><a href="">长租服务</a></li>
-            <li class=""><a href="">企业租车</a></li>
-            <li class=""><a href="" target="_blank">以租代购</a></li>
-            <li class=""><a href="">门店查询</a></li>
-            <li class=""><a href="">优惠活动</a></li>
-            <li class="" id="last_menu"><a href="" target="_blank">招商加盟</a></li>
-        </ul>
-    </div>
-</div>
+@include('common.home_header')
+<link type="text/css" rel="stylesheet" href="home/css/login.css">
+<script src="home/js/login.js" type="text/javascript"></script>
+<script src="home/js/m-webim-lite.js" type="text/javascript"></script>
+
 <script>
     var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
     jQuery(".menu_box li")[0].className = " on_menu";
@@ -89,15 +13,6 @@
         }
     })
 </script>
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?08e7d1515718bb729aa25f12bfbcd0d3";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
 
 <!--登录注册-->
 <div class="infoBox noCopy">
@@ -107,13 +22,13 @@
             <div class="login">
                 <div class="title">
                     <div>登录</div>
-                    <span>没有账号？<a href="{{ URL('login_reg') }}">立即注册</a></span>
+                    <span>没有账号？<a href="{{ URL('loginReg') }}">立即注册</a></span>
                 </div>
                 <div class="input_body">
-                    <form action="login_pro" method="post">
+                    <form action="loginPro" method="post">
                         {!! csrf_field() !!}
                     <div class="inputBox" id="login_name_box">
-                        <input placeholder="我的手机号" maxlength="11" name="user_name" type="tel" required="">
+                        <input placeholder="我的用户名" maxlength="11" name="user_name" type="tel" required="">
                         <i class="icon_login icon_l1"></i>
                     </div>
                     <div class="inputBox" id="login_pw_box">
@@ -130,23 +45,23 @@
             </div>
             <!--忘记密码-->
             <div class="findPw">
-                    <div class="title">
-                        <div>找回密码</div>
-                        <span><a id="return1">返回登录</a></span>
-                    </div>
-                    <div class="input_body">
-                        <div class="inputBox" id="find_name_box">
-                            <input placeholder="请输入手机号码" maxlength="11" id="find_name" type="tel">
-                            <i class="icon_login icon_l1"></i>
-                        </div>
-                        <div class="dx_code">
-                            <input placeholder="请输入短信验证码" maxlength="6" id="find_code" type="text">
-                            <button id="find_send_code">发送验证码</button>
-                        </div>
-                        <div class="errorPrompt" id="findError"><!--错误提示--></div>
-                        <button id="find">确认找回<i></i></button>
-                    </div>
+                <div class="title">
+                    <div>找回密码</div>
+                    <span><a id="return1">返回登录</a></span>
                 </div>
+                <div class="input_body">
+                    <div class="inputBox" id="find_name_box">
+                        <input placeholder="请输入手机号码" maxlength="11" id="find_name" type="tel">
+                        <i class="icon_login icon_l1"></i>
+                    </div>
+                    <div class="dx_code">
+                        <input placeholder="请输入短信验证码" maxlength="6" id="find_code" type="text">
+                        <button id="find_send_code">发送验证码</button>
+                    </div>
+                    <div class="errorPrompt" id="findError"><!--错误提示--></div>
+                    <button id="find">确认找回<i></i></button>
+                </div>
+            </div>
             <!--修改密码-->
             <div class="changePw">
                 <div class="title">
@@ -414,44 +329,3 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
         </div>
     </div>
 </div>
-<!--电话和QQ-->
-<div class="contact">
-    <div class="qq">
-        <img src="../resources/assets/home/log/QQ.png" onclick="window.location.href='tencent://message/?uin=2054275242&amp;Site=4000600112&amp;Menu=yes'" class="contact_img">
-        <p>点击联系在线客服</p>
-        <div class="contact_text">在线客服</div>
-    </div>
-    <div class="phone">
-        <img src="../resources/assets/home/log/lxb.png" class="contact_img">
-        <div class="contact_text">免费电话</div>
-        <h4>免费电话咨询</h4>
-        <input id="telInput" placeholder="请输入您的电话号码" type="text">
-        <input id="callBtn" value="立即免费通话" type="button">
-    </div>
-    <div class="explain">
-        <div class="explain_arrow"></div>
-        <img src="../resources/assets/home/log/explain_img1.png" class="explain_img1">
-        <h1>
-            手机请直接输入<br>
-            如 1861234XXXX
-        </h1>
-        <br>
-        <img src="../resources/assets/home/log/explain_img2.png" class="explain_img2">
-        <h2>
-            座机前加拨区号<br>
-            如 0271234XXXX
-        </h2>
-        <h3>
-            输入您的电话号码，点击通话，稍后您将接到我们的电话，该通话对您<b>完全免费</b>，请放心接听！
-        </h3>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-<div style="display: none;"><form action="http://lxbjs.baidu.com/vt/lxb.gif" method="post" target="lxbHideIframe"><input name="p" value="MSwlRTUlQTQlQTclRTYlOTYlQjklRTclQTclOUYlRTglQkQlQTYlMjAlRTclOTklQkIlRTUlQkQlOTUsaHR0cCUzQSUyRiUyRmxvY2FsaG9zdCUyRm51bTFfdGVhbSUyRnB1YmxpYyUyRixodHRwJTNBJTJGJTJGd3d3LmRhZmFuZzI0LmNvbSUyRnVzZXJjZW50ZXIlMkZsb2dpbiwx"><input name="sid" value="6567291"><input name="bdcbid" value="cd2819a4-cba9-4e86-b7cf-72e892ee3838"><input name="t" value="1472605036666"></form><iframe id="lxbHideIframe" name="lxbHideIframe" src="../resources/assets/home/log/a.htm"></iframe></div></body></html>

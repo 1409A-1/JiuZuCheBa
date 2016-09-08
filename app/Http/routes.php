@@ -1,63 +1,53 @@
 <?php
-
+//前台首页展示
 Route::get('/', function () {
     return view('home.index.home');
 });
-
-Route::get('home','IndexController@home');
 //注册
-Route::get('login_reg','LoginController@register');
+Route::get('loginReg','LoginController@register');
 //注册接值处理
-Route::post('reg_pro','LoginController@reg_pro');
+Route::post('regPro','LoginController@regPro');
 //前台验证注册用户名唯一
-Route::get('only_name','LoginController@only_name');
+Route::get('onlyName','LoginController@onlyName');
 //前台验证注册手机号唯一
-Route::get('only_tel','LoginController@only_tel');
+Route::get('onlyTel','LoginController@onlyTel');
 
 
 //前台的非法登录
 Route::group(['middleware' => ['homelogin']], function(){
 //前台的个人中心
-   Route::get('user_info','HomeUserController@user_info');
+   Route::get('userInfo','HomeUserController@userInfo');
 //修改密码展示页面
-   Route::get('update_pass','HomeUserController@update_pass');
+   Route::get('updatePass','HomeUserController@updatePass');
 //修改密码发送短信
    Route::get('phone','HomeUserController@phone');
 //接值进行密码的修改
    Route::post('password','HomeUserController@password');
 //前台判断原密码是否正确
-   Route::get('only_pwd','HomeUserController@only_pwd');
+   Route::get('onlyPwd','HomeUserController@onlyPwd');
 //前台验证修改手机验证码是否正确
-   Route::get('only_mobile_code','HomeUserController@only_mobile_code');
+   Route::get('onlyMobileCode','HomeUserController@onlyMobileCode');
 //订单列表的展示
-   Route::get('order_list','HomeUserController@order_list');
+   Route::get('orderList','HomeUserController@orderList');
 //优惠券的展示
-   Route::get('benefit_list','HomeUserController@benefit_list');
+   Route::get('benefitList','HomeUserController@benefitList');
 //公开留言页面的展示
    Route::get('message','HomeUserController@message');
 //ajax进行留言的添加
-   Route::get('message_add','HomeUserController@message_add');
+   Route::get('messageAdd','HomeUserController@messageAdd');
 //滑动鼠标进行加载
-   Route::get('message_down','HomeUserController@message_down');
+   Route::get('messageDown','HomeUserController@messageDown');
 });
 
-//前台登陆
+//前台登陆页面的展示
 Route::get('login','LoginController@login');
-//登录验证
-Route::post('login_pro','LoginController@login_pro');
+//前台登录接值验证
+Route::post('loginPro','LoginController@loginPro');
 //前台退出登录
-Route::get('login_out','LoginController@login_out');
+Route::get('loginOut','LoginController@loginOut');
 
 //短租自驾
 Route::get('driving','IndexController@driving');
-//长期租车
-Route::get('lease_car','IndexController@lease_car');
-//企业租车
-Route::get('e_rent_car','IndexController@e_rent_car');
-//优惠活动
-Route::get('pre_activity','IndexController@pre_activity');
-//招商加盟
-Route::get('attract','IndexController@attract');
 
 
 /*
@@ -122,5 +112,7 @@ Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
 // 常用路由
 Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
-Route::post('getServerList','PublicController@getServerList');  // 获取城市列表
+Route::post('getServerList','PublicController@getServerList');  // 获取服务点列表
+Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
+Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
 
