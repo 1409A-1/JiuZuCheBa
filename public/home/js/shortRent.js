@@ -3,6 +3,7 @@ var LNG1, LNG2, LAT1, LAT2;//取还车门店坐标
 var brand_List = ["0"];//当前门店 车辆品牌 列表
 var CarList;//车型列表
 var _token = $("meta[name='_token']").attr('content');
+var TYPE = ["0"];
 
 $(function () {
     index_Of();
@@ -11,7 +12,21 @@ $(function () {
     storeInfoShow();//取还车门店信息展示
     calendar();
     discount();//优惠活动
+    getType();
 });
+
+function getType() {
+    $.ajax({  
+        type : "post",  
+        url : getCarTypeList,  
+        data : {"_token": _token},  
+        async : false,  
+        success : function(msg){  
+           TYPE.push(msg[k].type_name);
+        }  
+    });
+    TYPE.push("其他");
+}
 
 //预订信息加载
 function loading() {
@@ -1355,6 +1370,8 @@ function gain_info(data) {
         order_info;//订单信息
 
     var total_rent_times = 0, customer_type = 1, customer_grade = 3;//用户登录信息
+
+    console.log(jQuery.cookie("user_name"));
     var cus = JSON.parse(jQuery.cookie("user_name"));
     if (cus) {
         total_rent_times = cus.total_rent_times;
@@ -1500,8 +1517,8 @@ function add_car(car_list, start, end) {
         //    basic = car_list[i].standard_price ? car_list[i].standard_price.basic_insurance : 0,//基本保险
         //    car_id = car_list[i].ac.class_id,//车型id
         //    offers = car_list[i].offers_name;//可参与的活动
-        var brand = car_list[i].car_name,//品牌
-            honda = Math.floor(Math.random()*10) + '型',//型号
+        var brand = car_list[i].brand_name,//品牌
+            honda = car_list[i].car_name,//型号
             con = 2,//厢数
             vol = '1.6L',//排量
             gear = '手动挡',//手自动
@@ -1509,16 +1526,16 @@ function add_car(car_list, start, end) {
             type = car_list[i].type_name,// 车辆类型
             img = car_list[i].car_img,//图片
             deposit = car_list[i].standard_price ? car_list[i].standard_price.deposit : 0,//预授权
-            rent = 1,//判断是否可租
+            rent = car_list[i].number,//判断是否可租
             basic = car_list[i].standard_price ? car_list[i].standard_price.basic_insurance : 0,//基本保险
             car_id = car_list[i].type_name;//车型id
-            car_info_id = car_list[i].car_id;//车型id
+            car_info_id = car_list[i].car_id;//车辆id
 
         if (rent == 0) {
             if (car_id == carID) {
-                add_html += "<li class='NoBookCar active' car_id='" + car_id + "'>";
+                add_html += "<li class='NoBookCar active' car_info_id='" + car_info_id + "' car_id='" + car_id + "'>";
             } else {
-                add_html += "<li class='NoBookCar' car_id='" + car_id + "'>";
+                add_html += "<li class='NoBookCar' car_info_id='" + car_info_id + "' car_id='" + car_id + "'>";
             }
         } else {
             if (car_id == carID) {
@@ -1767,19 +1784,9 @@ function Filter(n1, n2, n3) {
     n2 = parseInt(n2);
     n3 = parseInt(n3);
     var carList = $(".carList>li"),
-        TYPE = ["0", "紧凑型轿车", "舒适型轿车", "商务型轿车", "豪华型轿车", "SUV", "6至15座商务车", "其他"],
         BRAND = brand_List;
 
-    //$.post(getCarTypeList, {"_token": _token}, function(msg){
-    //    var TYPE = ["0"];
-    //    for (var k = 0; k <  msg.length; k++) {
-    //        alert(msg[k].type_name);
-    //        TYPE.push(msg[k].type_name);
-    //    }
-    //    TYPE.push("其他");
-    //    return TYPE;
-    //}, 'json');
-
+    alert(TYPE);
     carList.show();
     for (var i = 0; i < carList.length; i++) {
         var car = carList.eq(i),
