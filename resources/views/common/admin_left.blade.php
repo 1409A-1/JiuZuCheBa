@@ -17,8 +17,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{URL('userlist')}}">前台用户列表</a></li>
-                <li><a href="{{URL('adminlist')}}">后台用户列表</a></li>
+                <li><a href="{{URL('userList')}}">前台用户列表</a></li>
+                <li><a href="{{URL('adminList')}}">后台用户列表</a></li>
             </ul>
         </li>
         <li>
@@ -28,8 +28,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{URL('typelist')}}">车辆类型管理</a></li>
-                <li><a href="{{URL('brandlist')}}">车辆品牌管理</a></li>
+                <li><a href="{{URL('typeList')}}">车辆类型管理</a></li>
+                <li><a href="{{URL('brandList')}}">车辆品牌管理</a></li>
             </ul>
         </li>
         <li>

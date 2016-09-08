@@ -66,36 +66,36 @@ Route::group(['middleware' => ['nologin']], function(){
     /*
 	   类型管理
 	 */
-	Route::get('typelist','CarTypeController@type_list');//类型列表
-	Route::get('typelistpage/{page}/{search}/{del}','CarTypeController@listpage');//搜索分页
-	Route::match(['get', 'post'],'typeadd','CarTypeController@add');//添加
-	Route::post('typeupdate','CarTypeController@update');//编辑
-	Route::get('typeupdate/{id}','CarTypeController@update');//更新
-	Route::get('typedel/{id}','CarTypeController@del');//删除
+	Route::get('typeList','CarTypeController@typeList');//类型列表
+	Route::get('typeListPage/{page}/{search}/{del}','CarTypeController@listPage');//搜索分页
+	Route::match(['get', 'post'],'typeAdd','CarTypeController@add');//添加
+	Route::post('typeUpdate','CarTypeController@update');//编辑
+	Route::get('typeUpdate/{id}','CarTypeController@update');//更新
+	Route::get('typeDel/{id}','CarTypeController@del');//删除
 	/*
 	    品牌管理
 	 */
-	Route::get('brandlist','CarBrandController@brand_list');//品牌列表
-	Route::get('brandlistpage/{page}/{search}/{del}','CarBrandController@listpage');//搜索分页
-	Route::match(['get', 'post'],'brandadd','CarBrandController@add');//添加
-	Route::post('brandupdate','CarBrandController@update');//编辑
-	Route::get('brandupdate/{id}','CarBrandController@update');//更新
-	Route::get('branddel/{id}','CarBrandController@del');//删除
+	Route::get('brandList','CarBrandController@brandList');//品牌列表
+	Route::get('brandListPage/{page}/{search}/{del}','CarBrandController@listPage');//搜索分页
+	Route::match(['get', 'post'],'brandAdd','CarBrandController@add');//添加
+	Route::post('brandUpdate','CarBrandController@update');//编辑
+	Route::get('brandUpdate/{id}','CarBrandController@update');//更新
+	Route::get('brandDel/{id}','CarBrandController@del');//删除
 	/*
 	    用户管理
 	 */
-	Route::get('userlist','UserController@user_list');//前台用户列表
-	Route::get('userlistpage/{page}','UserController@listpage');//用户分页
-	Route::get('adminlist','UserController@admin_list');//后台用户列表
-	Route::get('adminlistpage/{page}','UserController@adminlistpage');//后台管理分页
+	Route::get('userList','UserController@userList');//前台用户列表
+	Route::get('userListPage/{page}','UserController@listPage');//用户分页
+	Route::get('adminList','UserController@adminList');//后台用户列表
+	Route::get('adminListPage/{page}','UserController@adminListPage');//后台管理分页
 
 	/*
 	    用户留言管理
 	 */
 	Route::get('messageList','UserController@message');//留言展示
-	Route::get('messagepage/{page}/{del}','UserController@messagepage');//留言分页&删除
-	Route::get('messageset/{id}','UserController@messageset');//留言审核
-	Route::get('messageaccept/{id}','UserController@messageaccept');//留言采纳
+	Route::get('messagePage/{page}/{del}','UserController@messagePage');//留言分页&删除
+	Route::get('messageSet/{id}','UserController@messageSet');//留言审核
+	Route::get('messageAccept/{id}','UserController@messageAccept');//留言采纳
 
 	Route::get('car_type_list','AdminController@car_type_list');
     Route::get('model_add','AdminController@model_add');

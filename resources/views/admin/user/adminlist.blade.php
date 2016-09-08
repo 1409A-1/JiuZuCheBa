@@ -155,7 +155,7 @@
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("adminlistpage/"+page,function(msg){
+                $.get("adminListPage/"+page,function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.user.length; i++){
