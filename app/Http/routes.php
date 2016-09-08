@@ -105,7 +105,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('typeIns','AddressController@typeIns');//地区的添加
     Route::post('ping','AddressController@ping');//汉语转换拼音
     Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
-    Route::post('addServer','AddressController@add_server');//添加服务点
+    Route::post('addServer','AddressController@addServer');//添加服务点
     Route::get('addressList','AddressController@addressList');//服务点列表展示
     Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
     Route::get('package','PackageController@package');//套餐列表

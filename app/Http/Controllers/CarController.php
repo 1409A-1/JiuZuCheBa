@@ -12,26 +12,30 @@ class CarController extends Controller
      * time:2016/9/7
      * 描述：车辆详情的添加
      **/
-    public function carIns()
+    public function carIns(Request $request)
     {
-        if(!$_POST){
+        if(!$request->has('_token')){
             $carbrand = DB::table('car_brand')
                 ->get();
             $arr = DB::table('car_type')
                 ->get();
             return view('admin.carins.car_ins',['data' => $arr,'arr' => $carbrand]);
         }else{
-            $arr = Request::all();
-            unset($arr['_token']);
-            $file = Request::file('car_img');
+            //$file = Request::file('car_img');
+            $file = $request->file('car_img');
             $hou = $file->getClientOriginalExtension();//文件后缀
             $path = './admin/public/';
             $filename = rand(1, 999) . "." . $hou;;
             $car_img = $path . $filename;     //文件路径
-            $arr['car_img'] = $car_img;
             $file->move($path, $filename);  // 移动文件到指定目录
             DB::table('car_info')
-                ->insert($arr);
+                ->insert([
+                    'car_name'  =>  $request->input('car_name'),
+                    'type_id'   =>  $request->input('type_id'),
+                    'brand_id'  =>  $request->input('brand_id'),
+                    'car_img'   =>  $car_img,
+                    'car_price' =>  $request->input('car_price')
+                ]);
             return redirect('carList');
         }
     }
