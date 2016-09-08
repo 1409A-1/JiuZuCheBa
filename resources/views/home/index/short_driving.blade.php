@@ -31,21 +31,11 @@
 </script>
 
 <link type="text/css" rel="stylesheet" href="home/css/shortRent.css">
+<script type="text/javascript" src="home/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="home/js/shortRent.js"></script>
 <script type="text/javascript" src="home/js/linq.js"></script>
 <script type="text/javascript" src="home/js/m-webim-lite.js"></script>
 <script type="text/javascript" src="home/js/special_offers.js"></script>
-
-<script>
-    var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
-    jQuery(".menu_box li")[0].className = " on_menu";
-    jQuery(page).each(function (i, obj) {
-        jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
-        if (location.href.toLowerCase().indexOf(obj) > 1) {
-            jQuery(".menu_box li")[i].className += " on_menu";
-        }
-    })
-</script>
 
 <!--导航标题-->
 <div class="title">

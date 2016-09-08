@@ -65,7 +65,7 @@ class PublicController extends Controller
     public function noLimit($data, $pid = 0, $indent = 0)
     {
         static $array = Array();
-        foreach($data as $son) {
+        foreach ($data as $son) {
             if ($son['parent_id'] == $pid) {
                 $son['indent'] = $indent;
                 $array[] = $son;
