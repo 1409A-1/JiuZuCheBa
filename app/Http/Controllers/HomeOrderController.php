@@ -44,10 +44,4 @@ class HomeOrderController extends Controller
             ->where('car_id',$car_id)
             ->first();
     }
-////车辆类型
-//    public
-
-
-
-
 }
