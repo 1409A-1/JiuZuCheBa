@@ -22,10 +22,10 @@
             <div class="login">
                 <div class="title">
                     <div>登录</div>
-                    <span>没有账号？<a href="{{ URL('login_reg') }}">立即注册</a></span>
+                    <span>没有账号？<a href="{{ URL('loginReg') }}">立即注册</a></span>
                 </div>
                 <div class="input_body">
-                    <form action="login_pro" method="post">
+                    <form action="loginPro" method="post">
                         {!! csrf_field() !!}
                     <div class="inputBox" id="login_name_box">
                         <input placeholder="我的用户名" maxlength="11" name="user_name" type="tel" required="">

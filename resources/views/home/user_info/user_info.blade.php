@@ -7,11 +7,11 @@
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
             <h5>订单管理</h5>
-            <a href="order_list">订单列表</a>
+            <a href="orderList">订单列表</a>
             <a id="topingjia">评价订单</a>
             <h5>账户管理</h5>
-            <a href="user_info" class="active">账户信息</a>
-            <a href="benefit_list">优惠券</a>
+            <a href="userInfo" class="active">账户信息</a>
+            <a href="benefitList">优惠券</a>
         </div>
         <div class="right">
             <!--我的主页-->
@@ -66,7 +66,7 @@
                     确认修改
                     <ul>
                         <li>
-                            <a href="update_pass"><button id="toUpdatePw">修改密码</button></a>
+                            <a href="updatePass"><button id="toUpdatePw">修改密码</button></a>
                         </li>
                     </ul>
                 </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use DB;
 use Session;
 use Validator;
@@ -18,27 +18,26 @@ class AdminController extends Controller
      * time:2016/8/31
      * @admin_user
      * */
-    public function admin_login()
+    public function admin_login(Request $request)
     {
-        if($_POST){
-            $arr = Request::all();
-            $name = $arr['username'];
-            $pwd = $arr['password'];
+        if ($request->has('username')) {
+            $name = $request->input('username');
+            $pwd = $request->input('password');
             $re = DB::table('admin_user')
                 ->where(['user_name' => $name])
                 ->first();
-            if($re){
+            if ($re) {
                 if($pwd == $re['password']){
                     Session::put('name',$re['user_name']);
                     Session::put('id',$re['user_id']);
                     echo 1;
-                }else{
+                } else {
                     echo 2;
                 }
-            }else{
+            } else {
                 echo 3;
             }
-        }else{
+        } else {
            return view('admin.login.admin_login');
         }
     }

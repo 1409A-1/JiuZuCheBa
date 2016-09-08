@@ -69,3 +69,20 @@
 .icon_l33{width: 19px;height: 18px;background-position:0 -19px;margin-top: 6px;margin-right: 6px}
 /*页脚*/
 .footerBox{padding: 0}
+
+/*****jQuery Validate 错误信息*****/
+input.error{
+    border:1px solid red;
+}
+input.valid {
+    border:1px solid #1d95f6;
+}
+p.error{
+    background : url(../images/unchecked.gif) no-repeat 0 0;
+    padding-left: 16px;
+    color: #f00;
+}
+p.success{
+    background : url(../images/checked.gif) no-repeat 0 0;
+    padding-left: 16px;
+}
