@@ -17,15 +17,17 @@ $(function () {
 
 function getType() {
     $.ajax({  
-        type : "post",  
-        url : getCarTypeList,  
-        data : {"_token": _token},  
-        async : false,  
-        success : function(msg){  
-           TYPE.push(msg[k].type_name);
-        }  
+        type : "post",
+        url : getCarTypeList,
+        data : {"_token": _token},
+        async : false,
+        dataType : 'json',
+        success : function(msg){
+            for (var i = 0; i < msg.length; i++) {
+                TYPE.push(msg[i].type_name);
+            }
+        }
     });
-    TYPE.push("其他");
 }
 
 //预订信息加载
@@ -1320,10 +1322,10 @@ function initMap(point) {
         // LARGE类型
         type: BMAP_NAVIGATION_CONTROL_ZOOM
         // 启用显示定位
-    });// 添加缩放定位控件
+    }); // 添加缩放定位控件
     map.addControl(navigationControl);
 
-    var icon = new BMap.Icon("/content/images/index/map.png", new BMap.Size(25, 35));//门店标注样式
+    var icon = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35));//门店标注样式
     var Marker = new BMap.Marker(point, { icon: icon });
 
     map.addOverlay(Marker);
@@ -1371,7 +1373,6 @@ function gain_info(data) {
 
     var total_rent_times = 0, customer_type = 1, customer_grade = 3;//用户登录信息
 
-    console.log(jQuery.cookie("user_name"));
     var cus = JSON.parse(jQuery.cookie("user_name"));
     if (cus) {
         total_rent_times = cus.total_rent_times;

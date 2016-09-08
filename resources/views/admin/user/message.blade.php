@@ -91,6 +91,9 @@
                                         <span class="line"></span>评论时间
                                     </th>
                                     <th class="span3">
+                                        <span class="line"></span>状态
+                                    </th>
+                                    <th class="span3">
                                         <span class="line"></span>操作
                                     </th>
                                 </tr>
@@ -120,12 +123,15 @@
                                     @else
                                     <span class="label label-info">不显示</span>
                                     @endif
-                                       <ul class="actions">
-                                            @if ($v['type'] == 0)
-                                            <li><a class="btn-flat primary">采纳</a></li>
-                                            @endif
+                                    </td>
+                                    <td>
+                                       <ul class="actions" style="float:left">
                                             @if ($v['type'] != 2)
-                                            <li><i class="table-settings" mid="{{$v['message_id']}}"> </i></li><li class="last"><i class="table-delete" mid="{{$v['message_id']}}"></i></li>
+                                            <li><a href="javascript:void(0)" class="edit" mid="{{$v['message_id']}}">不显示</a></li>
+                                            <li><a href="javascript:void(0)" class="del" mid="{{$v['message_id']}}">删除</a></li>
+                                            @endif
+                                            @if ($v['type'] == 0)
+                                            <li><a href="javascript:void(0)" class="accept" mid="{{$v['message_id']}}">采纳</a></li>
                                             @endif
                                         </ul>
                                     </td>
@@ -184,7 +190,7 @@
                 //search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
                 del=0
-                $.get("messagepage/"+page+"/"+del,function(msg){
+                $.get("messagePage/"+page+"/"+del,function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.message.length; i++){
@@ -196,12 +202,12 @@
                         }else{
                             str+='<span class="label label-info">不显示</span>';
                         }
-                        str+='<ul class="actions">';
-                        if(msg.message[i].type==0){
-                            str+='<li><a class="btn-flat primary">采纳</a></li>';
-                        }
+                        str+='</td><td><ul class="actions" style="float:left">';
                         if(msg.message[i].type!=2){
-                            str+='<li><i class="table-settings" mid="'+msg.message[i].message_id+'"></i></li><li class="last"><i class="table-delete" mid="'+msg.message[i].message_id+'"></i></li></ul></td></tr>';
+                            str+='<li><a href="javascript:void(0)" class="edit" mid="'+msg.message[i].message_id+'">不显示</a></li><li><a href="javascript:void(0)" class="del" mid="'+msg.message[i].message_id+'">删除</a></li>';
+                        if(msg.message[i].type==0){
+                            str+='<li><a href="javascript:void(0)" class="accept">采纳</a></li></ul></td></tr>';
+                        }
                         }
                     }
                     $("#tbody").empty();
@@ -222,12 +228,12 @@
             })
 
             // Ajax搜索&分页&删除
-            $(document).delegate(".table-delete","click",function(){
+            $(document).delegate(".del","click",function(){
                 page=$("#nowpage").val();
                 //search=$("#search").val()?$("#search").val():"all";
                 del=$(this).attr("mid");
                 //alert(search);
-                $.get("messagepage/"+page+"/"+del,function(msg){
+                $.get("messagePage/"+page+"/"+del,function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.message.length; i++){
@@ -239,12 +245,13 @@
                         }else{
                             str+='<span class="label label-info">不显示</span>';
                         }
-                        str+='<ul class="actions">';
-                        if(msg.message[i].type==0){
-                            str+='<li><a class="btn-flat primary">采纳</a></li>';
-                        }
+                        str+='</td><td><ul class="actions" style="float:left">';
                         if(msg.message[i].type!=2){
-                            str+='<li><i class="table-settings" mid="'+msg.message[i].message_id+'"></i></li><li class="last"><i class="table-delete" mid="'+msg.message[i].message_id+'"></i></li></ul></td></tr>';
+                            str+='<li><a href="javascript:void(0)" class="edit" mid="'+msg.message[i].message_id+'">不显示</a></li><li><a href="javascript:void(0)" class="del" mid="'+msg.message[i].message_id+'">删除</a></li>';
+                        if(msg.message[i].type==0){
+                            str+='<li><a href="javascript:void(0)" class="accept">采纳</a></li>';
+                        }
+                        str+='</ul></td></tr>';
                         }
                     }
                     $("#tbody").empty();
@@ -264,29 +271,31 @@
             })
 
             //Ajax审核
-            $(document).delegate(".table-settings",'click',function(){
+            $(document).delegate(".edit",'click',function(){
                 var she=$(this);
                 mid=$(this).attr('mid');
-                $.get("messageset/"+mid,function(msg){
+                $.get("messageSet/"+mid,function(msg){
                     //alert(msg);
                     if(msg=="unshow"){
-                        she.parents("ul").prev().replaceWith('<span class="label label-info">不显示</span>');
-                        she.parent().prev().remove();
+                        she.parents("td").prev().html('<span class="label label-info">不显示</span>');
+                        she.parent().next().next().remove();
+                        she.html("显示");
                     }else if(msg=="show"){
-                        she.parents("ul").prev().replaceWith('<span class="label label-success">显示</span>');
-                        she.parents("ul").prepend('<li><a class="btn-flat primary">采纳</a></li>')
+                        she.parents("td").prev().html('<span class="label label-success">显示</span>');
+                        she.html("不显示");
+                        she.parents("ul").append('<li><a href="javascript:void(0)" class="accept">采纳</a></li>')
                     }
                 })
             })
 
             //Ajax采纳
-            $(document).delegate(".primary","click",function(){
+            $(document).delegate(".accept","click",function(){
                 she=$(this);
-                mid=$(this).parent().next().children().attr("mid");
-                $.get("messageaccept/"+mid,function(msg){
+                mid=$(this).parent().prev().children().attr("mid");
+                $.get("messageAccept/"+mid,function(msg){
                     if(msg=="success"){
-                        she.parents("ul").prev().replaceWith('<span class="label label-success">显示</span><span class="label label-success">被采纳</span>');
-                        she.parent().nextAll().remove();
+                        she.parents("td").prev().html('<span class="label label-success">显示</span><span class="label label-success">被采纳</span>');
+                        she.parent().prevAll().remove();
                         she.parent().remove();
                     }
                 })

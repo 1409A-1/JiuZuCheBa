@@ -62,10 +62,10 @@
                     <!-- left column -->
                     <div class="span9 with-sidebar">
                         <div class="container">
-                            <form class="new_user_form inline-input" action="type_add" method="post"/>
+                            <form class="new_user_form inline-input" action="typeAdd" method="post"/>
                                 <div class="span12 field-box">
-                                    <label>type_name:</label>
-                                    <input class="span9" name="type_name" required="required" type="text" />
+                                    <label>车辆型号名称:</label>
+                                    <input class="span9" name="type_name" required="required" type="text" placeholder="请输入车辆型号名称" />
                                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                                 </div>
                                 <div class="span11 field-box actions">

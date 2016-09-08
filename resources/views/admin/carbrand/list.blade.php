@@ -72,7 +72,7 @@
                                 </select>
                             </div>
                             <input type="text" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="{{URL('brandadd')}}">+ 添加车辆品牌</a>
+                            <a class="btn-flat success new-product" href="{{URL('brandAdd')}}">+ 添加车辆品牌</a>
                         </div>
                     </div>
 
@@ -109,7 +109,7 @@
                                     <td>
                                         <!-- <span class="label label-success">Active</span> -->
                                         <ul class="actions" style="float:left">
-                                            <li><a href="brandupdate/{{$v['brand_id']}}">编辑</a></li>
+                                            <li><a href="brandUpdate/{{$v['brand_id']}}">编辑</a></li>
                                             <li class="last"><a class="del" href="javascript:void(0)" bid={{$v['brand_id']}}>删除</a></li>
                                         </ul>
                                     </td>
@@ -167,11 +167,11 @@
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("brandlistpage/"+page+"/"+search+"/0",function(msg){
+                $.get("brandListPage/"+page+"/"+search+"/0",function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandupdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -195,11 +195,11 @@
                 //alert(1)
                 search=$(this).val()=="" ? "all" :$(this).val();
                 //alert(search)
-                $.get("brandlistpage/1/"+search+"/0",function(msg){
+                $.get("brandListPage/1/"+search+"/0",function(msg){
                 //alert(msg)
                 str="";
                 for(i=0; i<msg.carbrand.length; i++){
-                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandupdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li></ul></td></tr>'
+                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li></ul></td></tr>'
                 }
                 $("#tbody").empty();
                 $("#tbody").append(str);
@@ -224,11 +224,11 @@
                 search=$("#search").val()?$("#search").val():"all";
                 del=$(this).attr("bid");
                 //alert(search);
-                $.get("brandlistpage/"+page+"/"+search+"/"+del,function(msg){
+                $.get("brandListPage/"+page+"/"+search+"/"+del,function(msg){
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandupdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
