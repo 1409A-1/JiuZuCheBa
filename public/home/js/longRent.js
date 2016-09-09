@@ -193,51 +193,45 @@ function book(){
         }
     });
 
+    //点击空白处关闭
+    $(document).click(function (e) {
+        var target = $(e.target);
+        if (target.closest(".city_list_body").length == 0) {
+            $("#longCityList").fadeOut("fast");
+            $(".city_list_body").fadeOut("fast");
+        }
+        if (target.closest("#takeStoreList").length == 0) {
+            $("#takeStoreList").fadeOut("fast");
+        }
+        $(".Arrow").removeClass('ArrowHover');
+    });
 
-
-
-
-
-
-        //点击空白处关闭
-        $(document).click(function (e) {
-            var target = $(e.target);
-            if (target.closest(".city_list_body").length == 0) {
-                $("#longCityList").fadeOut("fast");
-                $(".city_list_body").fadeOut("fast");
+    //查看门店位置
+    $(".toMap").click(function () {
+        var temp = $(this).attr("out_in"), store;
+        if (temp == "0") {
+            store = $(".longLine1_R").find(".store a");
+        }
+        var id = $(this).attr("storeID"), name, lng, lat;
+        for (var i = 0; i < store.length; i++) {
+            if (id == store.eq(i).attr("store_id")) {
+                store.eq(i).click();
+                name = store.eq(i).html();
+                lng = store.eq(i).attr("lng");
+                lat = store.eq(i).attr("lat");
+                layer.open({
+                    type: 1,
+                    scrollbar: false,
+                    area: '1000px',
+                    shade: [0.8, '#000'],
+                    title: false,
+                    content: $("#storeMap")
+                });
+                storeMap(lng, lat, id, name);
+                break;
             }
-            if (target.closest("#takeStoreList").length == 0) {
-                $("#takeStoreList").fadeOut("fast");
-            }
-            $(".Arrow").removeClass('ArrowHover');
-        });
-
-        //查看门店位置
-        $(".toMap").click(function () {
-            var temp = $(this).attr("out_in"), store;
-            if (temp == "0") {
-                store = $(".longLine1_R").find(".store a");
-            }
-            var id = $(this).attr("storeID"), name, lng, lat;
-            for (var i = 0; i < store.length; i++) {
-                if (id == store.eq(i).attr("store_id")) {
-                    store.eq(i).click();
-                    name = store.eq(i).html();
-                    lng = store.eq(i).attr("lng");
-                    lat = store.eq(i).attr("lat");
-                    layer.open({
-                        type: 1,
-                        scrollbar: false,
-                        area: '1000px',
-                        shade: [0.8, '#000'],
-                        title: false,
-                        content: $("#storeMap")
-                    });
-                    storeMap(lng, lat, id, name);
-                    break;
-                }
-            }
-        });
+        }
+    });
 
 
     //租期
@@ -407,8 +401,6 @@ function storeLoad(result) {
         }
     }
 
-
-
     //默认门店初始化
     var defaultStore = $(".longLine1_R .store a").eq(0);
     $(".longLine1_R .show>a").html(defaultStore.html()).attr({
@@ -545,29 +537,29 @@ function takeStore(result) {
 }
 
 function save(name, mobile, city, duration, carNum, type_id, date) {
-        $.ajax({
-            url: long_rent_url,
-            data: {
-                "contact_name": name,
-                "contact_tel": mobile,
-                "city_name": city,
-                "rent_month_count": duration,
-                "auto_count": carNum,
-                "contact_class_id": type_id,
-                "start_date": date,
-                "start_shop_id": $(".longLine1_R .show a").attr("store_id")
-            },
-            dataType: "jsonp",
-            type: "get",
-            success: function (result) {
-                if (result>0) {
-                    layer.alert("提交成功,我们将在1个工作日内联系您.");
-                    setTimeout(function () { location.reload() }, 2000);
-                } else {
-                    layer.alert("提交失败,请致电4000600112电话预定.");
-                }
+    $.ajax({
+        url: long_rent_url,
+        data: {
+            "contact_name": name,
+            "contact_tel": mobile,
+            "city_name": city,
+            "rent_month_count": duration,
+            "auto_count": carNum,
+            "contact_class_id": type_id,
+            "start_date": date,
+            "start_shop_id": $(".longLine1_R .show a").attr("store_id")
+        },
+        dataType: "jsonp",
+        type: "get",
+        success: function (result) {
+            if (result>0) {
+                layer.alert("提交成功,我们将在1个工作日内联系您.");
+                setTimeout(function () { location.reload() }, 2000);
+            } else {
+                layer.alert("提交失败,请致电4000600112电话预定.");
             }
-        })
+        }
+    })
 }
 
 //定位当前城市
@@ -771,7 +763,7 @@ function apply() {
 //门店地图 查看
 function storeMap(lng, lat, id, name) {
     var storePoint = new BMap.Point(lng, lat),
-      mapIcon = new BMap.Icon("/content/images/index/map.png", new BMap.Size(25, 35)),
+      mapIcon = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35)),
       storeMarker = new BMap.Marker(storePoint, { icon: mapIcon });
     var map = new BMap.Map("storeMap");
     map.centerAndZoom(storePoint, 20);

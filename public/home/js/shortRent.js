@@ -116,13 +116,11 @@ function storeInfo(takeID, returnID) {
 
             t.city = t.city_name;
             t.shop_name = t.server_name;
-            t.street = '这里是详细街道信息！';
             t.count = '0';
             t.score = '5 icon_eva4';
 
             r.city = r.city_name;
             r.shop_name = r.server_name;
-            r.street = '这里是详细街道信息！';
             r.count = '0';
             r.score = '5 icon_eva3';
 
@@ -535,7 +533,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                             t2 = '2016-09-05'; // 还车日期
                             id[i] = result[i].address_id; // 门店id
                             area[i] = result[i].district; // 地区
-                            address[i] = '这里是街道详细信息'; // 街道信息
+                            address[i] = result[i].street; // 街道信息
                             start[i] = '08:00'; // 取车时间
                             end[i] = '22:00'; // 还车时间
                             traffic[i] = result[i].traffic_line; // 交通路线
@@ -723,7 +721,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                             t2 = '2016-09-05'; // 还车日期
                             id1[i] = result[i].address_id; // 门店id
                             area1[i] = result[i].district; // 地区
-                            address1[i] = '这里是街道详细信息'; // 街道信息
+                            address1[i] = result[i].street; // 街道信息
                             start1[i] = '08:00'; // 取车时间
                             end1[i] = '22:00'; // 还车时间
                             traffic1[i] = result[i].traffic_line; // 交通路线
@@ -823,7 +821,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                             t2 = '2016-09-05'; // 还车日期
                             id2[i] = result[i].address_id; // 门店id
                             area2[i] = result[i].district; // 地区
-                            address2[i] = '这里是街道详细信息'; // 街道信息
+                            address2[i] = result[i].street; // 街道信息
                             start2[i] = '08:00'; // 取车时间
                             end2[i] = '22:00'; // 还车时间
                             traffic2[i] = result[i].traffic_line; // 交通路线
@@ -1787,7 +1785,6 @@ function Filter(n1, n2, n3) {
     var carList = $(".carList>li"),
         BRAND = brand_List;
 
-    alert(TYPE);
     carList.show();
     for (var i = 0; i < carList.length; i++) {
         var car = carList.eq(i),
