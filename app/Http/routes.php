@@ -105,7 +105,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('typeIns','AddressController@typeIns');//地区的添加
     Route::post('ping','AddressController@ping');//汉语转换拼音
     Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
-    Route::post('addServer','AddressController@add_server');//添加服务点
+    Route::post('addServer','AddressController@addServer');//添加服务点
     Route::get('addressList','AddressController@addressList');//服务点列表展示
     Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
     Route::get('package','PackageController@package');//套餐列表
@@ -119,6 +119,11 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::any('carIns','CarController@carIns');//车辆的添加
     Route::get('carList','CarController@carList');//车辆展示列表
     Route::get('carDel/{car_id}','CarController@carDel');//车辆删除
+    Route::get('carServer','CarController@carServer');//服务点车辆分配页面
+    Route::post('carServerAdd','CarController@carServerAdd');//服务点车辆分配执行
+    Route::post('carUnique','CarController@carUnique');//车辆分配唯一性查询
+    Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
+    Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
 
 //车辆类型
     Route::get('typelist','CarTypeController@car_list');//列表展示
