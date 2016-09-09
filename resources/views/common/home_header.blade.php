@@ -39,7 +39,7 @@
             <li class="top_user">
                 @if(empty(Session::get('user_name')))
                 <div class="no_user" style="display: block;">
-                    <a href="login_reg" rel="nofollw">注册</a>
+                    <a href="loginReg" rel="nofollw">注册</a>
                     <a href="login" rel="nofollw">登陆</a>
                 </div>
                 @else
@@ -47,9 +47,10 @@
                     <a href="" rel="nofollow">{{ Session::get('user_name') }}</a>
                     <div class="arrow"><div></div></div>
                     <div class="userInfo">
-                        <p><a href="{{ url('order') }}" rel="nofollow">订单管理</a></p>
                         <p><a href="{{ url('userInfo')}}" rel="nofollow">账户管理</a></p>
+                        <p><a href="{{ url('message') }}" rel="nofollow">公开留言</a></p>
                         <p><a href="{{ url('logout') }}">退出</a></p>
+
                     </div>
                 </div>
                 @endif

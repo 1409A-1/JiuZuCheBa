@@ -40,6 +40,22 @@ class LoginController extends Controller
             echo "<script>alert('登录失败');location.href='login';</script>";
         }
     }
+//前台选车登录的loginBox登录接值
+    public function loginBoxPro(Request $request)
+    {
+      $user_name = $request->input('user_name');
+      $password = md5($request->input('password'));
+      $result = DB::table('user')
+              ->where(['user_name'=>$user_name,'password'=>$password])
+              ->first();
+      if ($result) {
+          Session::put('user_name', $result['user_name']);
+          Session::put('user_id', $result['user_id']);
+          return 1;
+      } else {
+          return 2;
+      }
+    }
 //前台登录退出
     public function loginOut(Request $request)
     {
