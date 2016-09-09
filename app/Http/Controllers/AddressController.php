@@ -36,37 +36,29 @@ class AddressController extends Controller
             ->get();
         return view('admin.address.addressList',['data' => $arr]);
     }
-
     public function addServer(Request $request)
     {
         if($request->input('one') == 0){
-            echo "<script>alert('请选择省/直辖市'); history.back(-1)</script>";die;
+            echo "<script>alert('请选择省/直辖市'); location.href='".url('address')."';</script>";die;
         }
-        if($request->input('two') == 0){
-            echo "<script>alert('请选择市/区'); history.back(-1)</script>";die;
+        if($request->input('two') == '0'){
+            echo "<script>alert('请选择市/区'); location.href='address';</script>";die;
         }else{
-            $arr2 = DB::table('address')
-                ->where(['address_id' => $request->input('one')])
-                ->first();
-            $arr3 = DB::table('address')
-                ->where(['address_id' => $request->input('two')])
-                ->first();
-            $city_name = $arr2['address_name'];
-            $district = $arr3['address_name'];
             $coordinate1 = $request->input('coordinate1');
             $coordinate2 = $request->input('coordinate2');
             $coordinate = "$coordinate1".","."$coordinate2";
-            DB::table('server')
-                ->insert([
-                    'server_name'   => $request->input('server_name'),
-                    'address_id'    => $request->input('two'),
-                    'city_name'     => $city_name,
-                    'district'      => $district,
-                    'coordinate'    => $coordinate,
-                    'traffic_line'  => $request->input('server_id')
-                ]);
+          DB::table('server')
+            ->insert([
+                'server_name'   => $request->input('server_name'),
+                'address_id'    => $request->input('one'),
+                'city_name'     => $request->input('city_name'),
+                'district'      => $request->input('two'),
+                'coordinate'    => $coordinate,
+                'traffic_line'  => $request->input('traffic_line'),
+                'street'  => $request->input('street')
+            ]);
         }
-        return redirect('addressList');
+       return redirect('addressList');
     }
 
 
