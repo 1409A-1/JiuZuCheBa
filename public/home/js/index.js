@@ -1,4 +1,5 @@
 var shortCalendarNum = 0;
+var _token = $("meta[name='_token']").attr('content');
 
 $(function () {
     jQuery(".menu_box li")[0].className = " on_menu";
@@ -23,21 +24,21 @@ function book() {
     });
 
     var takeCity = $("#takeCity"),
-      takeStore = $("#takeStore"),
-      takeDate = $("#takeDate"),
-      takeHour = $("#takeHour"),
-      returnCity = $("#returnCity"),
-      returnStore = $("#returnStore"),
-      returnDate = $("#returnDate"),
-      returnHour = $("#returnHour"),
-      takeCityList = $("#takeCityList"),
-      takeStoreList = $("#takeStoreList"),
-      returnCityList = $("#returnCityList"),
-      returnStoreList = $("#returnStoreList");
+        takeStore = $("#takeStore"),
+        takeDate = $("#takeDate"),
+        takeHour = $("#takeHour"),
+        returnCity = $("#returnCity"),
+        returnStore = $("#returnStore"),
+        returnDate = $("#returnDate"),
+        returnHour = $("#returnHour"),
+        takeCityList = $("#takeCityList"),
+        takeStoreList = $("#takeStoreList"),
+        returnCityList = $("#returnCityList"),
+        returnStoreList = $("#returnStoreList");
     var tit1 = takeCity.find(".city_list_tit a"),//城市 列表 箭头 滑动
-      tit2 = returnCity.find(".city_list_tit a"),
-      opt_takeCity = takeCity.find(".show>a"), //取车城市
-      opt_returnCity = returnCity.find(".show>a");//还车城市
+        tit2 = returnCity.find(".city_list_tit a"),
+        opt_takeCity = takeCity.find(".show>a"), //取车城市
+        opt_returnCity = returnCity.find(".show>a");//还车城市
 
     //点击空白处关闭
     $(document).click(function (e) {
@@ -333,9 +334,12 @@ function city_store(cityName, temp) {
     // 2为还车
     // 0为初始化加载
     jQuery.ajax({
-        url: district_shop_list_url,
-        dataType: 'jsonp',
-        data: { "city_name": cityName },
+        // url: district_shop_list_url,
+        // dataType: 'jsonp',
+        url: server,
+        type: 'post',
+        dataType: 'json',
+        data: { "city_name": cityName, "_token": _token },
         success: function (result) {
             switch (temp) {
                 case 0: {
@@ -358,32 +362,46 @@ function storeLoad(result) {
       startHours, endHours, t1, t2, html = "";
     //获取数据
     for (var i = 0; i < result.length; i++) {
-        t1 = result[i].start_work_date;
-        t2 = result[i].stop_work_date;
-        id[i] = result[i].id;
-        area[i] = result[i].district;
-        address[i] = result[i].street;
-        start[i] = t1.substr(11, 5);
-        end[i] = t2.substr(11, 5);
-        traffic[i] = result[i].traffic_line;
-        name[i] = result[i].structure_name;
-        lng[i] = result[i].latitude;
-        lat[i] = result[i].longitude;
+        // t1 = result[i].start_work_date;
+        // t2 = result[i].stop_work_date;
+        // id[i] = result[i].id;
+        // area[i] = result[i].district;
+        // address[i] = result[i].street;
+        // start[i] = t1.substr(11, 5);
+        // end[i] = t2.substr(11, 5);
+        // traffic[i] = result[i].traffic_line;
+        // name[i] = result[i].structure_name;
+        // lng[i] = result[i].latitude;
+        // lat[i] = result[i].longitude;
+        t1 = '2016-09-05'; // 取车日期
+        t2 = '2016-09-05'; // 还车日期
+        id[i] = result[i].server_id; // 门店id
+        area[i] = result[i].district; // 地区
+        address[i] = result[i].street; // 街道信息
+        start[i] = '08:00'; // 取车时间
+        end[i] = '22:00'; // 还车时间
+        traffic[i] = result[i].traffic_line; // 交通路线
+        name[i] = result[i].server_name; // 门店名
+        lng[i] = result[i].coordinate.split(',')[0]; // 经度
+        lat[i] = result[i].coordinate.split(',')[1]; // 维度
     }
+
     for (var j = 0; j < area.length; j++) {
         if (data.indexOf(area[j]) == -1) data.push(area[j]);
     }
+    
     //添加区域
     for (var k = 0; k < data.length; k++) {
         html += "<a>" + data[k] + "</a>";
         $(".store").append("<ul></ul>");
     }
     $(".area").html(html);
+
     //添加门店
     for (var l = 0; l < area.length; l++) {
         for (var m = 0; m < data.length; m++) {
             if (area[l] == data[m]) {
-                html = "<li><a store_id='" + id[l] + "' num='" + l + "' lng='" + lng[l] + "' lat='" + lat[l] + "'>" + name[l] + "</a></li>";
+                html = "<li><a store_id='" + id[l] + "' num='" + l + "' lng='" + lng[l] + "' lat='" + lat[l] + ">" + name[l] + "</a></li>";
                 $(".store ul").eq(m).append(html);
             }
         }
@@ -430,6 +448,7 @@ function storeLoad(result) {
 
     //初始化营业时间
     var N = $(".store ul").eq(0).find("a").eq(0).attr("num");
+    if (N == null) {N = 0};
     startHours = start[N];
     endHours = end[N];
     shopHours(startHours, endHours, 1);
@@ -495,17 +514,28 @@ function takeStore(result) {
     $("#takeStore .store").html("");
     //获取数据
     for (var i = 0; i < result.length; i++) {
-        t1 = result[i].start_work_date;
-        t2 = result[i].stop_work_date;
-        id1[i] = result[i].id;
-        area1[i] = result[i].district;
-        address1[i] = result[i].street;
-        start1[i] = t1.substr(11, 5);
-        end1[i] = t2.substr(11, 5);
-        traffic1[i] = result[i].traffic_line;
-        name1[i] = result[i].structure_name;
-        lng1[i] = result[i].latitude;
-        lat1[i] = result[i].longitude;
+        // t1 = result[i].start_work_date;
+        // t2 = result[i].stop_work_date;
+        // id1[i] = result[i].id;
+        // area1[i] = result[i].district;
+        // address1[i] = result[i].street;
+        // start1[i] = t1.substr(11, 5);
+        // end1[i] = t2.substr(11, 5);
+        // traffic1[i] = result[i].traffic_line;
+        // name1[i] = result[i].structure_name;
+        // lng1[i] = result[i].latitude;
+        // lat1[i] = result[i].longitude;
+        t1 = '2016-09-05'; // 取车日期
+        t2 = '2016-09-05'; // 还车日期
+        id1[i] = result[i].server_id; // 门店id
+        area1[i] = result[i].district; // 地区
+        address1[i] = result[i].street; // 街道信息
+        start1[i] = '08:00'; // 取车时间
+        end1[i] = '22:00'; // 还车时间
+        traffic1[i] = result[i].traffic_line; // 交通路线
+        name1[i] = result[i].server_name; // 门店名
+        lng1[i] = result[i].coordinate.split(',')[0]; // 经度
+        lat1[i] = result[i].coordinate.split(',')[1]; // 维度
     }
     for (var j = 0; j < area1.length; j++) {
         if (data1.indexOf(area1[j]) == -1) data1.push(area1[j]);
@@ -544,6 +574,7 @@ function takeStore(result) {
     });
     //初始化营业时间
     var N = $("#takeStore .store ul").eq(0).find("a").eq(0).attr("num");
+    if (N == null) {N = 0};
     startHours = start1[N];
     endHours = end1[N];
     shopHours(startHours, endHours, 1);
@@ -584,17 +615,28 @@ function returnStore(result) {
     $("#returnStore .store").html("");
     //获取数据
     for (var i = 0; i < result.length; i++) {
-        t1 = result[i].start_work_date;
-        t2 = result[i].stop_work_date;
-        id2[i] = result[i].id;
-        area2[i] = result[i].district;
-        address2[i] = result[i].street;
-        start2[i] = t1.substr(11, 5);
-        end2[i] = t2.substr(11, 5);
-        traffic2[i] = result[i].traffic_line;
-        name2[i] = result[i].structure_name;
-        lng2[i] = result[i].latitude;
-        lat2[i] = result[i].longitude;
+        // t1 = result[i].start_work_date;
+        // t2 = result[i].stop_work_date;
+        // id2[i] = result[i].id;
+        // area2[i] = result[i].district;
+        // address2[i] = result[i].street;
+        // start2[i] = t1.substr(11, 5);
+        // end2[i] = t2.substr(11, 5);
+        // traffic2[i] = result[i].traffic_line;
+        // name2[i] = result[i].structure_name;
+        // lng2[i] = result[i].latitude;
+        // lat2[i] = result[i].longitude;
+        t1 = '2016-09-05'; // 取车日期
+        t2 = '2016-09-05'; // 还车日期
+        id2[i] = result[i].server_id; // 门店id
+        area2[i] = result[i].district; // 地区
+        address2[i] = result[i].street; // 街道信息
+        start2[i] = '08:00'; // 取车时间
+        end2[i] = '22:00'; // 还车时间
+        traffic2[i] = result[i].traffic_line; // 交通路线
+        name2[i] = result[i].server_name; // 门店名
+        lng2[i] = result[i].coordinate.split(',')[0]; // 经度
+        lat2[i] = result[i].coordinate.split(',')[1]; // 维度
     }
     for (var j = 0; j < area2.length; j++) {
         if (data2.indexOf(area2[j]) == -1) data2.push(area2[j]);
@@ -632,6 +674,7 @@ function returnStore(result) {
     });
     //初始化营业时间
     var N = $("#takeStore .store ul").eq(0).find("a").eq(0).attr("num");
+    if (N == null) {N = 0};
     startHours = start2[N];
     endHours = end2[N];
     shopHours(startHours, endHours, 2);
@@ -688,8 +731,7 @@ function shopHours(startHours, endHours, temp) {//temp 1为取车时间  2为还
         else {
             html += "<a>" + endHours + "</a>";
         }
-    }
-    else {
+    } else {
         for (i = startH; i < endH; i++) {
             k = i;
             if (i < 10)
@@ -791,7 +833,7 @@ function calendar() {
     //取车 日期
     function startDateRange() {
         var time = timeCycle(start_time, end_time),
-          start = time.start, end = time.end;
+            start = time.start, end = time.end;
         new pickerDateRange('startDate', {
             isTodayValid: true,
             isSingleDay: true,//单天选择
@@ -850,11 +892,11 @@ function calendar() {
 //租期计算
 function Duration(D1, H1, D2, H2) {
     var start = D1 + " " + H1,
-      end = D2 + " " + H2;
-    start = date_format(start, "yyyy-MM-dd HH:mm");
-    end = date_format(end, "yyyy-MM-dd HH:mm");
+        end = D2 + " " + H2;
+        start = date_format(start, "yyyy-MM-dd HH:mm");
+        end = date_format(end, "yyyy-MM-dd HH:mm");
     var nowTime = new Date(), isOK = false;
-    nowTime = date_format(nowTime);
+        nowTime = date_format(nowTime);
     var maxDuration = 29 * 86400000;//最长租期毫秒数
     var x = date_subtract(start, end);
     var duration = x.days + "天";
@@ -893,37 +935,34 @@ function Duration(D1, H1, D2, H2) {
 //城市
 function City() {
     //加载城市
-    jQuery.ajax({
-        url: city_list_url,
-        dataType: 'jsonp',
-        success: function (result) {
-            var hotCity = "",//热门城市
-                touristCity = '',//旅游城市
-                allCity = '',//全部城市
-
-                letter = [],//首字母集合
-                temp;
-            for (var i = 0; i < result.length; i++) {
-                if ((result[i].city_type & 4) == 4)//旅游城市
-                {
-                    touristCity += "<span><a>" + result[i].city_name + "</a></span>";
-                }
-
-                if ((result[i].city_type & 2) == 2)//热门城市
-                {
-                    hotCity += "<span><a onclick=\"tuijian_clik('" + result[i].city_name + "')\">" + result[i].city_name + "</a></span>";
-                }
-
-                temp = result[i].city_name;//全部城市列表
-                if (temp != "乌鲁木齐") {
-                    temp = temp.substr(0, temp.length - 1);
-                }
-                letter.push(result[i].city_abridge.substr(0, 1));//取第一个首字母
+    $.post(city, {'_token': _token}, function(result){
+        var hotCity = "",//热门城市
+            touristCity = '',//旅游城市
+            letter = [],//首字母集合
+            temp;
+        for (var i = 0; i < result.length; i++) {
+            if (result[i].city_type == 1)//旅游城市
+            {
+                touristCity += "<span><a>" + result[i].city_name + "</a></span>";
             }
-            $(".hotCityList div").html(hotCity);//推荐车型 热门城市
-            bookCity(hotCity, touristCity, letter, result);
+
+            if (result[i].city_type == 2)//热门城市
+            {
+                hotCity += "<span><a onclick=\"tuijian_clik('" + result[i].city_name + "')\">" + result[i].city_name + "</a></span>";
+                // hotCity += "<span><a>" + result[i].city_name + "</a></span>";
+            }
+
+            temp = result[i].city_name;//全部城市列表
+            if (temp != "乌鲁木齐") {
+                temp = temp.substr(0, temp.length - 1);
+            }
+
+            letter.push(result[i].city_abridge.substr(0, 1));//取第一个首字母
+
         }
-    });
+        $(".hotCityList div").html(hotCity);//推荐车型 热门城市
+        bookCity(hotCity, touristCity, letter, result);
+    }, 'json');
 }
 
 //预订城市
@@ -1012,18 +1051,21 @@ function initMap(point, city) {
     map.addControl(navigationControl);
     // 添加定位控件
 
-    var A = new BMap.Icon("/content/images/index/map1.png", new BMap.Size(25, 35)),//门店标注样式
-        B = new BMap.Icon("/content/images/index/map2.png", new BMap.Size(25, 35)),
-        C = new BMap.Icon("/content/images/index/map3.png", new BMap.Size(25, 35)),
-        D = new BMap.Icon("/content/images/index/map4.png", new BMap.Size(25, 35));
+    var A = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35)),//门店标注样式
+        B = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35)),
+        C = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35)),
+        D = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35));
 
     add_marker(city); //添加门店标注
     //根据 城市 添加 附近门店 标注
     function add_marker(city) {
         jQuery.ajax({
-            url: district_shop_list_url,
-            dataType: 'jsonp',
-            data: { "city_name": city },
+            // url: district_shop_list_url,
+            // dataType: 'jsonp',
+            url: server,
+            type: 'post',
+            dataType: 'json',
+            data: { "city_name": city, "_token": _token },
             success: function (result) {
                 map.centerAndZoom(new BMap.Point(result[0].latitude, result[0].longitude), 11);//设置当前城市第一个门店为中心点
                 var store = $(".aroundStore li"),
@@ -1032,10 +1074,14 @@ function initMap(point, city) {
                     num = 4;
                 for (var i = 0; i < num; i++) {
                     //获取门店信息
-                    var store_id = result[i].id,
-                        store_name = result[i].structure_name,
-                        lat = result[i].latitude,//经度
-                        lon = result[i].longitude;//纬度
+                    // var store_id = result[i].id,
+                    //     store_name = result[i].structure_name,
+                    //     lat = result[i].latitude,//经度
+                    //     lon = result[i].longitude;//纬度
+                    var store_id = result[i].server_id,
+                        store_name = result[i].server_name,
+                        lat = result[i].coordinate.split(',')[0],//经度
+                        lon = result[i].coordinate.split(',')[1];//纬度
 
                     store.eq(i).html(store_name);
 
@@ -1248,12 +1294,12 @@ function doom_tj(id, class_id) {
 //门店地图 查看
 function storeMap(lng, lat, id, name) {
     var storePoint = new BMap.Point(lng, lat),
-      mapIcon = new BMap.Icon("/content/images/index/map.png", new BMap.Size(25, 35)),
-      storeMarker = new BMap.Marker(storePoint, { icon: mapIcon });
+        mapIcon = new BMap.Icon("/content/images/index/map.png", new BMap.Size(25, 35)),
+        storeMarker = new BMap.Marker(storePoint, { icon: mapIcon });
     var map = new BMap.Map("storeMap");
-    map.centerAndZoom(storePoint, 20);
-    map.enableScrollWheelZoom(true);
-    map.addOverlay(storeMarker);
+        map.centerAndZoom(storePoint, 20);
+        map.enableScrollWheelZoom(true);
+        map.addOverlay(storeMarker);
     //添加地图标注 点击 打开窗口信息
     var infoWindow, url, html;
     url = "http://www.dafang24.com/home/doom?shop_id=" + id;
