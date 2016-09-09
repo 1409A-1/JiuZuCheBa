@@ -44,7 +44,7 @@ class CarBrandController extends Controller
     	$page = $page>$pages? $pages: $page;
     	$offset = ($page-1)*$length;
     	$carbrand  =  CarBrand::where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarBrand::where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray(): array();
-        echo json_encode(['carbrand' => $carbrand,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+        return json_encode(['carbrand' => $carbrand,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
 
     /*

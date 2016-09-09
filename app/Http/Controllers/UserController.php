@@ -147,6 +147,6 @@ class UserController extends Controller
         $message = Message::where('message_id', $id)->first()->toArray();
         $date = ['user_id' => $message['user_id'], 'benefit_name' => "评论采纳礼包", 'ord_price' => 5, 'begin_time' => time(), 'end_time' => time()+3600*24*10];
         Benefit::create($date);
-        echo "success";
+        return "success";
     }
 }
