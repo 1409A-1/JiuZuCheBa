@@ -17,15 +17,17 @@ $(function () {
 
 function getType() {
     $.ajax({  
-        type : "post",  
-        url : getCarTypeList,  
-        data : {"_token": _token},  
-        async : false,  
-        success : function(msg){  
-           TYPE.push(msg[k].type_name);
-        }  
+        type : "post",
+        url : getCarTypeList,
+        data : {"_token": _token},
+        async : false,
+        dataType : 'json',
+        success : function(msg){
+            for (var i = 0; i < msg.length; i++) {
+                TYPE.push(msg[i].type_name);
+            }
+        }
     });
-    TYPE.push("其他");
 }
 
 //预订信息加载
@@ -114,13 +116,11 @@ function storeInfo(takeID, returnID) {
 
             t.city = t.city_name;
             t.shop_name = t.server_name;
-            t.street = '这里是详细街道信息！';
             t.count = '0';
             t.score = '5 icon_eva4';
 
             r.city = r.city_name;
             r.shop_name = r.server_name;
-            r.street = '这里是详细街道信息！';
             r.count = '0';
             r.score = '5 icon_eva3';
 
@@ -531,9 +531,9 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var i = 0; i < result.length; i++) {
                             t1 = '2016-09-05'; // 取车日期
                             t2 = '2016-09-05'; // 还车日期
-                            id[i] = result[i].address_id; // 门店id
+                            id[i] = result[i].server_id; // 门店id
                             area[i] = result[i].district; // 地区
-                            address[i] = '这里是街道详细信息'; // 街道信息
+                            address[i] = result[i].street; // 街道信息
                             start[i] = '08:00'; // 取车时间
                             end[i] = '22:00'; // 还车时间
                             traffic[i] = result[i].traffic_line; // 交通路线
@@ -719,9 +719,9 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (i = 0; i < result.length; i++) {
                             t1 = '2016-09-05'; // 取车日期
                             t2 = '2016-09-05'; // 还车日期
-                            id1[i] = result[i].address_id; // 门店id
+                            id1[i] = result[i].server_id; // 门店id
                             area1[i] = result[i].district; // 地区
-                            address1[i] = '这里是街道详细信息'; // 街道信息
+                            address1[i] = result[i].street; // 街道信息
                             start1[i] = '08:00'; // 取车时间
                             end1[i] = '22:00'; // 还车时间
                             traffic1[i] = result[i].traffic_line; // 交通路线
@@ -819,9 +819,9 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var i = 0; i < result.length; i++) {
                             t1 = '2016-09-05'; // 取车日期
                             t2 = '2016-09-05'; // 还车日期
-                            id2[i] = result[i].address_id; // 门店id
+                            id2[i] = result[i].server_id; // 门店id
                             area2[i] = result[i].district; // 地区
-                            address2[i] = '这里是街道详细信息'; // 街道信息
+                            address2[i] = result[i].street; // 街道信息
                             start2[i] = '08:00'; // 取车时间
                             end2[i] = '22:00'; // 还车时间
                             traffic2[i] = result[i].traffic_line; // 交通路线
@@ -1320,10 +1320,10 @@ function initMap(point) {
         // LARGE类型
         type: BMAP_NAVIGATION_CONTROL_ZOOM
         // 启用显示定位
-    });// 添加缩放定位控件
+    }); // 添加缩放定位控件
     map.addControl(navigationControl);
 
-    var icon = new BMap.Icon("/content/images/index/map.png", new BMap.Size(25, 35));//门店标注样式
+    var icon = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35));//门店标注样式
     var Marker = new BMap.Marker(point, { icon: icon });
 
     map.addOverlay(Marker);
@@ -1371,7 +1371,6 @@ function gain_info(data) {
 
     var total_rent_times = 0, customer_type = 1, customer_grade = 3;//用户登录信息
 
-    console.log(jQuery.cookie("user_name"));
     var cus = JSON.parse(jQuery.cookie("user_name"));
     if (cus) {
         total_rent_times = cus.total_rent_times;
@@ -1786,7 +1785,6 @@ function Filter(n1, n2, n3) {
     var carList = $(".carList>li"),
         BRAND = brand_List;
 
-    alert(TYPE);
     carList.show();
     for (var i = 0; i < carList.length; i++) {
         var car = carList.eq(i),

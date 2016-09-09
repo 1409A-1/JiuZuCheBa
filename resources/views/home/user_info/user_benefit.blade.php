@@ -101,7 +101,7 @@
                                     <ul class="order3">
                                         <li style="height: 122px">
                                             <div>
-                                                <img src="../resources/assets/home/public/yh.jpg" alt="图片">
+                                                <img src="home/images/yh.jpg" alt="图片">
                                                 <div class="info">
                                                     <a>{{ $v['benefit_name'] }}</a>
                                                 </div>

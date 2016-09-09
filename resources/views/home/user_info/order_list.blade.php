@@ -42,7 +42,7 @@
                                         <li>
                                             <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{ $v['car_img'] }}">
+                                                <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
                                                     <a>{{ $v['car_name'] }}</a>
                                                     <div class="carIcon">
@@ -136,7 +136,7 @@
                                         <li>
                                             <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{ $v['car_img'] }}">
+                                                <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
                                                     <a>{{$v['car_name']}}</a>
                                                     <div class="carIcon">
@@ -201,7 +201,7 @@
                                         <li>
                                             <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{ $v['car_img'] }}">
+                                                <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
                                                     <a>{{ $v['car_name'] }}</a>
                                                     <div class="carIcon">
@@ -266,7 +266,7 @@
                                         <li>
                                             <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                             <div>
-                                                <img src="" alt="{{ $v['car_img'] }}">
+                                                <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
                                                     <a>{{ $v['car_name'] }}</a>
                                                     <div class="carIcon">
@@ -331,7 +331,7 @@
                                     <li>
                                         <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
                                         <div>
-                                            <img src="" alt="{{ $v['car_img'] }}">
+                                            <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                             <div class="info">
                                                 <a>{{ $v['car_name'] }}</a>
                                                 <div class="carIcon">

@@ -39,21 +39,21 @@ function index_Of() {
 }
 
 //百度离线宝
-function baidu_lxb() {
-    //使用提示
-    $("#telInput").focus(function () {
-        $(".explain").slideDown(300);
-    });
-    $(".phone").hover(function () { }, function () {
-        $("#telInput").blur();
-        $(".explain").slideUp(300)
-    });
+// function baidu_lxb() {
+//     //使用提示
+//     $("#telInput").focus(function () {
+//         $(".explain").slideDown(300);
+//     });
+//     $(".phone").hover(function () { }, function () {
+//         $("#telInput").blur();
+//         $(".explain").slideUp(300)
+//     });
 
-    //拨打电话
-    document.getElementById("callBtn").onclick = function () {
-        lxb.call(document.getElementById("telInput"));
-    };
-}
+//     //拨打电话
+//     document.getElementById("callBtn").onclick = function () {
+//         lxb.call(document.getElementById("telInput"));
+//     };
+// }
 
 //cookies 设置
 function setCookie(c_name, value, expiredays) {

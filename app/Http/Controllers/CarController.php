@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use App\Car_info;
+use App\Server;
+use App\Car_number;
 
 class CarController extends Controller
 {
@@ -93,5 +96,81 @@ class CarController extends Controller
                 }
             }
         }
+    }
+
+    /*
+     * name:zhaoag
+     * time:2016/9/8
+     * 描述:为服务点添加车辆信息页面
+     * */
+    public function carServer()
+    {
+        $carInfo = Car_info::get()->toArray()? :array();
+        $server = server::get()->toArray()? :array();
+        return view("admin.address.carAllot", ['carInfo' => $carInfo, 'server' => $server]);
+    }
+
+    /*
+     * name:zhaoag
+     * time:2016/9/8
+     * 描述:为服务点添加车辆信息 执行
+     * */
+    public function carServerAdd(Request $request)
+    {
+        $date=$request->all();
+        //print_r($date);die;
+        unset($date['_token']);
+        Car_number::create($date);
+        return "success";
+    }
+
+    /*
+     * name:zhaoag
+     * time:2016/9/8
+     * 描述:为服务点添加车辆信息 执行
+     * */
+    public function carUnique(Request $request)
+    {
+        $date=$request->all();
+        //print_r($date);die;
+        unset($date['_token']);
+        $car_number=Car_number::where(['server_id' => $date['server_id'], 'car_id' => $date['car_id']])->first();
+        if ($car_number) {
+            return "no";
+        } 
+    }
+
+    /*
+     * name:zhaoag
+     * time:2016/9/8
+     * 描述:服务点车辆信息列表
+     * */
+    public function carServerList()
+    {
+        $count = Car_number::count();
+        $page = 1;
+        $prev = $page == 1? 1: $page-1;
+        $next = $page == $count? $count: $page+1;
+        $length = 5;
+        $pages = ceil($count/$length);
+        $offset = ($page-1)*$length;
+        $date = Car_number::leftJoin('server', 'car_number.server_id', '=', 'server.server_id')->leftJoin('car_info', 'car_number.car_id', '=', 'car_info.car_id')->orderBy('car_number.server_id')->take($length)->skip($offset)->get()->toArray()? :array();
+        return view('admin.address.carAllotList',['car' => $date,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+    }
+
+    /*
+       服务点车辆分页展示
+     */
+    public function carServerPage(Request $request,$page = 1)
+    {
+        $count = Car_number::count();
+        $prev = $page == 1? 1: $page-1;
+        $next = $page == $count? $count: $page+1;
+        $length = 5;
+        $pages = ceil($count/$length);
+        $page = $page>$pages? $pages: $page;
+        $offset = ($page-1)*$length;
+        $date = Car_number::leftJoin('server', 'car_number.server_id', '=', 'server.server_id')->leftJoin('car_info', 'car_number.car_id', '=', 'car_info.car_id')->orderBy('car_number.server_id')->take($length)->skip($offset)->get()->toArray()? :array();
+        return json_encode(['car' => $date,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
 }
