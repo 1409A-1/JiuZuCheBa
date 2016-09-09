@@ -103,11 +103,11 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-share-alt"></i>
-                <span>Extras</span>
+                <span>套餐管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{asset('admin')}}/code-editor.html">Code editor</a></li>
+                <li><a href="{{ url('packIns') }}">套餐添加</a></li>
                 <li><a href="{{asset('admin')}}/grids.html">Grids</a></li>
                 <li><a href="{{asset('admin')}}/signin.html">Sign in</a></li>
                 <li><a href="{{asset('admin')}}/signup.html">Sign up</a></li>

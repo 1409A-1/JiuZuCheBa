@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use DB;
 use Session;
-use Request;
+use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
+    /**
+     * username:wanghu
+     * time:2016/9/9
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function package()
     {
         $arr = DB::table('package')
@@ -17,23 +22,25 @@ class PackageController extends Controller
     public function packageIns(Request $request)
     {
         if($request->has('_token')){
+            $pack = $request->all();
+            unset($pack['_token']);
             DB::table('package')
-                ->insert($request);
+                ->insert($pack);
             return redirect('package');
         }else{
             return view('admin.package.package_ins');
         }
     }
-    public function pack_del(Request $pack_id)
+    public function packDel($id)
     {
-        DB::table('package')
-            ->where(['pack_id' => $pack_id])
+         DB::table('package')
+            ->where(['pack_id' => $id])
             ->delete();
         return redirect('package');
     }
     public function userPack()
     {
-        $arr = DB::table('')
-            ->get();
+
     }
 }
+ 
