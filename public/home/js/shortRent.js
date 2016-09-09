@@ -531,7 +531,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var i = 0; i < result.length; i++) {
                             t1 = '2016-09-05'; // 取车日期
                             t2 = '2016-09-05'; // 还车日期
-                            id[i] = result[i].address_id; // 门店id
+                            id[i] = result[i].server_id; // 门店id
                             area[i] = result[i].district; // 地区
                             address[i] = result[i].street; // 街道信息
                             start[i] = '08:00'; // 取车时间
@@ -719,7 +719,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (i = 0; i < result.length; i++) {
                             t1 = '2016-09-05'; // 取车日期
                             t2 = '2016-09-05'; // 还车日期
-                            id1[i] = result[i].address_id; // 门店id
+                            id1[i] = result[i].server_id; // 门店id
                             area1[i] = result[i].district; // 地区
                             address1[i] = result[i].street; // 街道信息
                             start1[i] = '08:00'; // 取车时间
@@ -819,7 +819,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var i = 0; i < result.length; i++) {
                             t1 = '2016-09-05'; // 取车日期
                             t2 = '2016-09-05'; // 还车日期
-                            id2[i] = result[i].address_id; // 门店id
+                            id2[i] = result[i].server_id; // 门店id
                             area2[i] = result[i].district; // 地区
                             address2[i] = result[i].street; // 街道信息
                             start2[i] = '08:00'; // 取车时间

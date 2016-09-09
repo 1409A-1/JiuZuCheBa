@@ -64,7 +64,7 @@
         <!--城市-->
         <div class="shortCity" id="takeCity">
             <div class="show">
-                <a>北京市</a>
+                <a></a>
                 <div class="Arrow"></div>
             </div>
             <div class="city_list" id="takeCityList">
@@ -95,7 +95,7 @@
         <!--门店-->
         <div class="shortStore" id="takeStore">
             <div class="show">
-                <a store_id="1">冬冬服务点</a>
+                <a store_id=""></a>
                 <div class="Arrow"></div>
             </div>
             <div class="store_list" id="takeStoreList">
@@ -142,7 +142,7 @@
         <!--城市-->
         <div class="shortCity" id="returnCity">
             <div class="show">
-                <a>北京市</a>
+                <a></a>
                 <div class="Arrow"></div>
             </div>
             <div class="city_list" id="returnCityList">
@@ -173,7 +173,7 @@
         <!--门店-->
         <div class="shortStore" id="returnStore">
             <div class="show">
-                <a store_id="1">冬冬服务点</a>
+                <a store_id=""></a>
                 <div class="Arrow"></div>
             </div>
             <div class="store_list" id="returnStoreList">
