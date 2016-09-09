@@ -50,7 +50,6 @@ class PublicController extends Controller
             ->leftJoin('car_brand as b', 'i.brand_id', '=', 'b.brand_id')
             ->where('server_id', $request->input('shop_id'))
             ->get();
-
         echo json_encode($car, JSON_UNESCAPED_UNICODE);
     }
 

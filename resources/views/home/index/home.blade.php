@@ -2,17 +2,6 @@
 <link type="text/css" rel="stylesheet" href="home/css/index.css">
 <script type="text/javascript" src="home/js/index.js"></script>
 
-<script>
-    var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
-    jQuery(".menu_box li")[0].className = " on_menu";
-    jQuery(page).each(function (i, obj) {
-        jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
-        if (location.href.toLowerCase().indexOf(obj) > 1) {
-            jQuery(".menu_box li")[i].className += " on_menu";
-        }
-    })
-</script>
-
 <!--预定框-->
 <div class="bookBox noCopy">
     <div class="book">
@@ -257,16 +246,16 @@
     <!--图片-->
     <div class="bd">
         <ul class="img">
-            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/123.jpg);background-size:100% 100%; " target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/home-ppt-1.jpg);background-size:100% 100%;" target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/home-ppt-2.jpg);background-size:100% 100%;" target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/home-ppt-3.jpg);background-size:100% 100%;" target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/home-ppt-4.jpg);background-size:100% 100%;" target="_blank"></a></li>
+            <li><a href="#" style="background:url(home/images/home-ppt-5.jpg);background-size:100% 100%;" target="_blank"></a></li>
         </ul>
     </div>
     <!--索引-->
     <div class="hd">
-        <ul class="tit">
-        </ul>
+        <ul class="tit"></ul>
     </div>
 </div>
 <!--宣传图-->

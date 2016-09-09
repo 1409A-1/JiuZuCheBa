@@ -395,9 +395,6 @@ function storeLoad(result) {
     $("#takeStore .show>a").html('请选择门店');
     $("#returnStore .show>a").html('请选择门店');
 
-
-
-
     setMeal();//优惠套餐
     book();//预定事件
 
@@ -489,7 +486,9 @@ function storeLoad(result) {
             layer.tips('温馨提示：会产生异店还车费', '#returnStore', { tips: [2, '#ff7937'] });
         }
     });
-}//取还车门店
+}
+
+//取还车门店
 function takeStore(result) {
     var id1 = [], area1 = [], address1 = [], start1 = [], end1 = [], traffic1 = [], name1 = [], data1 = [], lng1 = [], lat1 = [],
       startHours, endHours, t1, t2, html = "";
@@ -576,7 +575,9 @@ function takeStore(result) {
             shopHours(startHours, endHours, 2);//加载营业时间
         }
     });
-}//取车门店
+}
+
+//还车门店
 function returnStore(result) {
     var id2 = [], area2 = [], address2 = [], start2 = [], end2 = [], traffic2 = [], name2 = [], data2 = [], lng2 = [], lat2 = [],
       startHours, endHours, t1, t2, html = "";
@@ -888,7 +889,6 @@ function Duration(D1, H1, D2, H2) {
     $("#duration").html(duration);//租期显示
     return isOK;
 }
-
 
 //城市
 function City() {

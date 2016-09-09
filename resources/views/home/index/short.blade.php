@@ -31,7 +31,6 @@
 </script>
 
 <link type="text/css" rel="stylesheet" href="home/css/shortRent.css">
-<script type="text/javascript" src="home/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="home/js/shortRent.js"></script>
 <script type="text/javascript" src="home/js/linq.js"></script>
 <script type="text/javascript" src="home/js/m-webim-lite.js"></script>
@@ -311,38 +310,34 @@
         <!--优惠活动-->
         <div class="discount">
             <ul>
-                    <li>
-                    <a href="http://www.dafang24.com/home/newsdetail/379" target="_blank">
-                        <img src="home/images/20160123093757708.jpg">
-                        <h4>微信下单，立减10元</h4>
-                        <p>
-                            
-                        </p>
-                    </a>
-                    </li>
-                    <li>
-                    <a href="http://www.dafang24.com/home/newsdetail/93" target="_blank">
+               <li>
+                  <a href="http://www.dafang24.com/home/newsdetail/379" target="_blank">
+                    <img src="home/images/20160123093757708.jpg">
+                    <h4>微信下单，立减10元</h4>
+                    <p></p>
+                  </a>
+               </li>
+               <li>
+                  <a href="http://www.dafang24.com/home/newsdetail/93" target="_blank">
                         <img src="home/images/20160122020611786.jpg">
                         <h4>早订更省钱，提前预订享特价！</h4>
-                        <p>
-                            
-                        </p>
-                    </a>
-                    </li>
-                    <li class="active">
-                    <a href="http://huodong2.dafang24.com/" target="_blank">
-                        <img src="home/images/20160203055035758.jpg">
-                        <h4>新用户首日0租金</h4>
-                        <p>
-                            
-                        </p>
-                    </a>
-                    </li>
+                        <p></p>
+                  </a>
+               </li>
+               <li class="active">
+                   <a href="http://huodong2.dafang24.com/" target="_blank">
+                       <img src="home/images/20160203055035758.jpg">
+                       <h4>新用户首日0租金</h4>
+                       <p></p>
+                  </a>
+               </li>
             </ul>
         </div>
     </div>
 </div>
-    <form id="order_fm" method="post" action="/home/Order" onsubmit="">
+        <input type="hidden" value="{{ Session::get('user_name') }}" id="user_name"/>
+    <form id="order_fm" method="post" action="{{ url('subOrder') }}" onsubmit="">
+        <input type="hidden" value="{{csrf_token()}}" name="_token">
         <input id="start_shop_id" name="start_shop_id" type="hidden">
         <input id="stop_shop_id" name="stop_shop_id" type="hidden">
         <input id="start_date" name="start_date" type="hidden">
@@ -356,70 +351,67 @@
 
 <script>
 //车辆预订
-    function carBook(n) {
-        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").html())) {
-           // var cus = JSON.parse(jQuery.cookie("login_user"));
-//            var li = $(".carList>li").eq(n);
-//            var out_id = $("#takeStore").find(".show a").attr("store_id"),
-//                out_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html(),
-//                in_id = $("#returnStore").find(".show a").attr("store_id"),
-//                in_time = $("#endDate").html() + " " + $("#returnHour").find(".show a").html(),
-//                car_id = li.attr("car_id"),
-//                offers_id = [];
-//
-//            var nowTime = new Date(), outTime, inTime;
-//            nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
-//            outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
-//            inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
-//
-//            //春节等特殊时期 租期限制！
+    function carBook(n)
+    {
+        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").htmltext)) {
+            var user_name = $('#user_name').val();   //用户信息
+            var li = $(".carList>li").eq(n);
+            var out_id = $("#takeStore").find(".show a").attr("store_id"),
+                out_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html(),
+                in_id = $("#returnStore").find(".show a").attr("store_id"),
+                in_time = $("#endDate").html() + " " + $("#returnHour").find(".show a").html(),
+                car_id = li.attr("car_id"),
+                car_info_id = li.attr("car_info_id"),
+                offers_id = [];
+
+            var nowTime = new Date(), outTime, inTime;
+            nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
+            outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
+            inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
+            //春节等特殊时期 租期限制！
 //            if (checked_price_list(CarList[n].prices, outTime, inTime)) {
-//                //判断时间
-//                if (date_subtract(nowTime, outTime).times >= 0) {//取车时间 须 大于 当前时间
-//                    //活动信息
+            if (true) {
+                //判断时间
+                if (date_subtract(nowTime, outTime).times >= 0) {//取车时间 须 大于 当前时间
+                    //活动信息
 //                    for (var i = 0; i < li.find(".discountName div").length; i++) {
 //                        offers_id.push(li.find(".discountName div").eq(i).attr("dis_id"));
 //                    }
-//                    $("#start_shop_id").val(out_id);
-//                    $("#stop_shop_id").val(in_id);
-//                    $("#start_date").val(out_time);
-//                    $("#stop_date").val(in_time);
-//                    $("#class_id").val(car_id);
-//                    $("#offersid").val(offers_id);
-//
-//                    localStorage.setItem("page_jump", 503);
-//
-//                    localStorage.setItem("start_shop_id", out_id);
-//                    localStorage.setItem("stop_shop_id", in_id);
-//                    localStorage.setItem("start_date", out_time);
-//                    localStorage.setItem("stop_date", in_time);
-//                    localStorage.setItem("class_id", car_id);
-//                    localStorage.setItem("offersid", offers_id);
-//
-//                    if (cus && cus.customer_id > 0) {
-//                        $("#order_fm").submit();
-//                    } else {
-//                        layer.open({
-//                            type: 2,
-//                            scrollbar: false,
-//                            area: ['346px', '368px'],
-//                            shade: [0.8, '#000'],
-//                            title: false,
-//                            content: ['/Home/DialogLogin', 'no']
-//                        });
-//                    }
-//                }
-//                else {
-//                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
-//                }
-//            }
+                    $("#start_shop_id").val(out_id);
+                    $("#stop_shop_id").val(in_id);
+                    $("#start_date").val(out_time);
+                    $("#stop_date").val(in_time);
+                    $("#class_id").val(car_id);
+                    $("#offersid").val(car_info_id);
+                    localStorage.setItem("page_jump", 503);
+                    localStorage.setItem("start_shop_id", out_id);
+                    localStorage.setItem("stop_shop_id", in_id);
+                    localStorage.setItem("start_date", out_time);
+                    localStorage.setItem("stop_date", in_time);
+                    localStorage.setItem("class_id", car_id);
+                    //localStorage.setItem("offersid", offers_id);
+                    if (user_name != '') {
+                        $("#order_fm").submit();
+                    } else {
+                        layer.open({
+                            type: 2,
+                            scrollbar: false,
+                            area: ['346px', '368px'],
+                            shade: [0.8, '#000'],
+                            title: false,
+                            content: ['loginBox', 'yes']
+                        });
+                    }
+                }
+                else {
+                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
+                }
+            }
         }
     }
 
     function _callback()
     {
-
-
         var in_id, start_time, stop_time, total, type, grade;
         in_id = $("#returnStore").find(".show a").attr("store_id");
         start_time = $("#startDate").html() + " " + $("#takeHour").find(".show a").html() + ":00";
