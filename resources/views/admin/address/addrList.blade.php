@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
+    <link rel="stylesheet" href="{{asset('admin')}}/bootstrap/css/bootstrap.min.css"/>
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
@@ -57,7 +58,7 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>Products</h4>
+                            <h4>地区搜索</h4>
                         </div>
                     </div>
 
@@ -71,49 +72,52 @@
                                 </select>
                             </div>
                             <input type="text" class="search" />
-                            <a class="btn-flat success new-product" id="ins">添加套餐</a>
+                            <a class="btn-flat success new-product" id="ins">添加型号</a>
                         </div>
                     </div>
                     <script src="{{asset('admin')}}/js/js.js"></script>
-                    <script>
-                        $(function(){
-                            $("#ins").click(function(){
-                                location.href='package_ins';
-                            });
-                        });
-                    </script>
-                    <div class="row-fluid">
-                        <form action="{{url('pacnsert')}}" method="post">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                            <table class="table">
-                                <tr>
-                                    <td>套餐名称:</td>
-                                    <td><input type="text" required="required" name="pack_name"/></td>
-                                </tr>
-                                <tr>
-                                    <td>套餐价格:</td>
-                                    <td><input type="text" required="required" name="pack_price"/></td>
-                                </tr>
-                                <tr>
-                                    <td>天数:</td>
-                                    <td><input type="text" required="required" name="pack_day"/></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <input type="submit"  class="btn btn-info" value="添加套餐"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+
+                    <div class="row-fluid" style="width:500px;">
+                        <table class="table">
+                            <tr>
+                                <th>城市搜索:</th>
+                                <td>
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                    <input type="text" name="select" style="height: 30px;" placeholder="首字母搜索、汉字搜索"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <div id="content"></div>
+                        </table>
                     </div>
                 </div>
-                <!-- end products table -->
-                <!-- orders table -->
             </div>
         </div>
     </div>
     <!-- end main container -->
-
+    <script>
+        $(function(){
+            $("input[name=select]").keyup(function(){
+                var server_name = $("input[name=select]").val();
+                var _token = $("input[name=_token]").val();
+                $.getJSON("addrSelect",{server_name:server_name,_token:_token},function(msg){
+                    console.log(msg);
+                    if(msg == 1){
+                        $('#content').html("对不起您搜索的内容暂时没有找到！");
+                    } else if(msg == 0) {
+                        $('#content').html("");
+                    } else {
+                        var html="";
+                        $.each(msg,function(key,val){
+                            html+='<table>'+'<tr>'+'<td>'+msg[key]['address_name']+'</td>'+'</tr>'+'</table>';
+                        });
+                        $('#content').html(html);
+                    }
+                });
+            });
+        });
+    </script>
 	<!-- scripts -->
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>

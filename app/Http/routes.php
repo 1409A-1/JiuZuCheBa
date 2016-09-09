@@ -113,6 +113,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addressTwo','AddressController@addressTwo');
 
     Route::get('addrList','AddressController@addrList');//地区列表
+    Route::get('addrSelect','AddressController@addrSelect');//地区列表
     Route::get('addrIns','AddressController@addrIns');//地区添加页面
     Route::post('typeIns','AddressController@typeIns');//地区的添加
     Route::post('ping','AddressController@ping');//汉语转换拼音
@@ -121,10 +122,10 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addressList','AddressController@addressList');//服务点列表展示
     Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
     Route::get('package','PackageController@package');//套餐列表
-    Route::get('packIns','PackageController@package_ins');//套餐添加
-    Route::post('packInsert','PackageController@package_ins');//套餐添加
-    Route::get('packDel/{pack_id}','PackageController@pack_del');//套餐删除
-    Route::get('userPack','PackageController@user_pack');//用户套餐申请查看
+    Route::get('packIns','PackageController@packageIns');//套餐添加
+    Route::post('packInsert','PackageController@packageIns');//套餐添加
+    Route::get('packDel/{pack_id}','PackageController@packDel');//套餐删除
+    Route::get('userPack','PackageController@userPack');//用户套餐申请查看
 
 
 
@@ -136,15 +137,6 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('carUnique','CarController@carUnique');//车辆分配唯一性查询
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
     Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
-
-//车辆类型
-	Route::get('typelist','CarTypeController@car_list');//列表展示
-	Route::get('typelistpage/{page}/{search}','CarTypeController@listpage'); //列表分页
-	Route::any('typeadd','CarTypeController@add'); //添加
-	Route::post('typeupdate','CarTypeController@update'); //修改
-	Route::get('typeupdate/{id}','CarTypeController@update'); //执行修改
-	Route::get('typedel/{id}','CarTypeController@del');    //删除
-	Route::get('typedel/{id}','CarTypeController@del');    //删除
 });
 
 // 微信对接 授权登录
