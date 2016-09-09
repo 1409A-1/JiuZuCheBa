@@ -83,7 +83,7 @@
                         });
                     </script>
                     <div class="row-fluid" style="width:500px;float:left;">
-                        <form action="{{ url('addServer') }}" method="post">
+                        <form action="{{url('addServer')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <table class="table table-hover" >
                                 <tr>
