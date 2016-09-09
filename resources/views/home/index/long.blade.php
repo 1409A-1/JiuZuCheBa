@@ -354,3 +354,9 @@
 
 <!-- 底部 -->
 @include('common.home_footer')
+<!-- 
+<div move="ok" class="layui-layer-title" style="cursor: move;">联系信息</div>
+<div style="height: 367px;" class="layui-layer-content">
+    
+</div>
+<span class="layui-layer-setwin"><a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a></span> -->

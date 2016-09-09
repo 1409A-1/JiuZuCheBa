@@ -24,9 +24,6 @@
     <script type="text/javascript" src="home/js/dateTools.js"></script>
     <script type="text/javascript" src="home/js/all.js"></script>
 
-    <script src="home/js/bsl.js" charset="UTF-8" type="text/javascript"></script>
-    <script src="home/js/Enter.js" charset="UTF-8" id="BridgeRCVEnter" type="text/javascript"></script>
-
     <link href="home/css/main.css" type="text/css" rel="stylesheet">
     <link href="home/css/fix.css" type="text/css" rel="stylesheet">
 </head>
