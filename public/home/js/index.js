@@ -804,16 +804,16 @@ function shopHours(startHours, endHours, temp) {//temp 1为取车时间  2为还
 //日历
 function calendar() {
     var startDate = $("#startDate"),
-      startHour = $("#startHour"),
-      endDate = $("#endDate"),
-      endHour = $("#endHour");
+        startHour = $("#startHour"),
+        endDate = $("#endDate"),
+        endHour = $("#endHour");
     var Available_days,// 从当天起 可 预订 多少天内 车辆
-      now_time = new Date(),
-      out_time = date_adddays(now_time, 1),//默认取车日期
-      in_time = date_adddays(now_time, 3),//默认还车日期
-      start_time = now_time,//可选的 租车开始日期
-      end_time,//可选的 取车日期
-      end_time1;//可选的 还车日期
+        now_time = new Date(),
+        out_time = date_adddays(now_time, 1),//默认取车日期
+        in_time = date_adddays(now_time, 3),//默认还车日期
+        start_time = now_time,//可选的 租车开始日期
+        end_time,//可选的 取车日期
+        end_time1;//可选的 还车日期
     $.ajax({
         url: maxrent_auto_url,
         dataType: 'jsonp',
@@ -1067,7 +1067,7 @@ function initMap(point, city) {
             dataType: 'json',
             data: { "city_name": city, "_token": _token },
             success: function (result) {
-                map.centerAndZoom(new BMap.Point(result[0].latitude, result[0].longitude), 11);//设置当前城市第一个门店为中心点
+                map.centerAndZoom(new BMap.Point(result[0].coordinate.split(',')[0], result[0].coordinate.split(',')[1]), 11);//设置当前城市第一个门店为中心点
                 var store = $(".aroundStore li"),
                     num = result.length;
                 if (num > 4)
@@ -1223,8 +1223,17 @@ function bind_tuijian(city) {
         data: { city: city },
         dataType: 'jsonp',
         success: function (result) {
+            console.log()
             var html = [];
             if (result) {
+                html.push("<div>");
+                    html.push("<div class=\"recCarBox\">");
+                    html.push("<div class=\"carImg\">");
+                    html.push("<div class=\"noImg\"></div>");
+                    html.push("</div>");
+                    html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
+                    html.push("</div>");
+                    html.push("</div>");
                 for (var i = 0; i < result.length; i++) {
                     html.push("<div>");
                     html.push("<div class=\"recCarBox\" onclick=\"doom_tj(" + result[i].id + "," + result[i].class_id + ")\">");
@@ -1294,7 +1303,7 @@ function doom_tj(id, class_id) {
 //门店地图 查看
 function storeMap(lng, lat, id, name) {
     var storePoint = new BMap.Point(lng, lat),
-        mapIcon = new BMap.Icon("/content/images/index/map.png", new BMap.Size(25, 35)),
+        mapIcon = new BMap.Icon("home/images/map.png", new BMap.Size(25, 35)),
         storeMarker = new BMap.Marker(storePoint, { icon: mapIcon });
     var map = new BMap.Map("storeMap");
         map.centerAndZoom(storePoint, 20);

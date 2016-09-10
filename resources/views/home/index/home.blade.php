@@ -351,15 +351,15 @@
                 </div>
             </div>
         </div>
-        <!--大方新闻-->
+        <!--就租车吧新闻-->
         <div class="news1">
-            <a class="o_tit">大方新闻</a>
+            <a class="o_tit">就租车吧新闻</a>
             <div class="news1Box oBox2">
 
                     <a href="http://www.dafang24.com/Home/NewsDetail/1117" target="_blank">
                     <div class="news1_L">
                         <img src="home/images/20160119101501966.jpg">
-                        <div>大方租车A轮融资新闻发布会</div>
+                        <div>就租车吧租车A轮融资新闻发布会</div>
                     </div>
                     </a>
                 
@@ -390,34 +390,34 @@
             <a>新闻资讯</a>
             <div class="news2Box">
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1534" target="_blank">迎中秋，大方租车郑州威海安徽三店同开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1534" target="_blank">迎中秋，就租车吧租车郑州威海安徽三店同开业</a>
                     <span>2016-08-30</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1531" target="_blank">大方租车宜昌西陵店震撼开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1531" target="_blank">就租车吧租车宜昌西陵店震撼开业</a>
                     <span>2016-08-12</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1530" target="_blank">大方租车南阳泰山路店开业在即</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1530" target="_blank">就租车吧租车南阳泰山路店开业在即</a>
                     <span>2016-08-10</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1526" target="_blank">大方租车衡阳解放大道店震撼开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1526" target="_blank">就租车吧租车衡阳解放大道店震撼开业</a>
                     <span>2016-08-05</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1517" target="_blank">喜迎大方租车甘肃陇南武都火车站店开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1517" target="_blank">喜迎就租车吧租车甘肃陇南武都火车站店开业</a>
                     <span>2016-07-30</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1509" target="_blank">大方租车昆明子君店隆重开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1509" target="_blank">就租车吧租车昆明子君店隆重开业</a>
                     <span>2016-07-26</span>
                    </div> 
             </div>
         </div>
         <!--租车体验-->
         <div class="experience1">
-            <a class="o_tit">大方用户与您分享不同的租车体验</a>
+            <a class="o_tit">就租车吧用户与您分享不同的租车体验</a>
             <div class="experience1Box oBox2">
                 <div class="evaluate1">
                     <img src="home/images/comment.jpg">
@@ -452,6 +452,51 @@
                         <a class="time">2016-01-12</a>
                     </div>
                 </li>
+                <li>
+                    <div class="photo icon_user icon_user3"></div>
+                    <div class="evaluate2_body">
+                        <a class="name">张先生</a>
+                        <span class="order">订单号：<a>DC*********03</a></span>
+                        <p>
+                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
+                        </p>
+                        <span class="address">
+                            <i class="icon icon_location2"></i>
+                            <a>湖北省武汉市</a>
+                        </span>
+                        <a class="time">2016-01-12</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="photo icon_user icon_user3"></div>
+                    <div class="evaluate2_body">
+                        <a class="name">张先生</a>
+                        <span class="order">订单号：<a>DC*********03</a></span>
+                        <p>
+                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
+                        </p>
+                        <span class="address">
+                            <i class="icon icon_location2"></i>
+                            <a>湖北省武汉市</a>
+                        </span>
+                        <a class="time">2016-01-12</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="photo icon_user icon_user3"></div>
+                    <div class="evaluate2_body">
+                        <a class="name">张先生</a>
+                        <span class="order">订单号：<a>DC*********03</a></span>
+                        <p>
+                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
+                        </p>
+                        <span class="address">
+                            <i class="icon icon_location2"></i>
+                            <a>湖北省武汉市</a>
+                        </span>
+                        <a class="time">2016-01-12</a>
+                    </div>
+                </li>
             </ul>
         </div>
         <!--城市列表-->
@@ -464,16 +509,9 @@
    <input id="StartDateTime" name="StartDateTime" type="hidden">
    <input id="EndDateTime" name="EndDateTime" type="hidden">
 </form>
-{{--<div class="footTop"></div>--}}
-{{--<!--广告图-->--}}
-{{--<div style="left: -100%;" class="Advertisement">--}}
-    {{--<div>--}}
-        {{--<div class="AdvertisementExit"></div>--}}
-    {{--</div>--}}
-    {{--<img style="left: 0px;" src="home/images/advertisement1.png">--}}
-{{--</div>--}}
-{{--<!--门店地图查看-->--}}
-{{--<div id="storeMap"></div>--}}
+<div class="footTop"></div>
+<!--门店地图查看-->
+<div id="storeMap"></div>
 
 <!--底部-->
 @include('common.home_footer')
