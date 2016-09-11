@@ -16,29 +16,43 @@ Route::get('onlyTel','LoginController@onlyTel');
 //前台的非法登录
 Route::group(['middleware' => ['homelogin']], function(){
 	//前台的个人中心
-	Route::get('userInfo','HomeUserController@userInfo');
+	Route::get('userInfo', 'HomeUserController@userInfo');
 	//修改密码展示页面
-	Route::get('updatePass','HomeUserController@updatePass');
+	Route::get('updatePass', 'HomeUserController@updatePass');
 	//修改密码发送短信
-	Route::get('phone','HomeUserController@phone');
+	Route::get('phone', 'HomeUserController@phone');
 	//接值进行密码的修改
-	Route::post('password','HomeUserController@password');
+	Route::post('password', 'HomeUserController@password');
 	//前台判断原密码是否正确
-	Route::get('onlyPwd','HomeUserController@onlyPwd');
+	Route::get('onlyPwd', 'HomeUserController@onlyPwd');
 	//前台验证修改手机验证码是否正确
-	Route::get('onlyMobileCode','HomeUserController@onlyMobileCode');
+	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
 	//订单列表的展示
-	Route::get('orderList','HomeUserController@orderList');
+	Route::get('orderList', 'HomeUserController@orderList');
 	//优惠券的展示
-	Route::get('benefitList','HomeUserController@benefitList');
+	Route::get('benefitList', 'HomeUserController@benefitList');
 	//公开留言页面的展示
-	Route::get('message','HomeUserController@message');
+	Route::get('message', 'HomeUserController@message');
 	//ajax进行留言的添加
-	Route::get('messageAdd','HomeUserController@messageAdd');
+	Route::get('messageAdd', 'HomeUserController@messageAdd');
 	//滑动鼠标进行加载
-	Route::get('messageDown','HomeUserController@messageDown');
+	Route::get('messageDown', 'HomeUserController@messageDown');
     //订单预订展示
-    Route::post('subOrder' ,'HomeOrderController@subOrder');
+    Route::post('subOrder', 'HomeOrderController@subOrder');
+    //订单确认提交
+    Route::get('orderAdd', 'HomeOrderController@orderAdd');
+    //订单生成
+    Route::get('orderSuccess', 'HomeOrderController@orderSuccess');
+    //订单详情页的查看
+    Route::get('orderInfo', 'HomeOrderController@orderInfo');
+    //订单取消
+    Route::get('cancelOrder', 'HomeOrderController@cancelOrder');
+    //调用支付宝付款
+    Route::get('zfbPay', 'HomeOrderController@zfbPay');
+    //支付失败
+    Route::get('error', 'HomeOrderController@error');
+    //支付成功
+    Route::get('paySuccess', 'HomeOrderController@paySuccess');
 });
 
 //前台登陆页面的展示

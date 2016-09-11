@@ -14,6 +14,7 @@ class CreateOrderTable extends Migration
     {
         // 订单表
         Schema::create('order', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('ord_id');
             $table->integer('user_id');
             $table->string('ord_sn', 60);

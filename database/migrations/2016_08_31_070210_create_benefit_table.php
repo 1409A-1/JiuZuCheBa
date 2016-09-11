@@ -14,6 +14,7 @@ class CreateBenefitTable extends Migration
     {
         // 优惠券表
         Schema::create('benefit', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('benefit_id');
             $table->integer('user_id');
             $table->string('benefit_name', 60);

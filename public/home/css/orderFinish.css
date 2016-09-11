@@ -1,0 +1,79 @@
+body{background: #f2f2f2;color: #24354b}
+.clear { zoom:1; }
+.clear:after { display:block; content:""; clear:both; }
+/*导航标题*/
+.title{width: 1180px;margin: auto;height: 77px;font-size: 14px;}
+.titleL{float: left;margin-top: 29px}
+.titleR{float: right;width: 408px;height: 50px;margin-top: 20px}
+.titleR>ul{width: 412px;height: 20px;margin-top: 30px}
+.titleR>ul li{float: left;width: 103px;text-align: right}
+.titleR>ul .dns{color: #B5B5B5;}
+.titleR>div{width: 200px;height: 30px; float: right;position: relative;;margin-right: 25px}
+.titleR>div hr{border: 0;height: 5px;position: absolute;right: 0;top: 8.5px}
+.ok{width: 300px;background:#E15517;}
+.titleR>div h3{width: 24px;height: 24px;line-height: 24px;text-align: center;border-radius: 25px;position: absolute;color: #fff}
+.r1{background: #E15517;left: -122px}
+.r2{background: #E15517;left: -17px}
+.r3{background: #E15517;left: 84px}
+.r4{background: #ccc;left: 187px}
+/*订单信息*/
+.orderInfoBox{ width:1130px; margin:0 auto 30px auto; padding:18px 25px 0 25px; background:#fff; border:1px solid #e5e5e5; min-height:300px; }
+
+/* 订单成功 */
+#orderSuccess { width:1130px; margin:0 auto 0 auto; }
+.orderList, .orderInfo { border:1px solid #90d563; }
+.orderInfo{border-top:none;}
+.orderList{padding-bottom: 20px;border-bottom:none;}
+.orderList h2 { width:1128px; height:41px; background:#90d563; position:relative;line-height:41px; }
+.orderList h2 p { height:62px; background:url(../images/PxCook/h2_bg.gif) no-repeat center top; }
+.orderList h2 a { color:#fff; font-size:14px; position:absolute; right:16px; top:20px; }
+.orderList h3 { width:354px; height:26px; text-indent:42px; font-size:22px; color:#90d563; line-height:26px; margin:42px auto 24px auto; background:url(../images/PxCook/h3_bg.gif) no-repeat; }
+.orderList ul {margin: 40px 0 10px 50px}
+.orderList ul li { background:#eee; margin-right:8px; line-height:38px;font-size:14px; float:left;text-align: center}
+.l1{width: 177px}
+.l2{width: 256px}
+.l3{width: 152px}
+.l4{width: 132px}
+.l5{width: 269px}
+.orderList ul { color:#24354b; }
+.orderList ul a { color:#337bd7; }
+.orderList .orderNum a { color:#337bd7; }
+.orderList p { line-height:0px; padding-left:394px; font-size:12px; }
+
+.orderInfo>p {width:1128px;height:40px;line-height: 40px;background:#90d563; text-align:center;font-size:14px;color:#fff;}
+.YcarList>img{ margin:15px 0; float:left; margin-left:48px;}
+.carInfo { width:247px; height:84px; margin:0 14px 0 10px; padding:24px 0; position:relative; float:left; }
+.carIcon{ width: 100%;height: 50px;margin-top: 10px}/*车型展示小图标*/
+.carIcon>div{ width:100px; height:25px; line-height:25px; float:left; }
+.carIcon>div a{padding-left:5px;font-size: 12px}
+
+/* 取还车的信息 */
+.timeCar { width:260px; margin:24px 40px 0 0; float:left; }
+.timeCar h4 { height:21px; text-indent:28px; background:url(../images/PxCook/ok_bg.gif) no-repeat; }
+.timeCar .carBack { background-position:0 -21px; }
+.timeCar h4 p { color:#ea5506; font-size:14px; }
+.timeCar ul { margin-left:24px; }
+.timeCar li { font-size:12px; }
+.timeCar li span { color:#949494; }
+.timeCar .addH span { line-height:30px; }
+.timeCar li a { color:#24354b; }
+
+/* 订单详情按钮 */
+.go_carList { height:30px; padding:40px 30px 50px 0; border-bottom:2px solid #e5e5e5; }
+.go_carList button {width: 98px;height: 28px;background: #fff;font-size: 12px;float: right;border: 1px solid #ea5506;color: #ea5506;margin-left: 30px;}
+
+/* 订单成功→文字 */
+.YtextList { margin-left:10px; padding-bottom:60px; }
+.YtextList div { margin-top:11px; color:#24354b; }
+.YtextList strong { line-height:32px; font-size:16px; }
+.YtextList p { font-size:12px; line-height:20px; }
+.YtextList span { color:#ea5506; }
+
+/* 订单不成功 */
+#orderFail{display: none}
+.orderLost { height:230px; border-color:#fd6060; }
+.orderLost h2 { background:#fd6060; }
+.orderLost h2 p{width:50px; padding:0 30px; margin:0 auto;background-position:center -62px; }
+.orderLost h3 { width:350px; background-position:0 -26px; color:#fd6060; }
+.orderLost a{display: block; text-align: center;font-size: 12px;color: #24354b}
+.zctx{font-size:12px;margin-top:120px;margin-left:27px;}
