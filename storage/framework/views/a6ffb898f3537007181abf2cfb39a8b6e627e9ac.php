@@ -1,81 +1,46 @@
-@include('common.home_header')
+<?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <link type="text/css" rel="stylesheet" href="home/css/login.css">
-<script src="home/js/login.js" type="text/javascript"></script>
+<script type="text/javascript" src="home/js/jquery-validate.js"></script>
 
-<!--登录注册-->
-<div class="infoBox noCopy">
-    <div>
+    <!--登录注册-->
+    <div class="infoBox noCopy">
+         <div>
         <div>
-            <!--登录-->
-            <div class="login">
+            <!--注册-->
+            <div class="register">
                 <div class="title">
-                    <div>登录</div>
-                    <span>没有账号？<a href="{{ URL('loginReg') }}">立即注册</a></span>
+                    <div>注册</div>
+                    <span>已有账号？<a href="<?php echo e(URL('login')); ?>">立即登录</a></span>
                 </div>
-                <div class="input_body">
-                    <form action="loginPro" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="inputBox" id="login_name_box">
-                        <input placeholder="我的用户名" maxlength="11" name="user_name" type="tel" required="">
-                        <i class="icon_login icon_l1"></i>
+                <form action="<?php echo e(URL('regPro')); ?>" method="post" id="reg">
+                    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>"/>
+                    <div class="input_body">
+                        <div class="inputBox" id="reg_name_box">
+                                <input placeholder="请输入姓名" maxlength="10"  type="text" name="user_name" id="name">
+
+                        </div>
+                        <div class="inputBox" id="reg_phone_box">
+                            <input placeholder="请输入手机号码" maxlength="11" id="reg_phone" type="tel" name="tel" >
+
+                        </div>
+                        <div class="inputBox" id="reg_pw_box">
+                            <input placeholder="请输入6位以上密码" maxlength="18" id="reg_pw" type="password"  name="password">
+                        </div>
+                        <br>
+                        <button id="reg">注 册<i></i></button>
+                        <div class="Prompt">
+                            点击“立即注册”<br>
+                            即表示您同意并愿意遵守大方
+                            <b id="win">用户协议</b>
+                        </div>
                     </div>
-                    <div class="inputBox" id="login_pw_box">
-                        <input placeholder="我的密码" maxlength="18" name="password" type="password" required="">
-                        <input value="我的密码" maxlength="18" id="login_pw0" type="text">
-                        <i class="icon_login icon_l2"></i>
-                    </div>
-                    <span class="forgetPw">忘记密码？</span>
-                    <div class="errorPrompt" id="loginError"><!--错误提示--></div>
-                    <button id="login">登 录<i></i></button>
-                    <button style="background-color: #00aa00" onclick="location='{{ url('oAuth') }}'">微 信 登 录</button>
-                </div>
                 </form>
-            </div>
-            <!--忘记密码-->
-            <div class="findPw">
-                <div class="title">
-                    <div>找回密码</div>
-                    <span><a id="return1">返回登录</a></span>
-                </div>
-                <div class="input_body">
-                    <div class="inputBox" id="find_name_box">
-                        <input placeholder="请输入手机号码" maxlength="11" id="find_name" type="tel">
-                        <i class="icon_login icon_l1"></i>
-                    </div>
-                    <div class="dx_code">
-                        <input placeholder="请输入短信验证码" maxlength="6" id="find_code" type="text">
-                        <button id="find_send_code">发送验证码</button>
-                    </div>
-                    <div class="errorPrompt" id="findError"><!--错误提示--></div>
-                    <button id="find">确认找回<i></i></button>
-                </div>
-            </div>
-            <!--修改密码-->
-            <div class="changePw">
-                <div class="title">
-                    <div>修改密码</div>
-                    <span><a id="return2">返回登录</a></span>
-                </div>
-                <div class="input_body">
-                    <div class="inputBox" id="ch_pw1_box">
-                        <input placeholder="请输入6位以上密码" maxlength="18" id="ch_pw1" type="password">
-                        <input value="请输入6位以上密码" maxlength="18" id="ch_pw10" type="text">
-                        <i class="icon_login icon_l2"></i>
-                    </div>
-                    <div class="inputBox" id="ch_pw2_box">
-                        <input placeholder="请再次确认密码" maxlength="18" id="ch_pw2" type="password">
-                        <input value="请再次确认密码" maxlength="18" id="ch_pw20" type="text">
-                        <i class="icon_login icon_l2"></i>
-                    </div>
-                    <div class="errorPrompt" id="chError"><!--错误提示--></div>
-                    <button id="ch">确认修改<i></i></button>
-                </div>
             </div>
         </div>
     </div>
-</div>
-<!--底部-->
-<textarea class="protocol" readonly="disabled">
+    </div>
+    <!--用户协议-->
+    <textarea class="protocol" readonly="disabled">
 
 1．特别提示
 
@@ -218,7 +183,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
 
 11．法律管辖如双方就本协议内容或其执行发生任何争议，双方应友好协商解决；协商不成时，任何一方均可向武汉大方汽车租赁有限公司所在地的人民法院提起
 诉讼。</textarea>
-<!--底部-->
+    <!--底部-->
 <div class="footer">
     <div class="footerBox">
         <ul class="f1">
@@ -317,3 +282,68 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
         </div>
     </div>
 </div>
+    <?php /*前台验证*/ ?>
+    <script>
+        $(function(){
+            jQuery.validator.addMethod("isMobile", function(value, element) {
+                var length = value.length;
+                var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+                return this.optional(element) || (length == 11 && mobile.test(value));
+            }, "请正确填写您的手机号码");
+
+            $("#reg").validate({
+                errorElement : 'p',
+                success : function (label) {
+                    label.addClass('success');
+                },
+                    rules:{
+                        user_name:{
+                            required:true,
+                            remote:{
+                                url:"<?php echo e('onlyName'); ?>",
+                                type:'get',
+                                //  dataType:'json',
+                                data:{   //传两个参数
+                                    name:function(){
+                                        return $('#name').val()
+                                    }
+                                }
+                            }
+                        },
+                        tel:{
+                            required:true,
+                            isMobile:true,
+                            remote:{
+                                url:"<?php echo e('onlyTel'); ?>",
+                                type:'get',
+                                //  dataType:'json',
+                                data:{   //传两个参数
+                                    tel:function(){
+                                        return $('#reg_phone').val()
+                                    }
+                                }
+                            }
+                        },
+                        password:{
+                            required:true,
+                            minlength:6
+                        }
+                    },
+                  messages:{
+                      user_name:{
+                           required:'该用户名必填',
+                           remote:'用户名存在'
+                     },
+                      tel:{
+                          required:'手机号必填',
+                          remote:'已存在'
+                      },
+                      password:{
+                          required:'密码必填',
+                          minlength:'大于六位'
+                      }
+                  }
+            })
+
+        })
+    </script>

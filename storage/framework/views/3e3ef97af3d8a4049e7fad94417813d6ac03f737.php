@@ -1,4 +1,4 @@
-@include('common.home_header')
+<?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <link type="text/css" rel="stylesheet" href="home/css/index.css">
 <script type="text/javascript" src="home/js/index.js"></script>
 
@@ -500,7 +500,7 @@
             </ul>
         </div>
         <!--城市列表-->
-        @include('common.home_city_list')
+        <?php echo $__env->make('common.home_city_list', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     </div>
 </div>
 <form id="fmtuijian" method="post" action="/Home/doom">
@@ -514,7 +514,7 @@
 <div id="storeMap"></div>
 
 <!--底部-->
-@include('common.home_footer')
+<?php echo $__env->make('common.home_footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <script>
     //预订按钮
