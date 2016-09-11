@@ -1208,14 +1208,15 @@ function calendar() {
 
 //租期计算
 function Duration(D1, H1, D2, H2) {
-    var start = D1 + " " + H1,
-        end = D2 + " " + H2;
+    var start = D1 + " " + H1,    //取车日期2000-01-02 10:00 格式
+        end = D2 + " " + H2;      //还车日期2000-01-02 10:00 格式
+
     start = date_format(start, "yyyy-MM-dd HH:mm");
     end = date_format(end, "yyyy-MM-dd HH:mm");
     var nowTime = new Date(), isOK = false;
-    nowTime = date_format(nowTime);
-    var maxDuration = 29 * 86400000;//最长租期毫秒数
-    var x = date_subtract(start, end);
+    nowTime = date_format(nowTime);                 //服务器的时间
+    var maxDuration = 29 * 86400000;              //最长租期毫秒数
+    var x = date_subtract(start, end);            //对象 记录的时间
     var duration = x.days + "天";
     if (parseInt(x.hours) != 0) {
         duration += x.hours + "时";
@@ -1237,7 +1238,11 @@ function Duration(D1, H1, D2, H2) {
         layer.tips('租车时长不得小于24小时', '#returnHour', { tips: [3, '#3ac9fb'] });
     }
     else if (date_subtract(nowTime, start).times < 0) {
+        //alert(date_subtract(nowTime, start).times)
         layer.tips('取车时间不得小于当前时间<br>请重新选取时间', '#startDate', { tips: [1, '#3ac9fb'] });
+    }
+    else if (date_subtract(nowTime, start).times > 86400000*2) {
+        layer.tips('仅供预订两天内车辆', '#startDate', { tips: [1, '#3ac9fb'] });
     }
     else {
         isOK = true;
@@ -1250,10 +1255,10 @@ function Duration(D1, H1, D2, H2) {
 function Duration_alert(D1, H1, D2, H2) {
     var start = D1 + " " + H1,
         end = D2 + " " + H2;
-    start = date_format(start, "yyyy-MM-dd HH:mm");
-    end = date_format(end, "yyyy-MM-dd HH:mm");
+        start = date_format(start, "yyyy-MM-dd HH:mm");
+        end = date_format(end, "yyyy-MM-dd HH:mm");
     var nowTime = new Date(), isOK = false;
-    nowTime = date_format(nowTime);
+        nowTime = date_format(nowTime);
     var maxDuration = 29 * 86400000;//最长租期毫秒数
     var x = date_subtract(start, end);
     var duration = x.days + "天";
@@ -1368,9 +1373,7 @@ function gain_info(data) {
         car_list,//获取到的所有车型列表
         offer_list,//优惠活动列表
         order_info;//订单信息
-
     var total_rent_times = 0, customer_type = 1, customer_grade = 3;//用户登录信息
-
     var cus = JSON.parse(jQuery.cookie("user_name"));
     if (cus) {
         total_rent_times = cus.total_rent_times;
