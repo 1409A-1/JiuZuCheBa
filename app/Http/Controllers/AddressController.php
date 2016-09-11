@@ -64,17 +64,7 @@ class AddressController extends Controller
 
     public function addrList()
     {
-        $arr = DB::table('address')
-            ->get();
-        $subs = array();
-        foreach($arr as $v) {//循环数组
-            if ($v['parent_id'] == 0) {                                      //判断参数id是否等于父id
-                $subs[] = $v;                                             //追加到tree数组
-                //print_r($subs);die;
-                $subs = array_merge($subs, subtree($arr, $v['id']));        //合并数组
-                //print_r($subs);
-            }
-        }
+        return view('admin.address.addrList');
     }
     public function addrIns()
     {
@@ -165,6 +155,33 @@ class AddressController extends Controller
                 ->where('server_id',$id)
                 ->delete();
             return redirect(url('addressList'));
+        }
+    }
+    public function addrSelect(Request $request)
+    {
+        $data=$request->all();
+        if($data['server_name'] == ''){
+            return 0;//没有搜索
+        }else{
+            $ping = new \pin();
+            $str = $ping->Pinyin("$data[server_name]");
+            $str = substr($str,0,1);
+            $str =  strtoupper($str);
+            $arr = DB::table('address')
+                ->where(['address_name'=>$data['server_name']])
+                ->get();
+            if ($arr) {
+                return $arr;
+            }else{
+                $arr2 = DB::table('address')
+                    ->where(['abridge'=>$str])
+                    ->get();
+                if ($arr2) {
+                    return $arr2;
+                } else {
+                    return 1;
+                }
+            }
         }
     }
 }
