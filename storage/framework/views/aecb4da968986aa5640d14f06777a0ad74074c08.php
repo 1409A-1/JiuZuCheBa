@@ -1,4 +1,4 @@
-@include('common.home_header')
+<?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <link type="text/css" rel="stylesheet" href="home/css/login.css">
 <script src="home/js/login.js" type="text/javascript"></script>
 
@@ -10,11 +10,10 @@
             <div class="login">
                 <div class="title">
                     <div>登录</div>
-                    <span>没有账号？<a href="{{ URL('loginReg') }}">立即注册</a></span>
+                    <span>没有账号？<a href="<?php echo e(URL('loginReg')); ?>">立即注册</a></span>
                 </div>
                 <div class="input_body">
                     <form action="loginPro" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="inputBox" id="login_name_box">
                         <input placeholder="我的用户名" maxlength="11" name="user_name" type="tel" required="">
                         <i class="icon_login icon_l1"></i>
@@ -27,7 +26,7 @@
                     <span class="forgetPw">忘记密码？</span>
                     <div class="errorPrompt" id="loginError"><!--错误提示--></div>
                     <button id="login">登 录<i></i></button>
-                    <button style="background-color: #00aa00" onclick="location='{{ url('oAuth') }}'">微 信 登 录</button>
+                    <button style="background-color: #00aa00" onclick="location='<?php echo e(url('oAuth')); ?>'">微 信 登 录</button>
                 </div>
                 </form>
             </div>

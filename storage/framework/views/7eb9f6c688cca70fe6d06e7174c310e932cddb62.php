@@ -1,4 +1,4 @@
-@include('common.home_header')
+<?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <link type="text/css" rel="stylesheet" href="home/css/longRent.css">
 <script type="text/javascript" src="home/js/longRent.js"></script>
 
@@ -353,7 +353,7 @@
 <div id="storeMap"></div>
 
 <!-- 底部 -->
-@include('common.home_footer')
+<?php echo $__env->make('common.home_footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <!-- 
 <div move="ok" class="layui-layer-title" style="cursor: move;">联系信息</div>
 <div style="height: 367px;" class="layui-layer-content">
