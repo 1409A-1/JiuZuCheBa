@@ -68,17 +68,17 @@ Route::post('signin','AdminController@adminLogin');
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('indexs','AdminController@indexs');
   
-  /*
+  	/*
 	   类型管理
 	 */
 	Route::get('typeList','CarTypeController@typeList');//类型列表
 	Route::get('typeListPage/{page}/{search}/{del}','CarTypeController@listPage');//搜索分页
-	Route::match(['get', 'post'],'typeAdd','CarTypeController@add');//添加
+	Route::match(['get', 'post'],'typeAdds','CarTypeController@add');//添加
 	Route::post('typeUpdate','CarTypeController@update');//编辑
 	Route::get('typeUpdate/{id}','CarTypeController@update');//更新
 	Route::get('typeDel/{id}','CarTypeController@del');//删除
 	
-  /*
+  	/*
 	    品牌管理
 	 */
 	Route::get('brandList','CarBrandController@brandList');//品牌列表
@@ -88,7 +88,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('brandUpdate/{id}','CarBrandController@update');//更新
 	Route::get('brandDel/{id}','CarBrandController@del');//删除
 	
-  /*
+  	/*
 	    用户管理
 	 */
 	Route::get('userList','UserController@userList');//前台用户列表
@@ -104,8 +104,14 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('messageSet/{id}','UserController@messageSet');//留言审核
 	Route::get('messageAccept/{id}','UserController@messageAccept');//留言采纳
 
-	Route::get('carTypeList','AdminController@carTypeList');
+	/*
+		长租订单审核
+	 */
+	Route::get('longOrderList','UserController@longOrderList');
+	Route::post('longOrderCheck','UserController@longOrderCheck');
 
+	
+	Route::get('carTypeList','AdminController@carTypeList');
     Route::get('modelAdd','AdminController@modelAdd');
     Route::post('typeAdd','AdminController@modelAdd');
     Route::post('typeDel','AdminController@typeDel');
@@ -116,7 +122,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addrIns','AddressController@addrIns');//地区添加页面
     Route::post('typeIns','AddressController@typeIns');//地区的添加
     Route::post('ping','AddressController@ping');//汉语转换拼音
-    Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
+    
     Route::post('addServer','AddressController@addServer');//添加服务点
     Route::get('addressList','AddressController@addressList');//服务点列表展示
     Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
@@ -137,14 +143,6 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
     Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
 
-//车辆类型
-	Route::get('typelist','CarTypeController@car_list');//列表展示
-	Route::get('typelistpage/{page}/{search}','CarTypeController@listpage'); //列表分页
-	Route::any('typeadd','CarTypeController@add'); //添加
-	Route::post('typeupdate','CarTypeController@update'); //修改
-	Route::get('typeupdate/{id}','CarTypeController@update'); //执行修改
-	Route::get('typedel/{id}','CarTypeController@del');    //删除
-	Route::get('typedel/{id}','CarTypeController@del');    //删除
 });
 
 // 微信对接 授权登录

@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\CarBrand;
@@ -52,8 +52,8 @@ class CarBrandController extends Controller
 	 */
     public function add(Request $request)
     {
-    	if ($request::all()) {
-    		$brand_name = $request::input('brand_name');
+    	if ($request->input()) {
+    		$brand_name = $request->input('brand_name');
     		$validator = Validator::make(
     			['brand_name' => "$brand_name"],
 			    ['brand_name' => 'required|unique:car_brand,brand_name']
@@ -62,7 +62,7 @@ class CarBrandController extends Controller
 				return redirect()->back()->withErrors('车辆品牌已存在')->withInput();
 			} else {
 				$flight = new CarBrand;
-		    	$flight->brand_name = $request::input('brand_name');
+		    	$flight->brand_name = $request->input('brand_name');
 	        	$flight->save();
 	        	return redirect('brandList');
 			}  	
@@ -76,7 +76,7 @@ class CarBrandController extends Controller
      */
     public function update(Request $request,$id = "")
     {
-    	if ($request::all()) {
+    	if ($request->input()) {
     		$brand_name = $request::input('brand_name');
     		$validator = Validator::make(
     			['brand_name' => "$brand_name"],
@@ -85,7 +85,7 @@ class CarBrandController extends Controller
 			if ($validator->fails()) {
 				return redirect()->back()->withErrors('车辆品牌已存在')->withInput();
 			} else {
-				$brand_name = $request::input('brand_name');
+				$brand_name = $request->input('brand_name');
 				$flight = new CarBrand;
         		$flight::where('brand_id', $request::input('brand_id'))
 		          ->update(['brand_name' => "$brand_name"]);

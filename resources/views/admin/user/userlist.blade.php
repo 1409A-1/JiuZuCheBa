@@ -81,7 +81,6 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        <input type="checkbox" />
                                         用户账号
                                     </th>
                                     <th class="span3">
@@ -99,12 +98,8 @@
                                 <!-- row -->
                                 @foreach($user as $k => $v)
                                 <tr class="first">
-                                    <td>
-                                        <input type="checkbox" />
-                                        <div class="img">
-                                            <img src="{{asset('admin')}}/img/table-img.png" />
-                                        </div>
-                                        <a href="#" class="name">{{$v['user_name']}}</a>
+                                    <td class="description">
+                                        {{$v['user_name']}}
                                     </td>
                                     <td class="description">
                                        {{$v['tel']}}
@@ -174,7 +169,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.user.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.user[i].user_name+'</a></td><td class="description">'+msg.user[i].tel+'</td><td class="description">'+msg.user[i].reg_time+'</td><td class="description">'+msg.user[i].credit+'</td></tr>';
+                        str+='<tr class="first"><td>'+msg.user[i].user_name+'</td><td class="description">'+msg.user[i].tel+'</td><td class="description">'+msg.user[i].reg_time+'</td><td class="description">'+msg.user[i].credit+'</td></tr>';
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);

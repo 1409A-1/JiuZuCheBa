@@ -73,7 +73,7 @@
                                 </select>
                             </div>
                             <input type="text" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="typeAdd">+ 添加车辆类型</a>
+                            <a class="btn-flat success new-product" href="typeAdds">+ 添加车辆类型</a>
                         </div>
                     </div>
 
@@ -82,7 +82,6 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        <input type="checkbox" />
                                         车辆类型
                                     </th>
                                     <!-- <th class="span3">
@@ -98,11 +97,7 @@
                                 @foreach($cartype as $k => $v)
                                 <tr class="first">
                                     <td>
-                                        <input type="checkbox" />
-                                        <div class="img">
-                                            <img src="{{asset('admin')}}/img/table-img.png" />
-                                        </div>
-                                        <a href="#" class="name">{{$v['type_name']}} </a>
+                                        {{$v['type_name']}}
                                     </td>
                                     <!-- <td class="description">
                                         if you are going to use a passage of Lorem Ipsum.
@@ -172,7 +167,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -200,7 +195,7 @@
                 //alert(msg)
                 str="";
                 for(i=0; i<msg.cartype.length; i++){
-                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
+                    str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
                 }
                 $("#tbody").empty();
                 $("#tbody").append(str);
@@ -229,7 +224,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.cartype[i].type_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);

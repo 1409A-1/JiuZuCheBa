@@ -390,7 +390,7 @@ input.search{
 	margin-bottom: 7px;
 }
 #dashboard-menu ul.submenu a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 #dashboard-menu ul.submenu a.active {
 	font-weight: bold;
