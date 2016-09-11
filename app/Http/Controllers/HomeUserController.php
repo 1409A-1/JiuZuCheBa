@@ -71,7 +71,7 @@ class HomeUserController extends Controller
             $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
             $mobile = $info['tel'];//接值（手机号码）
             $mobile_code = $this->random(4,1);
-            $post_data = "account=cf_xiaohuli&password=fangxing520&mobile=".$mobile."&content=".rawurlencode("您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
+            $post_data = "account=cf_hhy&password=hhyhhy&mobile=".$mobile."&content=".rawurlencode("您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
 //密码可以使用明文密码或使用32位MD5加密
             $gets =  $this->xml_to_array($this->Post($post_data, $target));
             if($gets['SubmitResult']['code']==2){
@@ -82,7 +82,7 @@ class HomeUserController extends Controller
 
 //订单列表的展示
     public function orderList(){
-   //好几个表联查
+//好几个表联查
        $id = session('user_id');
        $order =  DB::table('order')
             ->leftJoin('order_info','order.ord_id','=','order_info.ord_id')
@@ -109,7 +109,7 @@ class HomeUserController extends Controller
             $arr[]='';
         }
 
-       // print_r($arr);die;
+     //print_r($arr);die;
         return view('home.user_info.order_list',['order'=>$arr]);
     }
 

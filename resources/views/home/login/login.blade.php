@@ -1,18 +1,6 @@
 @include('common.home_header')
 <link type="text/css" rel="stylesheet" href="home/css/login.css">
 <script src="home/js/login.js" type="text/javascript"></script>
-<script src="home/js/m-webim-lite.js" type="text/javascript"></script>
-
-<script>
-    var page = ['index', 'doom', 'lease', 'firmcar', 'newcarshoping', 'citymap', 'newslist', 'jiameng'];
-    jQuery(".menu_box li")[0].className = " on_menu";
-    jQuery(page).each(function (i, obj) {
-        jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
-        if (location.href.toLowerCase().indexOf(obj) > 1) {
-            jQuery(".menu_box li")[i].className += " on_menu";
-        }
-    })
-</script>
 
 <!--登录注册-->
 <div class="infoBox noCopy">
@@ -26,7 +14,7 @@
                 </div>
                 <div class="input_body">
                     <form action="loginPro" method="post">
-                        {!! csrf_field() !!}
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="inputBox" id="login_name_box">
                         <input placeholder="我的用户名" maxlength="11" name="user_name" type="tel" required="">
                         <i class="icon_login icon_l1"></i>

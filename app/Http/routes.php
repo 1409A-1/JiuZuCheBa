@@ -16,29 +16,43 @@ Route::get('onlyTel','LoginController@onlyTel');
 //前台的非法登录
 Route::group(['middleware' => ['homelogin']], function(){
 	//前台的个人中心
-	Route::get('userInfo','HomeUserController@userInfo');
+	Route::get('userInfo', 'HomeUserController@userInfo');
 	//修改密码展示页面
-	Route::get('updatePass','HomeUserController@updatePass');
+	Route::get('updatePass', 'HomeUserController@updatePass');
 	//修改密码发送短信
-	Route::get('phone','HomeUserController@phone');
+	Route::get('phone', 'HomeUserController@phone');
 	//接值进行密码的修改
-	Route::post('password','HomeUserController@password');
+	Route::post('password', 'HomeUserController@password');
 	//前台判断原密码是否正确
-	Route::get('onlyPwd','HomeUserController@onlyPwd');
+	Route::get('onlyPwd', 'HomeUserController@onlyPwd');
 	//前台验证修改手机验证码是否正确
-	Route::get('onlyMobileCode','HomeUserController@onlyMobileCode');
+	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
 	//订单列表的展示
-	Route::get('orderList','HomeUserController@orderList');
+	Route::get('orderList', 'HomeUserController@orderList');
 	//优惠券的展示
-	Route::get('benefitList','HomeUserController@benefitList');
+	Route::get('benefitList', 'HomeUserController@benefitList');
 	//公开留言页面的展示
-	Route::get('message','HomeUserController@message');
+	Route::get('message', 'HomeUserController@message');
 	//ajax进行留言的添加
-	Route::get('messageAdd','HomeUserController@messageAdd');
+	Route::get('messageAdd', 'HomeUserController@messageAdd');
 	//滑动鼠标进行加载
-	Route::get('messageDown','HomeUserController@messageDown');
+	Route::get('messageDown', 'HomeUserController@messageDown');
     //订单预订展示
-    Route::post('subOrder' ,'HomeOrderController@subOrder');
+    Route::post('subOrder', 'HomeOrderController@subOrder');
+    //订单确认提交
+    Route::get('orderAdd', 'HomeOrderController@orderAdd');
+    //订单生成
+    Route::get('orderSuccess', 'HomeOrderController@orderSuccess');
+    //订单详情页的查看
+    Route::get('orderInfo', 'HomeOrderController@orderInfo');
+    //订单取消
+    Route::get('cancelOrder', 'HomeOrderController@cancelOrder');
+    //调用支付宝付款
+    Route::get('zfbPay', 'HomeOrderController@zfbPay');
+    //支付失败
+    Route::get('error', 'HomeOrderController@error');
+    //支付成功
+    Route::get('paySuccess', 'HomeOrderController@paySuccess');
 });
 
 //前台登陆页面的展示
@@ -68,17 +82,17 @@ Route::post('signin','AdminController@adminLogin');
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('indexs','AdminController@indexs');
   
-  /*
+  	/*
 	   类型管理
 	 */
 	Route::get('typeList','CarTypeController@typeList');//类型列表
 	Route::get('typeListPage/{page}/{search}/{del}','CarTypeController@listPage');//搜索分页
-	Route::match(['get', 'post'],'typeAdd','CarTypeController@add');//添加
+	Route::match(['get', 'post'],'typeAdds','CarTypeController@add');//添加
 	Route::post('typeUpdate','CarTypeController@update');//编辑
 	Route::get('typeUpdate/{id}','CarTypeController@update');//更新
 	Route::get('typeDel/{id}','CarTypeController@del');//删除
 	
-  /*
+  	/*
 	    品牌管理
 	 */
 	Route::get('brandList','CarBrandController@brandList');//品牌列表
@@ -88,7 +102,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('brandUpdate/{id}','CarBrandController@update');//更新
 	Route::get('brandDel/{id}','CarBrandController@del');//删除
 	
-  /*
+  	/*
 	    用户管理
 	 */
 	Route::get('userList','UserController@userList');//前台用户列表
@@ -104,8 +118,14 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('messageSet/{id}','UserController@messageSet');//留言审核
 	Route::get('messageAccept/{id}','UserController@messageAccept');//留言采纳
 
-	Route::get('carTypeList','AdminController@carTypeList');
+	/*
+		长租订单审核
+	 */
+	Route::get('longOrderList','UserController@longOrderList');
+	Route::post('longOrderCheck','UserController@longOrderCheck');
 
+	
+	Route::get('carTypeList','AdminController@carTypeList');
     Route::get('modelAdd','AdminController@modelAdd');
     Route::post('typeAdd','AdminController@modelAdd');
     Route::post('typeDel','AdminController@typeDel');
@@ -117,6 +137,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addrIns','AddressController@addrIns');//地区添加页面
     Route::post('typeIns','AddressController@typeIns');//地区的添加
     Route::post('ping','AddressController@ping');//汉语转换拼音
+
     Route::post('addServer','AddressController@addServer');//添加服务点
     Route::get('addressList','AddressController@addressList');//服务点列表展示
     Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
@@ -145,6 +166,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('carUnique','CarController@carUnique');//车辆分配唯一性查询
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
     Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
+
 });
 
 // 微信对接 授权登录

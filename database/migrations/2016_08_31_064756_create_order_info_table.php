@@ -14,6 +14,7 @@ class CreateOrderInfoTable extends Migration
     {
         // 订单详情表
         Schema::create('order_info', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->integer('ord_id');
             $table->integer('departure');
             $table->integer('destination');

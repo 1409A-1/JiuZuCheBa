@@ -143,7 +143,7 @@
                                             <a href="{{ url('orderInfo') }}/<?php echo $val['ord_id']?>">查看详情</a>
                                         <?php
                                         }
-                                    } 
+                                    }
                                     ?>
                                 </td>
                             <?php }?>

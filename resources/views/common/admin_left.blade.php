@@ -29,13 +29,13 @@
             </a>
             <ul class="submenu">
                 <li><a href="{{ url('orderList') }}">订单管理</a></li>
-                <li><a href="{{URL('adminList')}}">长租审核</a></li>
+                <li><a href="{{URL('longOrderList')}}">长租审核</a></li>
             </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-cog"></i>
-                <span>车辆类型管理</span>
+                <span>车辆类型</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
@@ -89,12 +89,6 @@
             </a>
         </li>
         <li>
-            <a href="{{asset('admin')}}/tables.html">
-                <i class="icon-th-large"></i>
-                <span>Tables</span>
-            </a>
-        </li>
-        <li>
             <a class="dropdown-toggle ui-elements" href="#">
                 <i class="icon-code-fork"></i>
                 <span>车辆管理</span>
@@ -106,6 +100,7 @@
                 <li><a href="{{url('carServer')}}">服务点车辆分配</a></li>
             </ul>
         </li>
+<<<<<<< HEAD
         <li>
             <a href="{{asset('admin')}}/personal-info.html">
                 <i class="icon-cog"></i>
@@ -125,5 +120,7 @@
                 <li><a href="{{asset('admin')}}/signup.html">Sign up</a></li>
             </ul>
         </li>
+=======
+>>>>>>> c1f92fe0a9ad25d7a59ec66ef1eee1c4d2d610df
     </ul>
 </div>

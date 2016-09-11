@@ -69,8 +69,8 @@
                                     <a>交通路线：</a>
                                     <p class="storeWay">19; 64; 64; 530; 537; 540; 577; 581; 583; 601; 702</p>
                                 </div>
-                                <a out_in="0" storeid="195" class="toMap">
-                                    <img src="/content/images/index/toMap.png"><br>
+                                <a class="toMap">
+                                    <img src="home/images/toMap.png"><br>
                                     查看位置
                                 </a>
                             </div>
@@ -166,9 +166,9 @@
     <!--图片-->
     <div class="bd">
         <ul class="img">
-            <li class=""><a href="#" style="background: url(home/images/long-ppt-1.jpg) no-repeat top center" target="_blank"></a></li>
-            <li class=""><a style="background: url(home/images/long-ppt-2.jpg) no-repeat top center" target="_blank"></a></li>
-            <li class="active"><a style="background: url(home/images/long-ppt-3.jpg) no-repeat top center" target="_blank"></a></li>
+            <li class=""><a href="#" style="background: url(home/images/long/long-ppt-1.jpg) no-repeat top center" target="_blank"></a></li>
+            <li class=""><a style="background: url(home/images/long/long-ppt-2.jpg) no-repeat top center" target="_blank"></a></li>
+            <li class="active"><a style="background: url(home/images/long/long-ppt-3.jpg) no-repeat top center" target="_blank"></a></li>
         </ul>
     </div>
     <!--索引-->
@@ -221,7 +221,7 @@
     </div>
     <div class="recCar">
         <div class="p1 L0">
-            <img src="home/images/1.jpg">
+            <img src="home/images/long/1.jpg">
             <div class="text">
                 <h2>起亚 K2</h2>
                 <div>
@@ -238,7 +238,7 @@
             </div>
         </div>
         <div class="p2">
-            <img src="home/images/2.jpg">
+            <img src="home/images/long/2.jpg">
             <div class="text">
                 <h2>风神 S30</h2>
                 <div>
@@ -255,7 +255,7 @@
             </div>
         </div>
         <div class="p2">
-            <img src="home/images/3.jpg">
+            <img src="home/images/long/3.jpg">
             <div class="text">
                 <h2>雪铁龙 爱丽舍</h2>
                 <div>
@@ -272,7 +272,7 @@
             </div>
         </div>
         <div class="p2 L0">
-            <img src="home/images/4.jpg">
+            <img src="home/images/long/4.jpg">
             <div class="text">
                 <h2>大众 新捷达</h2>
                 <div>
@@ -289,7 +289,7 @@
             </div>
         </div>
         <div class="p2">
-            <img src="home/images/5.jpg">
+            <img src="home/images/long/5.jpg">
             <div class="text">
                 <h2>标致 301</h2>
                 <div>
@@ -306,7 +306,7 @@
             </div>
         </div>
         <div class="p1">
-            <img src="home/images/6.jpg">
+            <img src="home/images/long/6.jpg">
             <div class="text">
                 <h2>大众 新桑塔纳</h2>
                 <div>

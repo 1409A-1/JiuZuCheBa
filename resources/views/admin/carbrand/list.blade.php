@@ -81,7 +81,6 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        <input type="checkbox" />
                                         车辆品牌
                                     </th>
                                     <!-- <th class="span3">
@@ -97,11 +96,7 @@
                                 @foreach($carbrand as $k => $v)
                                 <tr class="first">
                                     <td>
-                                        <input type="checkbox" />
-                                        <div class="img">
-                                            <img src="{{asset('admin')}}/img/table-img.png" />
-                                        </div>
-                                        <a href="#" class="name">{{$v['brand_name']}} </a>
+                                        {{$v['brand_name']}}
                                     </td>
                                     <!-- <td class="description">
                                         if you are going to use a passage of Lorem Ipsum.
@@ -171,7 +166,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -199,7 +194,7 @@
                 //alert(msg)
                 str="";
                 for(i=0; i<msg.carbrand.length; i++){
-                    str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li></ul></td></tr>'
+                    str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li></ul></td></tr>'
                 }
                 $("#tbody").empty();
                 $("#tbody").append(str);
@@ -228,7 +223,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.carbrand[i].brand_name+'</a></td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);

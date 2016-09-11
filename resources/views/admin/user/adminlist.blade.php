@@ -81,7 +81,6 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        <input type="checkbox" />
                                         用户账号
                                     </th>
                                     <th class="span3">
@@ -94,11 +93,7 @@
                                 @foreach($user as $k => $v)
                                 <tr class="first">
                                     <td>
-                                        <input type="checkbox" />
-                                        <div class="img">
-                                            <img src="{{asset('admin')}}/img/table-img.png" />
-                                        </div>
-                                        <a href="#" class="name">{{$v['user_name']}}</a>
+                                        {{$v['user_name']}}
                                     </td>
                                     <td class="description">******</td>
                                 </tr>
@@ -159,7 +154,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.user.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.user[i].user_name+'</a></td><td class="description">******</td></tr>';
+                        str+='<tr class="first"><td>'+msg.user[i].user_name+'</td><td class="description">******</td></tr>';
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
