@@ -16929,18 +16929,3 @@ Stack trace:
 #17 C:\phpStudy\WWW\JiuZuCheBa\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #18 C:\phpStudy\WWW\JiuZuCheBa\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #19 {main}  
-[2016-09-09 20:21:49] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 30 seconds exceeded in E:\web\JiuZuCheBa\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php:8
-Stack trace:
-#0 {main}  
-[2016-09-09 20:21:49] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 30 seconds exceeded in E:\web\JiuZuCheBa\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php:8
-Stack trace:
-#0 {main}  
-[2016-09-09 20:21:49] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 30 seconds exceeded in E:\web\JiuZuCheBa\vendor\laravel\framework\src\Illuminate\View\FileViewFinder.php:8
-Stack trace:
-#0 {main}  
-[2016-09-09 20:21:49] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 30 seconds exceeded in E:\web\JiuZuCheBa\vendor\composer\ClassLoader.php:354
-Stack trace:
-#0 {main}  
-[2016-09-09 20:22:06] local.ERROR: Symfony\Component\Debug\Exception\FatalErrorException: Maximum execution time of 30 seconds exceeded in E:\web\JiuZuCheBa\vendor\laravel\framework\src\Illuminate\View\Factory.php:508
-Stack trace:
-#0 {main}  

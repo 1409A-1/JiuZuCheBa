@@ -60,7 +60,7 @@
                     <!-- left column -->
                     <div class="span9 with-sidebar">
                         <div class="container">
-                            <form class="new_user_form inline-input" method="post" action="typeAdd" />
+                            <form class="new_user_form inline-input" method="post" action="typeAdds" />
                                 <div class="span12 field-box">
                                     <label>类型:</label>
                                     <input class="span9" type="text" required name="type_name" />
@@ -101,7 +101,7 @@
 
     <script type="text/javascript">
         $(function () {
-
+            $("input[type=text]").focus();
             // toggle form between inline and normal inputs
             var $buttons = $(".toggle-inputs button");
             var $form = $("form.new_user_form");
