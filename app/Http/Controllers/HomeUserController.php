@@ -161,8 +161,8 @@ class HomeUserController extends Controller
     }
 //进行留言的ajax添加
     public function messageAdd(Request $request){
-        $message['user_name'] = $request->input('name');
-        $message['message_con'] = $request->input('con');
+        $message['user_name'] = e($request->input('name'));
+        $message['message_con'] = e($request->input('con'));
         $message['user_id'] = session('user_id');
         $message['add_time'] = time();
         DB::table('message')
