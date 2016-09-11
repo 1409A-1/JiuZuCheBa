@@ -9,4 +9,4 @@ Homestead.json
 # Laravel config
 .env
 # Laravel cache
-/storage
+#/storage
