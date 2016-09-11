@@ -26,7 +26,7 @@ class PackageController extends Controller
             unset($pack['_token']);
             DB::table('package')
                 ->insert($pack);
-            return redirect('package');
+            return redirect(url('package'));
         }else{
             return view('admin.package.package_ins');
         }

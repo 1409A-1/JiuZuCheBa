@@ -57,7 +57,7 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>Products</h4>
+                            <h4>订单管理</h4>
                         </div>
                     </div>
 
@@ -71,50 +71,64 @@
                                 </select>
                             </div>
                             <input type="text" class="search" />
-                            <a class="btn-flat success new-product" id="ins">添加列表</a>
                         </div>
                     </div>
-                    <script src="{{asset('admin')}}/js/js.js"></script>
-                    <script>
-                        $(function(){
-                            $("#ins").click(function(){
-                                location.href='package';
-                            });
-                        });
-                    </script>
                     <div class="row-fluid">
-                        <form action="{{url('packInsert')}}" method="post">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                            <table class="table">
-                                <tr>
-                                    <td>套餐名称:</td>
-                                    <td><input type="text" required="required" name="pack_name"/></td>
-                                </tr>
-                                <tr>
-                                    <td>套餐价格:</td>
-                                    <td><input type="text" required="required" name="pack_price"/></td>
-                                </tr>
-                                <tr>
-                                    <td>天数:</td>
-                                    <td><input type="text" required="required" name="pack_day"/></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" >
-                                        <input type="submit"  class="btn btn-info" value="添加套餐"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                        <table class="table">
+                            <tr>
+                                <th>出发服务点</th>
+                                <th>到达服务点</th>
+                                <th>提车时间</th>
+                                <th>还车时间</th>
+                                <th>车型</th>
+                                <th>车辆品牌</th>
+                                <th>优惠券</th>
+                                <th>车辆详细信息</th>
+                                <th>车辆单日价格</th>
+                                <?php if($arr['ord_pay'] == 1){?>
+                                <th>操作</th>
+                                <?php }else if($arr['ord_pay'] == 2){?>
+                                <th>操作</th>
+                                <?php }?>
+                            </tr>
+                            <tr>
+                                <input type="hidden" name="ord_id" value="<?php echo $data['ord_id']?>"/>
+                                <td>{{ $data['server_name'] }}</td>
+                                <td>{{ $data['destination'] }}</td>
+                                <td><?php echo date('Y-m-d H:i:s',$data['dep_time'])?></td>
+                                <td><?php echo date('Y-m-d H:i:s',$data['des_time'])?></td>
+                                <td>{{ $data['type_name'] }}</td>
+                                <td>{{ $data['brand_name'] }}</td>
+                                <td>{{ $data['benefit_name'] }}</td>
+                                <td>{{ $data['car_name'] }} <img src="{{ $data['car_img'] }}" alt="" style="width: 50px; height: 50px;"/></td>
+                                <td>{{ $data['server_name'] }}</td>
+                                <td>
+                                    <?php if($arr['ord_pay'] == 1){?>
+                                        <button id="ti" class="btn btn-info">提车</button>
+                                    <?php } else if ($arr['ord_pay'] == 2){?>
+                                        <button id="huan" class="btn btn-info">还车</button>
+                                    <?php }?>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-                <!-- end products table -->
-                <!-- orders table -->
-            </div>
         </div>
     </div>
     <!-- end main container -->
-
 	<!-- scripts -->
+        <script src="{{asset('admin')}}/js/js.js"></script>
+        <script>
+            $(function(){
+                var id = $("input[name=ord_id]").val();
+                $("#ti").click(function(){
+                    location.href='{{ url('carry') }}/'+id;
+                });
+                $("#huan").click(function(){
+                    location.href='{{ url('still') }}/'+id;
+                });
+            })
+        </script>
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/js/theme.js"></script>

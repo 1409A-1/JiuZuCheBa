@@ -117,7 +117,6 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addrIns','AddressController@addrIns');//地区添加页面
     Route::post('typeIns','AddressController@typeIns');//地区的添加
     Route::post('ping','AddressController@ping');//汉语转换拼音
-    Route::post('addInsert','AddressController@address_ins');//服务点的添加页面
     Route::post('addServer','AddressController@addServer');//添加服务点
     Route::get('addressList','AddressController@addressList');//服务点列表展示
     Route::get('addressDel/{server_id}','AddressController@addressDel');//服务点删除
@@ -127,6 +126,15 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('packDel/{pack_id}','PackageController@packDel');//套餐删除
     Route::get('userPack','PackageController@userPack');//用户套餐申请查看
 
+    /*
+     * name:wanghu
+     * time:2016/9/9
+     * 描述：订单的审核
+     * */
+    Route::get('orderList','OrderController@orderList');
+    Route::get('orderInfo/{ord_id}','OrderController@orderInfo');
+    Route::get('carry/{ord_id}','OrderController@carry');//提车
+    Route::get('still/{ord_id}','OrderController@still');//还车
 
 
     Route::any('carIns','CarController@carIns');//车辆的添加

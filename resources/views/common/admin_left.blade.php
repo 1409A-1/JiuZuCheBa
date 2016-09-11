@@ -23,6 +23,17 @@
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>订单管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="{{ url('orderList') }}">订单管理</a></li>
+                <li><a href="{{URL('adminList')}}">长租审核</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
                 <i class="icon-cog"></i>
                 <span>车辆类型管理</span>
                 <i class="icon-chevron-down"></i>
