@@ -28,6 +28,7 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
+                <li><a href="{{ url('orderList') }}">订单管理</a></li>
                 <li><a href="{{URL('longOrderList')}}">长租审核</a></li>
             </ul>
         </li>
@@ -99,5 +100,27 @@
                 <li><a href="{{url('carServer')}}">服务点车辆分配</a></li>
             </ul>
         </li>
+<<<<<<< HEAD
+        <li>
+            <a href="{{asset('admin')}}/personal-info.html">
+                <i class="icon-cog"></i>
+                <span>My Info</span>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-share-alt"></i>
+                <span>套餐管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="{{ url('packIns') }}">套餐添加</a></li>
+                <li><a href="{{asset('admin')}}/grids.html">Grids</a></li>
+                <li><a href="{{asset('admin')}}/signin.html">Sign in</a></li>
+                <li><a href="{{asset('admin')}}/signup.html">Sign up</a></li>
+            </ul>
+        </li>
+=======
+>>>>>>> c1f92fe0a9ad25d7a59ec66ef1eee1c4d2d610df
     </ul>
 </div>

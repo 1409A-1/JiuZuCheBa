@@ -97,7 +97,7 @@
                                 <td><?php echo $v['pack_price']?></td>
                                 <td><?php echo $v['pack_day']?></td>
                                 <td>
-                                    <a href="{{url('pack_del')}}/<?php echo $v['pack_id']?>" ><span class="glyphicon glyphicon-remove-circle"></span></a>
+                                    <a href="{{url('packDel')}}/<?php echo $v['pack_id']?>" ><span class="glyphicon glyphicon-remove-circle"></span></a>
                                 </td>
                             </tr>
                             <?php }?>
