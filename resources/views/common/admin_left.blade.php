@@ -100,7 +100,6 @@
                 <li><a href="{{url('carServer')}}">服务点车辆分配</a></li>
             </ul>
         </li>
-<<<<<<< HEAD
         <li>
             <a href="{{asset('admin')}}/personal-info.html">
                 <i class="icon-cog"></i>
@@ -120,7 +119,5 @@
                 <li><a href="{{asset('admin')}}/signup.html">Sign up</a></li>
             </ul>
         </li>
-=======
->>>>>>> c1f92fe0a9ad25d7a59ec66ef1eee1c4d2d610df
     </ul>
 </div>
