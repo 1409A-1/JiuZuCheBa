@@ -178,9 +178,14 @@ class UserController extends Controller
     public function longOrderCheck(Request $request)
     {
         $date = $request->input();
-        $car = Car_number::where(['server_id' => $date['serverId'], 'car_id' => $date['carId']])->first()->toArray();
+        $car = Car_number::where(['server_id' => $date['serverId'], 'car_id' => $date['carId']])->first()? Car_number::where(['server_id' => $date['serverId'], 'car_id' => $date['carId']])->first()->toArray(): array();
         //print_r($date);die;
-        $number = $car['number'];
+        if ($car) {
+            $number = $car['number'];
+        }else{
+            $number = 0;
+        }
+        
         if($number == 0){
             Apply::where('apply_id', $date['applyId'])->update(['apply_status' => 2]);
             //调用短信接口

@@ -1,7 +1,7 @@
-@include('common.home_header')
+<?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <link type="text/css" rel="stylesheet" href="home/css/submitOrder.css">
 <script>
-    eval('var data = ' + '{!! $data !!}');
+    eval('var data = ' + '<?php echo $data; ?>');
 </script>
 <script type="text/javascript" src="home/js/submitOrder.js"></script>
 <!--导航标题-->
@@ -25,7 +25,7 @@
 <!--订单信息-->
 <div class="orderInfoBox">
     <div class="left">
-        <h4>确认订单信息<a href="{{ url('short') }}">修改订单信息</a></h4>
+        <h4>确认订单信息<a href="<?php echo e(url('short')); ?>">修改订单信息</a></h4>
         <!--基本信息-->
         <div class="carInfo">
             <div class="carInfoL">
@@ -190,4 +190,4 @@
     </div>
 </div>
 <!--底部-->
-@include('common.home_footer')
+<?php echo $__env->make('common.home_footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

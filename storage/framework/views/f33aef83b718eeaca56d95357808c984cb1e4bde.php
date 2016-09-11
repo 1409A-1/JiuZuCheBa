@@ -1,4 +1,4 @@
-@include('common.home_header')
+<?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <script>
     var shopID = "1";
     var StartDateTime = ""+" 10:00";
@@ -220,9 +220,9 @@
     <div class="type" num="0">
         <b>类型：</b>
         <a class="active">全部</a>
-        @foreach($type as $v)
-        <a>{{ $v['type_name'] }}</a>
-        @endforeach
+        <?php foreach($type as $v): ?>
+        <a><?php echo e($v['type_name']); ?></a>
+        <?php endforeach; ?>
         <a>其他</a>
     </div>
     <div class="brand" num="0">
@@ -334,9 +334,9 @@
         </div>
     </div>
 </div>
-        <input type="hidden" value="{{ Session::get('user_name') }}" id="user_name"/>
-    <form id="order_fm" method="post" action="{{ url('subOrder') }}" onsubmit="">
-        <input type="hidden" value="{{csrf_token()}}" name="_token">
+        <input type="hidden" value="<?php echo e(Session::get('user_name')); ?>" id="user_name"/>
+    <form id="order_fm" method="post" action="<?php echo e(url('subOrder')); ?>" onsubmit="">
+        <input type="hidden" value="<?php echo e(csrf_token()); ?>" name="_token">
         <input id="start_shop_id" name="start_shop_id" type="hidden">
         <input id="stop_shop_id" name="stop_shop_id" type="hidden">
         <input id="start_date" name="start_date" type="hidden">
@@ -346,7 +346,7 @@
     </form>
 
 <!--底部-->
-@include('common.home_footer')
+<?php echo $__env->make('common.home_footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <script>
 //车辆预订

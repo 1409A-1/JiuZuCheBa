@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <meta name="_token" content="{{ csrf_token() }}"/>
+    <meta name="_token" content="<?php echo e(csrf_token()); ?>"/>
     <title>就租车吧—中国互联网租车领跑者,全国连锁.神速预订！</title>
     <meta name="description" content="SEO：描述内容">
     <meta name="keywords" content="SEO：站点关键字">
@@ -35,23 +35,23 @@
         <a href="" rel="nofollow">中国互联网连锁租车品牌</a>
         <ul class="top_menu">
             <li class="top_user">
-                @if(empty(Session::get('user_name')))
+                <?php if(empty(Session::get('user_name'))): ?>
                 <div class="no_user" style="display: block;">
                     <a href="loginReg" rel="nofollw">注册</a>
                     <a href="login" rel="nofollw">登陆</a>
                 </div>
-                @else
+                <?php else: ?>
                 <div class="yes_user" style="display: block;">
-                    <a href="" rel="nofollow">{{ Session::get('user_name') }}</a>
+                    <a href="" rel="nofollow"><?php echo e(Session::get('user_name')); ?></a>
                     <div class="arrow"><div></div></div>
                     <div class="userInfo">
-                        <p><a href="{{ url('userInfo')}}" rel="nofollow">账户管理</a></p>
-                        <p><a href="{{ url('message') }}" rel="nofollow">公开留言</a></p>
-                        <p><a href="{{ url('logout') }}">退出</a></p>
+                        <p><a href="<?php echo e(url('userInfo')); ?>" rel="nofollow">账户管理</a></p>
+                        <p><a href="<?php echo e(url('message')); ?>" rel="nofollow">公开留言</a></p>
+                        <p><a href="<?php echo e(url('logout')); ?>">退出</a></p>
 
                     </div>
                 </div>
-                @endif
+                <?php endif; ?>
             </li>
             <li class="top_mobile">
                 <a href="" target="_blank" rel="nofollow">
@@ -73,9 +73,9 @@
     <div>
         <i class="icon icon_logo"></i>
         <ul class="menu_box">
-            <li class=" on_menu"><a href="{{ url('/') }}">首页</a></li>
-            <li class=""><a href="{{ url('short') }}">短租自驾</a></li>
-            <li class=""><a href="{{ url('long') }}">长租服务</a></li>
+            <li class=" on_menu"><a href="<?php echo e(url('/')); ?>">首页</a></li>
+            <li class=""><a href="<?php echo e(url('short')); ?>">短租自驾</a></li>
+            <li class=""><a href="<?php echo e(url('long')); ?>">长租服务</a></li>
         </ul>
     </div>
 </div>
