@@ -81,7 +81,6 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        <input type="checkbox" />
                                         评论用户
                                     </th>
                                     <th class="span3">
@@ -102,12 +101,8 @@
                                 <!-- row -->
                                 @foreach($message as $k => $v)
                                 <tr class="first">
-                                    <td>
-                                        <input type="checkbox" />
-                                        <div class="img">
-                                            <img src="{{asset('admin')}}/img/table-img.png" />
-                                        </div>
-                                        <a href="#" class="name">{{$v['user_name']}}</a>
+                                    <td class="description">
+                                        {{$v['user_name']}}
                                     </td>
                                     <td class="description">
                                        {{$v['message_con']}}
@@ -194,7 +189,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.message.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.message[i].user_name+'</a></td><td class="description">'+msg.message[i].message_con+'</td><td class="description">'+msg.message[i].add_time+'</td> <td class="description">';
+                        str+='<tr class="first"><td>'+msg.message[i].user_name+'</td><td class="description">'+msg.message[i].message_con+'</td><td class="description">'+msg.message[i].add_time+'</td> <td class="description">';
                         if(msg.message[i].type==0){
                             str+='<span class="label label-success">显示</span>';
                         }else if(msg.message[i].type==2){
@@ -237,7 +232,7 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.message.length; i++){
-                        str+='<tr class="first"><td><input type="checkbox" /><div class="img"><img src="{{asset('admin')}}/img/table-img.png" /></div><a href="#" class="name">'+msg.message[i].user_name+'</a></td><td class="description">'+msg.message[i].message_con+'</td><td class="description">'+msg.message[i].add_time+'</td> <td class="description">'
+                        str+='<tr class="first"><td>'+msg.message[i].user_name+'</td><td class="description">'+msg.message[i].message_con+'</td><td class="description">'+msg.message[i].add_time+'</td> <td class="description">'
                         if(msg.message[i].type==0){
                             str+='<span class="label label-success">显示</span>';
                         }else if(msg.message[i].type==2){
