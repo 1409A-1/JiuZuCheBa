@@ -22,7 +22,7 @@
                     <!--取车城市-->
                     <div class="shortCity" id="takeCity">
                         <div class="show">
-                            <a>北京市</a>
+                            <a></a>
                             <div class="Arrow"></div>
                         </div>
                         <div class="city_list" id="takeCityList">
@@ -38,13 +38,13 @@
                             </div>
                             <div class="city_list_body">
                                 <ul>
-                                    <li><span><a onclick="tuijian_clik('武汉市')">武汉市</a></span><span><a onclick="tuijian_clik('长沙市')">长沙市</a></span><span><a onclick="tuijian_clik('石家庄市')">石家庄市</a></span><span><a onclick="tuijian_clik('太原市')">太原市</a></span><span><a onclick="tuijian_clik('济南市')">济南市</a></span><span><a onclick="tuijian_clik('重庆市')">重庆市</a></span><span><a onclick="tuijian_clik('哈尔滨市')">哈尔滨市</a></span><span><a onclick="tuijian_clik('辽阳市')">辽阳市</a></span><span><a onclick="tuijian_clik('乌鲁木齐')">乌鲁木齐</a></span><span><a onclick="tuijian_clik('信阳市')">信阳市</a></span><span><a onclick="tuijian_clik('南宁市')">南宁市</a></span><span><a onclick="tuijian_clik('上海市')">上海市</a></span><span><a onclick="tuijian_clik('吉林市')">吉林市</a></span><span><a onclick="tuijian_clik('南昌市')">南昌市</a></span><span><a onclick="tuijian_clik('南京市')">南京市</a></span><span><a onclick="tuijian_clik('兰州市')">兰州市</a></span><span><a onclick="tuijian_clik('福州市')">福州市</a></span><span><a onclick="tuijian_clik('成都市')">成都市</a></span><span><a onclick="tuijian_clik('苏州市')">苏州市</a></span><span><a onclick="tuijian_clik('洛阳市')">洛阳市</a></span><span><a onclick="tuijian_clik('西宁市')">西宁市</a></span><span><a onclick="tuijian_clik('青岛市')">青岛市</a></span><span><a onclick="tuijian_clik('延边朝鲜族自治州')">延边朝鲜族自治州</a></span><span><a onclick="tuijian_clik('汉中市')">汉中市</a></span><span><a onclick="tuijian_clik('汕头市')">汕头市</a></span><span><a onclick="tuijian_clik('廊坊市')">廊坊市</a></span><span><a onclick="tuijian_clik('牡丹江市')">牡丹江市</a></span></li>
-                                    <li><span><a>武汉市</a></span><span><a>长沙市</a></span><span><a>太原市</a></span><span><a>哈尔滨市</a></span><span><a>咸阳市</a></span><span><a>乌鲁木齐</a></span><span><a>岳阳市</a></span><span><a>泰州市</a></span><span><a>南宁市</a></span><span><a>上海市</a></span><span><a>张家界市</a></span><span><a>景德镇市</a></span><span><a>吉林市</a></span><span><a>厦门市</a></span><span><a>贵阳市</a></span><span><a>兰州市</a></span><span><a>漳州市</a></span><span><a>成都市</a></span><span><a>苏州市</a></span><span><a>洛阳市</a></span><span><a>秦皇岛市</a></span><span><a>西宁市</a></span><span><a>澄迈县</a></span><span><a>青岛市</a></span><span><a>延边朝鲜族自治州</a></span><span><a>咸宁市</a></span><span><a>海口市</a></span><span><a>牡丹江市</a></span></li>
-                                    <li><div class="A"><b>A</b><span><a>安康市</a></span><span><a>安阳市</a></span></div><div class="B"><b>B</b><span><a>百色市</a></span><span><a>保定市</a></span><span><a>巴音郭楞蒙古自治州</a></span></div><div class="C"><b>C</b><span><a>长沙市</a></span><span><a>重庆市</a></span><span><a>成都市</a></span><span><a>承德市</a></span><span><a>澄迈县</a></span><span><a>长治市</a></span><span><a>郴州市</a></span></div><div class="D"><b>D</b><span><a>大同市</a></span><span><a>定西市</a></span></div></li>
-                                    <li><div class="E"><b>E</b><span><a>恩施市</a></span><span><a>鄂州市</a></span></div><div class="F"><b>F</b><span><a>福州市</a></span></div><div class="G"><b>G</b><span><a>广安市</a></span><span><a>贵阳市</a></span><span><a>桂林市</a></span></div><div class="H"><b>H</b><span><a>黄冈市</a></span><span><a>哈尔滨市</a></span><span><a>衡水市</a></span><span><a>汉中市</a></span><span><a>海口市</a></span><span><a>衡阳市</a></span><span><a>合肥市</a></span></div><div class="J"><b>J</b><span><a>荆州市</a></span><span><a>济南市</a></span><span><a>吉安市</a></span><span><a>晋城市</a></span><span><a>景德镇市</a></span><span><a>吉林市</a></span><span><a>济宁市</a></span><span><a>晋中市</a></span></div></li>
-                                    <li><div class="K"><b>K</b><span><a>昆明市</a></span><span><a>凯里市</a></span></div><div class="L"><b>L</b><span><a>辽阳市</a></span><span><a>六安市</a></span><span><a>兰州市</a></span><span><a>洛阳市</a></span><span><a>聊城市</a></span><span><a>凉山彝族自治州</a></span><span><a>陇南市</a></span><span><a>廊坊市</a></span></div><div class="M"><b>M</b><span><a>茂名市</a></span><span><a>牡丹江市</a></span></div><div class="N"><b>N</b><span><a>南阳市</a></span><span><a>南充市</a></span><span><a>南平市</a></span><span><a>南宁市</a></span><span><a>南昌市</a></span><span><a>南京市</a></span></div><div class="P"><b>P</b><span><a>平凉市</a></span><span><a>濮阳市</a></span></div><div class="Q"><b>Q</b><span><a>秦皇岛市</a></span><span><a>钦州市</a></span><span><a>青岛市</a></span><span><a>庆阳市</a></span></div></li>
-                                    <li><div class="S"><b>S</b><span><a>石家庄市</a></span><span><a>邵阳市</a></span><span><a>上海市</a></span><span><a>宿迁市</a></span><span><a>上饶市</a></span><span><a>苏州市</a></span><span><a>汕头市</a></span></div><div class="T"><b>T</b><span><a>唐山市</a></span><span><a>太原市</a></span><span><a>泰州市</a></span><span><a>天水市</a></span></div><div class="W"><b>W</b><span><a>武汉市</a></span><span><a>潍坊市</a></span><span><a>乌鲁木齐</a></span><span><a>武威市</a></span><span><a>威海市</a></span><span><a>无锡市</a></span></div></li>
-                                    <li><div class="X"><b>X</b><span><a>孝感市</a></span><span><a>咸阳市</a></span><span><a>信阳市</a></span><span><a>厦门市</a></span><span><a>徐州市</a></span><span><a>西宁市</a></span><span><a>咸宁市</a></span></div><div class="Y"><b>Y</b><span><a>榆林市</a></span><span><a>盐城市</a></span><span><a>岳阳市</a></span><span><a>宜春市</a></span><span><a>延边朝鲜族自治州</a></span><span><a>玉林市</a></span><span><a>宜昌市</a></span><span><a>伊犁哈萨克自治州</a></span></div><div class="Z"><b>Z</b><span><a>郑州市</a></span><span><a>张家界市</a></span><span><a>自贡市</a></span><span><a>漳州市</a></span><span><a>湛江市</a></span></div></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                     <!--还车城市-->
                     <div class="shortCity" id="returnCity">
                         <div class="show">
-                            <a>北京市</a>
+                            <a></a>
                             <div class="Arrow"></div>
                         </div>
                         <div class="city_list" id="returnCityList">
@@ -106,13 +106,13 @@
                             </div>
                             <div class="city_list_body">
                                 <ul>
-                                    <li><span><a onclick="tuijian_clik('武汉市')">武汉市</a></span><span><a onclick="tuijian_clik('长沙市')">长沙市</a></span><span><a onclick="tuijian_clik('石家庄市')">石家庄市</a></span><span><a onclick="tuijian_clik('太原市')">太原市</a></span><span><a onclick="tuijian_clik('济南市')">济南市</a></span><span><a onclick="tuijian_clik('重庆市')">重庆市</a></span><span><a onclick="tuijian_clik('哈尔滨市')">哈尔滨市</a></span><span><a onclick="tuijian_clik('辽阳市')">辽阳市</a></span><span><a onclick="tuijian_clik('乌鲁木齐')">乌鲁木齐</a></span><span><a onclick="tuijian_clik('信阳市')">信阳市</a></span><span><a onclick="tuijian_clik('南宁市')">南宁市</a></span><span><a onclick="tuijian_clik('上海市')">上海市</a></span><span><a onclick="tuijian_clik('吉林市')">吉林市</a></span><span><a onclick="tuijian_clik('南昌市')">南昌市</a></span><span><a onclick="tuijian_clik('南京市')">南京市</a></span><span><a onclick="tuijian_clik('兰州市')">兰州市</a></span><span><a onclick="tuijian_clik('福州市')">福州市</a></span><span><a onclick="tuijian_clik('成都市')">成都市</a></span><span><a onclick="tuijian_clik('苏州市')">苏州市</a></span><span><a onclick="tuijian_clik('洛阳市')">洛阳市</a></span><span><a onclick="tuijian_clik('西宁市')">西宁市</a></span><span><a onclick="tuijian_clik('青岛市')">青岛市</a></span><span><a onclick="tuijian_clik('延边朝鲜族自治州')">延边朝鲜族自治州</a></span><span><a onclick="tuijian_clik('汉中市')">汉中市</a></span><span><a onclick="tuijian_clik('汕头市')">汕头市</a></span><span><a onclick="tuijian_clik('廊坊市')">廊坊市</a></span><span><a onclick="tuijian_clik('牡丹江市')">牡丹江市</a></span></li>
-                                    <li><span><a>武汉市</a></span><span><a>长沙市</a></span><span><a>太原市</a></span><span><a>哈尔滨市</a></span><span><a>咸阳市</a></span><span><a>乌鲁木齐</a></span><span><a>岳阳市</a></span><span><a>泰州市</a></span><span><a>南宁市</a></span><span><a>上海市</a></span><span><a>张家界市</a></span><span><a>景德镇市</a></span><span><a>吉林市</a></span><span><a>厦门市</a></span><span><a>贵阳市</a></span><span><a>兰州市</a></span><span><a>漳州市</a></span><span><a>成都市</a></span><span><a>苏州市</a></span><span><a>洛阳市</a></span><span><a>秦皇岛市</a></span><span><a>西宁市</a></span><span><a>澄迈县</a></span><span><a>青岛市</a></span><span><a>延边朝鲜族自治州</a></span><span><a>咸宁市</a></span><span><a>海口市</a></span><span><a>牡丹江市</a></span></li>
-                                    <li><div class="A"><b>A</b><span><a>安康市</a></span><span><a>安阳市</a></span></div><div class="B"><b>B</b><span><a>百色市</a></span><span><a>保定市</a></span><span><a>巴音郭楞蒙古自治州</a></span></div><div class="C"><b>C</b><span><a>长沙市</a></span><span><a>重庆市</a></span><span><a>成都市</a></span><span><a>承德市</a></span><span><a>澄迈县</a></span><span><a>长治市</a></span><span><a>郴州市</a></span></div><div class="D"><b>D</b><span><a>大同市</a></span><span><a>定西市</a></span></div></li>
-                                    <li><div class="E"><b>E</b><span><a>恩施市</a></span><span><a>鄂州市</a></span></div><div class="F"><b>F</b><span><a>福州市</a></span></div><div class="G"><b>G</b><span><a>广安市</a></span><span><a>贵阳市</a></span><span><a>桂林市</a></span></div><div class="H"><b>H</b><span><a>黄冈市</a></span><span><a>哈尔滨市</a></span><span><a>衡水市</a></span><span><a>汉中市</a></span><span><a>海口市</a></span><span><a>衡阳市</a></span><span><a>合肥市</a></span></div><div class="J"><b>J</b><span><a>荆州市</a></span><span><a>济南市</a></span><span><a>吉安市</a></span><span><a>晋城市</a></span><span><a>景德镇市</a></span><span><a>吉林市</a></span><span><a>济宁市</a></span><span><a>晋中市</a></span></div></li>
-                                    <li><div class="K"><b>K</b><span><a>昆明市</a></span><span><a>凯里市</a></span></div><div class="L"><b>L</b><span><a>辽阳市</a></span><span><a>六安市</a></span><span><a>兰州市</a></span><span><a>洛阳市</a></span><span><a>聊城市</a></span><span><a>凉山彝族自治州</a></span><span><a>陇南市</a></span><span><a>廊坊市</a></span></div><div class="M"><b>M</b><span><a>茂名市</a></span><span><a>牡丹江市</a></span></div><div class="N"><b>N</b><span><a>南阳市</a></span><span><a>南充市</a></span><span><a>南平市</a></span><span><a>南宁市</a></span><span><a>南昌市</a></span><span><a>南京市</a></span></div><div class="P"><b>P</b><span><a>平凉市</a></span><span><a>濮阳市</a></span></div><div class="Q"><b>Q</b><span><a>秦皇岛市</a></span><span><a>钦州市</a></span><span><a>青岛市</a></span><span><a>庆阳市</a></span></div></li>
-                                    <li><div class="S"><b>S</b><span><a>石家庄市</a></span><span><a>邵阳市</a></span><span><a>上海市</a></span><span><a>宿迁市</a></span><span><a>上饶市</a></span><span><a>苏州市</a></span><span><a>汕头市</a></span></div><div class="T"><b>T</b><span><a>唐山市</a></span><span><a>太原市</a></span><span><a>泰州市</a></span><span><a>天水市</a></span></div><div class="W"><b>W</b><span><a>武汉市</a></span><span><a>潍坊市</a></span><span><a>乌鲁木齐</a></span><span><a>武威市</a></span><span><a>威海市</a></span><span><a>无锡市</a></span></div></li>
-                                    <li><div class="X"><b>X</b><span><a>孝感市</a></span><span><a>咸阳市</a></span><span><a>信阳市</a></span><span><a>厦门市</a></span><span><a>徐州市</a></span><span><a>西宁市</a></span><span><a>咸宁市</a></span></div><div class="Y"><b>Y</b><span><a>榆林市</a></span><span><a>盐城市</a></span><span><a>岳阳市</a></span><span><a>宜春市</a></span><span><a>延边朝鲜族自治州</a></span><span><a>玉林市</a></span><span><a>宜昌市</a></span><span><a>伊犁哈萨克自治州</a></span></div><div class="Z"><b>Z</b><span><a>郑州市</a></span><span><a>张家界市</a></span><span><a>自贡市</a></span><span><a>漳州市</a></span><span><a>湛江市</a></span></div></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </div>
                         </div>
@@ -351,15 +351,15 @@
                 </div>
             </div>
         </div>
-        <!--大方新闻-->
+        <!--就租车吧新闻-->
         <div class="news1">
-            <a class="o_tit">大方新闻</a>
+            <a class="o_tit">就租车吧新闻</a>
             <div class="news1Box oBox2">
 
                     <a href="http://www.dafang24.com/Home/NewsDetail/1117" target="_blank">
                     <div class="news1_L">
                         <img src="home/images/20160119101501966.jpg">
-                        <div>大方租车A轮融资新闻发布会</div>
+                        <div>就租车吧租车A轮融资新闻发布会</div>
                     </div>
                     </a>
                 
@@ -390,34 +390,34 @@
             <a>新闻资讯</a>
             <div class="news2Box">
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1534" target="_blank">迎中秋，大方租车郑州威海安徽三店同开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1534" target="_blank">迎中秋，就租车吧租车郑州威海安徽三店同开业</a>
                     <span>2016-08-30</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1531" target="_blank">大方租车宜昌西陵店震撼开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1531" target="_blank">就租车吧租车宜昌西陵店震撼开业</a>
                     <span>2016-08-12</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1530" target="_blank">大方租车南阳泰山路店开业在即</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1530" target="_blank">就租车吧租车南阳泰山路店开业在即</a>
                     <span>2016-08-10</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1526" target="_blank">大方租车衡阳解放大道店震撼开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1526" target="_blank">就租车吧租车衡阳解放大道店震撼开业</a>
                     <span>2016-08-05</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1517" target="_blank">喜迎大方租车甘肃陇南武都火车站店开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1517" target="_blank">喜迎就租车吧租车甘肃陇南武都火车站店开业</a>
                     <span>2016-07-30</span>
                    </div> 
                    <div>
-                    <a href="http://www.dafang24.com/home/newsdetail/1509" target="_blank">大方租车昆明子君店隆重开业</a>
+                    <a href="http://www.dafang24.com/home/newsdetail/1509" target="_blank">就租车吧租车昆明子君店隆重开业</a>
                     <span>2016-07-26</span>
                    </div> 
             </div>
         </div>
         <!--租车体验-->
         <div class="experience1">
-            <a class="o_tit">大方用户与您分享不同的租车体验</a>
+            <a class="o_tit">就租车吧用户与您分享不同的租车体验</a>
             <div class="experience1Box oBox2">
                 <div class="evaluate1">
                     <img src="home/images/comment.jpg">
@@ -452,6 +452,51 @@
                         <a class="time">2016-01-12</a>
                     </div>
                 </li>
+                <li>
+                    <div class="photo icon_user icon_user3"></div>
+                    <div class="evaluate2_body">
+                        <a class="name">张先生</a>
+                        <span class="order">订单号：<a>DC*********03</a></span>
+                        <p>
+                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
+                        </p>
+                        <span class="address">
+                            <i class="icon icon_location2"></i>
+                            <a>湖北省武汉市</a>
+                        </span>
+                        <a class="time">2016-01-12</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="photo icon_user icon_user3"></div>
+                    <div class="evaluate2_body">
+                        <a class="name">张先生</a>
+                        <span class="order">订单号：<a>DC*********03</a></span>
+                        <p>
+                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
+                        </p>
+                        <span class="address">
+                            <i class="icon icon_location2"></i>
+                            <a>湖北省武汉市</a>
+                        </span>
+                        <a class="time">2016-01-12</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="photo icon_user icon_user3"></div>
+                    <div class="evaluate2_body">
+                        <a class="name">张先生</a>
+                        <span class="order">订单号：<a>DC*********03</a></span>
+                        <p>
+                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
+                        </p>
+                        <span class="address">
+                            <i class="icon icon_location2"></i>
+                            <a>湖北省武汉市</a>
+                        </span>
+                        <a class="time">2016-01-12</a>
+                    </div>
+                </li>
             </ul>
         </div>
         <!--城市列表-->
@@ -464,16 +509,9 @@
    <input id="StartDateTime" name="StartDateTime" type="hidden">
    <input id="EndDateTime" name="EndDateTime" type="hidden">
 </form>
-{{--<div class="footTop"></div>--}}
-{{--<!--广告图-->--}}
-{{--<div style="left: -100%;" class="Advertisement">--}}
-    {{--<div>--}}
-        {{--<div class="AdvertisementExit"></div>--}}
-    {{--</div>--}}
-    {{--<img style="left: 0px;" src="home/images/advertisement1.png">--}}
-{{--</div>--}}
-{{--<!--门店地图查看-->--}}
-{{--<div id="storeMap"></div>--}}
+<div class="footTop"></div>
+<!--门店地图查看-->
+<div id="storeMap"></div>
 
 <!--底部-->
 @include('common.home_footer')

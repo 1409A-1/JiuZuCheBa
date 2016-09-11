@@ -33,7 +33,6 @@
 <link type="text/css" rel="stylesheet" href="home/css/shortRent.css">
 <script type="text/javascript" src="home/js/shortRent.js"></script>
 <script type="text/javascript" src="home/js/linq.js"></script>
-<script type="text/javascript" src="home/js/m-webim-lite.js"></script>
 <script type="text/javascript" src="home/js/special_offers.js"></script>
 
 <!--导航标题-->

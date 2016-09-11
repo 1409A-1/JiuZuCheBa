@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <script src="home/js/b.js" charset="utf-8"></script>
     <meta charset="UTF-8">
     <meta name="_token" content="{{ csrf_token() }}"/>
     <title>就租车吧—中国互联网租车领跑者,全国连锁.神速预订！</title>
@@ -24,7 +23,6 @@
     <script type="text/javascript" src="home/js/dateTools.js"></script>
     <script type="text/javascript" src="home/js/all.js"></script>
 
-    <link href="home/css/main.css" type="text/css" rel="stylesheet">
     <link href="home/css/fix.css" type="text/css" rel="stylesheet">
 </head>
 <body>
