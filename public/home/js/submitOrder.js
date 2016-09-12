@@ -5,7 +5,6 @@ $(function () {
     index_Of();
     getData();//订单数据获取
 });
-
 //点击事件
 function clickEvent() {
     //支付方式
@@ -26,45 +25,66 @@ function clickEvent() {
     });
 
     //可选服务
-    var serverCheck = $(".service .check"),
-        childSeat = $(".childSeat"),
-        yesGo = $(".yesGo"), n1 = -1, n2 = -1;
-    serverCheck.click(function () {
-        var n = serverCheck.index($(this)),
-            sumPrice = $("#sumPrice"),
-            sumFee = parseInt(sumPrice.html());
-        $(this).find("a").fadeToggle();
-        switch (n) {
-            case 0: {//儿童座椅
-                childSeat.find("a").html("(" + Price.childSeat + "元*" + Store.leaseTerm + "天)");
-                childSeat.find("b").html(Price.childSeat * Store.leaseTerm + "元");
-                childSeat.slideToggle("fast");
-                n1 = n1 * (-1);
-                sumFee += n1 * Price.childSeat * Store.leaseTerm;
-            } break;
-            case 1: {//不计免赔
-                yesGo.find("a").html("(" + Price.yesGo + "元*" + Store.leaseTerm + "天)");
-                yesGo.find("b").html(Price.yesGo * Store.leaseTerm + "元");
-                yesGo.slideToggle("fast");
-                n2 = n2 * (-1);
-                sumFee += n2 * Price.yesGo * Store.leaseTerm;
-            } break;
+    //var serverCheck = $(".yh"),
+    //    //childSeat = $(".childSeat"),
+    //    yesGo = $(".yesGo"), n1 = -1, n2 = -1;
+    $('#test').find('input[type=checkbox]').bind('click', function(){
+        $('#test').find('input[type=checkbox]').not(this).attr({checked: false, stats: 0});
+        var stats = $(this).attr('stats');                     //当前的状态
+        var benfit_id = $(this).attr('benfit_id');            //当前优惠券的id
+        var benefit_price = $(this).attr('benefit_price');   //当前的优惠金额
+        var benefit_name = $(this).attr('benefit_name');     //优惠的名称
+        var all_price = data.price.totalFees;               //当前总价钱
+        var yh_price = all_price-benefit_price;             //优惠后的钱
+        if (stats==0) {
+            $(this).attr('stats' ,1);
+            $(".yesGo>c").html(benefit_name);                      //优惠券名称
+            $(".yesGo>b").html('－' + benefit_price + "元");       //优惠券金额
+            $('.yesGo').slideDown("fast");                       //显示
+            $("#sumPrice").html(yh_price);
+            $(".yesGo").attr('benefit_id', benfit_id);//总价格
+        } else {
+            $(this).attr('stats' ,0);
+            $("#sumPrice").html(data.price.totalFees);
+            $('.yesGo').slideUp("fast");
         }
-        sumPrice.html(sumFee);
 
-        //存取增值服务ID
-        if (n1 > 0) {
-            if (Services.indexOf(Price.childSeatID) == -1)
-                Services.push(Price.childSeatID);
-        } else {
-            removeByValue(Services, Price.childSeatID);
-        }
-        if (n2 > 0) {
-            if (Services.indexOf(Price.yesGoID) == -1)
-                Services.push(Price.yesGoID);
-        } else {
-            removeByValue(Services, Price.yesGoID);
-        }
+
+        //var n = serverCheck.index($(this)),
+        //    sumPrice = $("#sumPrice"),
+        //    sumFee = parseInt(sumPrice.html());
+        //$(this).find("a").fadeToggle();
+        //switch (n) {
+        //    case 0: {//儿童座椅
+        //        childSeat.find("a").html("(" + Price.childSeat + "元*" + Store.leaseTerm + "天)");
+        //        childSeat.find("b").html(Price.childSeat * Store.leaseTerm + "元");
+        //        childSeat.slideToggle("fast");
+        //        n1 = n1 * (-1);
+        //        sumFee += n1 * Price.childSeat * Store.leaseTerm;
+        //    } break;
+        //    case 1: {//不计免赔
+        //        yesGo.find("a").html("(" + Price.yesGo + "元*" + Store.leaseTerm + "天)");
+        //        yesGo.find("b").html(Price.yesGo * Store.leaseTerm + "元");
+        //        yesGo.slideToggle("fast");
+        //        n2 = n2 * (-1);
+        //        sumFee += n2 * Price.yesGo * Store.leaseTerm;
+        //    } break;
+        //}
+        //sumPrice.html(sumFee);
+        //
+        ////存取增值服务ID
+        //if (n1 > 0) {
+        //    if (Services.indexOf(Price.childSeatID) == -1)
+        //        Services.push(Price.childSeatID);
+        //} else {
+        //    removeByValue(Services, Price.childSeatID);
+        //}
+        //if (n2 > 0) {
+        //    if (Services.indexOf(Price.yesGoID) == -1)
+        //        Services.push(Price.yesGoID);
+        //} else {
+        //    removeByValue(Services, Price.yesGoID);
+        //}
     });
 
     //发票
@@ -77,6 +97,9 @@ function clickEvent() {
             $(this).find("a").fadeToggle();
         }
         invoiceInfo.slideToggle("fast");
+        $('#test :checkbox').attr({checked: false, stats: 0});
+        $("#sumPrice").html(data.price.totalFees);
+        $('.yesGo').slideUp("fast");
     });
     $("#exitInvoice").click(function () {
         needBill = false;
@@ -116,64 +139,65 @@ function clickEvent() {
     //提交订单
     $(".submitButton button").click(function () {
         //提交之前，先判断姓名，身份证信息是否完整
-        var Customers = JSON.parse(jQuery.cookie("login_user"));
-        var customer_id;
-        if (Customers && Customers.customer_id) {
-            customer_id = Customers.customer_id;
-        }
-        var customer;
-        $.ajax({
-            type: 'get',
-            data: { customer_id: customer_id },
-            url: customer_info_url,
-            success: function (d) {
-                if (d != null && d.customer != null) {
-                    customer = d.customer;
+        //var Customers = JSON.parse(jQuery.cookie("login_user"));
+        //var customer_id;
+        //if (Customers && Customers.customer_id) {
+        //    customer_id = Customers.customer_id;
+        //}
+        //var customer;
+        //$.ajax({
+        //    type: 'get',
+        //    data: { customer_id: customer_id },
+        //    url: customer_info_url,
+        //    success: function (d) {
+        //        if (d != null && d.customer != null) {
+        //            customer = d.customer;
+        //
+        //            var name = customer.customer_name;
+        //            var idcard = customer.identity_card_no;
+        //            if (customer && customer.customer_id) {
+        //                if (name == null || Trim(name) == "" || idcard == null || Trim(idcard) == "") {
+        //                    layer.confirm("您的身份信息未完善，请前去完善后再预订！", { title: '身份信息提示', btn: ['确认', '取消'] }, function () {
+        //                        location.href = '/usercenter/proving';
+        //                        return;
+        //                    })
+        //                } else {
+        // /********提交订单********/
+        //                        var nowTime = new Date(),
+        //                            outTime = $(".storeInfoR a").eq(0).html() + " " + $(".storeInfoR a").eq(2).find(".show a").html();
+        //                        nowTime = date_format(nowTime, "yy-MM-dd HH-mm-ss");
+        //                        outTime = date_format(outTime, "yy-MM-dd HH-mm-ss");
+        //                        if (date_subtract(nowTime, outTime).times >= 0) {
+                                     benfitId = $(".yesGo").attr('benefit_id');    //使用的优惠券
+                                     allPrice = $("#sumPrice").html();      //最终的钱
+                                    //保存订单
+                                    orderSave(Store.takeTime, Store.returnTime, Car.id, Store.takeId, Store.returnId, allPrice, benfitId);
 
-                    var name = customer.customer_name;
-                    var idcard = customer.identity_card_no;
-                    if (customer && customer.customer_id) {
-                        if (name == null || Trim(name) == "" || idcard == null || Trim(idcard) == "") {
-                            layer.confirm("您的身份信息未完善，请前去完善后再预订！", { title: '身份信息提示', btn: ['确认', '取消'] }, function () {
-                                location.href = '/usercenter/proving';
-                                return;
-                            })
-                        } else {
-
-                            /********提交订单********/
-                            var nowTime = new Date(),
-                            outTime = $(".storeInfoR a").eq(0).html() + " " + $(".storeInfoR a").eq(2).find(".show a").html();
-                            nowTime = date_format(nowTime, "yy-MM-dd HH-mm-ss");
-                            outTime = date_format(outTime, "yy-MM-dd HH-mm-ss");
-                            if (date_subtract(nowTime, outTime).times >= 0) {
-                                //保存订单
-                                orderSave(Store.takeTime, Store.returnTime, Car.id, Store.takeId, Store.returnId, offersId, Services);
-                                /*********验证身份信息*******/
-                                $.ajax({
-                                    type: 'get',
-                                    url: order_idcard__url,
-                                    data: { idcard: idcard, name: name, customer_id: customer.customer_id }
-                                })
-                            } else {
-                                layer.alert("取车时间不得小于当前时间，请重新下订单", function () {
-                                    location.href = '/home/index';
-                                });
-                                setTimeout(function () { location.href = '/home/index' }, 2000);
-                            }
-                        }
-                    }
-                }
-            }
-        })
+        //                            /*********验证身份信息*******/
+        //                            $.ajax({
+        //                                type: 'get',
+        //                                url: order_idcard__url,
+        //                                data: { idcard: idcard, name: name, customer_id: customer.customer_id }
+        //                            })
+        //                        } else {
+        //                            layer.alert("取车时间不得小于当前时间，请重新下订单", function () {
+        //                                location.href = '/home/index';
+        //                            });
+        //                            setTimeout(function () { location.href = '/home/index' }, 2000);
+        //                        }
+        //                }
+        //            }
+        //        }
+        //    }
+        //})
     })
 }
 function Trim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
-
+console.log(data);
 //订单数据获取
 function getData() {
-    console.log(data);
             var car_info = data.car_info,
                 startShop = data.start_shop,
                 endShop = data.stop_shop;
@@ -192,29 +216,30 @@ function getData() {
                 takeId: startShop.server_id,   //取车id
                 takeStore: startShop.server_name,  //取车详细信息
                 takeTime: startShop.start_date, //取车时间
-                takeAddress: startShop.city_name+' '+startShop.district+' '+startShop.traffic_line, //取车详细信息
+                takeAddress: startShop.street, //取车详细信息
                 takeLng: startShop.coordinate.split(',')[0],
                 takeLat: startShop.coordinate.split(',')[1],
                 returnId: endShop.server_id,
                 returnStore: endShop.server_name,
                 returnTime: endShop.stop_date,
-                returnAddress: endShop.city_name+' '+startShop.district+' '+startShop.traffic_line,
+                returnAddress: endShop.street,
                 returnLng: endShop.coordinate.split(',')[0],
                 returnLat: endShop.coordinate.split(',')[1],
-                leaseTerm: 2//租期
+                leaseTerm: data.price.leaseTerms//租期
             };
             //价格信息
             Price = {
-                totalFee: 111//总金额
-                //rentalFee: data.ok_amount,//基本租车费
+                totalFee: data.price.totalFees,//总金额
+                rentalFee: data.price.rentalFees,//基本租车费
                 //discount: data.real_amount - data.ok_amount,//优惠金额
-                //basic: data.standard_price.basic_insurance,//基本保险费
-                //counterFee: data.order_info.commission_charge,//手续费
+                basic: 30,//基本保险费
+                counterFee: 20,//手续费
+                dayprice: data.price.dayprices,
                 //childSeat: data.order_info.services[0].unit_price,//儿童座椅
                 //yesGo: data.order_info.services[1].unit_price, //不计免赔
                 //childSeatID: data.order_info.services[0].services_id,
                 //yesGoID: data.order_info.services[1].services_id,
-                //otherStoreFee: data.other_stop_end_billing_charge//异店换车费
+                otherStoreFee: data.price.server_price//异店换车费
             };
 
             setData();//订单数据添加
@@ -236,12 +261,12 @@ function setData() {
     carIcon.eq(3).html(Car.seat_count);
 
     //优惠活动信息
-    if (offersName && offersName.length != 0) {
-        $(".discountInfo>p").hide();
-        for (var i = 0; i < offersName.length; i++) {
-            $(".discountInfo").append("<a>" + offersName[i] + "</a>");
-        }
-    }
+    //if (offersName && offersName.length != 0) {
+    //    $(".discountInfo>p").hide();
+    //    for (var i = 0; i < offersName.length; i++) {
+    //        $(".discountInfo").append("<a>" + offersName[i] + "</a>");
+    //    }
+    //}
 
     //取还车门店信息
     var shopInfo = $(".storeInfoR");
@@ -252,27 +277,21 @@ function setData() {
     shopInfo.find("a").eq(2).html(Store.returnTime);
     shopInfo.find("a").eq(3).html(Store.returnAddress);
 
-    //shopInfo.find("h5").eq(0).html('取车店名');        //取车店名
-    //shopInfo.find("h5").eq(1).html('还车点名');      //还车点名
-    //shopInfo.find("a").eq(0).html('取车时间');       //取车时间
-    //shopInfo.find("a").eq(1).html('取车地点');      //还车时间
-    //shopInfo.find("a").eq(2).html('还车时间');          //还车时间
-    //shopInfo.find("a").eq(3).html('还车地点');      //还车地点
 
-    //增值服务信息
-    $("#childSeat").html(Price.childSeat + "元/日");
-    $("#yesGo").html(Price.yesGo + "元/日");
-    //租金信息
+    ////增值服务信息
+    //$("#childSeat").html(Price.childSeat + "元/日");
+    //$("#yesGo").html(Price.yesGo + "元/日");
+    ////租金信息
     $(".basicPrice>b").html(Price.rentalFee + "元");//基本租金
-    if (parseInt(Price.discount) != 0) {
-        $("#discount").html("(已优惠" + Price.discount + "元)");
-    }//优惠金额
+    //if (parseInt(Price.discount) != 0) {
+        $("#discount").html("(已优惠 0 元)");
+   // }//优惠金额
     addPriceDetail();//每日价格
     $("#basic>a").html("(" + Price.basic + "元*" + Store.leaseTerm + "天)");//基本保险
-    $("#basic>b").html(Store.leaseTerm * Price.basic + "元");
+    $("#basic>b").html(Store.leaseTerm * Price.basic + "元");   //展示保险费
     $("#counterFee>b").html(Price.counterFee + "元");//手续费
-
-    //判断是否为 异店还车
+    //
+    ////判断是否为 异店还车
     if (Price.otherStoreFee != 0) {
         $(".differentStore").show().find("b").html(Price.otherStoreFee + "元");
     }
@@ -280,97 +299,126 @@ function setData() {
 }
 
 //保存订单
-function orderSave(takeTime, returnTime, carId, start_id, stop_id, offers, services) {
-    if (Customer && Customer.customer_id) {
-        var order = {
-            start_shop_id: start_id,
-            stop_shop_id: stop_id,
-            start_date: date_format(takeTime, "yyyy-MM-dd HH:mm"),
-            stop_date: date_format(returnTime, "yyyy-MM-dd HH:mm"),
-            customer_id: Customer.customer_id,
-            class_id: carId,
-            order_source: 2,//订单来源
-            coupon: ''//优惠券
-        };
-        //优惠活动
-        if (offers) {
-            for (var i = 0; i < offers.length; i++) {
-                order["offers[" + i + "]"] = offers[i];
-            }
-        }
-        //增值服务
-        if (services) {
-            for (var j = 0; j < services.length; j++) {
-                order["services[" + j + "]"] = services[j];
-            }
-        }
-        //发票
-        if (needBill) {
-            if (billType == 1) {
-                order.invoice_needed = 1;
-                order.invoice_header = bill1;
-            } else {
-                order.invoice_needed = 2;
-                order.invoice_header = bill2[0];
-                order.invoice_recipient = bill2[1];
-                order.invoice_tel = bill2[2];
-                order.invoice_address = bill2[3];
-                order.invoice_bank = bill2[4];
-                order.invoice_bankno = bill2[5];
-            }
-        } else {
-            order.invoice_needed = 0;
-        }
-        $.ajax({
-            url: saveorder_url,
-            type: "get",
-            data: order,
-            dataType: "jsonp",
-            success: function (result) {
-                if (result > 0) {
-                    //创建订单成功 
-                    location.href = "/home/pay?o_id=" + result;
-                }
-                else {
-                    var id = parseInt(result / -1000);
-                    result %= 1000;
-                    switch (result) {
-                        case -301:
-                        case -302:
-                            layer.alert("您已经被停用或者被禁租!创建订单失败！请联系客服 4000600112");
-                            break;
-                        case -305:
-                            layer.alert("没有分配到合适的车辆!创建订单失败！请联系客服 4000600112");
-                            break;
-                        case -400:
-                            layer.alert("您有已经预定/在租的订单,暂时不能下单！请联系客服 4000600112");
-                            break;
-                        default:
-                            layer.alert("创建订单失败！错误码:" + result + "请联系客服 4000600112");
-                            break;
+function orderSave(takeTime, returnTime, carId, start_id, stop_id, allPrice, benfitId) {
+    //if (Customer && Customer.customer_id) {
+    //    var order = {
+    //        start_shop_id: start_id,
+    //        stop_shop_id: stop_id,
+    //        start_date: date_format(takeTime, "yyyy-MM-dd HH:mm"),
+    //        stop_date: date_format(returnTime, "yyyy-MM-dd HH:mm"),
+    //        customer_id: Customer.customer_id,
+    //        class_id: carId,
+    //        order_source: 2,//订单来源
+    //        coupon: ''//优惠券
+    //    };
+    //    //优惠活动
+    //    if (offers) {
+    //        for (var i = 0; i < offers.length; i++) {
+    //            order["offers[" + i + "]"] = offers[i];
+    //        }
+    //    }
+    //    //增值服务
+    //    if (services) {
+    //        for (var j = 0; j < services.length; j++) {
+    //            order["services[" + j + "]"] = services[j];
+    //        }
+    //    }
+    //    //发票
+    //    if (needBill) {
+    //        if (billType == 1) {
+    //            order.invoice_needed = 1;
+    //            order.invoice_header = bill1;
+    //        } else {
+    //            order.invoice_needed = 2;
+    //            order.invoice_header = bill2[0];
+    //            order.invoice_recipient = bill2[1];
+    //            order.invoice_tel = bill2[2];
+    //            order.invoice_address = bill2[3];
+    //            order.invoice_bank = bill2[4];
+    //            order.invoice_bankno = bill2[5];
+    //        }
+    //    } else {
+    //        order.invoice_needed = 0;
+    //    }
+    //    $.ajax({
+    //        url: saveorder_url,
+    //        type: "get",
+    //        data: order,
+    //        dataType: "jsonp",
+    //        success: function (result) {
+    //            if (result > 0) {
+    //                //创建订单成功
+    //                location.href = "/home/pay?o_id=" + result;
+    //            }
+    //            else {
+    //                var id = parseInt(result / -1000);
+    //                result %= 1000;
+    //                switch (result) {
+    //                    case -301:
+    //                    case -302:
+    //                        layer.alert("您已经被停用或者被禁租!创建订单失败！请联系客服 4000600112");
+    //                        break;
+    //                    case -305:
+    //                        layer.alert("没有分配到合适的车辆!创建订单失败！请联系客服 4000600112");
+    //                        break;
+    //                    case -400:
+    //                        layer.alert("您有已经预定/在租的订单,暂时不能下单！请联系客服 4000600112");
+    //                        break;
+    //                    default:
+    //                        layer.alert("创建订单失败！错误码:" + result + "请联系客服 4000600112");
+    //                        break;
+    //                }
+    //            }
+    //        },
+    //        error: function () {
+    //            alert("数据提交失败，请重新选择车型后再进行提交订单");
+    //        }
+    //    })
+    //} else {
+    //    layer.alert("请先登录！", function () {
+    //        location.href = "/usercenter/login";
+    //    });
+    //}
+
+    var order = {
+        start_shop_id: start_id,     //取车服务点id
+        stop_shop_id: stop_id,       //还车服务点id
+        start_date: Date.parse(new Date(takeTime)) / 1000,   //取车时间
+        stop_date:  Date.parse(new Date(returnTime)) / 1000, //还车时间
+        car_id: carId,                                     //车辆的具体id
+        car_brand: data.car_info.brand_id,                 //车辆的品牌
+        car_type: data.car_info.type_id,                  //车辆的类型
+        allPrice: allPrice,                                //总价
+        benfitId: benfitId                                //优惠劵
+            };
+
+            $.ajax({
+                url: "orderAdd",
+                type: "get",
+                data: order,
+                //dataType: "jsonp",
+                success: function (result) {
+                    if (result > 0) {
+                        //创建订单成功
+                        location.href = "orderSuccess?ord_id=" + result;
+                    }
+                    else {
+                        alert("数据提交失败，请重新选择车型后再进行提交订单");
                     }
                 }
-            },
-            error: function () {
-                alert("数据提交失败，请重新选择车型后再进行提交订单");
-            }
-        })
-    } else {
-        layer.alert("请先登录！", function () {
-            location.href = "/usercenter/login";
-        });
-    }
+            })
 }
 
 //每日价格
 function addPriceDetail() {
+    var datprice = data.price.dayprices
     var startTime = date_format(Store.takeTime, "yyyy-MM-dd"),
         html = '', day, week, day1;
     for (var i = 0; i < Store.leaseTerm; i++) {
         day1 = date_format(date_adddays(startTime, i));
         day = date_format(day1, "MM-dd");
         week = day_in_week(day1, true);
-        html += "<li>" + day + "&nbsp;&nbsp;" + week + "<br/>" + detailsPrice[i] + "元"
+        html += "<li>" + day + "&nbsp;&nbsp;" + week + "<br/>" +datprice +"元"
     }
     $(".priceDetail").html(html);
 }

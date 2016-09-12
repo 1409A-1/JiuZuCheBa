@@ -94,19 +94,36 @@
                                                        @endif
                                                     </li>
                                                     @if($v['ord_pay']==0)
-                                                        <li class="cen">取消订单</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('zfbPay')}}?ord_sn={{$v['ord_sn']}}">支付</a>
+                                                            <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @elseif($v['ord_pay']==1)
-                                                        <li class="cen">取消订单</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @elseif($v['ord_pay']==2)
-                                                        <li class="cen">车辆使用中</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @elseif($v['ord_pay']==3)
-                                                        <li class="cen">去评价</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @elseif($v['ord_pay']==4)
-                                                        <li class="cen">去评价</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @elseif($v['ord_pay']==5)
-                                                        <li class="cen">删除订单</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @elseif($v['ord_pay']==6)
-                                                        <li class="cen">查看详情</li>
+                                                        <li class="cen">
+                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        </li>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -128,7 +145,6 @@
                             <li>操作</li>
                         </ul>
                         <ul class="order3"></ul>
-                        {{--订单展示页面--}}
                         @if(array_key_exists(6, $order))
                             @foreach($order['6'] as $k=>$v)
                                 <div class="No">
@@ -171,7 +187,9 @@
                                                     </li>
                                                     <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                     <li class="state">
-                                                            <a> 预约中</a></li>
+                                                            <a> 预约中</a>
+                                                    </li>
+
                                                         <li class="cen">取消订单</li>
                                                 </ul>
                                             </div>
@@ -236,8 +254,12 @@
                                                     </li>
                                                     <li class="cen">总额：￥{{ $v['ord_price']  }}</li>
                                                     <li class="state">
-                                                        <a> 租赁中</a></li>
-                                                    <li class="cen">详情查看</li>
+                                                        <a> 租赁中</a>
+                                                    </li>
+
+                                                    <li class="cen">
+                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -301,8 +323,11 @@
                                                     </li>
                                                     <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                     <li class="state">
-                                                        <a> 完成</a></li>
-                                                    <li class="cen">详情查看</li>
+                                                        <a> 完成</a>
+                                                    </li>
+                                                    <li class="cen">
+                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -366,8 +391,12 @@
                                                 </li>
                                                 <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                 <li class="state">
-                                                    <a> 订单已取消</a></li>
-                                                <li class="cen">详情查看</li>
+                                                    <a> 订单已取消</a>
+                                                </li>
+
+                                                <li class="cen">
+                                                    <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </li>
