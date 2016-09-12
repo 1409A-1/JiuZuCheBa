@@ -1,12 +1,7 @@
+/vendor
 /node_modules
+/public/storage
 Homestead.yaml
 Homestead.json
-
-# PHPStorm
+.env
 .idea
-
-/.env
-
-# Laravel config
-# Laravel cache
-/.env
