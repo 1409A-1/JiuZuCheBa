@@ -1223,17 +1223,9 @@ function bind_tuijian(city) {
         data: { city: city },
         dataType: 'jsonp',
         success: function (result) {
-            console.log()
+            console.log(result)
             var html = [];
             if (result) {
-                html.push("<div>");
-                    html.push("<div class=\"recCarBox\">");
-                    html.push("<div class=\"carImg\">");
-                    html.push("<div class=\"noImg\"></div>");
-                    html.push("</div>");
-                    html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
-                    html.push("</div>");
-                    html.push("</div>");
                 for (var i = 0; i < result.length; i++) {
                     html.push("<div>");
                     html.push("<div class=\"recCarBox\" onclick=\"doom_tj(" + result[i].id + "," + result[i].class_id + ")\">");
@@ -1268,7 +1260,7 @@ function bind_tuijian(city) {
                     html.push("<div class=\"carImg\">");
                     html.push("<div class=\"noImg\"></div>");
                     html.push("</div>");
-                    html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
+                    html.push("<a href=\"short\" class=\"button\">查看其他车型</a>");
                     html.push("</div>");
                     html.push("</div>");
                 }
@@ -1278,7 +1270,7 @@ function bind_tuijian(city) {
                 html.push("<div class=\"carImg\">");
                 html.push("<div class=\"noImg\"></div>");
                 html.push("</div>");
-                html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
+                html.push("<a href=\"short\" class=\"button\">查看其他车型</a>");
                 html.push("</div>");
                 html.push("</div>");
             }

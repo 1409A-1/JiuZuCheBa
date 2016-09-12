@@ -25,7 +25,7 @@ class Admin_user extends Authenticatable
 //    ];
 
 //表名
-    protected $table = 'Admin_user';
+    protected $table = 'admin_user';
 //默认id
     protected $primaryKey = 'user_id';
 //时间戳

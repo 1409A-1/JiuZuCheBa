@@ -78,7 +78,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('typeUpdate/{id}','CarTypeController@update');//更新
 	Route::get('typeDel/{id}','CarTypeController@del');//删除
 	
-  /*
+    /*
 	    品牌管理
 	 */
 	Route::get('brandList','CarBrandController@brandList');//品牌列表
@@ -88,7 +88,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('brandUpdate/{id}','CarBrandController@update');//更新
 	Route::get('brandDel/{id}','CarBrandController@del');//删除
 	
-  /*
+    /*
 	    用户管理
 	 */
 	Route::get('userList','UserController@userList');//前台用户列表

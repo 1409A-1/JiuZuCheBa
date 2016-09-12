@@ -34,7 +34,10 @@ var car = 'getCarList'; // 车型列表
 
 var autoclass_info_url = api_url + "/api/AutoClass/GetAutoClassInfo";//获取车型信息
 var price_list_url = api_url + "/api/AutoClass/GetPriceList";//获取门店车型价格列表
+
 var special_class_list_url = api_url + "/api/AutoClass/GetSpecialClassList";//获取特价专区列表
+var special_car = "getSpecialCar"//获取特价专区列表
+
 var addservice_url = api_url + "/api/AddedService/List";//增值服务列表
 var order_list = api_url + "/api/Customer/Orders?token={0}&pagesize={1}&pageindex={2}&orderstate={3}";//用户的订单列表
 var customer_info = api_url + '/api/Customer?token={0}';//用户信息
