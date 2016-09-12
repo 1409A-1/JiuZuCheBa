@@ -925,6 +925,9 @@ function Duration(D1, H1, D2, H2) {
     else if ($('#takeStore a').html() == '请选择门店') {
         layer.tips('请选择门店', '#takeStore', { tips: [2, '#3ac9fb'] });
     }
+    else if (date_subtract(nowTime, start).times > 86400000*2) {
+        layer.tips('仅供预订两天内车辆', '#startDate', { tips: [1, '#3ac9fb'] });
+    }
     else {
         isOK = true;
     }
@@ -1219,27 +1222,25 @@ function setMeal() {
 function bind_tuijian(city) {
     //加载城市
     jQuery.ajax({
-        url: special_class_list_url,
-        data: { city: city },
-        dataType: 'jsonp',
+        // url: special_class_list_url,
+        // dataType: 'jsonp',
+        url: special_car,
+        dataType: 'json',
+        type: 'post',
+        data: { city: city, _token: _token },
         success: function (result) {
-            console.log()
             var html = [];
             if (result) {
-                html.push("<div>");
-                    html.push("<div class=\"recCarBox\">");
-                    html.push("<div class=\"carImg\">");
-                    html.push("<div class=\"noImg\"></div>");
-                    html.push("</div>");
-                    html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
-                    html.push("</div>");
-                    html.push("</div>");
                 for (var i = 0; i < result.length; i++) {
+                    result[i].gearbox = '手动';
+                    result[i].let_litre = '1.6L';
+                    result[i].seat_count = 5;
+
                     html.push("<div>");
                     html.push("<div class=\"recCarBox\" onclick=\"doom_tj(" + result[i].id + "," + result[i].class_id + ")\">");
                     html.push("<div class=\"carImg\">");
                     html.push("<p>" + result[i].brand_name + result[i].honda + "</p>");
-                    html.push("<img src=" + result[i].class_image.replace('~', api_url) + ">");
+                    html.push("<img src=" + result[i].class_image + ">"); // .replace('~', api_url)
                     html.push("</div>");
                     html.push("<div class=\"price\">");
                     html.push("<b>￥" + result[i].work_week_price + "</b>");
@@ -1268,7 +1269,7 @@ function bind_tuijian(city) {
                     html.push("<div class=\"carImg\">");
                     html.push("<div class=\"noImg\"></div>");
                     html.push("</div>");
-                    html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
+                    html.push("<a href=\"short\" class=\"button\">查看其他车型</a>");
                     html.push("</div>");
                     html.push("</div>");
                 }
@@ -1278,7 +1279,7 @@ function bind_tuijian(city) {
                 html.push("<div class=\"carImg\">");
                 html.push("<div class=\"noImg\"></div>");
                 html.push("</div>");
-                html.push("<a href=\"/home/doom\" class=\"button\">查看其他车型</a>");
+                html.push("<a href=\"short\" class=\"button\">查看其他车型</a>");
                 html.push("</div>");
                 html.push("</div>");
             }

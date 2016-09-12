@@ -45,11 +45,12 @@ class HomeOrderController extends Controller
         $time = time();
      // print_r($order);die;
         session('user_id');//提取当前的用户id
-       $benefit = DB::table('benefit')
+        $benefit = DB::table('benefit')
             ->where('end_time', '>', $time)
             ->where('type', '=', 0)
             ->where('user_id', '=', session('user_id'))
             ->get();
+        $order['benefit'] = $benefit;
        // print_r($benefit);die;
         $data = json_encode($order, JSON_UNESCAPED_UNICODE);
         return view('home.order.suborder',['data'=>$data,'benefit'=>$benefit]);
@@ -270,8 +271,8 @@ class HomeOrderController extends Controller
             "partner" => $alipay_config['partner'], // 合作身份者id
             "seller_email" => $alipay_config['seller_email'], // 收款支付宝账号
             "payment_type"	=> '1', // 支付类型
-            "notify_url"	=> "http://localhost/JiuZuCheBa/public/error", // 服务器异步通知页面路径
-            "return_url"	=> "http://localhost/JiuZuCheBa/public/paySuccess", // 页面跳转同步通知页面路径
+            "notify_url"	=> "http://www.jiuzucheba/error", // 服务器异步通知页面路径
+            "return_url"	=> "http://www.jiuzucheba/paySuccess", // 页面跳转同步通知页面路径
             "out_trade_no"	=> "$ord_sn", // 商户网站订单系统中唯一订单号
             "subject"	=> "订单", // 订单名称
             "total_fee"	=> 0.01, // 付款金额

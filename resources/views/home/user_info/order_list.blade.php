@@ -34,10 +34,10 @@
                             <li>订单状态</li>
                             <li>操作</li>
                         </ul>
-                        <ul class="order3"></ul>
-                            @if(array_key_exists('all', $order))
-                               @foreach($order['all'] as $k=>$v)
-                                 <div class="No">
+                         <ul class="order3"></ul>
+                        @if(array_key_exists('all', $order))
+                            @foreach($order['all'] as $k=>$v)
+                                <div class="No">
                                     <ul class="order3">
                                         <li>
                                             <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
@@ -77,63 +77,50 @@
                                                     </li>
                                                     <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
                                                     <li class="state">
-                                                       @if($v['ord_pay']==0)
+                                                        @if($v['ord_pay']==0)
                                                             <a>未付款</a>
-                                                       @elseif($v['ord_pay']==1)
+                                                        @elseif($v['ord_pay']==1)
                                                             <a>已付款 未提车</a>
-                                                       @elseif($v['ord_pay']==2)
+                                                        @elseif($v['ord_pay']==2)
                                                             <a>车辆使用中</a>
-                                                       @elseif($v['ord_pay']==3)
+                                                        @elseif($v['ord_pay']==3)
                                                             <a>完成</a>
-                                                       @elseif($v['ord_pay']==4)
+                                                        @elseif($v['ord_pay']==4)
                                                             <a>待评价</a>
-                                                       @elseif($v['ord_pay']==5)
+                                                        @elseif($v['ord_pay']==5)
                                                             <a>订单已取消</a>
-                                                       @elseif($v['ord_pay']==6)
+                                                        @elseif($v['ord_pay']==6)
                                                             <a> 预约中</a>
-                                                       @endif
+                                                        @endif
                                                     </li>
+                                                    <li class="operation">
                                                     @if($v['ord_pay']==0)
-                                                        <li class="cen">
                                                             <a href="{{url('zfbPay')}}?ord_sn={{$v['ord_sn']}}">支付</a>
                                                             <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @elseif($v['ord_pay']==1)
-                                                        <li class="cen">
                                                             <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @elseif($v['ord_pay']==2)
-                                                        <li class="cen">
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @elseif($v['ord_pay']==3)
-                                                        <li class="cen">
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @elseif($v['ord_pay']==4)
-                                                        <li class="cen">
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @elseif($v['ord_pay']==5)
-                                                        <li class="cen">
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @elseif($v['ord_pay']==6)
-                                                        <li class="cen">
                                                             <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
-                                                        </li>
                                                     @endif
                                                 </ul>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
-                               @endforeach
-                            @else
-                                <p class="noMore">暂无订单...</p>
-                            @endif
+                            @endforeach
+                        @else
+                            <p class="noMore">暂无订单...</p>
+                        @endif
                     </span>
                     {{--预约中--}}
                     <span style="display: none">
@@ -189,8 +176,9 @@
                                                     <li class="state">
                                                             <a> 预约中</a>
                                                     </li>
-
-                                                        <li class="cen">取消订单</li>
+                                                    <li class="operation">
+                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -256,8 +244,7 @@
                                                     <li class="state">
                                                         <a> 租赁中</a>
                                                     </li>
-
-                                                    <li class="cen">
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -325,7 +312,7 @@
                                                     <li class="state">
                                                         <a> 完成</a>
                                                     </li>
-                                                    <li class="cen">
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -393,8 +380,7 @@
                                                 <li class="state">
                                                     <a> 订单已取消</a>
                                                 </li>
-
-                                                <li class="cen">
+                                                <li class="operation">
                                                     <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                 </li>
                                             </ul>
@@ -407,7 +393,6 @@
                         <p class="noMore">暂无订单...</p>
                     @endif
                 </span>
-
               </div>
             </div>
         </div>

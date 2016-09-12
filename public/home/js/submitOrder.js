@@ -5,6 +5,8 @@ $(function () {
     index_Of();
     getData();//订单数据获取
 });
+
+all_price = data.price.totalFees;               //当前总价钱
 //点击事件
 function clickEvent() {
     //支付方式
@@ -13,7 +15,6 @@ function clickEvent() {
         payMode.removeClass("active");
         $(this).addClass("active");
         var n = payMode.index($(this));
-
         switch (n) {
             case 0: {//在线支付
 
@@ -23,30 +24,28 @@ function clickEvent() {
             } break;
         }
     });
-
-    //可选服务
-    //var serverCheck = $(".yh"),
-    //    //childSeat = $(".childSeat"),
-    //    yesGo = $(".yesGo"), n1 = -1, n2 = -1;
     $('#test').find('input[type=checkbox]').bind('click', function(){
         $('#test').find('input[type=checkbox]').not(this).attr({checked: false, stats: 0});
-        var stats = $(this).attr('stats');                     //当前的状态
-        var benfit_id = $(this).attr('benfit_id');            //当前优惠券的id
-        var benefit_price = $(this).attr('benefit_price');   //当前的优惠金额
-        var benefit_name = $(this).attr('benefit_name');     //优惠的名称
-        var all_price = data.price.totalFees;               //当前总价钱
-        var yh_price = all_price-benefit_price;             //优惠后的钱
+        var stats = $(this).attr('stats');                        //当前的状态
+            num = $(this).attr('num');                           //当前优惠券顺序的id
+            all_price = data.price.totalFees;                   //当前总价钱
+        var benefit_price = $(this).attr('benefit_price');      //当前的优惠金额
+        var benefit_name = $(this).attr('benefit_name');       //优惠的名称
+        var yh_price = all_price-data.benefit[num].ord_price;                   //优惠后的钱
         if (stats==0) {
+            all_price = all_price-data.benefit[num].ord_price                   //当前点击订单的价格
             $(this).attr('stats' ,1);
-            $(".yesGo>c").html(benefit_name);                      //优惠券名称
+            $(".yesGo>c").html(benefit_name);                               //优惠券名称
             $(".yesGo>b").html('－' + benefit_price + "元");       //优惠券金额
-            $('.yesGo').slideDown("fast");                       //显示
-            $("#sumPrice").html(yh_price);
-            $(".yesGo").attr('benefit_id', benfit_id);//总价格
+            $("#sumPrice").html(yh_price);                         //付全部的值
+            $(".yesGo").attr('benefit_id', data.benefit[num].benefit_id);
+            $('.yesGo').slideDown("fast");                            //显示
         } else {
             $(this).attr('stats' ,0);
             $("#sumPrice").html(data.price.totalFees);
+            $(".yesGo").attr('benefit_id',0);
             $('.yesGo').slideUp("fast");
+            all_price = data.price.totalFees;               //当前总价钱
         }
 
 
@@ -99,6 +98,8 @@ function clickEvent() {
         invoiceInfo.slideToggle("fast");
         $('#test :checkbox').attr({checked: false, stats: 0});
         $("#sumPrice").html(data.price.totalFees);
+        $(".yesGo").attr('benefit_id', 0);
+        all_price = data.price.totalFees;               //当前总价钱
         $('.yesGo').slideUp("fast");
     });
     $("#exitInvoice").click(function () {
@@ -169,9 +170,11 @@ function clickEvent() {
         //                        outTime = date_format(outTime, "yy-MM-dd HH-mm-ss");
         //                        if (date_subtract(nowTime, outTime).times >= 0) {
                                      benfitId = $(".yesGo").attr('benefit_id');    //使用的优惠券
-                                     allPrice = $("#sumPrice").html();      //最终的钱
+                                     ////allPrice = $("#sumPrice").html();      //最终的钱
+                                     // alert(all_price);
+
                                     //保存订单
-                                    orderSave(Store.takeTime, Store.returnTime, Car.id, Store.takeId, Store.returnId, allPrice, benfitId);
+                                    orderSave(Store.takeTime, Store.returnTime, Car.id, Store.takeId, Store.returnId, all_price, benfitId);
 
         //                            /*********验证身份信息*******/
         //                            $.ajax({

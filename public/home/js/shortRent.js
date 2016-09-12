@@ -1568,7 +1568,7 @@ function add_car(car_list, start, end) {
             add_html += "<div class='bookButton canBook'>" +
                 "<div class='avePrice'>日均 <b>" + car_list[i].car_price + "</b> 元</div>" +
                 "<input type='button' value='预 订' class='book' " +
-                "onclick='carBook(" + i + ")'>";
+                "onclick='carBook(" + i + ")' style=\"cursor: pointer\">";
         }
 
         //add_html += add_daily_price(car_list, i, start, end);//每日价格添加

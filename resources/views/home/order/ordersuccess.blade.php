@@ -110,8 +110,8 @@
             </div>
         </div>
         <div class="go_carList">
-            <a href="{{ url('orderInfo') }}?ord_id={{ $ord_id }}"><button>订单详情</button></a>
-            <a href="{{ url('zfbPay') }}?ord_sn={{ $ord_sn }}"><button>在线支付</button></a>
+            <a href="{{ url('orderInfo') }}?ord_id={{ $ord_id }}"><button style="cursor: pointer">订单详情</button></a>
+            <a href="{{ url('zfbPay') }}?ord_sn={{ $ord_sn }}"><button style="cursor: pointer">在线支付</button></a>
         </div>
         <div class="YtextList">
             <div>
