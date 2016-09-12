@@ -5,9 +5,7 @@ Homestead.json
 
 # PHPStorm
 .idea
-
-/.env
-
 # Laravel config
+.env
 # Laravel cache
 /storage
