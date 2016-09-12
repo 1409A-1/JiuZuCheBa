@@ -60,6 +60,28 @@ class PublicController extends Controller
         echo json_encode($carTypeList, JSON_UNESCAPED_UNICODE);
     }
 
+    // 获取城市热门车型
+    public function getSpecialCar(Request $request)
+    {
+        // 获取当前城市服务点ID
+        $car = DB::table('server as s')
+            ->select(DB::raw('
+                s.server_id as id,
+                i.car_id as class_id,
+                b.brand_name,
+                t.type_name as honda,
+                i.car_img as class_image,
+                i.car_price as work_week_price
+                '))
+            ->join('car_number as n', 's.server_id', '=', 'n.server_id')
+            ->join('car_info as i', 'n.car_id', '=', 'i.car_id')
+            ->leftJoin('car_type as t', 'i.type_id', '=', 't.type_id')
+            ->leftJoin('car_brand as b', 'i.brand_id', '=', 'b.brand_id')
+            ->where('city_name', $request->input('city'))
+            ->get();
+        echo json_encode($car, JSON_UNESCAPED_UNICODE);
+    }
+
     // 无限极分类
     public function noLimit($data, $pid = 0, $indent = 0)
     {

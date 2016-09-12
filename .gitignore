@@ -1,0 +1,12 @@
+/node_modules
+Homestead.yaml
+Homestead.json
+
+# PHPStorm
+.idea
+
+/.env
+
+# Laravel config
+# Laravel cache
+/.env

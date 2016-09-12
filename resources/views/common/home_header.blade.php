@@ -21,13 +21,6 @@
     <script type="text/javascript" src="{{asset('home')}}/js/dateRange.js"></script>
     <script type="text/javascript" src="{{asset('home')}}/js/dateTools.js"></script>
     <script type="text/javascript" src="{{asset('home')}}/js/all.js"></script>
-
-
-    <link href="{{asset('home')}}/css/main.css" type="text/css" rel="stylesheet">
-    <link href="{{asset('home')}}/css/fix.css" type="text/css" rel="stylesheet">
-
-    <link href="home/css/fix.css" type="text/css" rel="stylesheet">
-
 </head>
 <body>
 <!--头部-->
