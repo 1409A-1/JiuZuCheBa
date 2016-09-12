@@ -270,8 +270,8 @@ class HomeOrderController extends Controller
             "partner" => $alipay_config['partner'], // 合作身份者id
             "seller_email" => $alipay_config['seller_email'], // 收款支付宝账号
             "payment_type"	=> '1', // 支付类型
-            "notify_url"	=> "http://localhost/JiuZuCheBa/public/error", // 服务器异步通知页面路径
-            "return_url"	=> "http://localhost/JiuZuCheBa/public/paySuccess", // 页面跳转同步通知页面路径
+            "notify_url"	=> "http://www.jiuzucheba/error", // 服务器异步通知页面路径
+            "return_url"	=> "http://www.jiuzucheba/paySuccess", // 页面跳转同步通知页面路径
             "out_trade_no"	=> "$ord_sn", // 商户网站订单系统中唯一订单号
             "subject"	=> "订单", // 订单名称
             "total_fee"	=> 0.01, // 付款金额
