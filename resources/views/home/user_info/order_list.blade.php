@@ -93,7 +93,7 @@
                                                                 <a> 预约中</a>
                                                            @endif
                                                         </li>
-                                                        <li>
+                                                        <li class="operation">
                                                             @if($v['ord_pay']==0)
                                                                 <a href="{{url('zfbPay')}}?ord_sn={{$v['ord_sn']}}">支付</a>
                                                                 <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
@@ -177,7 +177,7 @@
                                                     <li class="state">
                                                             <a> 预约中</a>
                                                     </li>
-                                                    <li >
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -245,8 +245,7 @@
                                                     <li class="state">
                                                         <a> 租赁中</a>
                                                     </li>
-
-                                                    <li >
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -314,7 +313,7 @@
                                                     <li class="state">
                                                         <a> 完成</a>
                                                     </li>
-                                                    <li >
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -382,8 +381,7 @@
                                                 <li class="state">
                                                     <a> 订单已取消</a>
                                                 </li>
-
-                                                <li >
+                                                <li class="operation">
                                                     <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                 </li>
                                             </ul>
@@ -396,7 +394,6 @@
                         <p class="noMore">暂无订单...</p>
                     @endif
                 </span>
-
               </div>
             </div>
         </div>
