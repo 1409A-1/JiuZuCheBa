@@ -1,3 +1,5 @@
+var _token = $("meta[name='_token']").attr('content');
+
 $(function(){
     index_Of();
     calendar();//日历
@@ -67,6 +69,25 @@ function City(){
             bookCity(hotCity,touristCity,letter,result);
         }
     });
+    $.post(city, {'_token': _token}, function(result){
+        var hotCity="",//热门城市
+            touristCity='',//旅游城市
+            letter=[];//首字母集合
+        for(var i=0;i<result.length;i++)
+        {
+            if((result[i].city_type & 4)==4)//旅游城市
+            {
+                touristCity+="<span><a>"+result[i].city_name+"</a></span>";
+            }
+            if((result[i].city_type & 2)==2)//热门城市
+            {
+                hotCity+="<span><a>"+result[i].city_name+"</a></span>";
+            }
+            letter.push(result[i].city_abridge.substr(0,1));//取第一个首字母
+
+        }
+        bookCity(hotCity,touristCity,letter,result);
+    }, 'json');
 }
 
 //城市添加
