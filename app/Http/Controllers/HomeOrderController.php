@@ -45,11 +45,12 @@ class HomeOrderController extends Controller
         $time = time();
      // print_r($order);die;
         session('user_id');//提取当前的用户id
-       $benefit = DB::table('benefit')
+        $benefit = DB::table('benefit')
             ->where('end_time', '>', $time)
             ->where('type', '=', 0)
             ->where('user_id', '=', session('user_id'))
             ->get();
+        $order['benefit'] = $benefit;
        // print_r($benefit);die;
         $data = json_encode($order, JSON_UNESCAPED_UNICODE);
         return view('home.order.suborder',['data'=>$data,'benefit'=>$benefit]);
