@@ -219,12 +219,12 @@ input.valid {
     border:1px solid #1d95f6;
 }
 span.error{
-    background : url(../images/unchecked.gif) no-repeat 0 0;
+
     padding-left: 16px;
     color: #f00;
 }
 span.success{
-    background : url(../images/checked.gif) no-repeat 0 0;
+
     padding-left: 16px;
 }
 
