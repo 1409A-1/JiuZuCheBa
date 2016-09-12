@@ -28,7 +28,7 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('orderList') }}">订单管理</a></li>
+                <li><a href="{{ url('orderLists') }}">订单管理</a></li>
                 <li><a href="{{ url('longOrderList') }}">长租审核</a></li>
             </ul>
         </li>
