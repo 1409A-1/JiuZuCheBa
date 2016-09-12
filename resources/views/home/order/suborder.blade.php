@@ -53,11 +53,11 @@
                 <!--支付方式-->
                 <div class="payMode">
                     支付方式：
-                    <button class="active">
+                    <button>
                         到店支付
                         <div><div>&radic;</div></div>
                     </button>
-                    <button>
+                    <button class="active">
                         在线支付
                         <div><div>&radic;</div></div>
                     </button>
@@ -84,67 +84,36 @@
                 </div>
             </div>
         </div>
-        <!--发票-->
+        <!--优惠券-->
         <div class="invoice">
-            <div class="check"><a>&radic;</a></div>优惠券
+            <div class="check"><a>&radic;</a></div>使用优惠券
             <div class="invoiceInfo">
-                <!--发票类型-->
                 <ul>
-                    <li class="active">普通发票</li>
-                    <li>增值税发票</li>
+                    <li class="active"></li>
                 </ul>
-                <!--普通发票-->
-                <table class="invoice1">
-                    <tr>
-                        <td class="td1">发票抬头 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                </table>
-                <!--增值税发票-->
-                <table class="invoice2">
-                    <tr>
-                        <td class="td1">单位名称 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">纳税人识别号 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">注册地址 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">注册电话 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">开户银行 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td class="td1">银行账号 :</td>
-                        <td><input type="text"></td>
-                    </tr>
-                </table>
-                <!--保存 或 取消-->
-                <div>
-                    <button id="saveInvoice">保存发票信息</button>
-                    <button id="exitInvoice">取消</button><br/>
-                    温馨提示：开票金额中不包括优惠金额部分
-                </div>
+
+                @if(!empty($benefit))
+                  <div id="test">
+                    @foreach($benefit as $k=>$v)
+                        <input type="checkbox" stats="0" benefit_price="{{ $v['ord_price'] }}" benefit_name="{{ $v['benefit_name'] }}" benfit_id="{{ $v['benefit_id'] }}">&nbsp;&nbsp;
+                        <h3 style="display: inline">{{ $v['ord_price'] .'    '.$v['benefit_name'] }}</h3><br><br>
+                    @endforeach
+                  </div>
+                @else
+                   暂无优惠券
+                @endif
             </div>
         </div>
         <!--提示-->
         <p class="prompt">
             超时计费：<br/>
-            1.非经大方租车书面同意，本车不得续租。到期未还车辆，除需正常支付租金外，您还需按超期部分租金的300%支付违约金，并且大方租车有权强行收回车辆。<br/>
+            1.非经就租车吧书面同意，本车不得续租。到期未还车辆，除需正常支付租金外，您还需按超期部分租金的300%支付违约金，并且就租车吧有权强行收回车辆。<br/>
             2.超时4小时以上，按一天计费。不足4小时（含），按每小时50元收费。<br/><br/>
             温馨提示：<br/>
             1.本订单不限公里数, 超时费 30 元/小时, 预授权3000元(可退), 违章押金 2000元(可退)
             2.本订单仅为客户租车预约登记，提交该订单后，客户需到门店办理具体租车手续，具体权利义务以签署的书面合同为准。
             超时计费：<br/>
-            1.非经大方租车书面同意，本车不得续租。到期未还车辆，除需正常支付租金外，您还需按超期部分租金的300%支付违约金，并且大方租车有权强行收回车辆。<br/>
+            1.非经就租车吧书面同意，本车不得续租。到期未还车辆，除需正常支付租金外，您还需按超期部分租金的300%支付违约金，并且就租车吧有权强行收回车辆。<br/>
             2.超时4小时以上，按一天计费。不足4小时（含），按每小时50元收费。<br/><br/>
             温馨提示：<br/>
             1.本订单不限公里数, 超时费 30 元/小时, 预授权3000元(可退), 违章押金 2000元(可退)
@@ -174,12 +143,8 @@
                 异店还车费
                 <b>0</b>
             </li>
-            <li class="childSeat">
-                儿童座椅<a></a>
-                <b></b>
-            </li>
-            <li class="yesGo">
-                不计免赔<a></a>
+            <li class="yesGo" benefit_id="0">
+                <c></c>
                 <b></b>
             </li>
         </ul>

@@ -14,6 +14,7 @@
                 </div>
                 <div class="input_body">
                     <form action="loginPro" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="inputBox" id="login_name_box">
                         <input placeholder="我的用户名" maxlength="11" name="user_name" type="tel" required="">
                         <i class="icon_login icon_l1"></i>

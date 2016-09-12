@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\CarType;
@@ -50,8 +50,8 @@ class CarTypeController extends Controller
 	 */
     public function add(Request $request)
     {
-    	if ($request::all()) {
-    		$type_name = $request::input('type_name');
+    	if ($request->input()) {
+    		$type_name = $request->input('type_name');
     		$validator = Validator::make(
     			['type_name' => "$type_name"],
 			    ['type_name' => 'required|unique:car_type,type_name']
@@ -60,7 +60,7 @@ class CarTypeController extends Controller
 				return redirect()->back()->withErrors('车辆类型已存在')->withInput();
 			} else {
 				$flight = new CarType;
-		    	$flight->type_name = $request::input('type_name');
+		    	$flight->type_name = $request->input('type_name');
 	        	$flight->save();
 	        	return redirect('typeList');
 			}	    	
@@ -74,8 +74,8 @@ class CarTypeController extends Controller
      */
     public function update(Request $request,$id = "")
     {
-    	if ($request::all()) {
-    		$type_name = $request::input('type_name');
+    	if ($request->input()) {
+    		$type_name = $request->input('type_name');
     		$validator = Validator::make(
     			['type_name' => "$type_name"],
 			    ['type_name' => 'required|unique:car_type,type_name']
@@ -83,7 +83,7 @@ class CarTypeController extends Controller
 			if ($validator->fails()) {
 				return redirect()->back()->withErrors('车辆类型已存在')->withInput();
 			} else {
-				$type_name = $request::input('type_name');
+				$type_name = $request->input('type_name');
 				$flight = new CarType;
         		$flight::where('type_id', $request::input('type_id'))
 		          ->update(['type_name'  => "$type_name"]);
