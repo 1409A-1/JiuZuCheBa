@@ -56,7 +56,7 @@
 <!--预定框-->
 <div class="bookBox noCopy">
     <!--预订按钮-->
-    <button id="startBook">立即选车</button>
+    <button id="startBook" style="cursor: pointer">立即选车</button>
     <!--取车-->
     <div class="take">
         取车门店

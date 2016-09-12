@@ -925,6 +925,9 @@ function Duration(D1, H1, D2, H2) {
     else if ($('#takeStore a').html() == '请选择门店') {
         layer.tips('请选择门店', '#takeStore', { tips: [2, '#3ac9fb'] });
     }
+    else if (date_subtract(nowTime, start).times > 86400000*2) {
+        layer.tips('仅供预订两天内车辆', '#startDate', { tips: [1, '#3ac9fb'] });
+    }
     else {
         isOK = true;
     }
