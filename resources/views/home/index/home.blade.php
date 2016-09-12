@@ -185,7 +185,7 @@
                 </div>
 
 
-                <form id="fm" method="post" action="/Home/doom" onsubmit="return check();">
+                <form id="fm" method="post" action="" onsubmit="return check();">
                     <input id="take_id" name="take_id" type="hidden">
                     <input id="week" name="takeWeek" type="hidden">
                     <input id="startHours1" name="startHours1" type="hidden">
@@ -312,25 +312,24 @@
             <a class="o_tit">优惠活动</a>
             <div class="discountBox oBox2">
                 <ul>
-
-                            <li>
-                            <a href="http://www.dafang24.com/home/newsdetail/93" target="_blank">
-                            <img src="home/images/20160122055927177.jpg">
-                            <div>早订更省钱，提前预订享特价！</div>
-                            </a>
-                            </li>
-                            <li>
-                            <a href="http://phone.dafang24.com/" target="_blank">
-                            <img src="home/images/20160118080407266.jpg">
-                            <div>微信下单立减10元</div>
-                            </a>
-                            </li>
-                            <li class="active">
-                            <a href="http://www.dafang24.com/home/newsdetail/1533" target="_blank">
-                            <img src="home/images/20160824094140057.jpg">
-                            <div>节假日不涨价！长租最划算！</div>
-                            </a>
-                            </li>
+                    <li>
+                    <a href="http://www.dafang24.com/home/newsdetail/93" target="_blank">
+                    <img src="home/images/20160122055927177.jpg">
+                    <div>早订更省钱，提前预订享特价！</div>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="http://phone.dafang24.com/" target="_blank">
+                    <img src="home/images/20160118080407266.jpg">
+                    <div>微信下单立减10元</div>
+                    </a>
+                    </li>
+                    <li class="active">
+                    <a href="http://www.dafang24.com/home/newsdetail/1533" target="_blank">
+                    <img src="home/images/20160824094140057.jpg">
+                    <div>节假日不涨价！长租最划算！</div>
+                    </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -355,16 +354,13 @@
         <div class="news1">
             <a class="o_tit">就租车吧新闻</a>
             <div class="news1Box oBox2">
-
                     <a href="http://www.dafang24.com/Home/NewsDetail/1117" target="_blank">
                     <div class="news1_L">
                         <img src="home/images/20160119101501966.jpg">
                         <div>就租车吧租车A轮融资新闻发布会</div>
                     </div>
                     </a>
-                
                 <div class="news1_R">
-
                         <div>
                             <a href="http://www.dafang24.com/home/newsdetail/1278" target="_blank">
                             <img src="home/images/20160118074532813.jpg">
@@ -452,62 +448,17 @@
                         <a class="time">2016-01-12</a>
                     </div>
                 </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">张先生</a>
-                        <span class="order">订单号：<a>DC*********03</a></span>
-                        <p>
-                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>湖北省武汉市</a>
-                        </span>
-                        <a class="time">2016-01-12</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">张先生</a>
-                        <span class="order">订单号：<a>DC*********03</a></span>
-                        <p>
-                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>湖北省武汉市</a>
-                        </span>
-                        <a class="time">2016-01-12</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo icon_user icon_user3"></div>
-                    <div class="evaluate2_body">
-                        <a class="name">张先生</a>
-                        <span class="order">订单号：<a>DC*********03</a></span>
-                        <p>
-                            很好，第二次租了，店长特別好，车辆很干净，提前预订有活动，租车价格很便宜，比较满意的一次体验，下次还会来租。
-                        </p>
-                        <span class="address">
-                            <i class="icon icon_location2"></i>
-                            <a>湖北省武汉市</a>
-                        </span>
-                        <a class="time">2016-01-12</a>
-                    </div>
-                </li>
             </ul>
         </div>
         <!--城市列表-->
         @include('common.home_city_list')
     </div>
 </div>
-<form id="fmtuijian" method="post" action="/Home/doom">
-   <input id="shop_id" name="shop_id" type="hidden">
-   <input id="class_id" name="class_id" type="hidden">
-   <input id="StartDateTime" name="StartDateTime" type="hidden">
-   <input id="EndDateTime" name="EndDateTime" type="hidden">
+<form id="fmtuijian" method="post" action="">
+   <input id="shop_id" name="shop_id" type="text">
+   <input id="class_id" name="class_id" type="text">
+   <input id="StartDateTime" name="StartDateTime" type="text">
+   <input id="EndDateTime" name="EndDateTime" type="text">
 </form>
 <div class="footTop"></div>
 <!--门店地图查看-->

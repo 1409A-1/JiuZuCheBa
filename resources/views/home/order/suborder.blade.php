@@ -95,7 +95,7 @@
                 @if(!empty($benefit))
                   <div id="test">
                     @foreach($benefit as $k=>$v)
-                        <input type="checkbox" stats="0" benefit_price="{{ $v['ord_price'] }}" benefit_name="{{ $v['benefit_name'] }}" benfit_id="{{ $v['benefit_id'] }}">&nbsp;&nbsp;
+                        <input type="checkbox" stats="0" benefit_price="{{ $v['ord_price'] }}" benefit_name="{{ $v['benefit_name'] }}" num = {{ $k }}>&nbsp;&nbsp;
                         <h3 style="display: inline">{{ $v['ord_price'] .'    '.$v['benefit_name'] }}</h3><br><br>
                     @endforeach
                   </div>
@@ -150,7 +150,7 @@
         </ul>
         <div class="submitButton">
             <span>应付总金额 ： <b id="sumPrice"></b>元</span>
-            <button>提交订单<i></i></button>
+            <button style="cursor: pointer">提交订单<i></i></button>
         </div>
     </div>
 </div>
