@@ -333,6 +333,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
                       user_name:{
                            required:'该用户名必填',
                            remote:'用户名存在'
+
                      },
                       tel:{
                           required:'手机号必填',
