@@ -29,7 +29,7 @@
             </a>
             <ul class="submenu">
                 <li><a href="{{ url('orderList') }}">订单管理</a></li>
-                <li><a href="{{URL('longOrderList')}}">长租审核</a></li>
+                <li><a href="{{ url('longOrderList') }}">长租审核</a></li>
             </ul>
         </li>
         <li>
@@ -39,10 +39,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('typeList') }}">车辆类型 A</a></li>
+                <li><a href="{{ url('typeList') }}">车辆类型管理</a></li>
                 <li><a href="{{ url('brandList') }}">车辆品牌管理</a></li>
-                <li><a href="{{ url('carTypeList') }}">车辆类型 B</a></li>
-                <li><a href="{{ url('modelAdd') }}">添加车辆</a></li>
             </ul>
         </li>
         <li>
@@ -63,8 +61,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{  url('address')  }}">服务点添加</a></li>
-                <li><a href="{{  url('addressList')  }}">服务点展示</a></li>
+                <li><a href="{{ url('address') }}">服务点添加</a></li>
+                <li><a href="{{ url('addressList') }}">服务点展示</a></li>
             </ul>
         </li>
         <li>
@@ -76,7 +74,7 @@
         <li>
             <a href="{{ url('userPack') }}">
                 <i class="icon-calendar-empty"></i>
-                <span>用户套餐申请审核</span>
+                <span>套餐申请审核</span>
             </a>
         </li>
         <li>

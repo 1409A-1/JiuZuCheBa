@@ -1,4 +1,3 @@
-/vendor
 /node_modules
 /public/storage
 Homestead.yaml
@@ -8,10 +7,7 @@ Homestead.json
 .idea
 
 /.env
-/storage
-/vendor
 
 # Laravel config
-.env
 # Laravel cache
 /storage

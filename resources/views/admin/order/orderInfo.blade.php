@@ -99,7 +99,13 @@
                                 <td><?php echo date('Y-m-d H:i:s',$data['des_time'])?></td>
                                 <td>{{ $data['type_name'] }}</td>
                                 <td>{{ $data['brand_name'] }}</td>
-                                <td>{{ $data['benefit_name'] }}</td>
+                                <td>
+                                    <?php if ($data['benefit_id'] != 0) {?>
+                                        {{ $data['benefit_name'] }}
+                                    <?php } else {?>
+                                        无
+                                    <?php }?>
+                                </td>
                                 <td>{{ $data['car_name'] }} <img src="{{ $data['car_img'] }}" alt="" style="width: 50px; height: 50px;"/></td>
                                 <td>{{ $data['server_name'] }}</td>
                                 <td>

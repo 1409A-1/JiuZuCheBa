@@ -88,6 +88,7 @@
                                 <th>操作</th>
                             </tr>
                             <?php foreach($data as $key => $val){?>
+                            </tr>
                                 <td><?php echo $val['user_name']?></td>
                                 <td><?php echo $val['ord_sn']?></td>
                                 <td><?php
@@ -98,7 +99,13 @@
                                         }
                                     ?>
                                 </td>
-                                <td><?php echo $val['pack_name']?></td>
+                                <td><?php
+                                    if($val['ord_package'] == 0){
+                                        echo "没有套餐";
+                                    }else{
+                                        echo $val['pack_name'];
+                                    }
+                                    ?></td>
                                 <td><?php echo $val['ord_price']?></td>
                                 <td><?php
                                         if($val['ord_pay'] == 0){
@@ -119,7 +126,7 @@
                                     ?>
                                 </td>
                                 <td><?php echo $val['note']?></td>
-                                <td><?php echo $val['add_time']?></td>
+                                <td><?php echo date('Y-m-d H:i:s',$val['add_time']) ?></td>
                                 <td><?php echo $val['id_card']?></td>
                                 <td>
                                     <?php
@@ -146,6 +153,7 @@
                                     }
                                     ?>
                                 </td>
+                            </tr>
                             <?php }?>
                         </table>
                     </div>

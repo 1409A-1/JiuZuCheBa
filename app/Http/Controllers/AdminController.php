@@ -54,18 +54,6 @@ class AdminController extends Controller
     /*
      * name:wanghu
      * time:2016/9/1
-     * @car_type
-     * 描述:车辆类型管理
-     * */
-    public function carTypeList()
-    {
-        $arr = DB::table('car_type')
-            ->get();
-        return view('admin.admin.carType',['data' => $arr]);
-    }
-    /*
-     * name:wanghu
-     * time:2016/9/1
      * 描述：添加车辆的型号，判断是否值过来没有的话就跳到添加页面
      * */
     public function modelAdd(Request $request)
