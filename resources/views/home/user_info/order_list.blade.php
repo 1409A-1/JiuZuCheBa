@@ -63,6 +63,56 @@
                                                             <a>乘坐5人</a>
                                                         </div>
                                                     </div>
+                                                    <ul>
+                                                        <li class="time">
+                                                            <div>
+                                                                取车时间<br>
+                                                                {{ date('Y/m/d H:i', $v['dep_time']) }}
+                                                            </div>
+                                                            <div>
+                                                                还车时间<br>
+                                                                {{ date('Y/m/d H:i', $v['des_time']) }}
+                                                            </div>
+                                                        </li>
+                                                        <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
+                                                        <li class="state">
+                                                           @if($v['ord_pay']==0)
+                                                                <a>未付款</a>
+                                                           @elseif($v['ord_pay']==1)
+                                                                <a>已付款 未提车</a>
+                                                           @elseif($v['ord_pay']==2)
+                                                                <a>车辆使用中</a>
+                                                           @elseif($v['ord_pay']==3)
+                                                                <a>完成</a>
+                                                           @elseif($v['ord_pay']==4)
+                                                                <a>待评价</a>
+                                                           @elseif($v['ord_pay']==5)
+                                                                <a>订单已取消</a>
+                                                           @elseif($v['ord_pay']==6)
+                                                                <a> 预约中</a>
+                                                           @endif
+                                                        </li>
+                                                        <li class="operation">
+                                                            @if($v['ord_pay']==0)
+                                                                <a href="{{url('zfbPay')}}?ord_sn={{$v['ord_sn']}}">支付</a>
+                                                                <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @elseif($v['ord_pay']==1)
+                                                                <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @elseif($v['ord_pay']==2)
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @elseif($v['ord_pay']==3)
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @elseif($v['ord_pay']==4)
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @elseif($v['ord_pay']==5)
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @elseif($v['ord_pay']==6)
+                                                                <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            @endif
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                                 <ul>
                                                     <li class="time">
@@ -177,8 +227,9 @@
                                                     <li class="state">
                                                             <a> 预约中</a>
                                                     </li>
-
-                                                        <li class="cen">取消订单</li>
+                                                    <li class="operation">
+                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -244,8 +295,7 @@
                                                     <li class="state">
                                                         <a> 租赁中</a>
                                                     </li>
-
-                                                    <li class="cen">
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -313,7 +363,7 @@
                                                     <li class="state">
                                                         <a> 完成</a>
                                                     </li>
-                                                    <li class="cen">
+                                                    <li class="operation">
                                                         <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
@@ -381,8 +431,7 @@
                                                 <li class="state">
                                                     <a> 订单已取消</a>
                                                 </li>
-
-                                                <li class="cen">
+                                                <li class="operation">
                                                     <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
                                                 </li>
                                             </ul>
@@ -395,7 +444,6 @@
                         <p class="noMore">暂无订单...</p>
                     @endif
                 </span>
-
               </div>
             </div>
         </div>
