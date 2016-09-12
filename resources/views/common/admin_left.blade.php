@@ -5,9 +5,9 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="index.html">
+            <a href="indexs">
                 <i class="icon-home"></i>
-                <span>Home</span>
+                <span>主页</span>
             </a>
         </li>
         <li>
@@ -17,8 +17,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ URL('userList') }}">前台用户列表</a></li>
-                <li><a href="{{ URL('adminList') }}">后台用户列表</a></li>
+                <li><a href="{{ url('userList') }}">前台用户列表</a></li>
+                <li><a href="{{ url('adminList') }}">后台用户列表</a></li>
             </ul>
         </li>
         <li>
@@ -29,7 +29,7 @@
             </a>
             <ul class="submenu">
                 <li><a href="{{ url('orderList') }}">订单管理</a></li>
-                <li><a href="{{ URL('longOrderList') }}">长租审核</a></li>
+                <li><a href="{{ url('longOrderList') }}">长租审核</a></li>
             </ul>
         </li>
         <li>
@@ -39,8 +39,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ URL('typeList') }}">车辆类型管理</a></li>
-                <li><a href="{{ URL('brandList') }}">车辆品牌管理</a></li>
+                <li><a href="{{ url('typeList') }}">车辆类型管理</a></li>
+                <li><a href="{{ url('brandList') }}">车辆品牌管理</a></li>
             </ul>
         </li>
         <li>
