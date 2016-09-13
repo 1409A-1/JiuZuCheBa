@@ -186,11 +186,18 @@
         })
         //车辆数量验证
         $("input[name=number]").blur(function(){
+            reg = /^\d$/;
             if ($(this).val() == '') {
                 $(this).nextAll('font').remove();
                 $(this).next().after("<font style='color:red'>请输入车辆数量</font>");
             } else {
-                $(this).nextAll('font').remove();
+                if (reg.test($(this).val())) {
+                    $(this).nextAll('font').remove();
+                } else {
+                    $(this).nextAll('font').remove();
+                    $(this).next().after("<font style='color:red'>请输入车辆数量</font>");
+                }
+                
             }
         })
         //Ajax提交

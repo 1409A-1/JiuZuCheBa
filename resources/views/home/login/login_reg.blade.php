@@ -331,7 +331,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
                     },
                   messages:{
                       user_name:{
-                           required:'该用户名必填',
+                           required:"<span style='font-size: 10px'>该用户名必填</span>",
                            remote:'用户名存在'
                      },
                       tel:{
