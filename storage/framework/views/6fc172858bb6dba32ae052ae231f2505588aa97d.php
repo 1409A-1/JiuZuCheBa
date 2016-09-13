@@ -40,14 +40,6 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="<?php echo e(asset('admin')); ?>/css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -62,21 +54,13 @@
                     </div>
 
                     <div class="row-fluid filter-block">
-                        <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
-                            <input type="text" class="search" />
+                        <div class="pull-right" style="margin-right: 360px">
                             <a href="carServerList" class="btn-flat success new-product" >服务点车辆信息列表</a>
                         </div>
                     </div>
                     <div class="row-fluid" style="width:600px; height:500px">
                             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>"/>
-                            <table class="table table-hover" style="height:400px;">
+                            <table class="table table-hover" style="height:400px; margin-left: 30px">
                                 <tr>
                                     <td>请选择服务点：</td>
                                     <td style="width:470px">

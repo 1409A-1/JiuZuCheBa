@@ -16,21 +16,20 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     <div class="input_body">
                         <div class="inputBox" id="reg_name_box">
-                                <input placeholder="请输入姓名" maxlength="10"  type="text" name="user_name" id="name">
+                                <input placeholder="请输入姓名" maxlength="10" style="width: 100%;" type="text" name="user_name" id="name">
 
                         </div>
                         <div class="inputBox" id="reg_phone_box">
-                            <input placeholder="请输入手机号码" maxlength="11" id="reg_phone" type="tel" name="tel" >
+                            <input placeholder="请输入手机号码" maxlength="11" style="width: 100%;"  id="reg_phone" type="tel" name="tel" >
 
                         </div>
                         <div class="inputBox" id="reg_pw_box">
-                            <input placeholder="请输入6位以上密码" maxlength="18" id="reg_pw" type="password"  name="password">
+                            <input placeholder="请输入6位以上密码" maxlength="18" style="width: 100%;"  id="reg_pw" type="password"  name="password">
                         </div>
                         <br>
-                        <button id="reg">注 册<i></i></button>
+                        <button id="reg" style="cursor: pointer;">注 册<i></i></button>
                         <div class="Prompt">
-                            点击“立即注册”<br>
-                            即表示您同意并愿意遵守大方
+                            即表示您同意并愿意遵守就租车吧
                             <b id="win">用户协议</b>
                         </div>
                     </div>
@@ -289,7 +288,7 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
                 var length = value.length;
                 var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
                 return this.optional(element) || (length == 11 && mobile.test(value));
-            }, "请正确填写您的手机号码");
+            }, "<span style='font-size: 12px;color: #fd5d0d;'>请正确填写您的手机号</span>");
 
             $("#reg").validate({
                 errorElement : 'p',
@@ -331,16 +330,16 @@ engineer）、反向编译（decompile）或反汇编（disassemble）。
                     },
                   messages:{
                       user_name:{
-                           required:"<span style='font-size: 10px'>该用户名必填</span>",
-                           remote:'用户名存在'
+                           required:"<span style='font-size: 12px;color: #fd5d0d;'>该用户名必填</span>",
+                           remote:"<span style='font-size: 12px;color: #fd5d0d;'>用户名存在</span>"
                      },
                       tel:{
-                          required:'手机号必填',
-                          remote:'已存在'
+                          required:"<span style='font-size: 12px;color: #fd5d0d;'>手机号必填</span>",
+                          remote:"<span style='font-size: 12px;color: #fd5d0d;'>已存在</span>"
                       },
                       password:{
-                          required:'密码必填',
-                          minlength:'大于六位'
+                          required:"<span style='font-size: 12px;color: #fd5d0d;'>密码必填</span>",
+                          minlength:"<span style='font-size: 12px;color: #fd5d0d;'>大于六位</span>"
                       }
                   }
             })

@@ -41,6 +41,19 @@ class AdminController extends Controller
            return view('admin.login.admin_login');
         }
     }
+
+    /*
+     * name:wanghu
+     * time:2016/8/31
+     * @admin_user
+     * */
+    public function logout()
+    {
+        Session::pull('name');
+        Session::pull('id');
+        return redirect('indexs');
+    }
+
     /*
      * username：wanghu
      * time:2016/9/1
@@ -50,18 +63,6 @@ class AdminController extends Controller
     public function indexs()
     {
         return view('admin.admin.admin');
-    }
-    /*
-     * name:wanghu
-     * time:2016/9/1
-     * @car_type
-     * 描述:车辆类型管理
-     * */
-    public function carTypeList()
-    {
-        $arr = DB::table('car_type')
-            ->get();
-        return view('admin.admin.carType',['data' => $arr]);
     }
     /*
      * name:wanghu

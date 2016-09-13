@@ -33,7 +33,6 @@
 <link type="text/css" rel="stylesheet" href="home/css/shortRent.css">
 <script type="text/javascript" src="home/js/shortRent.js"></script>
 <script type="text/javascript" src="home/js/linq.js"></script>
-<script type="text/javascript" src="home/js/m-webim-lite.js"></script>
 <script type="text/javascript" src="home/js/special_offers.js"></script>
 
 <!--导航标题-->
@@ -57,14 +56,14 @@
 <!--预定框-->
 <div class="bookBox noCopy">
     <!--预订按钮-->
-    <button id="startBook">立即选车</button>
+    <button id="startBook" style="cursor: pointer">立即选车</button>
     <!--取车-->
     <div class="take">
         取车门店
         <!--城市-->
         <div class="shortCity" id="takeCity">
             <div class="show">
-                <a>北京市</a>
+                <a></a>
                 <div class="Arrow"></div>
             </div>
             <div class="city_list" id="takeCityList">
@@ -95,7 +94,7 @@
         <!--门店-->
         <div class="shortStore" id="takeStore">
             <div class="show">
-                <a store_id="1">冬冬服务点</a>
+                <a store_id=""></a>
                 <div class="Arrow"></div>
             </div>
             <div class="store_list" id="takeStoreList">
@@ -142,7 +141,7 @@
         <!--城市-->
         <div class="shortCity" id="returnCity">
             <div class="show">
-                <a>北京市</a>
+                <a></a>
                 <div class="Arrow"></div>
             </div>
             <div class="city_list" id="returnCityList">
@@ -173,7 +172,7 @@
         <!--门店-->
         <div class="shortStore" id="returnStore">
             <div class="show">
-                <a store_id="1">冬冬服务点</a>
+                <a store_id=""></a>
                 <div class="Arrow"></div>
             </div>
             <div class="store_list" id="returnStoreList">
@@ -353,7 +352,8 @@
 //车辆预订
     function carBook(n)
     {
-        if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").htmltext)) {
+        //if (Duration_alert($("#startDate").html(), $("#startHour").html(), $("#endDate").html(), $("#endHour").htmltext)) {
+        if (true) {
             var user_name = $('#user_name').val();   //用户信息
             var li = $(".carList>li").eq(n);
             var out_id = $("#takeStore").find(".show a").attr("store_id"),
@@ -367,22 +367,29 @@
             var nowTime = new Date(), outTime, inTime;
             nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
             outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
-            inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
+           // inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
             //春节等特殊时期 租期限制！
 //            if (checked_price_list(CarList[n].prices, outTime, inTime)) {
             if (true) {
                 //判断时间
-                if (date_subtract(nowTime, outTime).times >= 0) {//取车时间 须 大于 当前时间
+                if (date_subtract(nowTime, outTime).times <= 0) {//取车时间 须 大于 当前时间
                     //活动信息
 //                    for (var i = 0; i < li.find(".discountName div").length; i++) {
 //                        offers_id.push(li.find(".discountName div").eq(i).attr("dis_id"));
 //                    }
+                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
+                }
+                else if (date_subtract(nowTime, outTime).times >2*86400000) {
+                    layer.alert("仅供预订两天内车辆，请重新选取时间");
+                }
+                else {
                     $("#start_shop_id").val(out_id);
                     $("#stop_shop_id").val(in_id);
                     $("#start_date").val(out_time);
                     $("#stop_date").val(in_time);
                     $("#class_id").val(car_id);
                     $("#offersid").val(car_info_id);
+                    //  $("#timeday").val(timeday);
                     localStorage.setItem("page_jump", 503);
                     localStorage.setItem("start_shop_id", out_id);
                     localStorage.setItem("stop_shop_id", in_id);
@@ -403,10 +410,7 @@
                         });
                     }
                 }
-                else {
-                    layer.alert("取车时间不得小于当前时间，请重新选取时间");
-                }
-            }
+           }
         }
     }
 

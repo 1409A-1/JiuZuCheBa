@@ -76,6 +76,9 @@ Route::get('long', 'IndexController@long');
 //后台登录
 Route::get('admins','AdminController@adminLogin');
 
+//后台登出
+Route::get('logout','AdminController@logout');
+
 //判断用户密码
 Route::post('signin','AdminController@adminLogin');
 
@@ -92,7 +95,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('typeUpdate/{id}','CarTypeController@update');//更新
 	Route::get('typeDel/{id}','CarTypeController@del');//删除
 	
-  	/*
+    /*
 	    品牌管理
 	 */
 	Route::get('brandList','CarBrandController@brandList');//品牌列表
@@ -102,7 +105,7 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('brandUpdate/{id}','CarBrandController@update');//更新
 	Route::get('brandDel/{id}','CarBrandController@del');//删除
 	
-  	/*
+    /*
 	    用户管理
 	 */
 	Route::get('userList','UserController@userList');//前台用户列表
@@ -124,9 +127,6 @@ Route::group(['middleware' => ['nologin']], function(){
 	Route::get('longOrderList','UserController@longOrderList');
 	Route::post('longOrderCheck','UserController@longOrderCheck');
 
-	
-	Route::get('carTypeList','AdminController@carTypeList');
-    Route::get('modelAdd','AdminController@modelAdd');
     Route::post('typeAdd','AdminController@modelAdd');
     Route::post('typeDel','AdminController@typeDel');
     Route::get('address','AddressController@address');//服务点添加
@@ -152,7 +152,7 @@ Route::group(['middleware' => ['nologin']], function(){
      * time:2016/9/9
      * 描述：订单的审核
      * */
-    Route::get('orderList','OrderController@orderList');
+    Route::get('orderLists','OrderController@orderList');
     Route::get('orderInfo/{ord_id}','OrderController@orderInfo');
     Route::get('carry/{ord_id}','OrderController@carry');//提车
     Route::get('still/{ord_id}','OrderController@still');//还车
@@ -165,7 +165,8 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('carServerAdd','CarController@carServerAdd');//服务点车辆分配执行
     Route::post('carUnique','CarController@carUnique');//车辆分配唯一性查询
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
-    Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
+    Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}','CarController@carServerPage');//服务点车辆信息分页
+    Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
 
 });
 
@@ -179,4 +180,4 @@ Route::post('getCityList','PublicController@getCityList');  // 获取城市列�
 Route::post('getServerList','PublicController@getServerList');  // 获取服务点列表
 Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
 Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
-
+Route::post('getSpecialCar','PublicController@getSpecialCar');  // 获取当前城市热门车型

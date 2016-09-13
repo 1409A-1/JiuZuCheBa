@@ -42,14 +42,6 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -65,13 +57,6 @@
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
                             <input type="text" class="search" id="search" />
                             <a class="btn-flat success new-product" href="typeAdds">+ 添加车辆类型</a>
                         </div>
@@ -107,7 +92,9 @@
                                         <!-- <span class="label label-success">Active</span> -->
                                         <ul class="actions" style="float:left">
                                             <li><a href="typeUpdate/<?php echo e($v['type_id']); ?>">编辑</a></li>
+                                            <?php if($v['car_id'] == ''): ?>
                                             <li class="last"><a class="del" href="javascript:void(0)" bid=<?php echo e($v['type_id']); ?>>删除</a></li>
+                                            <?php endif; ?>
                                         </ul>
                                     </td>
                                 </tr>
@@ -168,7 +155,11 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li>'
+                        if (msg.cartype[i].car_id == null) {
+                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li>'
+                        }
+                        str+='</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -188,31 +179,36 @@
             })
 
             //Ajax搜索
-            $("#search").blur(function(){
-                //alert(1)
-                search=$(this).val()=="" ? "all" :$(this).val();
-                //alert(search)
-                $.get("typeListPage/1/"+search+"/0",function(msg){
-                //alert(msg)
-                str="";
-                for(i=0; i<msg.cartype.length; i++){
-                    str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li></ul></td></tr>'
-                }
-                $("#tbody").empty();
-                $("#tbody").append(str);
-                $("#nowpage").val(msg.page);
-                $(".pagination").empty();
-                str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
-                    for (i = 1; i <= msg.pages; i++){
-                        str2+='<li><a class="'
-                        if (msg.page == i){
-                        str2+='active';
+            $("#search").keydown(function(e){
+                if (e.keyCode == 13) {
+                    search=$(this).val()=="" ? "all" :$(this).val();
+                    //alert(search)
+                    $.get("typeListPage/1/"+search+"/0",function(msg){
+                    //alert(msg)
+                    str="";
+                    for(i=0; i<msg.cartype.length; i++){
+                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li>'
+                        if (msg.cartype[i].car_id == null) {
+                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li>'
                         }
-                        str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        str+='</ul></td></tr>'
                     }
-                    str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
-                    $(".pagination").append(str2);
-            },'json')
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $("#nowpage").val(msg.page);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                    },'json')
+                }
             })
 
             // Ajax搜索&分页&删除
@@ -225,7 +221,11 @@
                     //alert(msg)
                     str="";
                     for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li</ul></td></tr>'
+                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li>'
+                        if (msg.cartype[i].car_id == null) {
+                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li>'
+                        }
+                        str+='</ul></td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);

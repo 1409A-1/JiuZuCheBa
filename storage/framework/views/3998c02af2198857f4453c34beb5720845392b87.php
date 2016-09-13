@@ -5,9 +5,9 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="index.html">
+            <a href="indexs">
                 <i class="icon-home"></i>
-                <span>Home</span>
+                <span>主页</span>
             </a>
         </li>
         <li>
@@ -17,8 +17,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo e(URL('userList')); ?>">前台用户列表</a></li>
-                <li><a href="<?php echo e(URL('adminList')); ?>">后台用户列表</a></li>
+                <li><a href="<?php echo e(url('userList')); ?>">前台用户列表</a></li>
+                <li><a href="<?php echo e(url('adminList')); ?>">后台用户列表</a></li>
             </ul>
         </li>
         <li>
@@ -28,8 +28,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo e(url('orderList')); ?>">订单管理</a></li>
-                <li><a href="<?php echo e(URL('longOrderList')); ?>">长租审核</a></li>
+                <li><a href="<?php echo e(url('orderLists')); ?>">订单管理</a></li>
+                <li><a href="<?php echo e(url('longOrderList')); ?>">长租审核</a></li>
             </ul>
         </li>
         <li>
@@ -39,19 +39,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo e(URL('typeList')); ?>">车辆类型管理</a></li>
-                <li><a href="<?php echo e(URL('brandList')); ?>">车辆品牌管理</a></li>
-            </ul>
-        </li>
-        <li>
-            <a class="dropdown-toggle" href="#">
-                <i class="icon-group"></i>
-                <span>车辆类型</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="<?php echo e(url('carTypeList')); ?>">车辆类型列表</a></li>
-                <li><a href="<?php echo e(url('modelAdd')); ?>">添加车辆类型</a></li>
+                <li><a href="<?php echo e(url('typeList')); ?>">车辆类型管理</a></li>
+                <li><a href="<?php echo e(url('brandList')); ?>">车辆品牌管理</a></li>
             </ul>
         </li>
         <li>
@@ -74,6 +63,7 @@
             <ul class="submenu">
                 <li><a href="<?php echo e(url('address')); ?>">服务点添加</a></li>
                 <li><a href="<?php echo e(url('addressList')); ?>">服务点展示</a></li>
+                <li><a href="<?php echo e(url('carServer')); ?>">服务点车辆分配</a></li>
             </ul>
         </li>
         <li>
@@ -85,7 +75,7 @@
         <li>
             <a href="<?php echo e(url('userPack')); ?>">
                 <i class="icon-calendar-empty"></i>
-                <span>用户套餐申请审核</span>
+                <span>套餐申请审核</span>
             </a>
         </li>
         <li>
@@ -97,7 +87,6 @@
             <ul class="submenu">
                 <li><a href="<?php echo e(url('carIns')); ?>">车辆添加</a></li>
                 <li><a href="<?php echo e(url('carList')); ?>">车辆列表</a></li>
-                <li><a href="<?php echo e(url('carServer')); ?>">服务点车辆分配</a></li>
             </ul>
         </li>
         <li>
