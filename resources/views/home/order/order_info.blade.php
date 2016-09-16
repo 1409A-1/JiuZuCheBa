@@ -69,7 +69,7 @@
         </div>
     </div>
     <div class="right">
-        <h4>费用明细</h4>
+        <h4 style="text-align: center">费用明细</h4>
         <ul>
             <li>
                 基本租车费<a id="discount"><!--优惠金额--></a>
