@@ -104,8 +104,8 @@
                                        $("#subs").html("请不要重复添加");
                                        $("#citys").empty();
                                        $("#countys").empty();
-                                   } else {
-                                       localtion.href='{{ url('addrList') }}'
+                                   } else if (msg == 0){
+                                       location.href='{{ url('addrList') }}'
                                    }
                                }
                            });

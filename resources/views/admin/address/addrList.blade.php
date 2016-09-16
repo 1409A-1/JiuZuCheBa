@@ -67,7 +67,7 @@
                     </div>
                     <script src="{{asset('admin')}}/js/js.js"></script>
 
-                    <div class="row-fluid" style="width:500px;">
+                    <div class="row-fluid" style="width:100%;">
                         <table class="table">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                         @foreach($data as $v)

@@ -142,10 +142,6 @@ class AddressController extends Controller
             return 0;die;
         }
     }
-    public function addressServer()
-    {
-
-    }
 
     /**
      *username:wanghu
@@ -164,33 +160,6 @@ class AddressController extends Controller
                 ->where('server_id',$id)
                 ->delete();
             return redirect(url('addressList'));
-        }
-    }
-    public function addrSelect(Request $request)
-    {
-        $data=$request->all();
-        if($data['server_name'] == ''){
-            return 0;//没有搜索
-        }else{
-            $ping = new \pin();
-            $str = $ping->Pinyin("$data[server_name]");
-            $str = substr($str,0,1);
-            $str =  strtoupper($str);
-            $arr = DB::table('address')
-                ->where(['address_name'=>$data['server_name']])
-                ->get();
-            if ($arr) {
-                return $arr;
-            }else{
-                $arr2 = DB::table('address')
-                    ->where(['abridge'=>$str])
-                    ->get();
-                if ($arr2) {
-                    return $arr2;
-                } else {
-                    return 1;
-                }
-            }
         }
     }
 
