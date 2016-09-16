@@ -6,23 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
 
     <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
-
 
     <!--[if lt IE 9]>
     <![endif]-->
@@ -30,11 +29,11 @@
 <body>
 
     <!-- navbar -->
-    @include('common.admin_header')
+    <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end navbar -->
 
     <!-- sidebar -->
-    @include('common.admin_left')
+    <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end sidebar -->
 
 
@@ -51,14 +50,19 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>车辆类型</h4>
+                            <h4>车辆品牌</h4>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid filter-block">
+                        <div class="pull-right">
                         </div>
                     </div>
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
                             <input type="text" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="typeAdds">+ 添加车辆类型</a>
+                            <a class="btn-flat success new-product" href="<?php echo e(URL('brandAdd')); ?>">+ 添加车辆品牌</a>
                         </div>
                     </div>
 
@@ -67,7 +71,7 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        车辆类型
+                                        车辆品牌
                                     </th>
                                     <!-- <th class="span3">
                                         <span class="line"></span>Description
@@ -77,12 +81,13 @@
                                     </th>
                                 </tr>
                             </thead>
-                             <tbody id="tbody">
+                            <tbody id="tbody">
                                 <!-- row -->
-                                @foreach($cartype as $k => $v)
+                                <?php foreach($carbrand as $k => $v): ?>
                                 <tr class="first">
                                     <td>
-                                        {{$v['type_name']}}
+                                        <?php echo e($v['brand_name']); ?>
+
                                     </td>
                                     <!-- <td class="description">
                                         if you are going to use a passage of Lorem Ipsum.
@@ -90,29 +95,29 @@
                                     <td>
                                         <!-- <span class="label label-success">Active</span> -->
                                         <ul class="actions" style="float:left">
-                                            <li><a href="typeUpdate/{{$v['type_id']}}">编辑</a></li>
-                                            @if ($v['car_id'] == '')
-                                            <li class="last"><a class="del" href="javascript:void(0)" bid={{$v['type_id']}}>删除</a></li>
-                                            @endif
+                                            <li><a href="brandUpdate/<?php echo e($v['brand_id']); ?>">编辑</a></li>
+                                            <?php if($v['car_id'] == ''): ?>
+                                            <li class="last"><a class="del" href="javascript:void(0)" bid=<?php echo e($v['brand_id']); ?>>删除</a></li>
+                                            <?php endif; ?>
                                         </ul>
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; ?>
                                 <!-- row -->
                             </tbody>
                         </table>
                     </div>
                     <div class="pagination">
                       <ul>
-                        <li><a href="javascript:void(0)" class="page" page="{{$prev}}">&#8249;</a></li>
-                        @for ($i = 1; $i <= $pages; $i++)
+                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($prev); ?>">&#8249;</a></li>
+                        <?php for($i = 1; $i <= $pages; $i++): ?>
                             <li><a class="
-                            @if ($page == $i)
+                            <?php if($page == $i): ?>
                             active
-                            @endif
-                             page" href="javascript:void(0)" page="{{$i}}">{{$i}}</a></li>
-                        @endfor
-                        <li><a href="javascript:void(0)" class="page" page="{{$next}}">&#8250;</a></li>
+                            <?php endif; ?>
+                             page" href="javascript:void(0)" page="<?php echo e($i); ?>"><?php echo e($i); ?></a></li>
+                        <?php endfor; ?>
+                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($next); ?>">&#8250;</a></li>
                       </ul>
                     </div>
                     <input type="hidden" value="1" id="nowpage">
@@ -131,17 +136,17 @@
     </div>
     <!-- end main container -->
 
-    <!-- scripts -->
-    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
-    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
+	<!-- scripts -->
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
-    <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.stack.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.resize.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -150,13 +155,13 @@
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("typeListPage/"+page+"/"+search+"/0",function(msg){
+                $.get("brandListPage/"+page+"/"+search+"/0",function(msg){
                     //alert(msg)
                     str="";
-                    for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li>'
-                        if (msg.cartype[i].car_id == null) {
-                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li>'
+                    for(i=0; i<msg.carbrand.length; i++){
+                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
+                        if (msg.carbrand[i].car_id == null) {
+                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
                         }
                         str+='</ul></td></tr>'
                     }
@@ -178,36 +183,35 @@
             })
 
             //Ajax搜索
-            $("#search").keydown(function(e){
-                if (e.keyCode == 13) {
-                    search=$(this).val()=="" ? "all" :$(this).val();
-                    //alert(search)
-                    $.get("typeListPage/1/"+search+"/0",function(msg){
-                    //alert(msg)
-                    str="";
-                    for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li>'
-                        if (msg.cartype[i].car_id == null) {
-                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li>'
-                        }
-                        str+='</ul></td></tr>'
+            $("#search").blur(function(){
+                //alert(1)
+                search=$(this).val()=="" ? "all" :$(this).val();
+                //alert(search)
+                $.get("brandListPage/1/"+search+"/0",function(msg){
+                //alert(msg)
+                str="";
+                for(i=0; i<msg.carbrand.length; i++){
+                    str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
+                    if (msg.carbrand[i].car_id == null) {
+                        str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
                     }
-                    $("#tbody").empty();
-                    $("#tbody").append(str);
-                    $("#nowpage").val(msg.page);
-                    $(".pagination").empty();
-                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
-                        for (i = 1; i <= msg.pages; i++){
-                            str2+='<li><a class="'
-                            if (msg.page == i){
-                            str2+='active';
-                            }
-                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
-                        }
-                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
-                        $(".pagination").append(str2);
-                    },'json')
+                    str+='</ul></td></tr>'
                 }
+                $("#tbody").empty();
+                $("#tbody").append(str);
+                $("#nowpage").val(msg.page);
+                $(".pagination").empty();
+                str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                    for (i = 1; i <= msg.pages; i++){
+                        str2+='<li><a class="'
+                        if (msg.page == i){
+                        str2+='active';
+                        }
+                        str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                    }
+                    str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                    $(".pagination").append(str2);
+            },'json')
             })
 
             // Ajax搜索&分页&删除
@@ -216,13 +220,13 @@
                 search=$("#search").val()?$("#search").val():"all";
                 del=$(this).attr("bid");
                 //alert(search);
-                $.get("typeListPage/"+page+"/"+search+"/"+del,function(msg){
+                $.get("brandListPage/"+page+"/"+search+"/"+del,function(msg){
                     //alert(msg)
                     str="";
-                    for(i=0; i<msg.cartype.length; i++){
-                        str+='<tr class="first"><td>'+msg.cartype[i].type_name+'</td><td><ul class="actions" style="float:left"><li><a href="typeUpdate/'+msg.cartype[i].type_id+'">编辑</a></li>'
-                        if (msg.cartype[i].car_id == null) {
-                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.cartype[i].type_id+'>删除</a></li>'
+                    for(i=0; i<msg.carbrand.length; i++){
+                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
+                        if (msg.carbrand[i].car_id == null) {
+                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
                         }
                         str+='</ul></td></tr>'
                     }
@@ -242,11 +246,8 @@
                 },'json')
             })
 
-            
             // jQuery Knobs
             $(".knob").knob();
-
-
 
             // jQuery UI Sliders
             $(".slider-sample1").slider({

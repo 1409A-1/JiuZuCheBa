@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
 
     <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
 
@@ -29,11 +29,11 @@
 <body>
 
     <!-- navbar -->
-    @include('common.admin_header')
+    <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end navbar -->
 
     <!-- sidebar -->
-    @include('common.admin_left')
+    <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end sidebar -->
 
 
@@ -82,54 +82,57 @@
                             </thead>
                             <tbody id="tbody">
                                 <!-- row -->
-                                @foreach($message as $k => $v)
+                                <?php foreach($message as $k => $v): ?>
                                 <tr class="first">
                                     <td class="description">
-                                        {{$v['user_name']}}
+                                        <?php echo e($v['user_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['message_con']}}
+                                       <?php echo e($v['message_con']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['add_time']}}
+                                       <?php echo e($v['add_time']); ?>
+
                                     </td>
                                     <td class="description">
-                                    @if ($v['type'] == 0)
+                                    <?php if($v['type'] == 0): ?>
                                     <span class="label label-success">显示</span>
-                                    @elseif($v['type'] == 2)
+                                    <?php elseif($v['type'] == 2): ?>
                                     <span class="label label-success">显示</span><span class="label label-success">被采纳</span>
-                                    @else
+                                    <?php else: ?>
                                     <span class="label label-info">不显示</span>
-                                    @endif
+                                    <?php endif; ?>
                                     </td>
                                     <td>
                                        <ul class="actions" style="float:left">
-                                            @if ($v['type'] != 2)
-                                            <li><a href="javascript:void(0)" class="edit" mid="{{$v['message_id']}}">不显示</a></li>
-                                            <li><a href="javascript:void(0)" class="del" mid="{{$v['message_id']}}">删除</a></li>
-                                            @endif
-                                            @if ($v['type'] == 0)
-                                            <li><a href="javascript:void(0)" class="accept" mid="{{$v['message_id']}}">采纳</a></li>
-                                            @endif
+                                            <?php if($v['type'] != 2): ?>
+                                            <li><a href="javascript:void(0)" class="edit" mid="<?php echo e($v['message_id']); ?>">不显示</a></li>
+                                            <li><a href="javascript:void(0)" class="del" mid="<?php echo e($v['message_id']); ?>">删除</a></li>
+                                            <?php endif; ?>
+                                            <?php if($v['type'] == 0): ?>
+                                            <li><a href="javascript:void(0)" class="accept" mid="<?php echo e($v['message_id']); ?>">采纳</a></li>
+                                            <?php endif; ?>
                                         </ul>
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; ?>
                                 <!-- row -->
                             </tbody>
                         </table>
                     </div>
                     <div class="pagination">
                       <ul>
-                        <li><a href="javascript:void(0)" class="page" page="{{$prev}}">&#8249;</a></li>
-                        @for ($i = 1; $i <= $pages; $i++)
+                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($prev); ?>">&#8249;</a></li>
+                        <?php for($i = 1; $i <= $pages; $i++): ?>
                             <li><a class="
-                            @if ($page == $i)
+                            <?php if($page == $i): ?>
                             active
-                            @endif
-                             page" href="javascript:void(0)" page="{{$i}}">{{$i}}</a></li>
-                        @endfor
-                        <li><a href="javascript:void(0)" class="page" page="{{$next}}">&#8250;</a></li>
+                            <?php endif; ?>
+                             page" href="javascript:void(0)" page="<?php echo e($i); ?>"><?php echo e($i); ?></a></li>
+                        <?php endfor; ?>
+                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($next); ?>">&#8250;</a></li>
                       </ul>
                     </div>
                     <input type="hidden" value="1" id="nowpage">
@@ -149,16 +152,16 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
-    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
-    <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.stack.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.resize.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {

@@ -21,7 +21,7 @@ class CarTypeController extends Controller
     	$length = 5;
     	$pages = ceil($count/$length);
     	$offset = ($page-1)*$length;
-    	$cartype = CarType::take($length)->skip($offset)->get()->toArray()? CarType::take($length)->skip($offset)->get()->toArray(): array();
+    	$cartype = CarType::leftJoin('car_info', 'car_type.type_id', '=', 'car_info.type_id')->take($length)->skip($offset)->get()->toArray()? CarType::leftJoin('car_info', 'car_type.type_id', '=', 'car_info.type_id')->take($length)->skip($offset)->get()->toArray(): array();
         return view('admin.cartype.list',['cartype' => $cartype,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
 
@@ -41,8 +41,8 @@ class CarTypeController extends Controller
     	$pages = ceil($count/$length);
     	$page = $page>$pages ? $pages : $page;
     	$offset = ($page-1)*$length;
-    	$cartype = CarType::where("type_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarType::where("type_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray(): array();
-        echo json_encode(['cartype' => $cartype,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+    	$cartype = CarType::leftJoin('car_info', 'car_type.type_id', '=', 'car_info.type_id')->where("type_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarType::leftJoin('car_info', 'car_type.type_id', '=', 'car_info.type_id')->where("type_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray(): array();
+        echo json_encode(['cartype' => $cartype, 'pages' => $pages, 'prev' => $prev, 'next' => $next, 'page' => $page]);
     }
 
     /*

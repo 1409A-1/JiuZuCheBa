@@ -17,8 +17,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('userList') }}">前台用户列表</a></li>
-                <li><a href="{{ url('adminList') }}">后台用户列表</a></li>
+                <li><a href="<?php echo e(url('userList')); ?>">前台用户列表</a></li>
+                <li><a href="<?php echo e(url('adminList')); ?>">后台用户列表</a></li>
             </ul>
         </li>
         <li>
@@ -28,8 +28,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('orderLists') }}">订单管理</a></li>
-                <li><a href="{{ url('longOrderList') }}">长租审核</a></li>
+                <li><a href="<?php echo e(url('orderLists')); ?>">订单管理</a></li>
+                <li><a href="<?php echo e(url('longOrderList')); ?>">长租审核</a></li>
             </ul>
         </li>
         <li>
@@ -39,8 +39,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('typeList') }}">车辆类型管理</a></li>
-                <li><a href="{{ url('brandList') }}">车辆品牌管理</a></li>
+                <li><a href="<?php echo e(url('typeList')); ?>">车辆类型管理</a></li>
+                <li><a href="<?php echo e(url('brandList')); ?>">车辆品牌管理</a></li>
             </ul>
         </li>
         <li>
@@ -50,8 +50,8 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('addrList') }}">地区的列表</a></li>
-                <li><a href="{{ url('addrIns') }}">地区列添加</a></li>
+                <li><a href="<?php echo e(url('addrList')); ?>">地区的列表</a></li>
+                <li><a href="<?php echo e(url('addrIns')); ?>">地区列添加</a></li>
             </ul>
         </li>
         <li>
@@ -61,9 +61,9 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('address') }}">服务点添加</a></li>
-                <li><a href="{{ url('addressList') }}">服务点展示</a></li>
-                <li><a href="{{ url('carServer') }}">服务点车辆分配</a></li>
+                <li><a href="<?php echo e(url('address')); ?>">服务点添加</a></li>
+                <li><a href="<?php echo e(url('addressList')); ?>">服务点展示</a></li>
+                <li><a href="<?php echo e(url('carServer')); ?>">服务点车辆分配</a></li>
             </ul>
         </li>
         <li>
@@ -73,7 +73,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('userPack') }}">
+            <a href="<?php echo e(url('userPack')); ?>">
                 <i class="icon-calendar-empty"></i>
                 <span>套餐申请审核</span>
             </a>
@@ -85,12 +85,12 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('carIns') }}">车辆添加</a></li>
-                <li><a href="{{ url('carList') }}">车辆列表</a></li>
+                <li><a href="<?php echo e(url('carIns')); ?>">车辆添加</a></li>
+                <li><a href="<?php echo e(url('carList')); ?>">车辆列表</a></li>
             </ul>
         </li>
         <li>
-            <a href="{{ asset('admin') }}/personal-info.html">
+            <a href="<?php echo e(asset('admin')); ?>/personal-info.html">
                 <i class="icon-cog"></i>
                 <span>My Info</span>
             </a>
@@ -102,10 +102,10 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('packIns') }}">套餐添加</a></li>
-                <li><a href="{{ asset('admin') }}/grids.html">Grids</a></li>
-                <li><a href="{{ asset('admin') }}/signin.html">Sign in</a></li>
-                <li><a href="{{ asset('admin') }}/signup.html">Sign up</a></li>
+                <li><a href="<?php echo e(url('packIns')); ?>">套餐添加</a></li>
+                <li><a href="<?php echo e(asset('admin')); ?>/grids.html">Grids</a></li>
+                <li><a href="<?php echo e(asset('admin')); ?>/signin.html">Sign in</a></li>
+                <li><a href="<?php echo e(asset('admin')); ?>/signup.html">Sign up</a></li>
             </ul>
         </li>
     </ul>

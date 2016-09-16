@@ -7,18 +7,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
 </head>
 <body>
 
@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="index.html"><img src="{{asset('admin')}}/img/logo.png" /></a>
+        <a class="brand" href="index.html"><img src="<?php echo e(asset('admin')); ?>/img/logo.png" /></a>
 
         <ul class="nav pull-right">
            <!-- <li class="hidden-phone">
@@ -90,7 +90,7 @@
                         <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
                         <div class="messages">
                             <a href="#" class="item">
-                                <img src="{{asset('admin')}}/img/contact-img.png" class="display" />
+                                <img src="<?php echo e(asset('admin')); ?>/img/contact-img.png" class="display" />
                                 <div class="name">Alejandra Galván</div>
                                 <div class="msg">
                                     There are many variations of available, but the majority have suffered alterations.
@@ -98,7 +98,7 @@
                                 <span class="time"><i class="icon-time"></i> 13 min.</span>
                             </a>
                             <a href="#" class="item">
-                                <img src="{{asset('admin')}}/img/contact-img2.png" class="display" />
+                                <img src="<?php echo e(asset('admin')); ?>/img/contact-img2.png" class="display" />
                                 <div class="name">Alejandra Galván</div>
                                 <div class="msg">
                                     There are many variations of available, have suffered alterations.
@@ -106,7 +106,7 @@
                                 <span class="time"><i class="icon-time"></i> 26 min.</span>
                             </a>
                             <a href="#" class="item last">
-                                <img src="{{asset('admin')}}/img/contact-img.png" class="display" />
+                                <img src="<?php echo e(asset('admin')); ?>/img/contact-img.png" class="display" />
                                 <div class="name">Alejandra Galván</div>
                                 <div class="msg">
                                     There are many variations of available, but the majority have suffered alterations.
@@ -127,7 +127,7 @@
                 </a>
             </li>
             <li class="settings hidden-phone">
-                <a href="{{ url('logout') }}" role="button">
+                <a href="<?php echo e(url('logout')); ?>" role="button">
                     退出
                 </a>
             </li>

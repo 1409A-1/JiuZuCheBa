@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
 
     <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,11 +28,11 @@
 <body>
 
     <!-- navbar -->
-    @include('common.admin_header')
+    <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end navbar -->
 
     <!-- sidebar -->
-    @include('common.admin_left')
+    <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end sidebar -->
 
 
@@ -45,7 +45,7 @@
             <div id="pad-wrapper">
                 
                 <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
+                <!-- the script for the toggle all checkboxes from header is located in <?php echo e(asset('admin')); ?>/js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
@@ -59,16 +59,16 @@
                         </div>
                     </div>
                     <div class="row-fluid" style="width:600px; height:500px">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                            <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>"/>
                             <table class="table table-hover" style="height:400px; margin-left: 30px">
                                 <tr>
                                     <td>请选择服务点：</td>
                                     <td style="width:470px">
                                         <select name="server_id" style="height:30px">
                                             <option value="0" required>请选择</option>
-                                            @foreach($server as $key => $val)
-                                            <option value="{{$val['server_id']}}">{{$val['city_name']."|".$val['district']."|".$val['server_name']}}</option>
-                                            @endforeach
+                                            <?php foreach($server as $key => $val): ?>
+                                            <option value="<?php echo e($val['server_id']); ?>"><?php echo e($val['city_name']."|".$val['district']."|".$val['server_name']); ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </td>
                                 </tr>
@@ -77,9 +77,9 @@
                                     <td>
                                         <select name="car_id" style="height:30px">
                                             <option value="0" required>请选择</option>
-                                            @foreach($carInfo as $key => $val)
-                                            <option value="{{$val['car_id']}}">{{$val['car_name']}}</option>
-                                            @endforeach
+                                            <?php foreach($carInfo as $key => $val): ?>
+                                            <option value="<?php echo e($val['car_id']); ?>"><?php echo e($val['car_name']); ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </td>
                                 </tr>
@@ -108,9 +108,9 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
-    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
 
 </body>
 </html>

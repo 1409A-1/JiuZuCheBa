@@ -76,6 +76,9 @@ Route::get('long', 'IndexController@long');
 //后台登录
 Route::get('admins','AdminController@adminLogin');
 
+//后台登出
+Route::get('logout','AdminController@logout');
+
 //判断用户密码
 Route::post('signin','AdminController@adminLogin');
 
@@ -162,7 +165,8 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('carServerAdd','CarController@carServerAdd');//服务点车辆分配执行
     Route::post('carUnique','CarController@carUnique');//车辆分配唯一性查询
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
-    Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
+    Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}','CarController@carServerPage');//服务点车辆信息分页
+    Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
 
 });
 

@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
 
     <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
 
@@ -29,11 +29,11 @@
 <body>
 
     <!-- navbar -->
-    @include('common.admin_header')
+    <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end navbar -->
 
     <!-- sidebar -->
-    @include('common.admin_left')
+    <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end sidebar -->
 
 
@@ -101,56 +101,65 @@
                             </thead>
                             <tbody id="tbody">
                                 <!-- row -->
-                                @foreach($order as $k => $v)
+                                <?php foreach($order as $k => $v): ?>
                                 <tr class="first">
                                     <td class="description">
-                                        {{$v['user_name']}}
+                                        <?php echo e($v['user_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['start_city']}} | {{$v['start_dis']}} | 
-                                       {{$v['start_name']}}
+                                       <?php echo e($v['start_city']); ?> | <?php echo e($v['start_dis']); ?> | 
+                                       <?php echo e($v['start_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['end_city']}} | {{$v['end_dis']}} | 
-                                       {{$v['end_name']}}
+                                       <?php echo e($v['end_city']); ?> | <?php echo e($v['end_dis']); ?> | 
+                                       <?php echo e($v['end_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['dep_time']}}
+                                       <?php echo e($v['dep_time']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['des_time']}}
+                                       <?php echo e($v['des_time']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['type_name']}}
+                                       <?php echo e($v['type_name']); ?>
+
                                     </td><td class="description">
-                                       {{$v['brand_name']}}
+                                       <?php echo e($v['brand_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['car_name']}}
+                                       <?php echo e($v['car_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                       {{$v['apply_time']}}
+                                       <?php echo e($v['apply_time']); ?>
+
                                     </td>
                                     <td class="description">
-                                    @if ($v['apply_status'] == 0)
+                                    <?php if($v['apply_status'] == 0): ?>
                                         <span class="label label-success">申请中</span>
-                                    @elseif ($v['apply_status'] == 1)
+                                    <?php elseif($v['apply_status'] == 1): ?>
                                         <span class="label label-success">申请通过</span>
-                                    @elseif ($v['apply_status'] == 2)
+                                    <?php elseif($v['apply_status'] == 2): ?>
                                         <span class="label label-info">申请未通过</span>
-                                    @elseif ($v['apply_status'] == 3)
+                                    <?php elseif($v['apply_status'] == 3): ?>
                                         <span class="label label-info">申请已取消</span>
-                                    @endif
+                                    <?php endif; ?>
                                     </td>
                                     <td class="description">
-                                    @if ($v['apply_status'] == 0)
+                                    <?php if($v['apply_status'] == 0): ?>
                                         <ul class="actions" style="float:left">
-                                        <li><a href="javascript:void(0)" class="check" serverId="{{$v['server_id']}}" carId="{{$v['car_id']}}" tel="{{$v['tel']}}" dep_time="{{$v['dep_time']}}" start="{{$v['start_city']}} | {{$v['start_dis']}} | {{$v['start_name']}}" applyId="{{$v['apply_id']}}">审核</a></li>
+                                        <li><a href="javascript:void(0)" class="check" serverId="<?php echo e($v['server_id']); ?>" carId="<?php echo e($v['car_id']); ?>" tel="<?php echo e($v['tel']); ?>" dep_time="<?php echo e($v['dep_time']); ?>" start="<?php echo e($v['start_city']); ?> | <?php echo e($v['start_dis']); ?> | <?php echo e($v['start_name']); ?>" applyId="<?php echo e($v['apply_id']); ?>">审核</a></li>
                                         </ul>
-                                    @endif
+                                    <?php endif; ?>
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; ?>
                                 <!-- row -->
                             </tbody>
                         </table>
@@ -172,16 +181,16 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
-    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
-    <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.stack.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.resize.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {

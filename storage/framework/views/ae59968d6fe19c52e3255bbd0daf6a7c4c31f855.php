@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
 
     <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
 
@@ -29,11 +29,11 @@
 <body>
 
     <!-- navbar -->
-    @include('common.admin_header')
+    <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end navbar -->
 
     <!-- sidebar -->
-    @include('common.admin_left')
+    <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <!-- end sidebar -->
 
 
@@ -59,9 +59,10 @@
                             <div class="ui-select">
                                 <select id="address_one">
                                   <option value="">请选择城市
-                                  @foreach($address as $k => $v)
-                                  <option value="{{$v['address_id']}}">{{$v['address_name']}}
-                                  @endforeach
+                                  <?php foreach($address as $k => $v): ?>
+                                  <option value="<?php echo e($v['address_id']); ?>"><?php echo e($v['address_name']); ?>
+
+                                  <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="ui-select">
@@ -75,7 +76,7 @@
                                 </select>
                             </div>
                             <input type="text" placeholder="请输入车辆名称" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="{{URL('carServer')}}">服务点车辆分配</a>
+                            <a class="btn-flat success new-product" href="<?php echo e(URL('carServer')); ?>">服务点车辆分配</a>
                         </div>
                     </div>
 
@@ -96,34 +97,36 @@
                             </thead>
                             <tbody id="tbody">
                                 <!-- row -->
-                                @foreach($car as $k => $v)
+                                <?php foreach($car as $k => $v): ?>
                                 <tr class="first">
                                     <td class="description">
-                                        {{$v['city_name']." | ".$v['district']." | ".$v['server_name']}}
+                                        <?php echo e($v['city_name']." | ".$v['district']." | ".$v['server_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                        {{$v['car_name']}}
+                                        <?php echo e($v['car_name']); ?>
+
                                     </td>
                                     <td class="description">
-                                        {{$v['number']}}辆
+                                        <?php echo e($v['number']); ?>辆
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; ?>
                                 <!-- row -->
                             </tbody>
                         </table>
                     </div>
                     <div class="pagination">
                       <ul>
-                        <li><a href="javascript:void(0)" class="page" page="{{$prev}}">&#8249;</a></li>
-                        @for ($i = 1; $i <= $pages; $i++)
+                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($prev); ?>">&#8249;</a></li>
+                        <?php for($i = 1; $i <= $pages; $i++): ?>
                             <li><a class="
-                            @if ($page == $i)
+                            <?php if($page == $i): ?>
                             active
-                            @endif
-                             page" href="javascript:void(0)" page="{{$i}}">{{$i}}</a></li>
-                        @endfor
-                        <li><a href="javascript:void(0)" class="page" page="{{$next}}">&#8250;</a></li>
+                            <?php endif; ?>
+                             page" href="javascript:void(0)" page="<?php echo e($i); ?>"><?php echo e($i); ?></a></li>
+                        <?php endfor; ?>
+                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($next); ?>">&#8250;</a></li>
                       </ul>
                     </div>
                     <input type="hidden" value="1" id="nowpage">
@@ -143,16 +146,16 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
-    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
-    <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.stack.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.resize.js"></script>
+    <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -197,7 +200,7 @@
                     $("#address_three").html("<option value=''>请选择服务点</option>");
                     $("#address_two").html("<option value=''>请选择地区</option>");
                 } else {
-                    $.getJSON("{{ url('addressTwo') }}",{id:id},function(msg){
+                    $.getJSON("<?php echo e(url('addressTwo')); ?>",{id:id},function(msg){
                     //alert(msg);
                     str ="<option value=''>请选择地区</option>";
                     for(i=0;i<msg.length;i++){
@@ -240,7 +243,7 @@
                 if (id == '') {
                     $("#address_three").html("<option value=''>请选择服务点</option>");
                 } else {
-                    $.getJSON("{{ url('serverSelect') }}/"+search1+'/'+search2,function(msg){
+                    $.getJSON("<?php echo e(url('serverSelect')); ?>/"+search1+'/'+search2,function(msg){
                     //alert(msg);
                     str ="<option value=''>请选择服务点</option>";
                     for(i=0;i<msg.length;i++){
