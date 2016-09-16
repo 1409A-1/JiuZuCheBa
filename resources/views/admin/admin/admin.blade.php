@@ -49,75 +49,10 @@
             </div>
         </div>
         <!-- end upper main stats -->
-
         <div id="pad-wrapper">
-
-            <!-- UI Elements section -->
             <div class="row-fluid ui-elements">
-                <h4>服务器负载</h4>
-                <div class="span5 knobs">
-                    <div class="knob-wrapper">
-                        <input type="text" value="50" class="knob" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#30a1ec" data-bgcolor="#d4ecfd" data-width="150" />
-                        <div class="info">
-                            <div class="param">
-                                <span class="line blue"></span>
-                                Active users
-                            </div>
-                        </div>
-                    </div>
-                    <div class="knob-wrapper">
-                        <input type="text" value="75" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#3d88ba" data-bgcolor="#d4ecfd" data-width="150" />
-                        <div class="info">
-                            <div class="param">
-                                <span class="line blue"></span>
-                                % disk space usage
-                            </div>
-                        </div>
-                    </div>                        
-                </div>
-                <div class="span6 showcase">
-                    <div class="ui-sliders">
-                        <div class="slider slider-sample1 vertical-handler"></div>
-                        <div class="slider slider-sample2"></div>
-                        <div class="slider slider-sample3"></div>
-                    </div>
-                    <div class="ui-group">
-                        <a class="btn-flat inverse">Large Button</a>
-                        <a class="btn-flat gray">Large Button</a>
-                        <a class="btn-flat default">Large Button</a>
-                        <a class="btn-flat primary">Large Button</a>
-                    </div>                        
-
-                    <div class="ui-group">
-                        <a class="btn-flat icon">
-                            <i class="tool"></i> Icon button
-                        </a>
-                        <a class="btn-glow small inverse">
-                            <i class="shuffle"></i>
-                        </a>
-                        <a class="btn-glow small primary">
-                            <i class="setting"></i>
-                        </a>
-                        <a class="btn-glow small default">
-                            <i class="attach"></i>
-                        </a>
-                        <div class="ui-select">
-                            <select>
-                                <option selected="" />Dropdown
-                                <option />Custom selects
-                                <option />Pure css styles
-                            </select>
-                        </div>
-
-                        <div class="btn-group">
-                            <button class="glow left">LEFT</button>
-                            <button class="glow right">RIGHT</button>
-                        </div>
-                    </div>
-                </div>
+                <h1 style="color: #696efd;">欢迎的登陆&nbsp;&nbsp;<b>就租车吧</b>&nbsp;&nbsp;后台管理系统</h1>
             </div>
-            <!-- end UI elements section -->
-
         </div>
     </div>
 </div>

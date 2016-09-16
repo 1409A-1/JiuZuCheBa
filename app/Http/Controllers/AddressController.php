@@ -64,8 +64,18 @@ class AddressController extends Controller
 
     public function addrList()
     {
-        return view('admin.address.addrList');
+        $arr = DB::table('address')
+            ->where('parent_id',0)
+            ->get();
+        foreach($arr as $k => $val){
+            $arr2 = DB::table('address')
+                ->where('parent_id',$val['address_id'])
+                ->get();
+            $arr[$k]['son'] = $arr2;
+        }
+        return view('admin.address.addrList',['data' => $arr]);
     }
+
     public function addrIns()
     {
         return view('admin.address.addrIns');
@@ -85,52 +95,51 @@ class AddressController extends Controller
      */
     public function typeIns(Request $request)
     {
-        if($request->input('city_one') == ''){
-            echo 1;//首字母不能空
-        }else{
-           if($request->input('city_one_p') == ''){
-               echo 2;//城市不能为空
-           }else{
-               if($request->input('city_two') == ''){
-                   echo 3;//市/区不能为空
-               }else{
-                   $address_arr =DB::table('address')
-                       ->where(['address_name' => $request->input('city_one')])
-                       ->first();
-                   if($address_arr['address_name'] == $request->input('city_one')){
-                       $address_arr2 =DB::table('address')
-                           ->where(['address_name' => $request->input('city_two')])
-                           ->first();
-                       if($address_arr2['address_name'] == $request->input('city_two')){
-                           echo 4;//城市已经存在
-                       }else{
-                           DB::table('address')
-                               ->insert([
-                                   'address_name' => $request->input('city_two'),
-                                   'parent_id'    => $address_arr['address_id'],
-                                   'type'         => $request->input('type')
-                               ]);
-                       }
-                   }else{
-                       DB::table('address')
-                           ->insert([
-                               'address_name' => $request->input('city_one'),
-                               'parent_id'    => 0,
-                               'abridge'      => $request->input('city_one_p')
-                           ]);
-                       $address_arr3 = DB::table('address')
-                           ->where(['address_name' => $request->input('city_one')])
-                           ->first();
-                       DB::table('address')
-                           ->insert([
-                               'address_name'  => $request->input('city_two'),
-                               'parent_id'     => $address_arr3['address_id'],
-                               'type'          =>  $request->input('type')
-                           ]);
-                       echo 0;//添加成功
-                   }
-               }
-           }
+        $arr = $request->all();
+        if ($arr['city'] == '地级市') {
+            return 1;die;//地级市不能为空
+        }
+        if ($arr['county'] == '市、县级市、县') {
+            return 2;die;//市、县级市、县不能为空
+        }
+        $ping = new \pin();
+        $cityFirst = $ping->Pinyin($arr['city']);
+        $countyFirst = $ping->Pinyin($arr['county']);
+        $str1 = strtoupper(substr($cityFirst,0,1));
+        $str2 = strtoupper(substr($countyFirst,0,1));
+        $address_city =DB::table('address')
+            ->where(['address_name' => $arr['city']])
+            ->first();
+        $parent_id = $address_city['address_id'];
+        if ($address_city) {
+            $address_county = DB::table('address')
+                ->where(['address_name' => $arr['county']])
+                ->first();
+            if ($address_county) {
+                return 3;die;//不能重复添加
+            } else {
+                DB::table('address')
+                    ->insert([
+                        'address_name' => $arr['county'],
+                        'abridge'       => $str2,
+                        'parent_id'        => $parent_id
+                    ]);
+                return 0;die;//添加成功
+            }
+        } else {
+            DB::table('address')
+                ->insert([
+                    'address_name' => $arr['city'],
+                    'parent_id'    => 0,
+                    'abridge'      => $str1
+                ]);
+            DB::table('address')
+                ->insert([
+                    'address_name' => $arr['county'],
+                    'parent_id'    => $parent_id,
+                    'abridge'      => $str2
+                ]);
+            return 0;die;
         }
     }
     public function addressServer()
@@ -183,5 +192,15 @@ class AddressController extends Controller
                 }
             }
         }
+    }
+
+    public function typeInfo(Request $request)
+    {
+        $id = $request -> input('id');
+        $arr = DB::table('address')
+            ->where('address_id',$id)
+            ->first();
+        $county = json_encode($arr);
+        echo $county;
     }
 }

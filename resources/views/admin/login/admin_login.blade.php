@@ -72,10 +72,10 @@
                 <span id="user_name" style="color: red;"></span>
                 <input class="span12" name="password" type="password" required="required" placeholder="Your Password" />
                 <span id="password" style="color:red;"></span>
-                <a href="#" class="forgot">忘记密码？联系管理员。</a>
+                {{--<a href="#" class="forgot">忘记密码？联系管理员。</a>--}}
                 <div class="remember">
-                    <input id="remember-me" type="checkbox"/>
-                    <label for="remember-me">七天免登陆</label>
+                    {{--<input id="remember-me" type="checkbox"/>--}}
+                    {{--<label for="remember-me">七天免登陆</label>--}}
                 </div>
                 <button class="btn-glow primary login" id="signin">登陆</button>
             </div>
@@ -105,8 +105,6 @@
             });
         </script>
         <div class="span4 no-account">
-            <p>Don't have an account?</p>
-            <a href="signup.html">Sign up</a>
         </div>
     </div>
 
