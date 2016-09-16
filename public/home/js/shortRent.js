@@ -853,7 +853,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var l = 0; l < area2.length; l++) {
                             for (var m = 0; m < data2.length; m++) {
                                 if (area2[l] == data2[m]) {
-                                    html = "<li><a store_id='" + id2[l] + "' num='" + l + "' lng='" + lng2[l] + "' lat='" + lat2[l] + "''>" + name2[l] + "</a></li>";
+                                    html = "<li><a store_id='" + id2[l] + "' num='" + l + "' lng='" + lng2[l] + "' lat='" + lat2[l] + "'>" + name2[l] + "</a></li>";
                                     $("#returnStore .store ul").eq(m).append(html);
                                 }
                             }
