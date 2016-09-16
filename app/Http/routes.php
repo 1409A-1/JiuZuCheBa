@@ -39,6 +39,10 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('messageDown', 'HomeUserController@messageDown');
     //订单预订展示
     Route::post('subOrder', 'HomeOrderController@subOrder');
+    //使用get查看时404页面
+    Route::get('subOrder', function(){
+        return view('home.404.404');
+    });
     //订单确认提交
     Route::get('orderAdd', 'HomeOrderController@orderAdd');
     //订单生成
@@ -68,7 +72,7 @@ Route::post('loginPro', 'LoginController@loginPro');
 //前台退出登录
 Route::get('logout', 'LoginController@loginOut');
 //短租
-Route::get('short', 'IndexController@short');
+Route::match(['get', 'post'], 'short', 'IndexController@short');
 //长租
 Route::get('long', 'IndexController@long');
 

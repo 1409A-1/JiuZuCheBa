@@ -4,7 +4,7 @@ $(function(){
 //获取订单信息
 function getData(){
     //if (order_id && order_id > 0) {
-    if (result.ord_id > 0) {
+    if (result) {
         var info1=$("#orderInfo").find("a"),
             info2=$(".carInfo"),
             info3=$("#takeInfo"),

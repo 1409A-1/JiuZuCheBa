@@ -37,11 +37,11 @@
                                 <input type="text" style="margin-left:20px;" name="mobile_code" id="mobile_code">
                             </li>
                             <li>
-                                <input id="phone" type="button" value="免费获取验证码">
+                                <input id="phone" type="button" value="免费获取验证码" style="cursor: pointer">
                             </li>
                         </ul>
                     </div>
-                    <button id="confirm">确认修改<i></i></button>
+                    <button id="confirm" style="cursor: pointer">确认修改<i></i></button>
                 </div>
                 </form>
             </div>
