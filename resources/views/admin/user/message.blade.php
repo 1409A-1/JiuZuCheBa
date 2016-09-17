@@ -279,6 +279,13 @@
                 })
             })
 
+            she=$("a[href='http://www.test.com/JiuZuCheBa/public/messageList']");
+            she.parent().siblings(".active").children('.pointer').remove();
+            she.parent().siblings(".active").children(".active").removeClass("active");
+            she.parent().siblings(".active").removeClass("active");
+            she.parent().addClass("active");
+            she.parent().prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
+
             // jQuery Knobs
             $(".knob").knob();
 
