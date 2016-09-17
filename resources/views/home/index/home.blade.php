@@ -143,7 +143,6 @@
                                     <a>交通路线：</a>
                                     <p class="storeWay"></p>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -183,9 +182,8 @@
                         <div class="hourBox"></div>
                     </div>
                 </div>
-
-
-                <form id="fm" method="post" action="" onsubmit="return check();">
+                <form id="fm" method="post" action="{{ url('short') }}" onsubmit="return check();">
+                    <input type="hidden" value="{{ csrf_token() }}" name="_token"/>
                     <input id="take_id" name="take_id" type="hidden">
                     <input id="week" name="takeWeek" type="hidden">
                     <input id="startHours1" name="startHours1" type="hidden">
@@ -199,7 +197,7 @@
                     <input id="begin_date" name="begin_date" type="hidden">
                     <input id="end_date" name="end_date" type="hidden">
                 <!--预订按钮-->
-                <input id="startBook" value="开始预订" onclick="return yuding();" type="submit">
+                <input id="startBook" value="开始预订" onclick="return yuding();" type="submit" style="cursor:pointer">
                 </form>
             </div>
             <!--优惠套餐-->
