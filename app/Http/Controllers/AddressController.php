@@ -173,4 +173,20 @@ class AddressController extends Controller
         $county = json_encode($arr);
         echo $county;
     }
+
+//地区城市类型的修改
+    public function changeAddType(Request $request)
+    {
+        $type = $request->input('type');  //要修改的类型 id
+        $a_id = $request->input('a_id');  //要修改的类型 id
+        $result = DB::table('address')
+            ->where('address_id', $a_id)
+            ->update(['type'=> $type]);
+        if ($result) {
+            echo 1;
+        } else {
+            echo 2;
+        }
+
+    }
 }

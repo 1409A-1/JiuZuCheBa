@@ -134,6 +134,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addressTwo','AddressController@addressTwo');
 
     Route::get('addrList','AddressController@addrList');//地区列表
+    Route::get('changeAddType','AddressController@changeAddType');//地区城市类型修改
     Route::post('typeInfo','AddressController@typeInfo');//地区列表操作
     Route::get('addrSelect','AddressController@addrSelect');//地区列表
     Route::get('addrIns','AddressController@addrIns');//地区添加页面
