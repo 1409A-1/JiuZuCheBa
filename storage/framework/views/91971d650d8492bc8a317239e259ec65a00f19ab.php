@@ -1,6 +1,5 @@
 ﻿<!-- this page specific styles -->
 <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/index.css" type="text/css" media="screen" />
-
 <!-- navbar -->
 <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <!-- end navbar -->
@@ -9,10 +8,8 @@
 <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <!-- end sidebar -->
 
-
 <!-- main container -->
 <div class="content">
-
     <div class="container-fluid">
 
         <!-- upper main stats -->
@@ -120,7 +117,9 @@
 
         </div>
     </div>
+    </iframe>  
 </div>
+
 
 <!-- scripts -->
 <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>

@@ -97,6 +97,7 @@
             $("input[type=reset]").click(function(){
                 $("input[type=text]").focus();
             });
+            
             // toggle form between inline and normal inputs
             var $buttons = $(".toggle-inputs button");
             var $form = $("form.new_user_form");
@@ -112,6 +113,15 @@
                     $form.removeClass("inline-input");
                 }
             });
+
+            she=$("a[href='http://www.test.com/JiuZuCheBa/public/brandList']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
         });
     </script>
 

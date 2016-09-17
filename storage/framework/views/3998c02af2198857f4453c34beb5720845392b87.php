@@ -67,7 +67,7 @@
             </ul>
         </li>
         <li>
-            <a href="messageList">
+            <a href="<?php echo e(url('messageList')); ?>">
                 <i class="icon-edit"></i>
                 <span>用户留言管理</span>
             </a>
