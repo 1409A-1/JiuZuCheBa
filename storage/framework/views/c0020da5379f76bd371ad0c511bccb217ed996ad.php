@@ -280,7 +280,7 @@
                     previousPoint = null;
                 }
             });
-            she=$("a[href='http://www.test.com/JiuZuCheBa/public/userList']");
+            she=$("a[href='<?php echo e(url('userList')); ?>']");
             she.parent().parents('li').siblings(".active").children('.pointer').remove();
             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
             she.parent().parents('li').siblings(".active").removeClass("active");

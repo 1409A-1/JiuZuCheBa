@@ -26,8 +26,6 @@
 <!--头部-->
 
 <div class="top">
-    <a id="ibangkf" href="http://www.ibangkf.com">客服系统</a>
-    <script language="javascript" src="http://c.ibangkf.com/i/c-hhyhhy.js"></script>
     <div class="top_box">
         <a href="" rel="nofollow">中国互联网连锁租车品牌</a>
         <ul class="top_menu">
@@ -44,8 +42,7 @@
                     <div class="userInfo">
                         <p><a href="<?php echo e(url('userInfo')); ?>" rel="nofollow">账户管理</a></p>
                         <p><a href="<?php echo e(url('message')); ?>" rel="nofollow">公开留言</a></p>
-                        <p><a href="<?php echo e(url('logout')); ?>">退出</a></p>
-
+                        <p><a href="<?php echo e(url('logOut')); ?>">退出</a></p>
                     </div>
                 </div>
                 <?php endif; ?>
@@ -87,3 +84,5 @@
         }
     })
 </script>
+<a id="ibangkf" href="http://www.ibangkf.com">客服系统</a>
+<script language="javascript" src="http://c.ibangkf.com/i/c-hhyhhy.js"></script>

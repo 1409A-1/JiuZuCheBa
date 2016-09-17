@@ -131,7 +131,7 @@
     <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
     <script>
         $(function(){
-            she=$("a[href='http://www.test.com/JiuZuCheBa/public/carIns']");
+            she=$("a[href='<?php echo e(url('carIns')); ?>']");
             she.parent().parents('li').siblings(".active").children('.pointer').remove();
             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
             she.parent().parents('li').siblings(".active").removeClass("active");
