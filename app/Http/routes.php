@@ -183,3 +183,5 @@ Route::post('getServerList','PublicController@getServerList');  // 获取服务�
 Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
 Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
 Route::post('getSpecialCar','PublicController@getSpecialCar');  // 获取当前城市热门车型
+Route::post('longRentApply','PublicController@longRentApply');  // 长租申请
+Route::post('getCarBrandByServer','PublicController@getCarBrandByServer');  // 根据门店获取车辆品牌
