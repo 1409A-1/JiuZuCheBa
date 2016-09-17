@@ -9,7 +9,6 @@
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />

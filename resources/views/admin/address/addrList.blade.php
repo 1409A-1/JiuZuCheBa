@@ -41,14 +41,7 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="{{asset('admin')}}/css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
+
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -72,9 +65,9 @@
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                         @foreach($data as $v)
                             <tr>
-                                <td><span class="city" id="{{ $v['address_id'] }}" style=""><h5>{{ $v['address_name'] }}</h5></span></td>
+                                <td><span class="city" id="{{ $v['address_id'] }}" style="cursor: pointer"><h5>{{ $v['address_name'] }}</h5></span></td>
                                 @foreach($v['son'] as $r)
-                                <td><span class="type" id="{{ $r['address_id'] }}" style="cursor: pointer">{{ $r['address_name'] }}</span></td>
+                                <td><span class="type" id="{{ $r['address_id'] }}" style="">{{ $r['address_name'] }}</span></td>
                                     @endforeach
                             </tr>
                             @endforeach
@@ -88,7 +81,7 @@
     <script src="{{ asset('admin') }}/js/js.js"></script>
     <script>
         $(function(){
-            $(".type").click(function(){
+            $(".city").click(function(){
                 var id = $(this).attr('id');
                 var _token = $("input[name=_token]").val();
                 $.ajax({

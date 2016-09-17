@@ -38,6 +38,12 @@ class AddressController extends Controller
     }
     public function addServer(Request $request)
     {
+        $arr = DB::table('server')
+            ->where(['server_name' => $request->input('server_name')])
+            ->first();
+        if ($arr) {
+            echo "<script>alert('服务点存在。'); location.href='".url('address')."';</script>";die;
+        }
         if($request->input('one') == 0){
             echo "<script>alert('请选择省/直辖市'); location.href='".url('address')."';</script>";die;
         }
@@ -81,15 +87,6 @@ class AddressController extends Controller
         return view('admin.address.addrIns');
 
     }
-    public function ping(Request $request)
-    {
-        $ping = new \pin();
-        $name = $request->input('name');
-        $str = $ping -> Pinyin("$name");
-        $str = substr($str,0,1);
-        echo strtoupper($str);
-    }
-
     /**
      * @param Request $request
      */
@@ -133,6 +130,10 @@ class AddressController extends Controller
                     'parent_id'    => 0,
                     'abridge'      => $str1
                 ]);
+            $address_city =DB::table('address')
+                ->where(['address_name' => $arr['city']])
+                ->first();
+            $parent_id = $address_city['address_id'];
             DB::table('address')
                 ->insert([
                     'address_name' => $arr['county'],
