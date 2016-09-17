@@ -352,3 +352,42 @@
 
 <!-- 底部 -->
 @include('common.home_footer')
+
+<script type="text/javascript">
+$("#submit").click(function () {
+    var company = $("#company"),
+        name = $("#name"),
+        tel = $("#tel"),
+        email = $("#email"),
+        nameReg = /^([\u4e00-\u9fa5]+|([a-z]+\s?)+)$/,
+        telReg = /^0?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])[0-9]{8}$/,
+        city = $("#longCity").find(".show a").html(),
+        date = $("#longDate").find("a").html(),
+        duration = $("#longDuration").find(".show a").html(),
+        carNum = $("#carNumber").find("input").val(),
+        type_id = $("#carType").find(".show a").attr("type_id"),
+        car_brand = $('#brand').find(".show a").attr("brand_id");
+        
+    if (name.val() == '') {
+        name.focus();
+        layer.tips('姓名不能为空', '#submit', { tips: [3, '#0FA6D8'] });
+    } else {
+        if (nameReg.test(name.val())) {
+            if (tel.val() == '') {
+                tel.focus();
+                layer.tips('手机号不能为空', '#submit', { tips: [3, '#0FA6D8'] });
+            } else {
+                if (telReg.test(tel.val())) {
+                    save(name.val(), tel.val(), city, duration, carNum, type_id, date, car_brand);
+                } else {
+                    tel.focus();
+                    layer.tips('手机号格式不正确', '#submit', { tips: [3, '#0FA6D8'] });
+                }
+            }
+        } else {
+            name.focus();
+            layer.tips('姓名请输入中文', '#submit', { tips: [3, '#0FA6D8'] });
+        }
+    }
+});
+</script>

@@ -162,7 +162,7 @@ function book(){
     });
 
     //城市选择
-    city_store("北京市", 0);
+    city_store("北京", 0);
     longCity.find(".city_list_body a").click(function(){
         longCity.find(".show a").html($(this).html());
         longCityList.fadeToggle("fast");
@@ -319,7 +319,7 @@ function book(){
                     title: '联系信息',
                     content: $(".longRentApply")
                 });
-                apply();
+                // apply();
             }else{
                 input.addClass("error").val("");
                 input.attr({"placeholder":"请输入数字"}).focus();
@@ -583,7 +583,7 @@ function save(name, mobile, city, duration, carNum, type_id, date, brand_id) {
                 location.href = 'login';
             } else if (result == 1) {
                 layer.alert("提交成功,我们将在1个工作日内联系您.");
-                setTimeout(function () { location.reload() }, 2000);
+                setTimeout(function () { location.reload() }, 1000);
             } else {
                 layer.alert("提交失败,请致电 110、120、119 电话预定.");
             }
@@ -596,7 +596,7 @@ function position(){
     $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(_result) {
         var city="武汉市";
         if (remote_ip_info.ret == '1') {
-            city = remote_ip_info.city + '市';
+            city = remote_ip_info.city;
         }
         $("#longCity .show>a").html(city);
         Brand(city);
