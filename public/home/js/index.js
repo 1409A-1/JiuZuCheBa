@@ -1023,7 +1023,7 @@ function position() {
         dataType: 'jsonp',
         success: function (e) {
 
-            var city = e.content.address_detail.city,
+            var city = e.content.address_detail.city.replace('市', ''),
                 point = new BMap.Point(e.content.point.x, e.content.point.y);
 
             city_store(city, 0);//初始化加载门店
