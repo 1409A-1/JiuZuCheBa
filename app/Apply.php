@@ -25,13 +25,11 @@ class Apply extends Authenticatable
 //    ];
 
 //表名
-    protected $table = 'Apply';
+    protected $table = 'apply';
 //默认id
     protected $primaryKey = 'apply_id';
 //时间戳
     public $timestamps=false;
 
-
-
-
+    protected $guarded = [];
 }

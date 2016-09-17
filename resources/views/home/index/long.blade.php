@@ -121,19 +121,19 @@
                 <span class="longTitR">取车时间</span>
                 <div class="longLine1">
                     <div class="longLine1_L" id="brand">
-                    <div class="show">
-                        <a>标致</a>
-                        <div class="Arrow"></div>
+                        <div class="show">
+                            <a></a>
+                            <div class="Arrow"></div>
+                        </div>
+                        <div id="brandBox">
+                            <ul></ul>
+                        </div>
                     </div>
-                    <div id="brandBox">
-                        <ul><li><a>标致</a></li><li><a>别克</a></li><li><a>长城</a></li><li><a>大众</a></li><li><a>风神</a></li><li><a>起亚</a></li><li><a>日产</a></li><li><a>雪佛兰</a></li><li><a>雪铁龙</a></li></ul>
-                    </div>
-                    </div>
-                     <hr>
+                    <hr>
                     
                     <!--取车时间-->
                     <div class="longLine1_R" id="longDate">
-                        <a>2016-09-13</a>
+                        <a></a>
                         <div class="Arrow"></div>
                         <div id="calendarLong"></div>
                     </div>
@@ -143,11 +143,11 @@
                 <span>车型</span>
                 <div class="longLine2" id="carType">
                     <div class="show">
-                        <a type_id="40" brand_id="13">508 / 三厢    / 2.0L / 自动   </a>
+                        <a></a>
                         <div class="Arrow"></div>
                     </div>
                     <div id="carTypeBox">
-                        <ul><li><a brand_id="13" type_id="40">508 / 三厢    / 2.0L / 自动   </a></li><li><a brand_id="13" type_id="45">207 / 三厢    / 1.4L / 手动   </a></li><li><a brand_id="13" type_id="61">301 / 三厢    / 1.6L / 自动   </a></li></ul>
+                        <ul></ul>
                     </div>
                 </div>
                 <!--预订按钮-->
@@ -326,8 +326,8 @@
 <div class="longRentApply">
     <ul class="ul1">
         <li>企业/个人名称</li>
-        <li><a>*</a>联系人</li>
-        <li><a>*</a>联系电话</li>
+        <li><a>*</a> 联系人</li>
+        <li><a>*</a> 联系电话</li>
         <li>Email</li>
     </ul>
     <ul class="ul2">

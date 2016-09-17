@@ -1,7 +1,7 @@
 @include('common.home_header')
 <script>
     eval('var fast = ' + '{!! $fast !!}');
-    var shopID = "1";
+    var shopID = "";
     var StartDateTime = ""+" 10:00";
     var EndDateTime = "" + " 10:00";
     var carID = "";

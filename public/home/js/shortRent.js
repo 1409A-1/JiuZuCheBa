@@ -38,7 +38,7 @@ function loading() {
         IN_TYPE = 2;
     } else if (shopID != "" && shopID) {
         IN_TYPE = 3;
-    } 
+    }
     switch (IN_TYPE) {
         case 0: {//直接进入
             position();//定位
@@ -1301,7 +1301,7 @@ function position() {
         url: "http://api.map.baidu.com/location/ip?ak=G1124lxcYCI56HOSOx1YIN6e",
         dataType: 'jsonp',
         success: function (e) {
-            var city = e.content.address_detail.city;
+            var city = e.content.address_detail.city.replace('市', '');
 
             //初始化加载门店
             $("#takeCity").find(".show>a").html(city);

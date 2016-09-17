@@ -66,11 +66,11 @@ Route::get('loginBox', function(){
     return view('home.login.loginBox');
 });
 //前台盒子登录的验证接值
-Route::get('loginBoxPro', 'LoginController@loginBoxPro');
+Route::post('loginBoxPro', 'LoginController@loginBoxPro');
 //前台登录接值验证
 Route::post('loginPro', 'LoginController@loginPro');
 //前台退出登录
-Route::get('logout', 'LoginController@loginOut');
+Route::get('logOut', 'LoginController@loginOut');
 //短租
 Route::match(['get', 'post'], 'short', 'IndexController@short');
 //长租
@@ -79,16 +79,13 @@ Route::get('long', 'IndexController@long');
 
 //后台登录
 Route::get('admins','AdminController@adminLogin');
-
 //后台登出
 Route::get('logout','AdminController@logout');
-
 //判断用户密码
 Route::post('signin','AdminController@adminLogin');
 
 Route::group(['middleware' => ['nologin']], function(){
     Route::get('indexs','AdminController@indexs');
-  
   	/*
 	   类型管理
 	 */
@@ -137,6 +134,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('addressTwo','AddressController@addressTwo');
 
     Route::get('addrList','AddressController@addrList');//地区列表
+    Route::post('typeInfo','AddressController@typeInfo');//地区列表操作
     Route::get('addrSelect','AddressController@addrSelect');//地区列表
     Route::get('addrIns','AddressController@addrIns');//地区添加页面
     Route::post('typeIns','AddressController@typeIns');//地区的添加
@@ -185,3 +183,5 @@ Route::post('getServerList','PublicController@getServerList');  // 获取服务�
 Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
 Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
 Route::post('getSpecialCar','PublicController@getSpecialCar');  // 获取当前城市热门车型
+Route::post('longRentApply','PublicController@longRentApply');  // 长租申请
+Route::post('getCarBrandByServer','PublicController@getCarBrandByServer');  // 根据门店获取车辆品牌

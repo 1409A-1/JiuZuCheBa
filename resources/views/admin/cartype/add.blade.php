@@ -40,8 +40,6 @@
 	<!-- main container -->
     <div class="content">
         
-        <!-- settings changer -->
-        
         <div class="container-fluid">
             <div id="pad-wrapper" class="new-user">
                 <div class="row-fluid header">

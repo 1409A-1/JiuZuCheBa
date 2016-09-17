@@ -2,14 +2,20 @@
 //var api_url = "http://192.168.0.252:1111/";
 //var api_url = "http://localhost:4471/";
 
+// ----------
 var getCarTypeList = "getCarTypeList"; // 获取车辆类型
+// ----------
 
+// ----------
 var city_list_url = api_url + "/api/shoplist/GetCityList";//获取存在门店的城市
 var city = "getCityList"; // 新从数据库获取存在门店的城市
+// ----------
 
+// ----------
 var district_shop_list_url = api_url + "/api/shoplist/GetDistrictShop";//获取城市的区域门店列表
 var shop_info_url = api_url + "/api/shoplist/GetShopInfo";//获取门店详细信息
 var server = 'getServerList'; // 获取城市的区域门店列表  +  获取门店详细信息
+// ----------
 
 var city_info_code_url = api_url + "/api/City/GetCityInfo";//城市信息
 var autoinfomation_url = api_url + "/api/autoinfomation";//车辆信息
@@ -29,14 +35,18 @@ var maxrent_auto_url = api_url + "/api/AutoConfig/GetMaxRentDay";//最大租期
 var brand_auto_url = api_url + "/api/Brand/GetBrandList";//车辆品牌 
 var class_auto_url = api_url + "/api/AutoClass/List2";//所有车型列表
 
+// ----------
 var class_list_auto_url = api_url + "/api/AutoClass/List";//车型列表
 var car = 'getCarList'; // 车型列表
+// ----------
 
 var autoclass_info_url = api_url + "/api/AutoClass/GetAutoClassInfo";//获取车型信息
 var price_list_url = api_url + "/api/AutoClass/GetPriceList";//获取门店车型价格列表
 
+// ----------
 var special_class_list_url = api_url + "/api/AutoClass/GetSpecialClassList";//获取特价专区列表
 var special_car = "getSpecialCar"//获取特价专区列表
+// ----------
 
 var addservice_url = api_url + "/api/AddedService/List";//增值服务列表
 var order_list = api_url + "/api/Customer/Orders?token={0}&pagesize={1}&pageindex={2}&orderstate={3}";//用户的订单列表
@@ -58,12 +68,23 @@ var shop_appraiselist_delete = api_url + '/api/shoplist/GetShopDeleteCusScore';/
 var countryMap = api_url + '/api/shoplist/get_country_map';//全国地图
 var specialCarType = api_url + '/api/AutoClass/GetSpecialClassList';//特价车型
 var cityCarType = api_url + '/api/AutoClass/list_by_city';//城市筛选车型
+
+// ----------
+var shopCarType = api_url + '/api/AutoClass/list_by_shop';//城市筛选车型
+var getCarBrandByServer = 'getCarBrandByServer';
+// ----------
+
 var shopCarType = api_url + '/api/AutoClass/list_by_shop';//城市筛选车型
 var noCommentOrder = api_url + '/api/customer/getcusbyappraise';//待评价订单
 
 var saveorder_url = api_url + "/api/Order/Save";
 var order_info_url = api_url + "/api/Order/LoadOrder";//单个订单详细信息 
+
+// ----------
 var long_rent_url = api_url + "/api/longrentnew/create";//长租申请
+var longRentApply = 'longRentApply'; // 长租申请
+// ----------
+
 var auto_list_url = api_url + "/api/AutoInformation/GetAutoList";//获取车辆列表
 
 var load_score_configure_url = api_url + "/api/Configure/LoadScorePaymentConfig";

@@ -40,14 +40,7 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="{{asset('admin')}}/css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
+
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -63,25 +56,9 @@
 
                     <div class="row-fluid filter-block" >
                         <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
-                            <input type="text" class="search" />
-                            <a class="btn-flat success new-product" id="ins">添加型号</a>
+
                         </div>
                     </div>
-                    <script src="{{asset('admin')}}/js/js.js"></script>
-                    <script>
-                        $(function(){
-                            $("#ins").click(function(){
-                                location.href='model_add';
-                            });
-                        });
-                    </script>
                     <div class="row-fluid" style="width:500px;float:left;">
                         <form action="{{url('addServer')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
@@ -92,7 +69,7 @@
                                     <input type="hidden" id="city_name" name="city_name"/>
                                 </tr>
                                 <tr>
-                                    <td>省/直辖市:</td>
+                                    <td>省/市:</td>
                                     <td>
                                         <select name="one" id="address_one" style="height: 30px" class="map">
                                             <option value="0">请选择...</option>
@@ -103,7 +80,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>市/区:</td>
+                                    <td>县/区:</td>
                                     <td>
                                         <select name="two" id="address_two" style="height: 30px" class="map">
                                             <option value="0">请选择...
@@ -150,6 +127,7 @@
                     </div>
                 </div>
                 <!-- end products table -->
+                <script src="{{ asset('admin') }}/js/js.js"></script>
                 <!--百度地图接口-->
                 <script type="text/javascript">
                     var map = new BMap.Map("allmap");  // 创建Map实例
@@ -190,6 +168,7 @@
                 </script>
 
                 <!--联动-->
+
                 <script>
                        $(function(){
                            $("#address_one").change(function(){

@@ -38,6 +38,12 @@ class AddressController extends Controller
     }
     public function addServer(Request $request)
     {
+        $arr = DB::table('server')
+            ->where(['server_name' => $request->input('server_name')])
+            ->first();
+        if ($arr) {
+            echo "<script>alert('服务点存在。'); location.href='".url('address')."';</script>";die;
+        }
         if($request->input('one') == 0){
             echo "<script>alert('请选择省/直辖市'); location.href='".url('address')."';</script>";die;
         }
@@ -64,78 +70,78 @@ class AddressController extends Controller
 
     public function addrList()
     {
-        return view('admin.address.addrList');
+        $arr = DB::table('address')
+            ->where('parent_id',0)
+            ->get();
+        foreach($arr as $k => $val){
+            $arr2 = DB::table('address')
+                ->where('parent_id',$val['address_id'])
+                ->get();
+            $arr[$k]['son'] = $arr2;
+        }
+        return view('admin.address.addrList',['data' => $arr]);
     }
+
     public function addrIns()
     {
         return view('admin.address.addrIns');
 
     }
-    public function ping(Request $request)
-    {
-        $ping = new \pin();
-        $name = $request->input('name');
-        $str = $ping -> Pinyin("$name");
-        $str = substr($str,0,1);
-        echo strtoupper($str);
-    }
-
     /**
      * @param Request $request
      */
     public function typeIns(Request $request)
     {
-        if($request->input('city_one') == ''){
-            echo 1;//首字母不能空
-        }else{
-           if($request->input('city_one_p') == ''){
-               echo 2;//城市不能为空
-           }else{
-               if($request->input('city_two') == ''){
-                   echo 3;//市/区不能为空
-               }else{
-                   $address_arr =DB::table('address')
-                       ->where(['address_name' => $request->input('city_one')])
-                       ->first();
-                   if($address_arr['address_name'] == $request->input('city_one')){
-                       $address_arr2 =DB::table('address')
-                           ->where(['address_name' => $request->input('city_two')])
-                           ->first();
-                       if($address_arr2['address_name'] == $request->input('city_two')){
-                           echo 4;//城市已经存在
-                       }else{
-                           DB::table('address')
-                               ->insert([
-                                   'address_name' => $request->input('city_two'),
-                                   'parent_id'    => $address_arr['address_id'],
-                                   'type'         => $request->input('type')
-                               ]);
-                       }
-                   }else{
-                       DB::table('address')
-                           ->insert([
-                               'address_name' => $request->input('city_one'),
-                               'parent_id'    => 0,
-                               'abridge'      => $request->input('city_one_p')
-                           ]);
-                       $address_arr3 = DB::table('address')
-                           ->where(['address_name' => $request->input('city_one')])
-                           ->first();
-                       DB::table('address')
-                           ->insert([
-                               'address_name'  => $request->input('city_two'),
-                               'parent_id'     => $address_arr3['address_id'],
-                               'type'          =>  $request->input('type')
-                           ]);
-                       echo 0;//添加成功
-                   }
-               }
-           }
+        $arr = $request->all();
+        if ($arr['city'] == '地级市') {
+            return 1;die;//地级市不能为空
         }
-    }
-    public function addressServer()
-    {
-
+        if ($arr['county'] == '市、县级市、县') {
+            return 2;die;//市、县级市、县不能为空
+        }
+        $ping = new \pin();
+        $cityFirst = $ping->Pinyin($arr['city']);
+        $countyFirst = $ping->Pinyin($arr['county']);
+        $str1 = strtoupper(substr($cityFirst,0,1));
+        $str2 = strtoupper(substr($countyFirst,0,1));
+        $address_city =DB::table('address')
+            ->where(['address_name' => $arr['city']])
+            ->first();
+        $parent_id = $address_city['address_id'];
+        if ($address_city) {
+            $address_county = DB::table('address')
+                ->where(['address_name' => $arr['county']])
+                ->first();
+            if ($address_county) {
+                return 3;die;//不能重复添加
+            } else {
+                DB::table('address')
+                    ->insert([
+                        'address_name' => $arr['county'],
+                        'abridge'       => $str2,
+                        'parent_id'        => $parent_id
+                    ]);
+                return 0;die;//添加成功
+            }
+        } else {
+            DB::table('address')
+                ->insert([
+                    'address_name' => $arr['city'],
+                    'parent_id'    => 0,
+                    'abridge'      => $str1
+                ]);
+            $address_city =DB::table('address')
+                ->where(['address_name' => $arr['city']])
+                ->first();
+            $parent_id = $address_city['address_id'];
+            DB::table('address')
+                ->insert([
+                    'address_name' => $arr['county'],
+                    'parent_id'    => $parent_id,
+                    'abridge'      => $str2
+                ]);
+            return 0;die;
+        }
     }
 
     /**
@@ -157,31 +163,14 @@ class AddressController extends Controller
             return redirect(url('addressList'));
         }
     }
-    public function addrSelect(Request $request)
+
+    public function typeInfo(Request $request)
     {
-        $data=$request->all();
-        if($data['server_name'] == ''){
-            return 0;//没有搜索
-        }else{
-            $ping = new \pin();
-            $str = $ping->Pinyin("$data[server_name]");
-            $str = substr($str,0,1);
-            $str =  strtoupper($str);
-            $arr = DB::table('address')
-                ->where(['address_name'=>$data['server_name']])
-                ->get();
-            if ($arr) {
-                return $arr;
-            }else{
-                $arr2 = DB::table('address')
-                    ->where(['abridge'=>$str])
-                    ->get();
-                if ($arr2) {
-                    return $arr2;
-                } else {
-                    return 1;
-                }
-            }
-        }
+        $id = $request -> input('id');
+        $arr = DB::table('address')
+            ->where('address_id',$id)
+            ->first();
+        $county = json_encode($arr);
+        echo $county;
     }
 }
