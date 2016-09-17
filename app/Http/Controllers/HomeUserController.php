@@ -91,7 +91,10 @@ class HomeUserController extends Controller
             ->get();
         if ($order) {
             foreach($order as $k=>$v) {
-                $arr['all'][]=$v;           //全部的订单
+                $arr['all'][$k]=$v;           //全部的订单
+                $or_id = $this->desc($v['ord_id']);
+                $arr['all'][$k]['ord_id'] = $or_id;
+                $v['ord_id'] = $or_id;
                 if($v['ord_pay']==6){       //订单申请中
                     $arr['6'][]=$v;
                 }
@@ -108,8 +111,6 @@ class HomeUserController extends Controller
         } else {
             $arr[]='';
         }
-
-     //print_r($arr);die;
         return view('home.user_info.order_list',['order'=>$arr]);
     }
 
@@ -222,6 +223,13 @@ class HomeUserController extends Controller
         $user_id = session('user_id');
         $user_info = DB::table('user')->where('user_id',$user_id)->first();
         return $user_info;
+    }
+//php进行加密
+    public function desc($data){
+        $privateKey="@12345678912345!";
+        $iv="@12345678912345!";
+        $encrypted=mcrypt_encrypt(MCRYPT_RIJNDAEL_128,$privateKey,$data,MCRYPT_MODE_CBC,$iv);
+        return base64_encode($encrypted);
     }
 
 

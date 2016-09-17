@@ -5,6 +5,7 @@
 <!--预定框-->
 <div class="bookBox noCopy">
     <div class="book">
+
         <div class="bookTit">
             长租服务<a>(30天以上)</a>
         </div>
@@ -47,14 +48,14 @@
                    
                     <div class="longLine1_R">
                         <div class="show">
-                            <a lat="30.56421" lng="114.35065" store_id="195">楚河汉街店</a>
+                            <a lat="" lng="" store_id=""></a>
                             <div class="Arrow"></div>
                         </div>
                         <div class="store_list" id="takeStoreList">
                             <!--行政区域-->
-                            <div class="area"><a class="active">请选择门店</a></div>
+                            <div class="area"></div>
                             <!--门店-->
-                            <div class="store"><ul></ul></div>
+                            <div class="store"></div>
                             <!--门店信息-->
                             <div class="storeInfo">
                                 <div>
@@ -63,19 +64,20 @@
                                 </div>
                                 <div>
                                     <a>营业时间：</a>
-                                    <p class="storeTime">08:00—19:30</p>
+                                    <p class="storeTime"></p>
                                 </div>
                                 <div>
                                     <a>交通路线：</a>
                                     <p class="storeWay"></p>
                                 </div>
-                                <a class="toMap">
+                                <a out_in="" storeid="" class="toMap">
                                     <img src="home/images/toMap.png"><br>
                                     查看位置
                                 </a>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
                 <!--租赁时长、用车数量-->
@@ -124,14 +126,14 @@
                         <div class="Arrow"></div>
                     </div>
                     <div id="brandBox">
-                        <ul></ul>
+                        <ul><li><a>标致</a></li><li><a>别克</a></li><li><a>长城</a></li><li><a>大众</a></li><li><a>风神</a></li><li><a>起亚</a></li><li><a>日产</a></li><li><a>雪佛兰</a></li><li><a>雪铁龙</a></li></ul>
                     </div>
                     </div>
                      <hr>
                     
                     <!--取车时间-->
                     <div class="longLine1_R" id="longDate">
-                        <a>2016-09-09</a>
+                        <a>2016-09-13</a>
                         <div class="Arrow"></div>
                         <div id="calendarLong"></div>
                     </div>
@@ -145,11 +147,7 @@
                         <div class="Arrow"></div>
                     </div>
                     <div id="carTypeBox">
-                        <ul>
-                            <li><a brand_id="13" type_id="40">508 / 三厢    / 2.0L / 自动   </a></li>
-                            <li><a brand_id="13" type_id="45">207 / 三厢    / 1.4L / 手动   </a></li>
-                            <li><a brand_id="13" type_id="61">301 / 三厢    / 1.6L / 自动   </a></li>
-                        </ul>
+                        <ul><li><a brand_id="13" type_id="40">508 / 三厢    / 2.0L / 自动   </a></li><li><a brand_id="13" type_id="45">207 / 三厢    / 1.4L / 手动   </a></li><li><a brand_id="13" type_id="61">301 / 三厢    / 1.6L / 自动   </a></li></ul>
                     </div>
                 </div>
                 <!--预订按钮-->
@@ -354,9 +352,3 @@
 
 <!-- 底部 -->
 @include('common.home_footer')
-<!-- 
-<div move="ok" class="layui-layer-title" style="cursor: move;">联系信息</div>
-<div style="height: 367px;" class="layui-layer-content">
-    
-</div>
-<span class="layui-layer-setwin"><a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a></span> -->

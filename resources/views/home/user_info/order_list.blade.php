@@ -96,21 +96,21 @@
                                                     <li class="operation">
                                                     @if($v['ord_pay']==0)
                                                             <a href="{{url('zfbPay')}}?ord_sn={{$v['ord_sn']}}">支付</a>
-                                                            <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('cancelOrder')}}?ceoyg={{$v['ord_id']}}">取消</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @elseif($v['ord_pay']==1)
-                                                            <a href="{{url('cancelOrder')}}?ord_id={{$v['ord_id']}}">取消</a>
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('cancelOrder')}}?ceoyg={{$v['ord_id']}}">取消</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @elseif($v['ord_pay']==2)
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @elseif($v['ord_pay']==3)
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @elseif($v['ord_pay']==4)
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @elseif($v['ord_pay']==5)
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @elseif($v['ord_pay']==6)
-                                                            <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                            <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     @endif
                                                 </ul>
                                             </div>
@@ -177,7 +177,7 @@
                                                             <a> 预约中</a>
                                                     </li>
                                                     <li class="operation">
-                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -245,7 +245,7 @@
                                                         <a> 租赁中</a>
                                                     </li>
                                                     <li class="operation">
-                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -313,7 +313,7 @@
                                                         <a> 完成</a>
                                                     </li>
                                                     <li class="operation">
-                                                        <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                        <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -381,7 +381,7 @@
                                                     <a> 订单已取消</a>
                                                 </li>
                                                 <li class="operation">
-                                                    <a href="{{url('orderInfo')}}?ord_id={{$v['ord_id']}}">详情</a>
+                                                    <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
                                                 </li>
                                             </ul>
                                         </div>

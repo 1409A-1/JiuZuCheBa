@@ -39,6 +39,10 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('messageDown', 'HomeUserController@messageDown');
     //订单预订展示
     Route::post('subOrder', 'HomeOrderController@subOrder');
+    //使用get查看时404页面
+    Route::get('subOrder', function(){
+        return view('home.404.404');
+    });
     //订单确认提交
     Route::get('orderAdd', 'HomeOrderController@orderAdd');
     //订单生成
@@ -68,13 +72,16 @@ Route::post('loginPro', 'LoginController@loginPro');
 //前台退出登录
 Route::get('logout', 'LoginController@loginOut');
 //短租
-Route::get('short', 'IndexController@short');
+Route::match(['get', 'post'], 'short', 'IndexController@short');
 //长租
 Route::get('long', 'IndexController@long');
 
 
 //后台登录
 Route::get('admins','AdminController@adminLogin');
+
+//后台登出
+Route::get('logout','AdminController@logout');
 
 //判断用户密码
 Route::post('signin','AdminController@adminLogin');
@@ -163,7 +170,8 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('carServerAdd','CarController@carServerAdd');//服务点车辆分配执行
     Route::post('carUnique','CarController@carUnique');//车辆分配唯一性查询
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
-    Route::get('carServerPage/{page}','CarController@carServerPage');//服务点车辆信息分页
+    Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}','CarController@carServerPage');//服务点车辆信息分页
+    Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
 
 });
 

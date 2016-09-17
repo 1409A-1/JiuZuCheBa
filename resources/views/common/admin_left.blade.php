@@ -63,6 +63,7 @@
             <ul class="submenu">
                 <li><a href="{{ url('address') }}">服务点添加</a></li>
                 <li><a href="{{ url('addressList') }}">服务点展示</a></li>
+                <li><a href="{{ url('carServer') }}">服务点车辆分配</a></li>
             </ul>
         </li>
         <li>
@@ -86,7 +87,6 @@
             <ul class="submenu">
                 <li><a href="{{ url('carIns') }}">车辆添加</a></li>
                 <li><a href="{{ url('carList') }}">车辆列表</a></li>
-                <li><a href="{{ url('carServer') }}">服务点车辆分配</a></li>
             </ul>
         </li>
         <li>

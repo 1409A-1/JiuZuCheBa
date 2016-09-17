@@ -401,7 +401,7 @@ function storeLoad(result) {
     for (var l = 0; l < area.length; l++) {
         for (var m = 0; m < data.length; m++) {
             if (area[l] == data[m]) {
-                html = "<li><a store_id='" + id[l] + "' num='" + l + "' lng='" + lng[l] + "' lat='" + lat[l] + ">" + name[l] + "</a></li>";
+                html = "<li><a store_id='" + id[l] + "' num='" + l + "' lng='" + lng[l] + "' lat='" + lat[l] + "'>" + name[l] + "</a></li>";
                 $(".store ul").eq(m).append(html);
             }
         }
@@ -1248,15 +1248,15 @@ function bind_tuijian(city) {
                     html.push("</div>");
                     html.push("<div class=\"carIcon\">");
                     html.push("<div>");
-                    html.push("<i class=\"icon icon_car2\"></i>");
+                    html.push("<i class=\"icon icon_car2\"></i> ");
                     html.push("<a>" + result[i].gearbox + "</a>");
                     html.push("</div>");
                     html.push("<div>");
-                    html.push("<i class=\"icon icon_car3\"></i>");
+                    html.push("<i class=\"icon icon_car3\"></i> ");
                     html.push("<a>" + result[i].let_litre + "</a>");
                     html.push("</div>");
                     html.push("<div class=\"last_carIcon\">");
-                    html.push("<i class=\"icon icon_car4\"></i>");
+                    html.push("<i class=\"icon icon_car4\"></i> ");
                     html.push("<a>乘坐" + result[i].seat_count + "人</a>");
                     html.push("</div>");
                     html.push("</div>");
@@ -1314,7 +1314,7 @@ function storeMap(lng, lat, id, name) {
     var infoWindow, url, html;
     url = "http://www.dafang24.com/home/doom?shop_id=" + id;
     html = "<div class='box' id='" + id + "'>" +
-      "<a class='title' href='" + url + "'>大方租车 " + name + "</a>" +
+      "<a class='title' href='" + url + "'>就租车吧 " + name + "</a>" +
       "<a class='comments' href='#" + id + "'>查看评论</a>" +
       "<a class='toStore' href='" + url + "'>立 即 订 车<i></i></a>" +
       "<div class='nav'><div class='toHere active'>" +

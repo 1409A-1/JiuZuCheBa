@@ -3,6 +3,8 @@
 <script>
     eval('var data = ' + '{!! $data !!}');
 </script>
+<script type="text/javascript" src="home/js/aes.js"></script>
+<script type="text/javascript" src="home/js/pad-zeropadding.js"></script>
 <script type="text/javascript" src="home/js/submitOrder.js"></script>
 <!--导航标题-->
 <div class="title">
@@ -25,7 +27,7 @@
 <!--订单信息-->
 <div class="orderInfoBox">
     <div class="left">
-        <h4>确认订单信息<a href="{{ url('short') }}">修改订单信息</a></h4>
+        <h4>确认订单信息<a href="{{ url('short') }}">重选车辆</a></h4>
         <!--基本信息-->
         <div class="carInfo">
             <div class="carInfoL">
@@ -121,7 +123,7 @@
         </p>
     </div>
     <div class="right">
-        <h4>费用明细</h4>
+        <h4 style="text-align: center">费用明细</h4>
         <ul>
             <li>
                 基本租车费<a id="discount"><!--优惠金额--></a>
@@ -156,3 +158,7 @@
 </div>
 <!--底部-->
 @include('common.home_footer')
+{{--防止后退--}}
+<script language="JavaScript">
+    javascript:window.history.forward(1);
+</script>

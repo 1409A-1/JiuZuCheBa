@@ -5,7 +5,7 @@ $(function () {
     index_Of();
     getData();//订单数据获取
 });
-
+clickCount = 0;
 all_price = data.price.totalFees;               //当前总价钱
 //点击事件
 function clickEvent() {
@@ -169,12 +169,21 @@ function clickEvent() {
         //                        nowTime = date_format(nowTime, "yy-MM-dd HH-mm-ss");
         //                        outTime = date_format(outTime, "yy-MM-dd HH-mm-ss");
         //                        if (date_subtract(nowTime, outTime).times >= 0) {
+
                                      benfitId = $(".yesGo").attr('benefit_id');    //使用的优惠券
                                      ////allPrice = $("#sumPrice").html();      //最终的钱
                                      // alert(all_price);
 
                                     //保存订单
-                                    orderSave(Store.takeTime, Store.returnTime, Car.id, Store.takeId, Store.returnId, all_price, benfitId);
+                                    if (clickCount > 0) {
+                                        return false;
+                                    } else {
+
+                                        orderSave(Store.takeTime, Store.returnTime, Car.id, Store.takeId, Store.returnId, all_price, benfitId);
+                                        $(this).html('提交中....');
+                                        clickCount++;
+                                    }
+                                   // alert(clickCount);
 
         //                            /*********验证身份信息*******/
         //                            $.ajax({
@@ -198,7 +207,6 @@ function clickEvent() {
 function Trim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
-console.log(data);
 //订单数据获取
 function getData() {
             var car_info = data.car_info,
@@ -402,8 +410,9 @@ function orderSave(takeTime, returnTime, carId, start_id, stop_id, allPrice, ben
                 //dataType: "jsonp",
                 success: function (result) {
                     if (result > 0) {
+                         result = desc(result);
                         //创建订单成功
-                        location.href = "orderSuccess?ord_id=" + result;
+                        location.href = "orderSuccess?ceoyg=" + result;
                     }
                     else {
                         alert("数据提交失败，请重新选择车型后再进行提交订单");
@@ -442,6 +451,17 @@ function removeByValue(arr, val) {
         }
     }
     return arr;
+}
+
+
+
+//js加密方法
+
+function desc(data){
+       var    key  = CryptoJS.enc.Latin1.parse('@12345678912345!');//密钥
+       var    iv   = CryptoJS.enc.Latin1.parse('@12345678912345!');//与密钥保持一致
+  return  encrypted = CryptoJS.AES.encrypt(data, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.ZeroPadding });
+
 }
 
 

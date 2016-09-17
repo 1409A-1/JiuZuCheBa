@@ -41,6 +41,19 @@ class AdminController extends Controller
            return view('admin.login.admin_login');
         }
     }
+
+    /*
+     * name:wanghu
+     * time:2016/8/31
+     * @admin_user
+     * */
+    public function logout()
+    {
+        Session::pull('name');
+        Session::pull('id');
+        return redirect('indexs');
+    }
+
     /*
      * username：wanghu
      * time:2016/9/1

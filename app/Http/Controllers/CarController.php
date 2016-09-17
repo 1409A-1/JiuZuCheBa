@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Car_info;
 use App\Server;
 use App\Car_number;
+use App\Address;
 
 class CarController extends Controller
 {
@@ -147,6 +148,7 @@ class CarController extends Controller
      * */
     public function carServerList()
     {
+        $address = Address::where("parent_id", 0)->get()->toArray();
         $count = Car_number::count();
         $page = 1;
         $prev = $page == 1? 1: $page-1;
@@ -155,22 +157,41 @@ class CarController extends Controller
         $pages = ceil($count/$length);
         $offset = ($page-1)*$length;
         $date = Car_number::leftJoin('server', 'car_number.server_id', '=', 'server.server_id')->leftJoin('car_info', 'car_number.car_id', '=', 'car_info.car_id')->orderBy('car_number.server_id')->take($length)->skip($offset)->get()->toArray()? :array();
-        return view('admin.address.carAllotList',['car' => $date,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+        return view('admin.address.carAllotList',['car' => $date, 'address' => $address, 'pages' => $pages, 'prev' => $prev, 'next' => $next, 'page' => $page]);
     }
 
     /*
        服务点车辆分页展示
      */
-    public function carServerPage(Request $request,$page = 1)
+    public function carServerPage(Request $request, $page = 1, $search1, $search2, $search3, $search4)
     {
-        $count = Car_number::count();
+        $search1 == "all"? $search1 = "": $search1 = $search1;
+        $search2 == "all"? $search2 = "": $search2 = $search2;
+        $search3 == "all"? $search3 = "": $search3 = $search3;
+        $search4 == "all"? $search4 = "": $search4 = $search4;
+        if ($search1 !=''){ 
+            $address=Address::where("address_id", $search1)->first()->toArray();
+            $search1=$address['address_name'];
+        }
+        $count = Car_number::leftJoin('server', 'car_number.server_id', '=', 'server.server_id')->leftJoin('car_info', 'car_number.car_id', '=', 'car_info.car_id')->where('city_name','like',"%$search1%")->where('district', 'like', "%$search2%")->where('server_name', 'like', "%$search3%")->where('car_name', 'like', "%$search4%")->orderBy('car_number.server_id')->count();
         $prev = $page == 1? 1: $page-1;
         $next = $page == $count? $count: $page+1;
         $length = 5;
         $pages = ceil($count/$length);
         $page = $page>$pages? $pages: $page;
         $offset = ($page-1)*$length;
-        $date = Car_number::leftJoin('server', 'car_number.server_id', '=', 'server.server_id')->leftJoin('car_info', 'car_number.car_id', '=', 'car_info.car_id')->orderBy('car_number.server_id')->take($length)->skip($offset)->get()->toArray()? :array();
+        $date = Car_number::leftJoin('server', 'car_number.server_id', '=', 'server.server_id')->leftJoin('car_info', 'car_number.car_id', '=', 'car_info.car_id')->where('city_name','like',"%$search1%")->where('district', 'like', "%$search2%")->where('server_name', 'like', "%$search3%")->where('car_name', 'like', "%$search4%")->orderBy('car_number.server_id')->take($length)->skip($offset)->get()->toArray()? :array();
         return json_encode(['car' => $date,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
+    }
+
+    /*
+        服务点联动查询
+     */
+    public function serverSelect(Request $request, $search1, $search2)
+    {
+        $address=Address::where("address_id", $search1)->first()->toArray();
+        $search1=$address['address_name'];
+        $data=Server::where("city_name", $search1)->where("district", $search2)->get()->toArray();
+        return json_encode($data);
     }
 }
