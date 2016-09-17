@@ -560,20 +560,6 @@ function takeStore(result) {
 }
 
 function save(name, mobile, city, duration, carNum, type_id, date, brand_id) {
-    var data = {
-            "contact_name": name,
-            "contact_tel": mobile,
-            "city_name": city,
-            "rent_month_count": duration,
-            "auto_count": carNum,
-            "contact_class_id": type_id,
-            "start_date": date,
-            "start_shop_id": $(".longLine1_R .show a").attr("store_id"),
-            "brand_id": brand_id,
-            "_token": _token
-        }
-        console.log(data);
-        return false;
     $.ajax({
         // url: long_rent_url,
         url: longRentApply,
