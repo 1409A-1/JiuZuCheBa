@@ -183,35 +183,36 @@
             })
 
             //Ajax搜索
-            $("#search").blur(function(){
-                //alert(1)
-                search=$(this).val()=="" ? "all" :$(this).val();
-                //alert(search)
-                $.get("brandListPage/1/"+search+"/0",function(msg){
-                //alert(msg)
-                str="";
-                for(i=0; i<msg.carbrand.length; i++){
-                    str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
-                    if (msg.carbrand[i].car_id == null) {
-                        str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
-                    }
-                    str+='</ul></td></tr>'
-                }
-                $("#tbody").empty();
-                $("#tbody").append(str);
-                $("#nowpage").val(msg.page);
-                $(".pagination").empty();
-                str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
-                    for (i = 1; i <= msg.pages; i++){
-                        str2+='<li><a class="'
-                        if (msg.page == i){
-                        str2+='active';
+            $("#search").keydown(function(e){
+                if (e.keyCode==13) {
+                    search=$(this).val()=="" ? "all" :$(this).val();
+                    //alert(search)
+                    $.get("brandListPage/1/"+search+"/0",function(msg){
+                    //alert(msg)
+                    str="";
+                    for(i=0; i<msg.carbrand.length; i++){
+                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
+                        if (msg.carbrand[i].car_id == null) {
+                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
                         }
-                        str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        str+='</ul></td></tr>'
                     }
-                    str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
-                    $(".pagination").append(str2);
-            },'json')
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $("#nowpage").val(msg.page);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                    },'json')
+                }
             })
 
             // Ajax搜索&分页&删除
