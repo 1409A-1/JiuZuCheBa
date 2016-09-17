@@ -21,7 +21,7 @@ class CarBrandController extends Controller
     	$length = 5;
     	$pages = ceil($count/$length);
     	$offset = ($page-1)*$length;
-    	$carbrand = CarBrand::leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->take($length)->skip($offset)->get()->toArray()? CarBrand::leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->take($length)->skip($offset)->get()->toArray(): array();
+    	$carbrand = CarBrand::leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->take($length)->skip($offset)->get()->toArray()? CarBrand::select('car_brand.brand_id', 'brand_name', 'car_id')->leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->take($length)->skip($offset)->groupBy('brand_name')->get()->toArray(): array();
         //print_r($carbrand);die;
         return view('admin.carbrand.list',['carbrand' => $carbrand,'pages' => $pages,'prev' => $prev,'next' => $next,'page' => $page]);
     }
@@ -44,7 +44,7 @@ class CarBrandController extends Controller
     	$pages = ceil($count/$length);
     	$page = $page>$pages? $pages: $page;
     	$offset = ($page-1)*$length;
-    	$carbrand  =  CarBrand::leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarBrand::leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray(): array();
+    	$carbrand  =  CarBrand::leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->where("brand_name",'like',"%$search%")->take($length)->skip($offset)->get()->toArray()? CarBrand::select('car_brand.brand_id', 'brand_name', 'car_id')->leftJoin('car_info', 'car_brand.brand_id', '=', 'car_info.brand_id')->where("brand_name",'like',"%$search%")->take($length)->skip($offset)->groupBy('brand_name')->get()->toArray(): array();
         return json_encode(['carbrand' => $carbrand, 'pages' => $pages,'prev' => $prev, 'next' => $next, 'page' => $page]);
     }
 
@@ -78,7 +78,7 @@ class CarBrandController extends Controller
     public function update(Request $request,$id = "")
     {
     	if ($request->input()) {
-    		$brand_name = $request::input('brand_name');
+    		$brand_name = $request->input('brand_name');
     		$validator = Validator::make(
     			['brand_name' => "$brand_name"],
 			    ['brand_name' => 'required|unique:car_brand,brand_name']
@@ -88,7 +88,7 @@ class CarBrandController extends Controller
 			} else {
 				$brand_name = $request->input('brand_name');
 				$flight = new CarBrand;
-        		$flight::where('brand_id', $request::input('brand_id'))
+        		$flight::where('brand_id', $request->input('brand_id'))
 		          ->update(['brand_name' => "$brand_name"]);
 	        	return redirect('brandList');
 			}	    	

@@ -181,7 +181,6 @@
                     $(this).nextAll('font').remove();
                     $(this).next().after("<font style='color:red'>请输入车辆数量</font>");
                 }
-                
             }
         })
         //Ajax提交

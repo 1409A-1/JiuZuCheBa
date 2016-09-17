@@ -48,7 +48,7 @@
                 <!-- products table-->
                 <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
                 <div class="table-wrapper products-table section">
-                    <div class="row-fluid head">
+                    <div class="row-fluid head" style="height: 70px">
                         <div class="span12">
                             <h4>网站用户</h4>
                         </div>
