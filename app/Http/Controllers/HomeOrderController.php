@@ -115,8 +115,8 @@ class HomeOrderController extends Controller
 //订单生成展示页面
     public function orderSuccess(Request $request)
     {
-        $ord_id = $request->input('ord_id');       //订单的id
-        $user_id= session('user_id');              //用户的id
+        $ord_id = $this->des($request->input('ceoyg'));       //订单的id
+        $user_id= session('user_id');                        //用户的id
         $order_info = $this->pub($ord_id, $user_id);
         if ($order_info) {
             $info['timeday'] = ceil(($order_info['des_time']-$order_info['dep_time'])/(24*60*60));  //租期
@@ -133,7 +133,7 @@ class HomeOrderController extends Controller
             $info['car_info'] = $order_info['brand_name'].' '.$order_info['car_name'];
             // print_r($info);die;
             $info = json_encode($info, JSON_UNESCAPED_UNICODE);
-            return view('home.order.ordersuccess', ['info'=>$info,'ord_id'=> $ord_id,'ord_sn'=> $order_info['ord_sn']]);
+            return view('home.order.ordersuccess', ['info'=>$info,'ord_id'=> $request->input('ceoyg'),'ord_sn'=> $order_info['ord_sn']]);
         } else {
            return redirect('orderList');
         }
@@ -141,7 +141,7 @@ class HomeOrderController extends Controller
 //订单详情的查看
     public function orderInfo(Request $request)
     {
-        $ord_id = $request->input('ord_id');
+        $ord_id = $this->des($request->input('ceoyg'));
         $user_id= session('user_id');              //用户的id
         $order_info = $this->pub($ord_id, $user_id);
         if($order_info) {
@@ -196,8 +196,8 @@ class HomeOrderController extends Controller
 //订单的取消
     public function cancelOrder(Request $request)
     {
-       $ord_id = $request->input('ord_id');   //要取消的订单
-       $user_id = session('user_id');          //用户
+       $ord_id = $this->des($request->input('ceoyg'));   //要取消的订单
+       $user_id = session('user_id');                    //用户
        $status = DB::table('order')
            ->where(['user_id'=>$user_id, 'ord_id'=> $ord_id])
            ->value('ord_pay');
@@ -344,6 +344,14 @@ class HomeOrderController extends Controller
             ->where(['order.ord_sn'=> $ord, 'order.user_id'=> $user_id])
             ->update(['ord_pay'=>1]);
         return redirect('orderList');
+    }
+
+//php解密
+    public function des($des) {
+        $privateKey = '@12345678912345!';
+        $iv = '@12345678912345!';
+        $encryptedData = base64_decode($des);
+        return $decrypted = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $privateKey, $encryptedData, MCRYPT_MODE_CBC, $iv);
     }
 }
 
