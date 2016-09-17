@@ -90,12 +90,6 @@
             </ul>
         </li>
         <li>
-            <a href="<?php echo e(asset('admin')); ?>/personal-info.html">
-                <i class="icon-cog"></i>
-                <span>My Info</span>
-            </a>
-        </li>
-        <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-share-alt"></i>
                 <span>套餐管理</span>

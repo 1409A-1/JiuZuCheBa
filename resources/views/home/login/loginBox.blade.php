@@ -74,7 +74,8 @@
             </div>
         </div>
     </div>
-<input type="hidden" value="{{session('path')}}" id="path"/>
+    <input type="hidden" value="{{session('path')}}" id="path"/>
+    <input type="hidden" value="{{ csrf_token() }}" id="token"/>
 </div>
 <script>
     $(function () {
@@ -122,7 +123,8 @@
             }, 1000);
             var loginInfo = {
                 "user_name": phone.val(),
-                "password": pw.val()
+                "password": pw.val(),
+                "_token": $("#token").val()
             };
             if (phone.val() == "") {
                 phone.focus();
@@ -151,7 +153,7 @@
         var error = $("#loginError");
         jQuery.ajax({
             url: "{{ url('loginBoxPro') }}",
-            //dataType: 'jsonp',
+            type: "POST",
             data: loginInfo,
             success: function (result) {
                var path = $("#path").val();
@@ -203,6 +205,5 @@
         }
     }
 </script>
-
 </body>
 </html>

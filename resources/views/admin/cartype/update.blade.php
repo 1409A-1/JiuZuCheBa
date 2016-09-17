@@ -39,10 +39,6 @@
 
 	<!-- main container -->
     <div class="content">
-        
-        <!-- settings changer -->
-
-        
         <div class="container-fluid">
             <div id="pad-wrapper" class="new-user">
                 <div class="row-fluid header">
@@ -94,7 +90,10 @@
 
     <script type="text/javascript">
         $(function () {
-
+            $("input[type=text]").focus();
+            $("input[type=reset]").click(function(){
+                $("input[type=text]").focus();
+            });
             // toggle form between inline and normal inputs
             var $buttons = $(".toggle-inputs button");
             var $form = $("form.new_user_form");

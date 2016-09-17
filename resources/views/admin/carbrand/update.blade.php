@@ -93,7 +93,10 @@
 
     <script type="text/javascript">
         $(function () {
-
+            $("input[type=text]").focus();
+            $("input[type=reset]").click(function(){
+                $("input[type=text]").focus();
+            });
             // toggle form between inline and normal inputs
             var $buttons = $(".toggle-inputs button");
             var $form = $("form.new_user_form");
