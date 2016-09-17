@@ -1,6 +1,5 @@
 ﻿<!-- this page specific styles -->
 <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/index.css" type="text/css" media="screen" />
-
 <!-- navbar -->
 @include('common.admin_header')
 <!-- end navbar -->
@@ -9,10 +8,8 @@
 @include('common.admin_left')
 <!-- end sidebar -->
 
-
 <!-- main container -->
 <div class="content">
-
     <div class="container-fluid">
 
         <!-- upper main stats -->
@@ -55,7 +52,9 @@
             </div>
         </div>
     </div>
+    </iframe>  
 </div>
+
 
 <!-- scripts -->
 <script src="{{asset('admin')}}/js/jquery-latest.js"></script>

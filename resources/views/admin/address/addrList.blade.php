@@ -52,7 +52,7 @@
                                   <td><span class="type" id="{{ $r['address_id'] }}" style="">{{ $r['address_name'] }}</span></td>
                                 @endforeach
                             </tr>
-                            @endforeach
+                        @endforeach
                         </table>
                         <div id="typeArray"></div>
                     </div>
@@ -88,6 +88,7 @@
                     }
                 });
             });
+
             $(document).delegate('#change','click',function(){
                var type =  $("#change_type").find("option:selected").attr('type');  //要更改成的type  id
                var a_id = $("#add_id").attr('a_id');                                //要修改的id
@@ -104,6 +105,16 @@
                     }
                 })
             })
+
+
+            she=$("a[href='http://www.test.com/JiuZuCheBa/public/addrList']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
         });
     </script>
     <!-- end main container -->
