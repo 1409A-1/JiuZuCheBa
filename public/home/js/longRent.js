@@ -309,7 +309,6 @@ function book(){
             num=/[\d]/;        //匹配数字
 
         input.removeClass("error");
-
         if (carNum) {
             if(num.test(carNum)){
                 layer.open({
@@ -560,9 +559,24 @@ function takeStore(result) {
     });
 }
 
-function save(name, mobile, city, duration, carNum, type_id, date) {
+function save(name, mobile, city, duration, carNum, type_id, date, brand_id) {
+    var data = {
+            "contact_name": name,
+            "contact_tel": mobile,
+            "city_name": city,
+            "rent_month_count": duration,
+            "auto_count": carNum,
+            "contact_class_id": type_id,
+            "start_date": date,
+            "start_shop_id": $(".longLine1_R .show a").attr("store_id"),
+            "brand_id": brand_id,
+            "_token": _token
+        }
+        console.log(data);
+        return false;
     $.ajax({
-        url: long_rent_url,
+        // url: long_rent_url,
+        url: longRentApply,
         data: {
             "contact_name": name,
             "contact_tel": mobile,
@@ -571,16 +585,21 @@ function save(name, mobile, city, duration, carNum, type_id, date) {
             "auto_count": carNum,
             "contact_class_id": type_id,
             "start_date": date,
-            "start_shop_id": $(".longLine1_R .show a").attr("store_id")
+            "start_shop_id": $(".longLine1_R .show a").attr("store_id"),
+            "brand_id": brand_id,
+            "_token": _token
         },
-        dataType: "jsonp",
-        type: "get",
+        // dataType: "jsonp",
+        dataType: "json",
+        type: "post",
         success: function (result) {
-            if (result>0) {
+            if (result == 0) {
+                location.href = 'login';
+            } else if (result == 1) {
                 layer.alert("提交成功,我们将在1个工作日内联系您.");
                 setTimeout(function () { location.reload() }, 2000);
             } else {
-                layer.alert("提交失败,请致电4000600112电话预定.");
+                layer.alert("提交失败,请致电 110、120、119 电话预定.");
             }
         }
     })
@@ -598,7 +617,6 @@ function position(){
     });
 }
 
-var carList;
 //品牌
 function Brand(city) {
      jQuery.ajax({
@@ -680,21 +698,26 @@ startHours, endHours, t1, t2, html = "";
     })
 }
 
+var carList;
 //车型
 function carType(opt_brand){
     var car=[],car1=[],car2=[],car3=[],car4=[],brand_id=[],type_id=[],html="";
-    for(var i=0;i<carList.length;i++)
+    for(var i=0;i<carList.car.length;i++)
     {
-        car.push(carList[i].brand.brand_name);//品 牌
-        car1.push(carList[i].honda);     //车 型
-        car2.push(carList[i].body_construction); //厢 数
-        car3.push(carList[i].let_litre);  //排 量
-        car4.push(carList[i].gearbox);    //手、自动
-        brand_id.push(carList[i].brand_id);
-        type_id.push(carList[i].class_id);
-        if(car[i]==opt_brand)
+        // car.push(carList[i].brand.brand_name);//品 牌
+        // car1.push(carList[i].honda);     //车 型
+        // car2.push(carList[i].body_construction); //厢 数
+        // car3.push(carList[i].let_litre);  //排 量
+        // car4.push(carList[i].gearbox);    //手、自动
+        // brand_id.push(carList[i].brand_id);
+        car1.push(carList.car[i].car_name);     //车 型
+        car2.push('两厢'); //厢 数
+        car3.push('1.6L');  //排 量
+        car4.push('自动');   //手、自动
+        type_id.push(carList.car[i].car_id);
+        if(carList.car[i].brand_id == opt_brand)
         {
-            html+="<li><a brand_id='"+brand_id[i]+"' type_id='"+type_id[i]+"'>"+
+            html+="<li><a brand_id='"+opt_brand+"' type_id='"+type_id[i]+"'>"+
                 car1[i]+" / "+car2[i]+" / "+car3[i]+" / "+car4[i]+"</a></li>";
         }
     }
@@ -726,7 +749,8 @@ function apply() {
         date = $("#longDate").find("a").html(),
         duration = $("#longDuration").find(".show a").html(),
         carNum = $("#carNumber").find("input").val(),
-        type_id = $("#carType").find(".show a").attr("type_id");
+        type_id = $("#carType").find(".show a").attr("type_id"),
+        car_brand = $('#brand').find(".show a").attr("brand_id");
 
     $("#submit").click(function () {
         if (name.val() == '') {
@@ -739,7 +763,7 @@ function apply() {
                     layer.tips('手机号不能为空', '#submit', { tips: [3, '#0FA6D8'] });
                 } else {
                     if (telReg.test(tel.val())) {
-                        save(name.val(), tel.val(), city, duration, carNum, type_id, date);
+                        save(name.val(), tel.val(), city, duration, carNum, type_id, date, car_brand);
                     } else {
                         tel.focus();
                         layer.tips('手机号格式不正确', '#submit', { tips: [3, '#0FA6D8'] });
@@ -751,7 +775,9 @@ function apply() {
             }
         }
     });
-    if ($.browser.msie && ($.browser.version == "8.0" || "9.0")) {
+
+    // $.browser 工具方法已废除
+    /*if ($.browser.msie && ($.browser.version == "8.0" || "9.0")) {
         company.val("请输入企业名称 或 个人名称")
             .focus(function () {
                 if ($(this).val() == "请输入企业名称 或 个人名称") {
@@ -796,7 +822,7 @@ function apply() {
                     $(this).val("请输入您的Email地址")
                 }
             });
-    }
+    }*/
 }
 
 //门店地图 查看
@@ -810,7 +836,7 @@ function storeMap(lng, lat, id, name) {
         map.addOverlay(storeMarker);
     //添加地图标注 点击 打开窗口信息
     var infoWindow, url, html;
-    url = "http://www.dafang24.com/home/doom?shop_id=" + id;
+    url = "short?id=" + id;
     html = "<div class='box' id='" + id + "'>" +
       "<a class='title' href='" + url + "'>就租车吧" + name + "</a>" +
       "<a class='comments' href='#" + id + "'>查看评论</a>" +
@@ -926,24 +952,27 @@ function storeMap(lng, lat, id, name) {
 function load_autoclass(shop_id) {
     var html="";
     jQuery.ajax({
-        url: shopCarType,
-        dataType: 'jsonp',
-        data: { shop_id: shop_id },
+        // url: shopCarType,
+        // dataType: 'jsonp',
+        url: getCarBrandByServer,
+        dataType: 'json',
+        type: 'post',
+        data: { shop_id: shop_id, _token: _token },
         success: function (result) {
             carList=result;
-            var brand=[];
-            for(var i=0;i<result.length;i++)
-            {
-                brand.push(result[i].brand.brand_name);
-            }
-            var data = []; //去重
-            for(var j = 0; j < brand.length; j++){
-                if (data.indexOf(brand[j]) == -1)
-                    data.push(brand[j]);
-            }
+            // var brand=[];
+            // for(var i=0;i<result.length;i++)
+            // {
+            //     brand.push(result[i].brand.brand_name);
+            // }
+            // var data = []; //去重
+            // for(var j = 0; j < brand.length; j++){
+            //     if (data.indexOf(brand[j]) == -1)
+            //         data.push(brand[j]);
+            // }
 
-            for(var k=0;k<data.length;k++){
-                html+="<li><a>"+data[k]+"</a></li>";//品牌名称
+            for(var k=0;k<result.brand.length;k++){
+                html+="<li><a brand_id=\"" + result.brand[k].brand_id + "\">" + result.brand[k].brand_name + "</a></li>";//品牌名称
             }
             $("#brandBox ul").html(html);
 
@@ -951,9 +980,11 @@ function load_autoclass(shop_id) {
             $("#brandBox a").click(function(){
                 var opt_brand=$(this).html();
                 $("#brand .show>a").html(opt_brand);
+                $("#brand .show>a").attr('brand_id', $(this).attr('brand_id'));
                 $("#brandBox").slideUp("fast");
-                carType(opt_brand);
+                carType($(this).attr('brand_id'));
             });
+
             //车型初始化
             $("#brandBox a").eq(0).click();
         }
