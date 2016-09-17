@@ -215,7 +215,6 @@
                 page=$("#nowpage").val();
                 search=$("#search").val()?$("#search").val():"all";
                 del=$(this).attr("bid");
-                //alert(search);
                 $.get("typeListPage/"+page+"/"+search+"/"+del,function(msg){
                     //alert(msg)
                     str="";

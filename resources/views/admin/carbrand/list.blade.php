@@ -182,7 +182,7 @@
             })
 
             //Ajax搜索
-            $("#search").keydown(function(){
+            $("#search").keydown(function(e){
                 if (e.keyCode==13) {
                     search=$(this).val()=="" ? "all" :$(this).val();
                     //alert(search)
