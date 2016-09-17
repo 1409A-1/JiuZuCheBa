@@ -170,7 +170,7 @@
         })
         //车辆数量验证
         $("input[name=number]").blur(function(){
-            reg = /^\d$/;
+            reg = /^\d+$/;
             if ($(this).val() == '') {
                 $(this).nextAll('font').remove();
                 $(this).next().after("<font style='color:red'>请输入车辆数量</font>");
@@ -203,5 +203,15 @@
             $("input[name=number]").val('');
             $(".table font").remove();
          })
+
+        she=$("a[href='http://www.test.com/JiuZuCheBa/public/carServer']");
+        she.parent().parents('li').siblings(".active").children('.pointer').remove();
+        she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+        she.parent().parents('li').siblings(".active").removeClass("active");
+        she.addClass("active");
+        she.closest('ul').addClass("active");
+        she.parent().parents("li").addClass("active");
+        she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
+
     })
 </script>

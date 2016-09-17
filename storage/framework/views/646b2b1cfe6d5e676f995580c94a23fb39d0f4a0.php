@@ -40,14 +40,7 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="<?php echo e(asset('admin')); ?>/css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
+
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -63,31 +56,18 @@
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
-                            <input type="text" class="search" />
-                            <a class="btn-flat success new-product" id="ins">添加型号</a>
+
                         </div>
                     </div>
-                    <script src="<?php echo e(asset('admin')); ?>/js/js.js"></script>
-                    <script>
-                        $(function(){
-                            $("#ins").click(function(){
-                                location.href='model_add';
-                            });
-                        });
-                    </script>
+
                     <div class="row-fluid">
                         <table class="table">
                             <tr>
                                 <th>服务点编号</th>
                                 <th>服务点名称</th>
                                 <th>所属地区</th>
+                                <th>服务点地址</th>
+                                <th>交通路线</th>
                                 <th>操作</th>
                             </tr>
                             <tr>
@@ -96,6 +76,8 @@
                                     <td><?php echo e($v['server_id']); ?></td>
                                     <td><?php echo e($v['server_name']); ?></td>
                                     <td><?php echo e($v['address_name']); ?></td>
+                                    <td><?php echo e($v['street']); ?></td>
+                                    <td><?php echo e($v['traffic_line']); ?></td>
                                     <td>
                                         <a href="<?php echo e(url('addressDel')); ?>/<?php echo $v['server_id']?>">删除</a>
                                     </td>
@@ -115,6 +97,18 @@
     <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
     <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
     <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
+    <script>
+        $(function(){
+            she=$("a[href='http://www.test.com/JiuZuCheBa/public/addressList']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
+        })
+    </script>
 
 </body>
 </html>

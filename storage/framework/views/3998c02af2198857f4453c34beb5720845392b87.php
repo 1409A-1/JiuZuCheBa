@@ -67,15 +67,9 @@
             </ul>
         </li>
         <li>
-            <a href="messageList">
+            <a href="<?php echo e(url('messageList')); ?>">
                 <i class="icon-edit"></i>
                 <span>用户留言管理</span>
-            </a>
-        </li>
-        <li>
-            <a href="<?php echo e(url('userPack')); ?>">
-                <i class="icon-calendar-empty"></i>
-                <span>套餐申请审核</span>
             </a>
         </li>
         <li>
@@ -97,9 +91,6 @@
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo e(url('packIns')); ?>">套餐添加</a></li>
-                <li><a href="<?php echo e(asset('admin')); ?>/grids.html">Grids</a></li>
-                <li><a href="<?php echo e(asset('admin')); ?>/signin.html">Sign in</a></li>
-                <li><a href="<?php echo e(asset('admin')); ?>/signup.html">Sign up</a></li>
             </ul>
         </li>
     </ul>

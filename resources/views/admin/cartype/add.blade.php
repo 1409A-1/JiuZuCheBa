@@ -110,6 +110,14 @@
                     $form.removeClass("inline-input");
                 }
             });
+            she=$("a[href='http://www.test.com/JiuZuCheBa/public/typeList']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
         });
     </script>
 
