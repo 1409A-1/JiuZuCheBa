@@ -73,12 +73,6 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo e(url('userPack')); ?>">
-                <i class="icon-calendar-empty"></i>
-                <span>套餐申请审核</span>
-            </a>
-        </li>
-        <li>
             <a class="dropdown-toggle ui-elements" href="#">
                 <i class="icon-code-fork"></i>
                 <span>车辆管理</span>
@@ -97,9 +91,6 @@
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo e(url('packIns')); ?>">套餐添加</a></li>
-                <li><a href="<?php echo e(asset('admin')); ?>/grids.html">Grids</a></li>
-                <li><a href="<?php echo e(asset('admin')); ?>/signin.html">Sign in</a></li>
-                <li><a href="<?php echo e(asset('admin')); ?>/signup.html">Sign up</a></li>
             </ul>
         </li>
     </ul>

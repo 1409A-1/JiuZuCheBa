@@ -70,7 +70,7 @@
                                 <td><span class="type" id="{{ $r['address_id'] }}" style="">{{ $r['address_name'] }}</span></td>
                                     @endforeach
                             </tr>
-                            @endforeach
+                        @endforeach
                         </table>
                         <div id="typeArray"></div>
                     </div>
