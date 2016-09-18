@@ -292,15 +292,15 @@
             <a>推荐车型</a>
             <div class="hotCity">
                 <i class="icon icon_location1"></i>
-                <b>北京市</b>
+                <b></b>
                 <div class="arrowR"></div>
                 <!--热门城市-->
                 <div class="hotCityList">
-                    <div><span><a onclick="tuijian_clik('武汉市')">武汉市</a></span><span><a onclick="tuijian_clik('长沙市')">长沙市</a></span><span><a onclick="tuijian_clik('石家庄市')">石家庄市</a></span><span><a onclick="tuijian_clik('太原市')">太原市</a></span><span><a onclick="tuijian_clik('济南市')">济南市</a></span><span><a onclick="tuijian_clik('重庆市')">重庆市</a></span><span><a onclick="tuijian_clik('哈尔滨市')">哈尔滨市</a></span><span><a onclick="tuijian_clik('辽阳市')">辽阳市</a></span><span><a onclick="tuijian_clik('乌鲁木齐')">乌鲁木齐</a></span><span><a onclick="tuijian_clik('信阳市')">信阳市</a></span><span><a onclick="tuijian_clik('南宁市')">南宁市</a></span><span><a onclick="tuijian_clik('上海市')">上海市</a></span><span><a onclick="tuijian_clik('吉林市')">吉林市</a></span><span><a onclick="tuijian_clik('南昌市')">南昌市</a></span><span><a onclick="tuijian_clik('南京市')">南京市</a></span><span><a onclick="tuijian_clik('兰州市')">兰州市</a></span><span><a onclick="tuijian_clik('福州市')">福州市</a></span><span><a onclick="tuijian_clik('成都市')">成都市</a></span><span><a onclick="tuijian_clik('苏州市')">苏州市</a></span><span><a onclick="tuijian_clik('洛阳市')">洛阳市</a></span><span><a onclick="tuijian_clik('西宁市')">西宁市</a></span><span><a onclick="tuijian_clik('青岛市')">青岛市</a></span><span><a onclick="tuijian_clik('延边朝鲜族自治州')">延边朝鲜族自治州</a></span><span><a onclick="tuijian_clik('汉中市')">汉中市</a></span><span><a onclick="tuijian_clik('汕头市')">汕头市</a></span><span><a onclick="tuijian_clik('廊坊市')">廊坊市</a></span><span><a onclick="tuijian_clik('牡丹江市')">牡丹江市</a></span></div>
+                    <div></div>
                 </div>
             </div>
         </div>
-        <div class="recCar"><div><div class="recCarBox"><div class="carImg"><div class="noImg"></div></div><a href="http://www.dafang24.com/home/doom" class="button">查看其他车型</a></div></div></div>
+        <div class="recCar"></div>
     </div>
 </div><!--其他-->
 <div class="other">
@@ -386,27 +386,27 @@
                    <div>
                     <a href="http://www.dafang24.com/home/newsdetail/1534" target="_blank">迎中秋，就租车吧租车郑州威海安徽三店同开业</a>
                     <span>2016-08-30</span>
-                   </div> 
+                   </div>
                    <div>
                     <a href="http://www.dafang24.com/home/newsdetail/1531" target="_blank">就租车吧租车宜昌西陵店震撼开业</a>
                     <span>2016-08-12</span>
-                   </div> 
+                   </div>
                    <div>
                     <a href="http://www.dafang24.com/home/newsdetail/1530" target="_blank">就租车吧租车南阳泰山路店开业在即</a>
                     <span>2016-08-10</span>
-                   </div> 
+                   </div>
                    <div>
                     <a href="http://www.dafang24.com/home/newsdetail/1526" target="_blank">就租车吧租车衡阳解放大道店震撼开业</a>
                     <span>2016-08-05</span>
-                   </div> 
+                   </div>
                    <div>
                     <a href="http://www.dafang24.com/home/newsdetail/1517" target="_blank">喜迎就租车吧租车甘肃陇南武都火车站店开业</a>
                     <span>2016-07-30</span>
-                   </div> 
+                   </div>
                    <div>
                     <a href="http://www.dafang24.com/home/newsdetail/1509" target="_blank">就租车吧租车昆明子君店隆重开业</a>
                     <span>2016-07-26</span>
-                   </div> 
+                   </div>
             </div>
         </div>
         <!--租车体验-->
@@ -452,11 +452,12 @@
         @include('common.home_city_list')
     </div>
 </div>
-<form id="fmtuijian" method="post" action="">
-   <input id="shop_id" name="shop_id" type="text">
-   <input id="class_id" name="class_id" type="text">
-   <input id="StartDateTime" name="StartDateTime" type="text">
-   <input id="EndDateTime" name="EndDateTime" type="text">
+<form id="fmtuijian" method="post" action="{{ url('short') }}">
+   <input type="hidden" value="{{ csrf_token() }}" name="_token"/>
+   <input id="shop_id" name="shop_id" type="hidden">              {{--服务点的id--}}
+   <input id="class_id" name="class_id" type="hidden">            {{--车辆id--}}
+   <input id="StartDateTime" name="StartDateTime" type="hidden">  {{--开始时间--}}
+   <input id="EndDateTime" name="EndDateTime" type="hidden">      {{--结束时间--}}
 </form>
 <div class="footTop"></div>
 <!--门店地图查看-->
