@@ -1,8 +1,6 @@
 <?php
 //前台首页展示
-Route::get('/', function () {
-    return view('home.index.home');
-});
+Route::get('/', 'IndexController@home');
 //注册
 Route::get('loginReg','LoginController@register');
 //注册接值处理
@@ -11,7 +9,6 @@ Route::post('regPro','LoginController@regPro');
 Route::get('onlyName','LoginController@onlyName');
 //前台验证注册手机号唯一
 Route::get('onlyTel','LoginController@onlyTel');
-
 
 //前台的非法登录
 Route::group(['middleware' => ['homelogin']], function(){
@@ -40,9 +37,7 @@ Route::group(['middleware' => ['homelogin']], function(){
     //订单预订展示
     Route::post('subOrder', 'HomeOrderController@subOrder');
     //使用get查看时404页面
-    Route::get('subOrder', function(){
-        return view('home.404.404');
-    });
+    Route::get('subOrder', 'IndexController@err404');
     //订单确认提交
     Route::get('orderAdd', 'HomeOrderController@orderAdd');
     //订单生成
@@ -62,9 +57,7 @@ Route::group(['middleware' => ['homelogin']], function(){
 //前台登陆页面的展示
 Route::get('login', 'LoginController@login');
 //前台盒子登录
-Route::get('loginBox', function(){
-    return view('home.login.loginBox');
-});
+Route::get('loginBox', 'IndexController@loginBox');
 //前台盒子登录的验证接值
 Route::post('loginBoxPro', 'LoginController@loginBoxPro');
 //前台登录接值验证
@@ -154,7 +147,7 @@ Route::group(['middleware' => ['nologin']], function(){
      * name:wanghu
      * time:2016/9/9
      * 描述：订单的审核
-     * */
+     */
     Route::get('orderLists','OrderController@orderList');
     Route::get('orderInfo/{ord_id}','OrderController@orderInfo');
     Route::get('carry/{ord_id}','OrderController@carry');//提车
@@ -178,11 +171,11 @@ Route::get('valid','WechatController@valid');   // 微信对接
 Route::get('oAuth','WechatController@oAuth');   // 第三方授权登录窗口
 Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
-// 常用路由
-Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
-Route::post('getServerList','PublicController@getServerList');  // 获取服务点列表
-Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
-Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
-Route::post('getSpecialCar','PublicController@getSpecialCar');  // 获取当前城市热门车型
-Route::post('longRentApply','PublicController@longRentApply');  // 长租申请
+// 前台常用路由
+Route::post('getCityList','PublicController@getCityList');          // 获取城市列表
+Route::post('getServerList','PublicController@getServerList');      // 获取服务点列表
+Route::post('getCarList','PublicController@getCarList');            // 获取车辆列表
+Route::post('getCarTypeList','PublicController@getCarTypeList');    // 获取车辆列表
+Route::post('getSpecialCar','PublicController@getSpecialCar');      // 获取当前城市热门车型
+Route::post('longRentApply','PublicController@longRentApply');      // 长租申请
 Route::post('getCarBrandByServer','PublicController@getCarBrandByServer');  // 根据门店获取车辆品牌

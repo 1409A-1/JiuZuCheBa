@@ -1207,7 +1207,8 @@ function setMeal() {
         }
         inTime = date_format(inTime, "yyyy-MM-dd");
         //传值到短租页面
-        location.href = '/home/doom?shop_id=' + shopId + '&StartDateTime=' + outTime + '&EndDateTime=' + inTime;
+        // location.href = '/home/doom?shop_id=' + shopId + '&StartDateTime=' + outTime + '&EndDateTime=' + inTime;
+        layer.alert('套餐预订正在开发中！敬请期待！');
     });
 
     setMeal.hover(function () {
