@@ -20,6 +20,11 @@ class LoginController extends Controller
     {
         return view('home.login.login');
     }
+//前台登录盒子窗口
+    public function loginBox()
+    {
+        return view('home.login.loginBox');
+    }
 //前台登录检验用户名密码
     public function loginPro(Request $request)
     {
