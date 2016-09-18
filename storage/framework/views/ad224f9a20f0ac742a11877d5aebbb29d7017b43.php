@@ -282,7 +282,7 @@
                 })
             })
 
-            she=$("a[href='http://www.test.com/JiuZuCheBa/public/messageList']");
+            she=$("a[href='<?php echo e(url('messageList')); ?>']");
             she.parent().siblings(".active").children('.pointer').remove();
             she.parent().siblings(".active").children(".active").removeClass("active");
             she.parent().siblings(".active").removeClass("active");

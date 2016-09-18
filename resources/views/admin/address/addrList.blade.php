@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Detail Admin - Tables showcase</title>
-    <!-- bootstrap -->
+    
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
@@ -15,7 +15,7 @@
     <!-- libraries -->
     <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
 
-    <!-- this page specific styles -->
+    
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
     <script src="{{asset('admin')}}/js/js.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,11 +29,11 @@
     <!-- end sidebar -->
 	<!-- main container -->
     <div class="content">
-        <!-- settings changer -->
+        
         <div class="container-fluid">
             <div id="pad-wrapper">
+                
                 <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
@@ -89,6 +89,27 @@
                 });
             });
 
+<<<<<<< .mine
+            she=$("a[href='{{ url('addrList') }}']");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
             $(document).delegate('#change','click',function(){
                var type =  $("#change_type").find("option:selected").attr('type');  //要更改成的type  id
                var a_id = $("#add_id").attr('a_id');                                //要修改的id
@@ -108,6 +129,7 @@
 
 
             she=$("a[href='http://www.test.com/JiuZuCheBa/public/addrList']");
+>>>>>>> .theirs
             she.parent().parents('li').siblings(".active").children('.pointer').remove();
             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
             she.parent().parents('li').siblings(".active").removeClass("active");

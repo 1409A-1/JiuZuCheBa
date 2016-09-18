@@ -246,7 +246,7 @@
                 },'json')
             })
 
-            she=$("a[href='http://www.test.com/JiuZuCheBa/public/brandList']");
+            she=$("a[href='{{ url('brandList') }}']");
             she.parent().parents('li').siblings(".active").children('.pointer').remove();
             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
             she.parent().parents('li').siblings(".active").removeClass("active");
