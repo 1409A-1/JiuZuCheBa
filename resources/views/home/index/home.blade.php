@@ -196,45 +196,25 @@
                     <input id="stop_time" name="stop_time" type="hidden">
                     <input id="begin_date" name="begin_date" type="hidden">
                     <input id="end_date" name="end_date" type="hidden">
-                <!--预订按钮-->
-                <input id="startBook" value="开始预订" onclick="return yuding();" type="submit" style="cursor:pointer">
+                    <!--预订按钮-->
+                    <input id="startBook" value="开始预订" onclick="return yuding();" type="submit" style="cursor:pointer">
                 </form>
             </div>
             <!--优惠套餐-->
             <div class="setMeal">
+                @foreach($package as $v)
                 <div>
                     <div class="sM_L">
-                        <b>3</b>天<br>
-                        打包套餐
+                        <b>{{ $v['pack_day'] }}</b>天<br>
+                        {{ $v['pack_name'] }}
                     </div>
                     <div class="hr"></div>
                     <div class="sM_R">
-                        <a>9</a>折起
+                        ￥<a>{{ (int)$v['pack_price'] }}</a>
                         <button class="sM_arr">立即<br>预订</button>
                     </div>
                 </div>
-                <div>
-                    <div class="sM_L">
-                        <b>4-6</b>天<br>
-                        打包套餐
-                    </div>
-                    <div class="hr"></div>
-                    <div class="sM_R">
-                        <a>8</a>折起
-                        <button class="sM_arr">立即<br>预订</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="sM_L">
-                        <b>7天+</b><br>
-                        打包套餐
-                    </div>
-                    <div class="hr"></div>
-                    <div class="sM_R">
-                        <a>7</a>折起
-                        <button class="sM_arr">立即<br>预订</button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
