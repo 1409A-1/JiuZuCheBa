@@ -15,8 +15,7 @@ class PackageController extends Controller
      */
     public function package()
     {
-        $arr = DB::table('package')
-            ->get();
+        $arr = DB::table('package')->get();
         return view('admin.package.package_list',['data' => $arr]);
     }
     public function packageIns(Request $request)

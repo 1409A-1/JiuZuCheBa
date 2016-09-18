@@ -224,7 +224,6 @@
         @foreach($type as $v)
         <a>{{ $v['type_name'] }}</a>
         @endforeach
-        <a>其他</a>
     </div>
     <div class="brand" num="0">
         <b>品牌：</b>
