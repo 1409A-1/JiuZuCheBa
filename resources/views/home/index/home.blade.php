@@ -196,8 +196,8 @@
                     <input id="stop_time" name="stop_time" type="hidden">
                     <input id="begin_date" name="begin_date" type="hidden">
                     <input id="end_date" name="end_date" type="hidden">
-                <!--预订按钮-->
-                <input id="startBook" value="开始预订" onclick="return yuding();" type="submit" style="cursor:pointer">
+                    <!--预订按钮-->
+                    <input id="startBook" value="开始预订" onclick="return yuding();" type="submit" style="cursor:pointer">
                 </form>
             </div>
             <!--优惠套餐-->
