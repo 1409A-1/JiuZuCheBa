@@ -1,9 +1,10 @@
 <?php echo $__env->make('common.home_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <script>
-    var shopID = "1";
-    var StartDateTime = ""+" 10:00";
-    var EndDateTime = "" + " 10:00";
-    var carID = "";
+    eval('var fast = ' + '<?php echo $fast; ?>');
+    var shopID = fast.shop_id;
+    var StartDateTime = fast.StartDateTime+" 10:00";
+    var EndDateTime = fast.EndDateTime + " 10:00";
+    var carID = fast.class_id;
     var IN_TYPE = 0;
     /*
      IN_TYPE
@@ -13,18 +14,18 @@
        3 : 门店进入  预订
     */
     var take_id, takeWeek, startHours1, endHours1, return_id, returnWeek, startHours2, endHours2, start_time, stop_time, begin_date, end_date;
-    take_id = "";
-    takeWeek = "";
-    startHours1 = "";
-    endHours1 = "";
-    return_id = "";
-    returnWeek = "";
-    startHours2 = "";
-    endHours2 = "";
-    start_time = "";
-    stop_time = "";
-    begin_date = "";
-    end_date = "";
+    take_id = fast.take_id;
+    takeWeek = fast.takeWeek;
+    startHours1 = fast.startHours1;
+    endHours1 = fast.endHours1;
+    return_id = fast.return_id;
+    returnWeek = fast.returnWeek;
+    startHours2 = fast.startHours2;
+    endHours2 = fast.endHours2;
+    start_time = fast.start_time;
+    stop_time = fast.stop_time;
+    begin_date = fast.begin_date;
+    end_date = fast.end_date;
     var autoclass_list_ = [];
     var offer_list_ = [];
     var order_info_;
@@ -223,7 +224,6 @@
         <?php foreach($type as $v): ?>
         <a><?php echo e($v['type_name']); ?></a>
         <?php endforeach; ?>
-        <a>其他</a>
     </div>
     <div class="brand" num="0">
         <b>品牌：</b>

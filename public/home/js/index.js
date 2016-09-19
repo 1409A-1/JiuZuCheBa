@@ -1091,7 +1091,7 @@ function initMap(point, city) {
                     //添加当前城市门店标注
                     var storePoint = new BMap.Point(lat, lon),
                         storeMarker,
-                        url = "/home/doom?shop_id=" + store_id,
+                        url = "short?shop_id=" + store_id,
                         add = "<a href='" + url + "' style='color: #ea5506;font-size: 12px'>进入门店</a>",
                         opts = { title: store_name },
                         infoWindow = new BMap.InfoWindow(add, opts);  // 创建信息窗口对象
@@ -1238,14 +1238,14 @@ function bind_tuijian(city) {
                     result[i].seat_count = 5;
 
                     html.push("<div>");
-                    html.push("<div class=\"recCarBox\" onclick=\"doom_tj(" + result[i].id + "," + result[i].class_id + ")\">");
+                    html.push("<div class=\"recCarBox\" style='cursor:pointer' onclick=\"doom_tj(" + result[i].id + "," + result[i].class_id + ")\">");
                     html.push("<div class=\"carImg\">");
                     html.push("<p>" + result[i].brand_name + result[i].honda + "</p>");
                     html.push("<img src=" + result[i].class_image + ">"); // .replace('~', api_url)
                     html.push("</div>");
                     html.push("<div class=\"price\">");
                     html.push("<b>￥" + result[i].work_week_price + "</b>");
-                    html.push("<span>" + date_format(date_adddays(new Date(), 5), "yyyy-MM-dd") + "</span>");
+                    html.push("<span>" + date_format(date_adddays(new Date(), 1), "yyyy-MM-dd") + "</span>");
                     html.push("</div>");
                     html.push("<div class=\"carIcon\">");
                     html.push("<div>");
@@ -1295,10 +1295,10 @@ function tuijian_clik(city) {
 }
 
 function doom_tj(id, class_id) {
-    $("#shop_id").val(id);
-    $("#class_id").val(class_id);
-    $("#StartDateTime").val(date_format(date_adddays(new Date(), 5), "yyyy-MM-dd"));
-    $("#EndDateTime").val(date_format(date_adddays(new Date(), 7), "yyyy-MM-dd"));
+    $("#shop_id").val(id);            //服务点的id
+    $("#class_id").val(class_id);    //具体车的id
+    $("#StartDateTime").val(date_format(date_adddays(new Date(), 1), "yyyy-MM-dd"));
+    $("#EndDateTime").val(date_format(date_adddays(new Date(), 3), "yyyy-MM-dd"));
     $("#fmtuijian").submit();
 }
 
