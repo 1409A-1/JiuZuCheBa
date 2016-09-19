@@ -26,8 +26,6 @@
 <!--头部-->
 
 <div class="top">
-    <a id="ibangkf" href="http://www.ibangkf.com">客服系统</a>
-    <script language="javascript" src="http://c.ibangkf.com/i/c-hhyhhy.js"></script>
     <div class="top_box">
         <a href="" rel="nofollow">中国互联网连锁租车品牌</a>
         <ul class="top_menu">
