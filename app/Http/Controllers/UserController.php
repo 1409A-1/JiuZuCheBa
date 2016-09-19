@@ -15,6 +15,7 @@ use App\Car_brand;
 use App\Car_info;
 use App\Car_number;
 use App\Order;
+use App\OrderInfo;
 use Validator;
 
 class UserController extends Controller
@@ -204,18 +205,36 @@ class UserController extends Controller
             $timeday = ceil(($apply['des_time']-$apply['dep_time'])/24/60/60);
             $carInfo = Car_info::where('car_id', $apply['car_id'])->first()->toArray();
             $data['ord_price'] = $timeday*$carInfo['car_price'];
+            if ($apply['departure'] != $apply['destination']) {//服务点不同
+                $server_price = 100;
+                $data['ord_price'] = $data['ord_price']*1+(30*$timeday)+$server_price+20;
+            } else {
+                $server_price = 0;
+                $data['ord_price'] = $data['ord_price']*1+(30*$timeday)+$server_price+20;
+            }
             $data['ord_pay'] = 0;
             $data['add_time'] = time();
             $data['note'] = '无';
             $data['id_card'] = '无';
-            Order::create($data);
-            //$data['']
+            //Order::create($data);
+            //订单信息入库
+            $id = Order::insertGetId($data);
+            $orderInfo['ord_id'] = $id;
+            $orderInfo['departure'] = $apply['departure'];
+            $orderInfo['destination'] = $apply['destination'];
+            $orderInfo['dep_time'] = $apply['dep_time'];
+            $orderInfo['des_time'] = $apply['des_time'];
+            $orderInfo['car_type'] = $apply['car_type'];
+            $orderInfo['car_brand'] = $apply['car_brand'];
+            $orderInfo['benefit_id'] = '';
+            $orderInfo['car_id'] = $apply['car_id'];
+            OrderInfo::create($orderInfo);
             //调用短信接口
             /*$param = "请您于{$date['dep_time']}，准时到{$date['start']}取车";
             $url = "http://api.k780.com:88/?app=sms.send&tempid=50794&param=code%3D$param
 &phone={$date['tel']}&appkey=19680&sign=7179f1c6c731d1b0c18d80737c0fc295&format=json";
             $res = file_get_contents($url);*/
-            echo "success";
+            return "success";
         }
     }
 }
