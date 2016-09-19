@@ -13,6 +13,7 @@ class IndexController extends Controller
         $package = DB::table('package')->limit(3)->get();
         return view('home.index.home', ['package' => $package]);
     }
+
     //短租
     public function short(Request $request)
     {
@@ -40,12 +41,26 @@ class IndexController extends Controller
         $fast = json_encode($fast, JSON_UNESCAPED_UNICODE);
         return view('home.index.short', ['type' => $type, 'fast' => $fast]);
     }
+
     //长租
     public function long(){
         $type = DB::table('car_type')->get();
         return view('home.index.long', compact('type'));
     }
 
+    //城市地图
+    public function cityMap(Request $request){
+        if ($request->has('cityName')) {
+            $cityName = $request->input('cityName');
+        }
+        return view('home.index.cityMap', compact('cityName'));
+    }
+
+    //国家地图
+    public function nationalMap(){
+        return view('home.index.nationalMap');
+    }
+    
     //404页面
     public function err404(){
         return view('home.404.404');
