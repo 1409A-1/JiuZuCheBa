@@ -193,7 +193,7 @@ class HomeOrderController extends Controller
             return redirect('orderList');
         }
     }
-//订单的取消
+//短租订单的取消
     public function cancelOrder(Request $request)
     {
        $ord_id = $this->des($request->input('ceoyg'));   //要取消的订单
@@ -201,18 +201,39 @@ class HomeOrderController extends Controller
        $status = DB::table('order')
            ->where(['user_id'=>$user_id, 'ord_id'=> $ord_id])
            ->value('ord_pay');
-       if ($status==0) {
+       if ($status===0) {
            $result = DB::table('order')
                ->where(['user_id'=>$user_id, 'ord_id'=> $ord_id])
                ->update(['ord_pay' => 5]);
            if ($result) {
-               echo "<script>alert('取消成功');location.href='orderList'</script>";
+               return "<script>alert('取消成功');location.href='orderList'</script>";
            } else {
-               echo "<script>alert('取消失败');location.href='orderList'</script>";
+               return "<script>alert('取消失败');location.href='orderList'</script>";
            }
        } else {
-               echo "<script>alert('请联系客服取消');location.href='orderList'</script>";
+               return "<script>alert('请联系客服取消');location.href='orderList'</script>";
        }
+    }
+//长租订单取消
+    public function cancleLong(Request $request)
+    {
+        $apply_id = $request->input('ceoyg');          //申请表中的id
+        $user_id = session('user_id');                 //用户的id
+        $status = DB::table('apply')
+            ->where(['apply_id'=> $apply_id, 'user_id'=> $user_id])
+            ->value('apply_status');
+        if ($status===0) {
+            $result = DB::table('apply')
+                ->where(['apply_id'=> $apply_id, 'user_id'=> $user_id])
+                ->update(['apply_status' => 3]);
+            if ($result) {
+                return "<script>alert('取消成功');location.href='orderList'</script>";
+            } else {
+                return "<script>alert('取消失败');location.href='orderList'</script>";
+            }
+        } else {
+            return "<script>alert('请联系客服取消');location.href='orderList'</script>";
+        }
     }
 //订单付款
     public function zfbPay(Request $request)

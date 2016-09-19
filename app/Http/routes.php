@@ -44,8 +44,10 @@ Route::group(['middleware' => ['homelogin']], function(){
     Route::get('orderSuccess', 'HomeOrderController@orderSuccess');
     //订单详情页的查看
     Route::get('orderInfo', 'HomeOrderController@orderInfo');
-    //订单取消
+    //短租订单取消
     Route::get('cancelOrder', 'HomeOrderController@cancelOrder');
+    //长租申请中取消订单
+    Route::get('cancleLong', 'HomeOrderController@cancleLong');
     //调用支付宝付款
     Route::get('zfbPay', 'HomeOrderController@zfbPay');
     //支付失败
@@ -57,7 +59,7 @@ Route::group(['middleware' => ['homelogin']], function(){
 //前台登陆页面的展示
 Route::get('login', 'LoginController@login');
 //前台盒子登录
-Route::get('loginBox', 'IndexController@loginBox');
+Route::get('loginBox', 'LoginController@loginBox');
 //前台盒子登录的验证接值
 Route::post('loginBoxPro', 'LoginController@loginBoxPro');
 //前台登录接值验证

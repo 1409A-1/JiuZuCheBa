@@ -814,11 +814,12 @@ function calendar() {
         start_time = now_time,//可选的 租车开始日期
         end_time,//可选的 取车日期
         end_time1;//可选的 还车日期
-    $.ajax({
-        url: maxrent_auto_url,
-        dataType: 'jsonp',
-        success: function (e) {
-            Available_days = e.parameter_value1;//获取 可提前预订天数
+    //$.ajax({
+    //    url: maxrent_auto_url,
+    //    dataType: 'jsonp',
+    //    success: function (e) {
+    //        Available_days = e.parameter_value1;//获取 可提前预订天数
+            Available_days = 60;//获取 可提前预订天数
             end_time = date_adddays(start_time, Available_days);//可选的 取车日期
             end_time1 = date_adddays(start_time, (Available_days + 7));//可选的 还车日期
             //加载日历
@@ -828,8 +829,8 @@ function calendar() {
             //初始化默认日期
             startDate.html(date_format(out_time, "yyyy-MM-dd"));
             endDate.html(date_format(in_time, "yyyy-MM-dd"));
-        }
-    });
+    //    }
+    //});
     //取车 日期
     function startDateRange() {
         var time = timeCycle(start_time, end_time),

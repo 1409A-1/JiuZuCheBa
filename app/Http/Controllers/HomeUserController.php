@@ -23,9 +23,9 @@ class HomeUserController extends Controller
       $new_pwd = md5($request->input('new_pwd'));
       $info = $this->u_info();
           if ($new_pwd==$info['password']){
-               echo 'true';
+              return 'true';
           } else {
-               echo 'false';
+              return 'false';
           }
     }
 //前台修改密码验证手机验证码是否正确
@@ -34,9 +34,9 @@ class HomeUserController extends Controller
        // echo $mobile_code;
         $info = $this->u_info();
         if ($mobile_code==session($info['tel'])) {
-            echo 'true';
+            return 'true';
         } else {
-            echo 'false';
+            return 'false';
         }
     }
 //接值进行验证密码修改
@@ -89,28 +89,32 @@ class HomeUserController extends Controller
             ->leftJoin('car_info','order_info.car_id','=','car_info.car_id')
             ->where('order.user_id',$id)
             ->get();
-        if ($order) {
+       $long = DB::table('apply')
+           ->leftJoin('car_info','apply.car_id','=','car_info.car_id')
+           ->where(['apply.user_id'=> $id])
+           ->get();
+       if ($order) {
             foreach($order as $k=>$v) {
                 $arr['all'][$k]=$v;           //全部的订单
                 $or_id = $this->desc($v['ord_id']);
                 $arr['all'][$k]['ord_id'] = $or_id;
                 $v['ord_id'] = $or_id;
-                if($v['ord_pay']==6){       //订单申请中
-                    $arr['6'][]=$v;
+                if ($long) {       //订单申请中
+                    $arr['6'] = $long;
                 }
-                if($v['ord_pay']==2){
-                    $arr['2'][]=$v;
+                if ($v['ord_pay']==2) {       //使用中
+                    $arr['2'][] = $v;
                 }
-                if($v['ord_pay']==3){
-                    $arr['3'][]=$v;
+                if ($v['ord_pay']==3) {        //使用完成
+                    $arr['3'][] = $v;
                 }
-                if($v['ord_pay']==5){
-                    $arr['5'][]=$v;
+                if ($v['ord_pay']==5) {       //订单取消
+                    $arr['5'][] = $v;
                 }
             }
-        } else {
-            $arr[]='';
-        }
+       } else {
+            $arr[] = '';
+       }
         return view('home.user_info.order_list',['order'=>$arr]);
     }
 
@@ -153,12 +157,10 @@ class HomeUserController extends Controller
        $result['str'] =  DB::select("select * from message ORDER BY message_id desc limit ?,?",[$page,6]);
         if($result['str']){
             $result['nextpage'] = $nextpage;
-            echo json_encode($result);
+            return json_encode($result);
         } else{
 
         }
-
-
     }
 //进行留言的ajax添加
     public function messageAdd(Request $request){

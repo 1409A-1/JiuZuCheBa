@@ -16,10 +16,10 @@
         <div class="right">
             <!--我的主页-->
             <div class="order shortOrder show">
-                <h4>短租订单</h4>
+                <h4>订单列表</h4>
                 <ul class="order1">
                     <li class="active">全部订单</li>
-                    <li>预约中<a></a></li>
+                    <li>长租订单<a></a></li>
                     <li>租赁中<a></a></li>
                     <li>已完成<a></a></li>
                     <li>已取消<a></a></li>
@@ -40,7 +40,7 @@
                                 <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}&nbsp;&nbsp;&nbsp;&nbsp;@if($v['ord_type']==1)短租自驾@else长租服务@endif</h5>
                                             <div>
                                                 <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
@@ -122,12 +122,12 @@
                             <p class="noMore">暂无订单...</p>
                         @endif
                     </span>
-                    {{--预约中--}}
+                    {{--长租订单--}}
                     <span style="display: none">
                         <ul class="order2">
                             <li style="width: 440px">订单详情</li>
                             <li>时间</li>
-                            <li>支付金额</li>
+                            <li>申请时间</li>
                             <li>订单状态</li>
                             <li>操作</li>
                         </ul>
@@ -136,8 +136,7 @@
                             @foreach($order['6'] as $k=>$v)
                                 <div class="No">
                                     <ul class="order3">
-                                        <li>
-                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
+                                        <li style="height: 122px">
                                             <div>
                                                 <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
@@ -165,19 +164,33 @@
                                                     <li class="time">
                                                         <div>
                                                             取车时间<br>
-                                                            {{ date('Y/m/d H:i', $v['dep_time']) }}
+                                                            {{ date('Y/m/d 10:00', $v['dep_time']) }}
                                                         </div>
                                                         <div>
                                                             还车时间<br>
-                                                            {{ date('Y/m/d H:i', $v['des_time']) }}
+                                                            {{ date('Y/m/d 10:00', $v['des_time']) }}
                                                         </div>
                                                     </li>
-                                                    <li class="cen">总额：￥{{ $v['ord_price'] }}</li>
+                                                    <li class="cen">{{ date('Y/m/d H:i:s', $v['apply_time']) }}</li>
                                                     <li class="state">
-                                                            <a> 预约中</a>
+                                                        <a>
+                                                           @if($v['apply_status']==0)
+                                                               申请中
+                                                           @elseif($v['apply_status']==1)
+                                                               申请通过
+                                                           @elseif($v['apply_status']==2)
+                                                               申请未通过
+                                                           @else
+                                                               申请已取消
+                                                           @endif
+                                                        </a>
                                                     </li>
                                                     <li class="operation">
-                                                        <a href="{{url('orderInfo')}}?ceoyg={{$v['ord_id']}}">详情</a>
+                                                        @if($v['apply_status']==0)
+                                                            <a href="{{ url('cancleLong') }}?ceoyg={{ $v['apply_id'] }}">取消申请</a>
+                                                        @else
+                                                            <a href="">查看</a>
+                                                        @endif
                                                     </li>
                                                 </ul>
                                             </div>
@@ -189,7 +202,6 @@
                             <p class="noMore">暂无订单...</p>
                         @endif
                     </span>
-
                     {{--租赁中--}}
                     <span style="display: none">
                         <ul class="order2">
@@ -205,7 +217,7 @@
                                 <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}&nbsp;&nbsp;&nbsp;&nbsp;@if($v['ord_type']==1)短租自驾@else长租服务@endif </h5>
                                             <div>
                                                 <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
@@ -257,7 +269,6 @@
                             <p class="noMore">暂无订单...</p>
                         @endif
                     </span>
-
                     {{--已完成--}}
                     <span style="display: none">
                         <ul class="order2">
@@ -273,7 +284,7 @@
                                 <div class="No">
                                     <ul class="order3">
                                         <li>
-                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
+                                            <h5><a>订单号：</a>{{ $v['ord_sn'] }}&nbsp;&nbsp;&nbsp;&nbsp;@if($v['ord_type']==1)短租自驾@else长租服务@endif</h5>
                                             <div>
                                                 <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                                 <div class="info">
@@ -325,7 +336,6 @@
                             <p class="noMore">暂无订单...</p>
                         @endif
                     </span>
-
                     {{--已取消 --}}
                     <span style="display: none">
                     <ul class="order2">
@@ -341,7 +351,7 @@
                             <div class="No">
                                 <ul class="order3">
                                     <li>
-                                        <h5><a>订单号：</a>{{ $v['ord_sn'] }}</h5>
+                                        <h5><a>订单号：</a>{{ $v['ord_sn'] }}&nbsp;&nbsp;&nbsp;&nbsp;@if($v['ord_type']==1)短租自驾@else长租服务@endif</h5>
                                         <div>
                                             <img src="{{ $v['car_img'] }}" alt="{{ $v['car_img'] }}">
                                             <div class="info">
