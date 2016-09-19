@@ -913,18 +913,18 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
 
 //城市
 function City() {
-    $.post(city, {'_token': _token}, function(result){
+    $.post(getCityList, {'_token': _token}, function(result){
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合
             temp;
         for (var i = 0; i < result.length; i++) {
-            if ((result[i].city_type & 4) == 4)//旅游城市
+            if (result[i].city_type == 1)//旅游城市
             {
                 touristCity += "<span><a>" + result[i].city_name + "</a></span>";
             }
 
-            if ((result[i].city_type & 2) == 2)//热门城市
+            if (result[i].city_type == 2)//热门城市
             {
                 hotCity += "<span><a>" + result[i].city_name + "</a></span>";
             }

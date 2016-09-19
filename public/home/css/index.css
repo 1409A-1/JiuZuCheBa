@@ -261,7 +261,7 @@
 #storeMap .seaBut{width: 100px!important;}
 #storeMap .go,.search{display: none}
 /*ICON*/
-.iconMap{display:inline-block;background: url("../images/icon.png") no-repeat;position: absolute;left: 10px;top: 3px}
+.iconMap{display:inline-block;background: url("../images/cityMap/icon.png") no-repeat;position: absolute;left: 10px;top: 3px}
 .icon_M1{width: 89px;height: 66px;background-position:0 0}
 .icon_M2{width: 12px;height: 17px;background-position:-90px 0}
 .icon_M3{width: 12px;height: 17px;background-position:-90px -17px}

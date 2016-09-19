@@ -46,7 +46,7 @@ function calendar(){
 //城市列表获取
 function City(){
     //加载城市
-    $.post(city, {'_token': _token}, function(result){
+    $.post(getCityList, {'_token': _token}, function(result){
         var hotCity="",//热门城市
             touristCity='',//旅游城市
             letter=[];//首字母集合
