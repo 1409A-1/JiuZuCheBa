@@ -54,13 +54,13 @@ class HomeUserController extends Controller
                        $request->session()->forget('user_id');
                        return redirect('login');
                    } else {
-                       echo "<script>alert('修改失败');history.go(-1)</script>";
+                       return "<script>alert('修改失败');history.go(-1)</script>";
                    }
               } else {
-                  echo "<script>alert('旧密码不正确');history.go(-1)</script>";
+                  return "<script>alert('旧密码不正确');history.go(-1)</script>";
               }
         } else {
-            echo "<script>alert('验证码不正确');history.go(-1)</script>";
+            return "<script>alert('验证码不正确');history.go(-1)</script>";
         }
 
     }
@@ -89,18 +89,14 @@ class HomeUserController extends Controller
             ->leftJoin('car_info','order_info.car_id','=','car_info.car_id')
             ->where('order.user_id',$id)
             ->get();
-       $long = DB::table('apply')
-           ->leftJoin('car_info','apply.car_id','=','car_info.car_id')
-           ->where(['apply.user_id'=> $id])
-           ->get();
        if ($order) {
             foreach($order as $k=>$v) {
                 $arr['all'][$k]=$v;           //全部的订单
                 $or_id = $this->desc($v['ord_id']);
                 $arr['all'][$k]['ord_id'] = $or_id;
                 $v['ord_id'] = $or_id;
-                if ($long) {       //订单申请中
-                    $arr['6'] = $long;
+                if ($v['ord_type']==2) {      //长租区域
+                    $arr['6'][] = $v;
                 }
                 if ($v['ord_pay']==2) {       //使用中
                     $arr['2'][] = $v;
@@ -113,10 +109,41 @@ class HomeUserController extends Controller
                 }
             }
        } else {
-            $arr[] = '';
+           $arr = array();
        }
         return view('home.user_info.order_list',['order'=>$arr]);
     }
+//长期租车的详情查看
+    public function apply()
+    {
+        $id = session('user_id');       //当前登录人的id
+        $apply = DB::table('apply')
+            ->leftJoin('car_info', 'apply.car_id', '=', 'car_info.car_id')
+            ->where(['apply.user_id'=> $id])
+            ->get();
+        if ($apply) {
+            foreach($apply as $k=>$v){
+                $arr['all'][] = $v;              //全部申请
+                if ($v['apply_status']==0){      //申请中
+                    $arr[0][] = $v;
+                }
+                if ($v['apply_status']==1){
+                    $arr[1][] = $v;         //申请通过
+                }
+                if ($v['apply_status']==2) {
+                    $arr[2][] = $v;         //申请未通过
+                }
+                if ($v['apply_status']==3) {
+                    $arr[3][] = $v;         //申请取消
+                }
+            }
+        } else {
+            $arr = array();
+
+        }
+        return view('home.user_info.apply', ['order'=>$arr]);
+    }
+
 
 //个人优惠券列表的展示
     public function benefitList(){
@@ -124,7 +151,6 @@ class HomeUserController extends Controller
         $benefit = DB::table('benefit')
               ->where('user_id',$id)
               ->get();
-
         if ($benefit) {
             foreach($benefit as $k=>$v){
                 if ($v['end_time']<=time()) {
@@ -136,7 +162,6 @@ class HomeUserController extends Controller
                 if ($v['type']==1&&$v['end_time']>time()) {
                    $yh['1'][] = $v;
                 }
-
             }
         } else {
             $yh[]='';
