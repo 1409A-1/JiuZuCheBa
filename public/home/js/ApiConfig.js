@@ -8,7 +8,7 @@ var getCarTypeList = "getCarTypeList"; // 获取车辆类型
 
 // ----------
 var city_list_url = api_url + "/api/shoplist/GetCityList";//获取存在门店的城市
-var city = "getCityList"; // 新从数据库获取存在门店的城市
+var getCityList = "getCityList"; // 新从数据库获取存在门店的城市
 // ----------
 
 // ----------
@@ -65,7 +65,11 @@ var customer_appraiselist_by_cus = api_url + '/api/Customer/GetShopByCusAppraise
 var shop_appraiselist_update = api_url + '/api/shoplist/GetShopUpdateCusScore';//门店会员评价
 var shop_appraiselist_delete = api_url + '/api/shoplist/GetShopDeleteCusScore';//门店会员评价
 
+// ----------
 var countryMap = api_url + '/api/shoplist/get_country_map';//全国地图
+var nationalMap = 'getServerForCountry';//全国地图
+// ----------
+
 var specialCarType = api_url + '/api/AutoClass/GetSpecialClassList';//特价车型
 var cityCarType = api_url + '/api/AutoClass/list_by_city';//城市筛选车型
 
