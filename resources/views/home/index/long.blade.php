@@ -1,11 +1,9 @@
 @include('common.home_header')
 <link type="text/css" rel="stylesheet" href="home/css/longRent.css">
 <script type="text/javascript" src="home/js/longRent.js"></script>
-
 <!--预定框-->
 <div class="bookBox noCopy">
     <div class="book">
-
         <div class="bookTit">
             长租服务<a>(30天以上)</a>
         </div>
@@ -45,7 +43,6 @@
                             </div>
                         </div>
                     </div>
-                   
                     <div class="longLine1_R">
                         <div class="show">
                             <a lat="" lng="" store_id=""></a>
@@ -77,9 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-
                 <!--租赁时长、用车数量-->
                 <span>租赁时长</span>
                 <span class="longTitR">用车数量</span>
@@ -151,7 +146,7 @@
                     </div>
                 </div>
                 <!--预订按钮-->
-                <button id="longBook">
+                <button id="longBook" style="cursor: pointer">
                     开始预订
                     <i></i>
                 </button>

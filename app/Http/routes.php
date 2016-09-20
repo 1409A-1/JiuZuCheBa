@@ -48,6 +48,8 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
 	//订单列表的展示
 	Route::get('orderList', 'HomeUserController@orderList');
+    //长租申请的查看
+    Route::get('apply', 'HomeUserController@apply');
 	//优惠券的展示
 	Route::get('benefitList', 'HomeUserController@benefitList');
 	//公开留言页面的展示
@@ -66,8 +68,10 @@ Route::group(['middleware' => ['homelogin']], function(){
     Route::get('orderSuccess', 'HomeOrderController@orderSuccess');
     //订单详情页的查看
     Route::get('orderInfo', 'HomeOrderController@orderInfo');
-    //订单取消
+    //短租订单取消
     Route::get('cancelOrder', 'HomeOrderController@cancelOrder');
+    //长租申请的中的取消
+    route::get('cancelLong', 'HomeOrderController@cancelLong');
     //调用支付宝付款
     Route::get('zfbPay', 'HomeOrderController@zfbPay');
     //支付失败
@@ -157,11 +161,11 @@ Route::group(['middleware' => ['nologin']], function(){
     /**
      * 套餐管理
      */
-    Route::get('package', 'PackageController@package');//套餐列表
-    Route::get('packIns', 'PackageController@packageIns');//套餐添加
-    Route::post('packInsert', 'PackageController@packageIns');//套餐添加
-    Route::get('packDel/{pack_id}', 'PackageController@packDel');//套餐删除
-    Route::get('userPack', 'PackageController@userPack');//用户套餐申请查看
+    Route::get('package', 'PackageController@package');                     //套餐列表
+    Route::get('packIns', 'PackageController@packageIns');                  //套餐添加
+    Route::post('packInsert', 'PackageController@packageIns');              //套餐添加
+    Route::get('packDel/{pack_id}', 'PackageController@packDel');           //套餐删除
+    Route::get('userPack', 'PackageController@userPack');                   //用户套餐申请查看
 
     /*
      * name:wanghu
@@ -169,20 +173,21 @@ Route::group(['middleware' => ['nologin']], function(){
      * 描述：订单的审核
      */
     Route::get('orderLists', 'OrderController@orderList');
+    Route::post('orderInquiry', 'OrderController@orderInquiry');                //订单搜索
     Route::get('orderInfo/{ord_id}', 'OrderController@orderInfo');
-    Route::get('carry/{ord_id}', 'OrderController@carry');//提车
-    Route::get('still/{ord_id}', 'OrderController@still');//还车
+    Route::get('carry/{ord_id}', 'OrderController@carry');                      //提车
+    Route::get('still/{ord_id}', 'OrderController@still');                      //还车
+    Route::post('integralManagement', 'OrderController@integralManagement');    //还车
 
-    Route::any('carIns', 'CarController@carIns');//车辆的添加
-    Route::get('carList', 'CarController@carList');//车辆展示列表
-    Route::get('carDel/{car_id}', 'CarController@carDel');//车辆删除
-    Route::get('carServer', 'CarController@carServer');//服务点车辆分配页面
-    Route::post('carServerAdd', 'CarController@carServerAdd');//服务点车辆分配执行
-    Route::post('carUnique', 'CarController@carUnique');//车辆分配唯一性查询
-    Route::get('carServerList', 'CarController@carServerList');//服务点车辆信息列表
+    Route::any('carIns', 'CarController@carIns');                               //车辆的添加
+    Route::get('carList', 'CarController@carList');                             //车辆展示列表
+    Route::get('carDel/{car_id}', 'CarController@carDel');                      //车辆删除
+    Route::get('carServer', 'CarController@carServer');                         //服务点车辆分配页面
+    Route::post('carServerAdd', 'CarController@carServerAdd');                  //服务点车辆分配执行
+    Route::post('carUnique', 'CarController@carUnique');                        //车辆分配唯一性查询
+    Route::get('carServerList', 'CarController@carServerList');                 //服务点车辆信息列表
     Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}', 'CarController@carServerPage');//服务点车辆信息分页
     Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
-
 });
 
 // 微信对接 授权登录
