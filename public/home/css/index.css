@@ -82,7 +82,7 @@
 .setMeal>div>div{float: left;}
 .sM_L{width: 110px;height: 40px;padding: 17px 0;line-height: 20px;text-align: center;}
 .setMeal .hr{width: 1px;height: 72px;margin-top: 1px;background: url("../images/hr.png") 0 0;}
-.sM_R{width: 170px;height: 40px;padding: 17px 0;line-height: 40px;overflow: hidden;position: relative;text-indent: 30px}
+.sM_R{width: 170px;height: 40px;padding: 17px 0;line-height: 40px;overflow: hidden;position: relative;}/*text-indent: 30px*/
 .sM_R a{font-size: 40px}
 .sM_R button{float: right;margin-right: 20px;width: 40px;height: 40px;border-radius: 40px;color: #fff;background: #FF9A36;border: 0;font-size: 12px;overflow: hidden;text-indent: 0;line-height: 15px}
 .setMeal>div,.setMeal button{-moz-transition: all 0.4s;-o-transition: all 0.4s;-webkit-transition: all 0.4s;transition: all 0.4s}
@@ -261,7 +261,7 @@
 #storeMap .seaBut{width: 100px!important;}
 #storeMap .go,.search{display: none}
 /*ICON*/
-.iconMap{display:inline-block;background: url("../images/icon.png") no-repeat;position: absolute;left: 10px;top: 3px}
+.iconMap{display:inline-block;background: url("../images/cityMap/icon.png") no-repeat;position: absolute;left: 10px;top: 3px}
 .icon_M1{width: 89px;height: 66px;background-position:0 0}
 .icon_M2{width: 12px;height: 17px;background-position:-90px 0}
 .icon_M3{width: 12px;height: 17px;background-position:-90px -17px}

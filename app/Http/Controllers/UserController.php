@@ -14,6 +14,8 @@ use App\Car_type;
 use App\Car_brand;
 use App\Car_info;
 use App\Car_number;
+use App\Order;
+use App\OrderInfo;
 use Validator;
 
 class UserController extends Controller
@@ -163,13 +165,13 @@ class UserController extends Controller
      */
     public function longOrderList()
     {
-        $date = Apply::select('apply_id', 'tel', 'a.server_id', 'car_info.car_id', 'user_name', 'dep_time', 'des_time', 'type_name', 'brand_name', 'car_name', 'apply_time', 'apply_status', 'a.server_name as start_name', 'b.server_name as end_name', 'a.city_name as start_city', 'a.district as start_dis', 'b.city_name as end_city', 'b.district as end_dis')->leftJoin('server as a', 'apply.departure', '=', 'a.server_id')->leftJoin('server as b', 'apply.destination', '=', 'b.server_id')->leftJoin('user', 'apply.user_id', '=', 'user.user_id')->leftJoin('car_type', 'apply.car_type', '=', 'car_type.type_id')->leftJoin('car_brand', 'apply.car_brand', '=', 'car_brand.brand_id')->leftJoin('car_info', 'apply.car_id', '=', 'car_info.car_id')->get()->toArray();
-        foreach ($date as $k => $val) {
-            $date[$k]['dep_time']=date("Y/m/d h:i:s", $date[$k]['dep_time']);
-            $date[$k]['des_time']=date("Y/m/d h:i:s", $date[$k]['des_time']);
-            $date[$k]['apply_time']=date("Y/m/d h:i:s", $date[$k]['apply_time']);
+        $data = Apply::select('apply_id', 'tel', 'a.server_id', 'car_info.car_id', 'user_name', 'dep_time', 'des_time', 'type_name', 'brand_name', 'car_name', 'apply_time', 'apply_status', 'a.server_name as start_name', 'b.server_name as end_name', 'a.city_name as start_city', 'a.district as start_dis', 'b.city_name as end_city', 'b.district as end_dis')->leftJoin('server as a', 'apply.departure', '=', 'a.server_id')->leftJoin('server as b', 'apply.destination', '=', 'b.server_id')->leftJoin('user', 'apply.user_id', '=', 'user.user_id')->leftJoin('car_type', 'apply.car_type', '=', 'car_type.type_id')->leftJoin('car_brand', 'apply.car_brand', '=', 'car_brand.brand_id')->leftJoin('car_info', 'apply.car_id', '=', 'car_info.car_id')->get()->toArray();
+        foreach ($data as $k => $val) {
+            $data[$k]['dep_time'] = date("Y/m/d h:i:s", $data[$k]['dep_time']);
+            $data[$k]['des_time'] = date("Y/m/d h:i:s", $data[$k]['des_time']);
+            $data[$k]['apply_time'] = date("Y/m/d h:i:s", $data[$k]['apply_time']);
         }
-        return view('admin.user.longOrderList', ['order' => $date]);
+        return view('admin.user.longOrderList', ['order' => $data]);
     }
 
     /*
@@ -195,12 +197,44 @@ class UserController extends Controller
             echo "false";
         } else {
             Apply::where('apply_id', $date['applyId'])->update(['apply_status' => 1]);
+            $apply = Apply::where('apply_id', $date['applyId'])->first()->toArray();
+            $data['user_id'] = $apply['user_id'];
+            $data['ord_sn'] = (date('Ymd').time() % 86400 + 8 * 3600).'1'.$apply['departure'].$apply['car_id'].$apply['user_id'];
+            $data['ord_type'] = 2;
+            $data['ord_package'] = 0;
+            $timeday = ceil(($apply['des_time']-$apply['dep_time'])/24/60/60);
+            $carInfo = Car_info::where('car_id', $apply['car_id'])->first()->toArray();
+            $data['ord_price'] = $timeday*$carInfo['car_price'];
+            if ($apply['departure'] != $apply['destination']) {//服务点不同
+                $server_price = 100;
+                $data['ord_price'] = $data['ord_price']*1+(30*$timeday)+$server_price+20;
+            } else {
+                $server_price = 0;
+                $data['ord_price'] = $data['ord_price']*1+(30*$timeday)+$server_price+20;
+            }
+            $data['ord_pay'] = 0;
+            $data['add_time'] = time();
+            $data['note'] = '无';
+            $data['id_card'] = '无';
+            //Order::create($data);
+            //订单信息入库
+            $id = Order::insertGetId($data);
+            $orderInfo['ord_id'] = $id;
+            $orderInfo['departure'] = $apply['departure'];
+            $orderInfo['destination'] = $apply['destination'];
+            $orderInfo['dep_time'] = $apply['dep_time'];
+            $orderInfo['des_time'] = $apply['des_time'];
+            $orderInfo['car_type'] = $apply['car_type'];
+            $orderInfo['car_brand'] = $apply['car_brand'];
+            $orderInfo['benefit_id'] = '';
+            $orderInfo['car_id'] = $apply['car_id'];
+            OrderInfo::create($orderInfo);
             //调用短信接口
             /*$param = "请您于{$date['dep_time']}，准时到{$date['start']}取车";
             $url = "http://api.k780.com:88/?app=sms.send&tempid=50794&param=code%3D$param
 &phone={$date['tel']}&appkey=19680&sign=7179f1c6c731d1b0c18d80737c0fc295&format=json";
             $res = file_get_contents($url);*/
-            echo "success";
+            return "success";
         }
     }
 }

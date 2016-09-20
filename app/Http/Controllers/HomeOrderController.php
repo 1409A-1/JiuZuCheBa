@@ -193,26 +193,47 @@ class HomeOrderController extends Controller
             return redirect('orderList');
         }
     }
-//订单的取消
+//订单的取消短租
     public function cancelOrder(Request $request)
     {
        $ord_id = $this->des($request->input('ceoyg'));   //要取消的订单
-       $user_id = session('user_id');                    //用户
+       $user_id = session('user_id');                    //用户id
        $status = DB::table('order')
            ->where(['user_id'=>$user_id, 'ord_id'=> $ord_id])
            ->value('ord_pay');
-       if ($status==0) {
+       if ($status===0) {
            $result = DB::table('order')
                ->where(['user_id'=>$user_id, 'ord_id'=> $ord_id])
                ->update(['ord_pay' => 5]);
            if ($result) {
-               echo "<script>alert('取消成功');location.href='orderList'</script>";
+               return "<script>alert('取消成功');location.href='orderList'</script>";
            } else {
-               echo "<script>alert('取消失败');location.href='orderList'</script>";
+               return "<script>alert('取消失败');location.href='orderList'</script>";
            }
        } else {
-               echo "<script>alert('请联系客服取消');location.href='orderList'</script>";
+               return "<script>alert('请联系客服取消');location.href='orderList'</script>";
        }
+    }
+//长租页面的取消
+    public function cancelLong(Request $request)
+    {
+        $apply_id = $request->input('ceoyg');        //要取消的长租id
+        $user_id = session('user_id');               //用户id
+        $apply = DB::table('apply')
+            ->where(['apply_id'=> $apply_id, 'user_id'=> $user_id])
+            ->value('apply_status');
+        if ($apply===0) {
+            $result = DB::table('apply')
+                ->where(['user_id'=>$user_id, 'apply_id'=> $apply_id])
+                ->update(['apply_status' => 3]);
+            if ($result) {
+                return "<script>alert('取消成功');location.href='apply'</script>";
+            } else {
+                return "<script>alert('取消失败');location.href='apply'</script>";
+            }
+        } else {
+            return "<script>alert('请联系客服取消');location.href='apply'</script>";
+        }
     }
 //订单付款
     public function zfbPay(Request $request)
@@ -225,7 +246,7 @@ class HomeOrderController extends Controller
         if ($result) {
             $this->pay($ord_sn);
         } else {
-            echo "<script>alert('支付失败');location.href='orderList'</script>";
+            return "<script>alert('支付失败');location.href='orderList'</script>";
         }
     }
 //公共订单信息
@@ -274,7 +295,7 @@ class HomeOrderController extends Controller
             "notify_url"	=> "http://www.jiuzucheba/error", // 服务器异步通知页面路径
             "return_url"	=> "http://www.jiuzucheba/paySuccess", // 页面跳转同步通知页面路径
             "out_trade_no"	=> "$ord_sn", // 商户网站订单系统中唯一订单号
-            "subject"	=> "订单", // 订单名称
+            "subject"	=> "订单"." ".$ord_sn, // 订单名称
             "total_fee"	=> 0.01, // 付款金额
             "body"	=> "", // 订单描述 可选
             "show_url"	=> "", // 商品展示地址 可选

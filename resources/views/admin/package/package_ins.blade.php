@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - Tables showcase</title>
+	<title>套餐管理</title>
     
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -24,7 +24,6 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 
     <!-- navbar -->
@@ -38,9 +37,6 @@
 
 	<!-- main container -->
     <div class="content">
-        
-
-        
         <div class="container-fluid">
             <div id="pad-wrapper">
                 
@@ -49,7 +45,7 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>Products</h4>
+                            <h4>套餐添加</h4>
                         </div>
                     </div>
 
@@ -71,7 +67,7 @@
                             <table class="table">
                                 <tr>
                                     <td>套餐名称:</td>
-                                    <td><input type="text" required="required" name="pack_name"/></td>
+                                    <td><input type="text" required="required" name="pack_name" value="打包套餐"/></td>
                                 </tr>
                                 <tr>
                                     <td>套餐价格:</td>

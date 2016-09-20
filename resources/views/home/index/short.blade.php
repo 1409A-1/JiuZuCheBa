@@ -1,10 +1,10 @@
 @include('common.home_header')
 <script>
     eval('var fast = ' + '{!! $fast !!}');
-    var shopID = "";
-    var StartDateTime = ""+" 10:00";
-    var EndDateTime = "" + " 10:00";
-    var carID = "";
+    var shopID = fast.shop_id;
+    var StartDateTime = fast.StartDateTime+" 10:00";
+    var EndDateTime = fast.EndDateTime + " 10:00";
+    var carID = fast.class_id;
     var IN_TYPE = 0;
     /*
      IN_TYPE
@@ -224,7 +224,6 @@
         @foreach($type as $v)
         <a>{{ $v['type_name'] }}</a>
         @endforeach
-        <a>其他</a>
     </div>
     <div class="brand" num="0">
         <b>品牌：</b>

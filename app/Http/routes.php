@@ -1,8 +1,5 @@
 <?php
-//前台首页展示
-Route::get('/', function () {
-    return view('home.index.home');
-});
+// ---------------------------------- 前台注册、登录、退出
 //注册
 Route::get('loginReg','LoginController@register');
 //注册接值处理
@@ -11,9 +8,31 @@ Route::post('regPro','LoginController@regPro');
 Route::get('onlyName','LoginController@onlyName');
 //前台验证注册手机号唯一
 Route::get('onlyTel','LoginController@onlyTel');
+//前台登陆页面的展示
+Route::get('login', 'LoginController@login');
+//前台登录接值验证
+Route::post('loginPro', 'LoginController@loginPro');
+//前台盒子登录
+Route::get('loginBox', 'LoginController@loginBox');
+//前台盒子登录的验证
+Route::post('loginBoxPro', 'LoginController@loginBoxPro');
+//前台退出登录
+Route::get('logOut', 'LoginController@loginOut');
+// -------------------------------------------------
 
+// ---------------------------------- 前台菜单
+//前台首页展示
+Route::get('/', 'IndexController@home');
+//短租
+Route::match(['get', 'post'], 'short', 'IndexController@short');
+//长租
+Route::get('long', 'IndexController@long');
+//门店地图展示
+Route::get('cityMap', 'IndexController@cityMap'); //城市地图
+Route::get('nationalMap', 'IndexController@nationalMap'); //国家地图
+// -------------------------------------------------
 
-//前台的非法登录
+//前台的非法登录中间件
 Route::group(['middleware' => ['homelogin']], function(){
 	//前台的个人中心
 	Route::get('userInfo', 'HomeUserController@userInfo');
@@ -29,6 +48,8 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
 	//订单列表的展示
 	Route::get('orderList', 'HomeUserController@orderList');
+    //长租申请的查看
+    Route::get('apply', 'HomeUserController@apply');
 	//优惠券的展示
 	Route::get('benefitList', 'HomeUserController@benefitList');
 	//公开留言页面的展示
@@ -40,17 +61,17 @@ Route::group(['middleware' => ['homelogin']], function(){
     //订单预订展示
     Route::post('subOrder', 'HomeOrderController@subOrder');
     //使用get查看时404页面
-    Route::get('subOrder', function(){
-        return view('home.404.404');
-    });
+    Route::get('subOrder', 'IndexController@err404');
     //订单确认提交
     Route::get('orderAdd', 'HomeOrderController@orderAdd');
     //订单生成
     Route::get('orderSuccess', 'HomeOrderController@orderSuccess');
     //订单详情页的查看
     Route::get('orderInfo', 'HomeOrderController@orderInfo');
-    //订单取消
+    //短租订单取消
     Route::get('cancelOrder', 'HomeOrderController@cancelOrder');
+    //长租申请的中的取消
+    route::get('cancelLong', 'HomeOrderController@cancelLong');
     //调用支付宝付款
     Route::get('zfbPay', 'HomeOrderController@zfbPay');
     //支付失败
@@ -59,33 +80,19 @@ Route::group(['middleware' => ['homelogin']], function(){
     Route::get('paySuccess', 'HomeOrderController@paySuccess');
 });
 
-//前台登陆页面的展示
-Route::get('login', 'LoginController@login');
-//前台盒子登录
-Route::get('loginBox', function(){
-    return view('home.login.loginBox');
-});
-//前台盒子登录的验证接值
-Route::post('loginBoxPro', 'LoginController@loginBoxPro');
-//前台登录接值验证
-Route::post('loginPro', 'LoginController@loginPro');
-//前台退出登录
-Route::get('logOut', 'LoginController@loginOut');
-//短租
-Route::match(['get', 'post'], 'short', 'IndexController@short');
-//长租
-Route::get('long', 'IndexController@long');
-
-
+// ---------------------------------- 后台登陆、推出
 //后台登录
 Route::get('admins','AdminController@adminLogin');
-//后台登出
-Route::get('logout','AdminController@logout');
 //判断用户密码
 Route::post('signin','AdminController@adminLogin');
+//后台登出
+Route::get('logout','AdminController@logout');
+// -------------------------------------------------
 
+//后台的非法登录中间件
 Route::group(['middleware' => ['nologin']], function(){
-    Route::get('indexs','AdminController@indexs');
+    Route::get('indexs','AdminController@indexs');//后台首页
+
   	/*
 	   类型管理
 	 */
@@ -154,7 +161,7 @@ Route::group(['middleware' => ['nologin']], function(){
      * name:wanghu
      * time:2016/9/9
      * 描述：订单的审核
-     * */
+     */
     Route::get('orderLists','OrderController@orderList');
     Route::post('orderInquiry','OrderController@orderInquiry');//订单搜索
     Route::get('orderInfo/{ord_id}','OrderController@orderInfo');
@@ -181,11 +188,12 @@ Route::get('valid','WechatController@valid');   // 微信对接
 Route::get('oAuth','WechatController@oAuth');   // 第三方授权登录窗口
 Route::get('weChatLogin','WechatController@weChatLogin');   // 微信登录
 
-// 常用路由
-Route::post('getCityList','PublicController@getCityList');  // 获取城市列表
-Route::post('getServerList','PublicController@getServerList');  // 获取服务点列表
-Route::post('getCarList','PublicController@getCarList');  // 获取车辆列表
-Route::post('getCarTypeList','PublicController@getCarTypeList');  // 获取车辆列表
-Route::post('getSpecialCar','PublicController@getSpecialCar');  // 获取当前城市热门车型
-Route::post('longRentApply','PublicController@longRentApply');  // 长租申请
+// 前台数据查询常用路由
+Route::post('getCityList','PublicController@getCityList');          // 获取城市列表
+Route::post('getServerList','PublicController@getServerList');      // 获取服务点列表
+Route::post('getCarList','PublicController@getCarList');            // 获取车辆列表
+Route::post('getCarTypeList','PublicController@getCarTypeList');    // 获取车辆列表
+Route::post('getSpecialCar','PublicController@getSpecialCar');      // 获取当前城市热门车型
+Route::post('longRentApply','PublicController@longRentApply');      // 长租申请
 Route::post('getCarBrandByServer','PublicController@getCarBrandByServer');  // 根据门店获取车辆品牌
+Route::post('getServerForCountry','PublicController@getServerForCountry');  // 根据门店获取全国地图统计信息
