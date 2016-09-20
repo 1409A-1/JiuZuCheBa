@@ -1314,7 +1314,7 @@ function storeMap(lng, lat, id, name) {
         map.addOverlay(storeMarker);
     //添加地图标注 点击 打开窗口信息
     var infoWindow, url, html;
-    url = "http://www.dafang24.com/home/doom?shop_id=" + id;
+    url = "short?shop_id=" + id;
     html = "<div class='box' id='" + id + "'>" +
       "<a class='title' href='" + url + "'>就租车吧 " + name + "</a>" +
       "<a class='comments' href='#" + id + "'>查看评论</a>" +
