@@ -61,7 +61,7 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('address') }}">服务点添加</a></li>
+                <li><a href="{{ url('serverAdd') }}">服务点添加</a></li>
                 <li><a href="{{ url('addressList') }}">服务点展示</a></li>
                 <li><a href="{{ url('carServer') }}">服务点车辆分配</a></li>
             </ul>

@@ -21,6 +21,7 @@ class IndexController extends Controller
         Session::put('path', $path);
 		// 车辆类型
         $type = CarType::all();
+        
         $fast['take_id'] = $request->input('take_id', '');
         $fast['takeWeek'] = $request->input('takeWeek', '');
         $fast['startHours1'] = $request->input('startHours1', '');
