@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Login extends Model
 {
-    //
     //数据库
     protected $table='user';
     //默认id

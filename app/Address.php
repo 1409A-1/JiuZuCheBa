@@ -24,14 +24,10 @@ class Address extends Authenticatable
 //        'password', 'remember_token',
 //    ];
 
-//表名
+	//表名
     protected $table = 'address';
-//默认id
+	//默认id
     protected $primaryKey = 'address_id';
-//时间戳
+	//时间戳
     public $timestamps=false;
-
-
-
-
 }
