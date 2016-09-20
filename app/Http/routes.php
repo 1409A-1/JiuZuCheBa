@@ -156,9 +156,11 @@ Route::group(['middleware' => ['nologin']], function(){
      * 描述：订单的审核
      * */
     Route::get('orderLists','OrderController@orderList');
+    Route::post('orderInquiry','OrderController@orderInquiry');//订单搜索
     Route::get('orderInfo/{ord_id}','OrderController@orderInfo');
     Route::get('carry/{ord_id}','OrderController@carry');//提车
     Route::get('still/{ord_id}','OrderController@still');//还车
+    Route::post('integralManagement','OrderController@integralManagement');//还车
 
 
     Route::any('carIns','CarController@carIns');//车辆的添加
@@ -170,6 +172,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
     Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}','CarController@carServerPage');//服务点车辆信息分页
     Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
+
 
 });
 

@@ -94,10 +94,10 @@ class AddressController extends Controller
     {
         $arr = $request->all();
         if ($arr['city'] == '地级市') {
-            return 1;die;//地级市不能为空
+            return 1;//地级市不能为空
         }
         if ($arr['county'] == '市、县级市、县') {
-            return 2;die;//市、县级市、县不能为空
+            return 2;//市、县级市、县不能为空
         }
         $ping = new \pin();
         $cityFirst = $ping->Pinyin($arr['city']);
@@ -113,7 +113,7 @@ class AddressController extends Controller
                 ->where(['address_name' => $arr['county']])
                 ->first();
             if ($address_county) {
-                return 3;die;//不能重复添加
+                return 3;//不能重复添加
             } else {
                 DB::table('address')
                     ->insert([
@@ -121,7 +121,7 @@ class AddressController extends Controller
                         'abridge'       => $str2,
                         'parent_id'        => $parent_id
                     ]);
-                return 0;die;//添加成功
+                return 0;//添加成功
             }
         } else {
             DB::table('address')
@@ -140,7 +140,7 @@ class AddressController extends Controller
                     'parent_id'    => $parent_id,
                     'abridge'      => $str2
                 ]);
-            return 0;die;
+            return 0;
         }
     }
 
