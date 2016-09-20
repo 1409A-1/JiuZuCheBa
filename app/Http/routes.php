@@ -48,6 +48,8 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
 	//订单列表的展示
 	Route::get('orderList', 'HomeUserController@orderList');
+    //长租申请的查看
+    Route::get('apply', 'HomeUserController@apply');
 	//优惠券的展示
 	Route::get('benefitList', 'HomeUserController@benefitList');
 	//公开留言页面的展示
@@ -66,8 +68,10 @@ Route::group(['middleware' => ['homelogin']], function(){
     Route::get('orderSuccess', 'HomeOrderController@orderSuccess');
     //订单详情页的查看
     Route::get('orderInfo', 'HomeOrderController@orderInfo');
-    //订单取消
+    //短租订单取消
     Route::get('cancelOrder', 'HomeOrderController@cancelOrder');
+    //长租申请的中的取消
+    route::get('cancelLong', 'HomeOrderController@cancelLong');
     //调用支付宝付款
     Route::get('zfbPay', 'HomeOrderController@zfbPay');
     //支付失败
