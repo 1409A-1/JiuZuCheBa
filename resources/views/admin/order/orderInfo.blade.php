@@ -70,11 +70,7 @@
                                 <th>优惠券</th>
                                 <th>车辆详细信息</th>
                                 <th>车辆单日价格</th>
-                                <?php if($arr['ord_pay'] == 1){?>
                                 <th>操作</th>
-                                <?php }else if($arr['ord_pay'] == 2){?>
-                                <th>操作</th>
-                                <?php }?>
                             </tr>
                             <tr>
                                 <input type="hidden" name="ord_id" value="<?php echo $data['ord_id']?>"/>
@@ -96,10 +92,37 @@
                                 <td>
                                     <?php if($arr['ord_pay'] == 1){?>
                                         <button id="ti" class="btn btn-info">提车</button>
+                                        <button id="end" class="btn btn-info">返回上一页</button>
                                     <?php } else if ($arr['ord_pay'] == 2){?>
                                         <button id="huan" class="btn btn-info">还车</button>
+                                        <button id="end" class="btn btn-info">返回上一页</button>
+                                    <?php }else{?>
+                                        <button id="end" class="btn btn-info">返回上一页</button>
                                     <?php }?>
                                 </td>
+                            </tr>
+                        </table>
+                        <table class="table" id="carInformation">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                            <tr>
+                                <td colspan="2" align="center"><h5>车辆还车记录&nbsp;&nbsp;&nbsp;&nbsp;(提示:本记录会影响用的积分)</h5></td>
+                            </tr>
+                            <tr>
+                                <td>油耗情况:</td>
+                                <td>
+                                    <input type="radio" name="consumption" style="margin-top: -3px;" value="0" checked="checked"/>&nbsp;&nbsp;正常&nbsp;
+                                    <input type="radio" name="consumption" style="margin-top: -3px;" value="1"/>&nbsp;&nbsp;偏少&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>车辆是否损坏:</td>
+                                <td>
+                                    <input type="radio" name="carDamage" value="0" style="margin-top: -3px;" checked="checked"/>&nbsp;&nbsp;&nbsp;&nbsp;是&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="carDamage" value="1" style="margin-top: -3px;"/>&nbsp;&nbsp;&nbsp;&nbsp;否
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button id="sub" class="btn btn-info">还车</button></td>
                             </tr>
                         </table>
                     </div>
@@ -110,13 +133,37 @@
 	<!-- scripts -->
         <script src="{{asset('admin')}}/js/js.js"></script>
         <script>
+           $("#carInformation").hide();
+            $(function(){
+                $("#end").click(function(){
+                    history.back(-1);
+                });
+            });
             $(function(){
                 var id = $("input[name=ord_id]").val();
                 $("#ti").click(function(){
                     location.href='{{ url('carry') }}/'+id;
                 });
                 $("#huan").click(function(){
-                    location.href='{{ url('still') }}/'+id;
+                    $("#carInformation").show();
+
+                });
+                $("#sub").click(function(){
+                    var consumption = $("input[name='consumption']:checked").val();
+                    var carDamage = $("input[name='carDamage']:checked").val();
+                    //var idd = $("input[name='consumption']").val();
+                    var _token = $("input[name=_token]").val();
+                    var id = $("input[name=ord_id]").val();
+                    $.ajax({
+                        type:"post",
+                        url:"{{ url('integralManagement') }}",
+                        data:{consumption:consumption,carDamage:carDamage,_token:_token,id:id},
+                        success:function(msg){
+                            if(msg == ''){
+                                location.href='{{ url('still') }}/'+id;
+                            }
+                        }
+                    });
                 });
                 she=$("a[href='{{ url('orderLists') }}']");
                 she.parent().parents('li').siblings(".active").children('.pointer').remove();
