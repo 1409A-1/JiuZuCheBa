@@ -76,7 +76,7 @@ class OrderController extends Controller
             return redirect(url('orderInfo'));
         }
     }
-    public function still($id)
+    public function still(Request $request,$id)
     {
         $re = DB::table('order')
             ->where('ord_id', $id)
@@ -86,7 +86,132 @@ class OrderController extends Controller
         if($re){
             return redirect(url('orderLists'));
         }else{
-            return redirect(url('orderInfo'));
+            echo "<script>alert('发生未知错误。'); location.href='".url('orderInfo')."';</script>";die;
+        }
+    }
+    public function integralManagement(Request $request)
+    {
+        $arr = $request->all();
+        $re = DB::table('order')
+            ->where(['ord_id' => $arr['id'],'ord_pay' => 2])
+            ->first();
+        if ($re) {
+            $user_id = $re['user_id'];
+            if ($arr['consumption'] == 0) {
+                $credit = DB::table('user')
+                    ->where('user_id' , $user_id)
+                    ->first();
+                DB::table('user')
+                    ->where(['user_id' => $user_id])
+                    ->update([
+                        'credit'   =>  $credit['credit']+4
+                    ]);
+                DB::table('credit')
+                    ->insert([
+                        'user_id' => $user_id,
+                        'points'  => 4,
+                        'status'  => 1,
+                        'reason'  => '油量正常',
+                        'add_time'=> time()
+                    ]);
+            } else {
+                $credit = DB::table('user')
+                    ->where('user_id' , $user_id)
+                    ->first();
+                DB::table('user')
+                    ->where(['user_id' => $user_id])
+                    ->update([
+                        'credit'   =>  $credit['credit']-4
+                    ]);
+                DB::table('credit')
+                    ->insert([
+                        'user_id' => $user_id,
+                        'points'  => 4,
+                        'status'  => 0,
+                        'reason'  => '油量偏少',
+                        'add_time'=> time()
+                    ]);
+            }
+            if ($re) {
+                if ( $arr['carDamage'] == 0) {
+                    $credit = DB::table('user')
+                        ->where('user_id' , $user_id)
+                        ->first();
+                    DB::table('user')
+                        ->where(['user_id' => $user_id])
+                        ->update([
+                            'credit'   =>  $credit['credit']-4
+                        ]);
+                    DB::table('credit')
+                        ->insert([
+                            'user_id' => $user_id,
+                            'points'  => 4,
+                            'status'  => 0,
+                            'reason'  => '车辆有损坏',
+                            'add_time'=> time()
+                        ]);
+                }else{
+                    $credit = DB::table('user')
+                        ->where('user_id' , $user_id)
+                        ->first();
+                    DB::table('user')
+                        ->where(['user_id' => $user_id])
+                        ->update([
+                            'credit'   =>  $credit['credit']+4
+                        ]);
+                    DB::table('credit')
+                        ->insert([
+                            'user_id' => $user_id,
+                            'points'  => 4,
+                            'status'  => 1,
+                            'reason'  => '车辆无损坏',
+                            'add_time'=> time()
+                        ]);
+                }
+
+            }
+        }
+    }
+    //订单查询
+    public function orderInquiry(Request $request)
+    {
+        $arr = $request->all();
+        if ($arr['orderIn'] == 0) {
+            return redirect('orderLists');
+        }
+        if ($arr['orderIn'] == 1) {
+            $orderIn = DB::table('order')
+                ->where(['ord_pay' => 0])
+                ->get();
+            return view('admin.order.orderInquiry',['data' => $orderIn]);
+        } else if ($arr['orderIn'] == 2) {
+            $orderIn = DB::table('order')
+                ->join('user','user.user_id','=','order.user_id')
+                ->where(function($query){
+                    $query->where(['ord_pay' => 1])
+                        ->orWhere(function($query){
+                            $query->where(['ord_pay' => 2])
+                            ->orWhere(function($query){
+                                $query->where(['ord_pay' => 3])
+                                    ->orWhere(function($query){
+                                        $query->where(['ord_pay' => 4]);
+                                    });
+                            });
+                        });
+                })->get();
+            return view('admin.order.orderInquiry',['data' => $orderIn]);
+        } else if ($arr['orderIn'] == 3) {
+            $orderIn = DB::table('order')
+                ->join('user','user.user_id','=','order.user_id')
+                ->where(['ord_pay' => 1])
+                ->get();
+            return view('admin.order.orderInquiry',['data' => $orderIn]);
+        } else if ($arr['orderIn'] == 4){
+            $orderIn = DB::table('order')
+                ->join('user','user.user_id','=','order.user_id')
+                ->where(['ord_pay' => 2])
+                ->get();
+            return view('admin.order.orderInquiry',['data' => $orderIn]);
         }
     }
 }

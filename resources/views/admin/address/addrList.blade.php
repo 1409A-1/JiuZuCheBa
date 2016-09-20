@@ -88,7 +88,6 @@
                     }
                 });
             });
-
             $(document).delegate('#change','click',function(){
                var type =  $("#change_type").find("option:selected").attr('type');  //要更改成的type  id
                var a_id = $("#add_id").attr('a_id');                                //要修改的id
@@ -105,7 +104,6 @@
                     }
                 })
             })
-
             she=$("a[href='{{ url('addrList') }}']");
             she.parent().parents('li').siblings(".active").children('.pointer').remove();
             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
