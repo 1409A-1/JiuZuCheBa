@@ -171,7 +171,7 @@ Route::group(['middleware' => ['nologin']], function(){
      * 描述：订单的审核
      */
     Route::get('orderLists','OrderController@orderList');
-    Route::post('orderInquiry','OrderController@orderInquiry');//订单搜索
+    Route::get('orderInquiry','OrderController@orderInquiry');//订单搜索
     Route::get('orderInfo/{ord_id}','OrderController@orderInfo');
     Route::get('carry/{ord_id}','OrderController@carry');//提车
     Route::get('still/{ord_id}','OrderController@still');//还车
