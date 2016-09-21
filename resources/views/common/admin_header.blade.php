@@ -20,12 +20,6 @@
     <link href="{{asset('admin')}}/css/lib/jquery-ui-1.10.2.custom.css" type="text/css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/layer.css" type="text/css" rel="stylesheet" />
-
-    <!-- scripts -->
-    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
-    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/js/theme.js"></script>
-    <script src="{{asset('admin')}}/js/layer.js"></script>
 </head>
 <body>
 

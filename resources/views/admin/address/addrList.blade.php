@@ -110,5 +110,10 @@
     </script>
     <!-- end main container -->
 
+    <!-- scripts -->
+    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
+    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/layer.js"></script>
 </body>
 </html>
