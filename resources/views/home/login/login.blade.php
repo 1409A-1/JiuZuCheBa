@@ -24,6 +24,7 @@
                             <input placeholder="我的密码"style="width: 100%" maxlength="18" name="password" type="password" required="required">
                             {{--<i class="icon_login icon_l2"></i>--}}
                         </div>
+                        <span class="forgetPw">忘记密码？</span>
                         <div class="errorPrompt" id="loginError"><!--错误提示--></div>
                         <button id="login" style="cursor: pointer;">登 录</button>
                         <button style="cursor: pointer; background-color: #00aa00" onclick="location='{{ url('oAuth') }}'">微 信 登 录</button>
