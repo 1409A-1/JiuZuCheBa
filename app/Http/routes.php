@@ -172,6 +172,7 @@ Route::group(['middleware' => ['nologin']], function(){
 
     Route::any('carIns','CarController@carIns');//车辆的添加
     Route::get('carList','CarController@carList');//车辆展示列表
+    Route::get('carSel','CarController@carSel');//车辆列表的搜索
     Route::get('carDel/{car_id}','CarController@carDel');//车辆删除
     Route::get('carServer','CarController@carServer');//服务点车辆分配页面
     Route::post('carServerAdd','CarController@carServerAdd');//服务点车辆分配执行
@@ -179,6 +180,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('carServerList','CarController@carServerList');//服务点车辆信息列表
     Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}','CarController@carServerPage');//服务点车辆信息分页
     Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
+    Route::get('carDetails/{car_id}', 'CarController@carDetails');//服务点联动查询
 
 
 });

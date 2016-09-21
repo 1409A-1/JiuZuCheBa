@@ -5,7 +5,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="indexs">
+            <a href="{{ url('indexs') }}">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
@@ -35,12 +35,13 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-cog"></i>
-                <span>车辆类型</span>
+                <span>车辆管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
                 <li><a href="{{ url('typeList') }}">车辆类型管理</a></li>
                 <li><a href="{{ url('brandList') }}">车辆品牌管理</a></li>
+                <li><a href="{{ url('carList') }}">车辆列表</a></li>
             </ul>
         </li>
         <li>
@@ -71,17 +72,6 @@
                 <i class="icon-edit"></i>
                 <span>用户留言管理</span>
             </a>
-        </li>
-        <li>
-            <a class="dropdown-toggle ui-elements" href="#">
-                <i class="icon-code-fork"></i>
-                <span>车辆管理</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="{{ url('carIns') }}">车辆添加</a></li>
-                <li><a href="{{ url('carList') }}">车辆列表</a></li>
-            </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">

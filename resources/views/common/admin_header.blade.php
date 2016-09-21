@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="indexs"><img src="{{asset('admin')}}/img/logo.png" /></a>
+        <a class="brand" href="{{ url('indexs') }}"><img src="{{asset('admin')}}/img/logo.png" /></a>
 
         <ul class="nav pull-right">
            <!-- <li class="hidden-phone">
