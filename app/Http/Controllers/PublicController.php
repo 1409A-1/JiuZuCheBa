@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Apply;
+use App\Address;
+use App\Car_info;
+use App\Car_number;
+use App\CarBrand;
+use App\CarType;
+use App\Server;
 use DB;
+use Session;
 
 class PublicController extends Controller
 {
@@ -16,14 +22,14 @@ class PublicController extends Controller
     //城市列表，返回 json 格式数据
     public function getCityList()
     {
-        $address = DB::table('address')->get();
-        $data = $this->noLimit($address);
-        foreach ($data as $k => $v) {
+        $city_id = Server::groupBy('address_id')->lists('address_id');
+        $address = Address::whereIn('address_id', $city_id)->get();
+        foreach ($address as $k => $v) {
             $city[$k]['city_name']    = $v['address_name'];
             $city[$k]['city_abridge'] = $v['abridge'];
             $city[$k]['city_type']    = $v['type'];
         }
-        echo json_encode($city, JSON_UNESCAPED_UNICODE);
+        return json_encode($city, JSON_UNESCAPED_UNICODE);
     }
 
     // 服务点列表，返回 json 格式数据
@@ -31,14 +37,14 @@ class PublicController extends Controller
     {
         if ($request->has('city_name')) {
             // 获取对应城市服务点
-            $server = DB::table('server')->where('city_name', $request->input('city_name'))->get();
+            $server = Server::where('city_name', $request->input('city_name'))->get();
         } else {
             // 获取取车、还车服务点
-            $start_shop = DB::table('server')->where('server_id', $request->input('start_shop_id'))->first();
-            $stop_shop  = DB::table('server')->where('server_id', $request->input('stop_shop_id'))->first();
+            $start_shop = Server::where('server_id', $request->input('start_shop_id'))->first();
+            $stop_shop  = Server::where('server_id', $request->input('stop_shop_id'))->first();
             $server = array('start_shop' => $start_shop, 'stop_shop' => $stop_shop);
         }
-        echo json_encode($server, JSON_UNESCAPED_UNICODE);
+        return json_encode($server, JSON_UNESCAPED_UNICODE);
     }
 
     // 服务点列表，返回 json 格式数据
@@ -50,14 +56,14 @@ class PublicController extends Controller
             ->leftJoin('car_brand as b', 'i.brand_id', '=', 'b.brand_id')
             ->where('server_id', $request->input('shop_id'))
             ->get();
-        echo json_encode($car, JSON_UNESCAPED_UNICODE);
+        return json_encode($car, JSON_UNESCAPED_UNICODE);
     }
 
     // 获取车辆类型
     public function getCarTypeList()
     {
-        $carTypeList = DB::table('car_type')->get();
-        echo json_encode($carTypeList, JSON_UNESCAPED_UNICODE);
+        $carTypeList = CarType::all();
+        return json_encode($carTypeList, JSON_UNESCAPED_UNICODE);
     }
 
     // 获取城市热门车型
@@ -79,20 +85,62 @@ class PublicController extends Controller
             ->leftJoin('car_brand as b', 'i.brand_id', '=', 'b.brand_id')
             ->where('city_name', $request->input('city'))
             ->get();
-        echo json_encode($car, JSON_UNESCAPED_UNICODE);
+        return json_encode($car, JSON_UNESCAPED_UNICODE);
+    }
+
+    // 根据门店获取车辆品牌
+    public function getCarBrandByServer(Request $request)
+    {
+        $car_id = Car_number::where('server_id', $request->input('shop_id'))->lists('car_id');
+        $brand_id = Car_info::whereIn('car_id', $car_id)->groupBy('brand_id')->lists('brand_id');
+        $data['car'] = Car_info::whereIn('car_id', $car_id)->get();
+        $data['brand'] = CarBrand::whereIn('brand_id', $brand_id)->get();
+        return json_encode($data, JSON_UNESCAPED_UNICODE);
+    }
+    
+    // 根据门店获取全国地图统计信息
+    public function getServerForCountry()
+    {
+        $server = Server::all();
+        return json_encode($server, JSON_UNESCAPED_UNICODE);
+    }
+
+    // 提交长租申请
+    public function longRentApply(Request $request)
+    {
+        if (session::has('user_name')) {
+            $apply = $request->input();
+            $unit = strpos($apply['rent_month_count'], '月')? 'month': 'years';
+            $data = array(
+                'user_id' => session('user_id'),
+                'departure' => $apply['start_shop_id'],
+                'destination' => $apply['start_shop_id'],
+                'dep_time' => strtotime($apply['start_date']),
+                'des_time' => strtotime($apply['start_date'] . '+' . (int)$apply['rent_month_count'] . $unit),
+                'car_type' => $apply['auto_count'], //暂作车辆租赁数量
+                'car_brand' => $apply['brand_id'],
+                'apply_time' => time(),
+                'car_id' => $apply['contact_class_id'] //车辆id
+            );
+            if (Apply::create($data)) {
+                return 1;
+            }
+        } else {
+            return 0;
+        }
     }
 
     // 无限极分类
-    public function noLimit($data, $pid = 0, $indent = 0)
-    {
-        static $array = Array();
-        foreach ($data as $son) {
-            if ($son['parent_id'] == $pid) {
-                $son['indent'] = $indent;
-                $array[] = $son;
-                $this->noLimit($data, $son['address_id'], $indent + 1);
-            }
-        }
-        return $array;
-    }
+    // public function noLimit($data, $pid = 0, $indent = 0)
+    // {
+    //     static $array = Array();
+    //     foreach ($data as $son) {
+    //         if ($son['parent_id'] == $pid) {
+    //             $son['indent'] = $indent;
+    //             $array[] = $son;
+    //             $this->noLimit($data, $son['address_id'], $indent + 1);
+    //         }
+    //     }
+    //     return $array;
+    // }
 }

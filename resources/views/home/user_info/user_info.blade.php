@@ -6,6 +6,8 @@
     <div>
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
+            <a href="{{ url('apply') }}">长租申请</a>
+            <a href="">信用查看</a>
             <h5>订单管理</h5>
             <a href="orderList">订单列表</a>
             <a id="topingjia">评价订单</a>
@@ -30,43 +32,13 @@
                             <a>*</a> 手机号：
                             <input value="{{ $info['tel'] }}" disabled id="phone" style="margin-left:58px;" type="text">
                         </li>
-                        <li>
-                            <a>&nbsp;</a> 紧急联系人：
-                            <input id="name1" type="text">
-                        </li>
-                        <li>
-                            <a>&nbsp;</a> 紧急联系人手机：
-                            <input id="phone1" type="text">
-                        </li>
-                    </ul>
-                </div>
-                <div class="user_info2">
-                    重要信息
-                    <ul>
-                        <li>
-                            <a style="color:#FD1E2E">&nbsp;&nbsp;</a> 身份证号码：
-                            <input id="identity_card_no" type="text">
-                        </li>
-                    </ul>
-                </div>
-                <div class="user_info2">
-                    其它联系方式
-                    <ul>
-                        <li>
-                            QQ：
-                            <input id="qq" style="margin-left:60px" type="text">
-                        </li>
-                        <li style="margin-left:82px">
-                            邮箱：
-                            <input id="email" style="margin-left:78px" type="text">
-                        </li>
                     </ul>
                 </div>
                 <div class="user_info3">
                     确认修改
                     <ul>
                         <li>
-                            <a href="updatePass"><button id="toUpdatePw">修改密码</button></a>
+                            <a href="updatePass"><button id="toUpdatePw" style="cursor: pointer">修改密码</button></a>
                         </li>
                     </ul>
                 </div>
@@ -75,6 +47,14 @@
         </div>
     </div>
 </div>
-
 <!--底部-->
 @include('common.home_footer')
+
+<script>
+    $(function(){
+        //用户详情中点击订单评论
+        $("#topingjia").click(function(){
+            layer.alert('评价订单正在开发中！敬请期待！');
+        })
+    })
+</script>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html class="login-bg">
 <head>
-	<title>Detail Admin - Sign in</title>
+	<title>就租车吧 - 登录</title>
     
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
@@ -17,19 +18,16 @@
 
     <!-- libraries -->
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/lib/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layer.css" />
     
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/signin.css" type="text/css" media="screen" />
 
-    <!-- open sans font -->
-    {{--<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />--}}
-
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+</head>
 <body>
-
 
     <!-- background switcher -->
     <div class="bg-switch visible-desktop">
@@ -58,7 +56,6 @@
         </div>
     </div>
 
-
     <div class="row-fluid login-wrapper">
         <a href="index.html">
             <img class="logo" src="{{asset('admin')}}/img/logo-white.png" />
@@ -66,16 +63,16 @@
 
         <div class="span4 box">
             <div class="content-wrap">
-                <h6>就租车吧 后台管理员登陆</h6>
+                <h6>就租车吧 - 后台管理员登陆</h6>
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                <input class="span12" name="username" type="text" required="required" placeholder="Your Username" />
+                <input class="span12" name="username" type="text" required="required" placeholder="您的用户名" />
                 <span id="user_name" style="color: red;"></span>
-                <input class="span12" name="password" type="password" required="required" placeholder="Your Password" />
+                <input class="span12" name="password" type="password" required="required" placeholder="您的密码" />
                 <span id="password" style="color:red;"></span>
-                <a href="#" class="forgot">忘记密码？联系管理员。</a>
+                {{--<a href="#" class="forgot">忘记密码？联系管理员。</a>--}}
                 <div class="remember">
-                    <input id="remember-me" type="checkbox"/>
-                    <label for="remember-me">七天免登陆</label>
+                    {{--<input id="remember-me" type="checkbox"/>--}}
+                    {{--<label for="remember-me">七天免登陆</label>--}}
                 </div>
                 <button class="btn-glow primary login" id="signin">登陆</button>
             </div>
@@ -95,9 +92,9 @@
                             if(msg == 1){
                                 location.href='indexs';
                             }else if(msg == 2){
-                               alert("密码错误");
+                                layer.alert("密码错误");
                             }else{
-                                alert("用户名错误或不存在");
+                                layer.alert("用户名错误或不存在");
                             }
                         }
                     });
@@ -105,8 +102,6 @@
             });
         </script>
         <div class="span4 no-account">
-            <p>Don't have an account?</p>
-            <a href="signup.html">Sign up</a>
         </div>
     </div>
 
@@ -114,6 +109,7 @@
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/layer.js"></script>
 
     <!-- pre load bg imgs -->
     <script type="text/javascript">

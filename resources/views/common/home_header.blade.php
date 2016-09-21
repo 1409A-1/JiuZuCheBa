@@ -10,7 +10,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('home')}}/css/calendar.css">
     <link type="text/css" rel="stylesheet" href="{{asset('home')}}/css/layer.css">
 
-    <script type="text/javascript" src="{{asset('home')}}/js/jquery-1.7.2.min.js"></script>
+    <!-- <script type="text/javascript" src="{{asset('home')}}/js/jquery-1.7.2.min.js"></script> -->
     <script type="text/javascript" src="{{asset('home')}}/js/jquery-1.js"></script>
     <script type="text/javascript" src="{{asset('home')}}/js/jquery.js"></script>
     <script type="text/javascript" src="{{asset('home')}}/js/api"></script>
@@ -33,7 +33,7 @@
                 @if(empty(Session::get('user_name')))
                 <div class="no_user" style="display: block;">
                     <a href="loginReg" rel="nofollw">注册</a>
-                    <a href="login" rel="nofollw">登陆</a>
+                    <a href="login" rel="nofollw">登录</a>
                 </div>
                 @else
                 <div class="yes_user" style="display: block;">
@@ -42,8 +42,7 @@
                     <div class="userInfo">
                         <p><a href="{{ url('userInfo')}}" rel="nofollow">账户管理</a></p>
                         <p><a href="{{ url('message') }}" rel="nofollow">公开留言</a></p>
-                        <p><a href="{{ url('logout') }}">退出</a></p>
-
+                        <p><a href="{{ url('logOut') }}">退出</a></p>
                     </div>
                 </div>
                 @endif
@@ -71,12 +70,13 @@
             <li class=" on_menu"><a href="{{ url('/') }}">首页</a></li>
             <li class=""><a href="{{ url('short') }}">短租自驾</a></li>
             <li class=""><a href="{{ url('long') }}">长租服务</a></li>
+            <li class=""><a href="{{ url('cityMap') }}">门店查询</a></li>
         </ul>
     </div>
 </div>
 
 <script>
-    var page = ['index', 'short', 'long'];
+    var page = ['index', 'short', 'long', 'citymap'];
     jQuery(".menu_box li")[0].className = " on_menu";
     jQuery(page).each(function (i, obj) {
         jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
@@ -85,3 +85,5 @@
         }
     })
 </script>
+<a id="ibangkf" href="http://www.ibangkf.com">客服系统</a>
+<script language="javascript" src="http://c.ibangkf.com/i/c-hhyhhy.js"></script>

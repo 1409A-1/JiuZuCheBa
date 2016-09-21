@@ -10,7 +10,7 @@ $(function () {
     loading();//预订信息加载
     City();//城市
     storeInfoShow();//取还车门店信息展示
-    calendar();
+    calendar();      //日历
     discount();//优惠活动
     getType();
 });
@@ -38,12 +38,12 @@ function loading() {
         IN_TYPE = 2;
     } else if (shopID != "" && shopID) {
         IN_TYPE = 3;
-    } 
+    }
     switch (IN_TYPE) {
-        case 0: {//直接进入
+        case 0: {//直接进入 get方式
             position();//定位
         } break;
-        case 1: {//首页进入
+        case 1: {//首页进入左部选择
             if (take_id != "" && takeWeek != "" && startHours1 != "" && endHours1 != "" && return_id != "" && returnWeek != "" && startHours2 != "" && endHours2 != "" && start_time != "" && stop_time != "" && begin_date != "" && end_date != "") {
                 var SearchModel = {//获取车型所需参数
                     "shop_id": take_id,
@@ -72,13 +72,14 @@ function loading() {
                 position();
             }
         } break;
-        case 2: {//套餐进入
+        case 2: {//推荐车型的进入
             storeInfo(shopID, shopID);//获取门店信息
-            $("#startDate").html(StartDateTime.substr(0, 10));//具体时间
-            $("#endDate").html(EndDateTime.substr(0, 10));
+            $("#startDate").html(StartDateTime.substr(0, 10));//具体开始时间
+            $("#endDate").html(EndDateTime.substr(0, 10));    //结束时间
             Duration(StartDateTime.substr(0, 10), "10:00", EndDateTime.substr(0, 10), "10:00");
             var week = "";
-            var x = date_subtract(new Date(), StartDateTime.substr(0, 10)).days;
+            // var x = date_subtract(new Date(), StartDateTime.substr(0, 10)).days;
+             var x = date_subtract(date_format(new Date(), "yyyy-MM-dd"), StartDateTime.substr(0, 10)).days;
             switch (x) {
                 case 0: week = "今天"; break;
                 case 1: week = "明天"; break;
@@ -853,7 +854,7 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
                         for (var l = 0; l < area2.length; l++) {
                             for (var m = 0; m < data2.length; m++) {
                                 if (area2[l] == data2[m]) {
-                                    html = "<li><a store_id='" + id2[l] + "' num='" + l + "' lng='" + lng2[l] + "' lat='" + lat2[l] + "''>" + name2[l] + "</a></li>";
+                                    html = "<li><a store_id='" + id2[l] + "' num='" + l + "' lng='" + lng2[l] + "' lat='" + lat2[l] + "'>" + name2[l] + "</a></li>";
                                     $("#returnStore .store ul").eq(m).append(html);
                                 }
                             }
@@ -913,18 +914,18 @@ function city_store(cityName, temp, NUM) {//temp：1为取车 or 2为还车 or 0
 
 //城市
 function City() {
-    $.post(city, {'_token': _token}, function(result){
+    $.post(getCityList, {'_token': _token}, function(result){
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合
             temp;
         for (var i = 0; i < result.length; i++) {
-            if ((result[i].city_type & 4) == 4)//旅游城市
+            if (result[i].city_type == 1)//旅游城市
             {
                 touristCity += "<span><a>" + result[i].city_name + "</a></span>";
             }
 
-            if ((result[i].city_type & 2) == 2)//热门城市
+            if (result[i].city_type == 2)//热门城市
             {
                 hotCity += "<span><a>" + result[i].city_name + "</a></span>";
             }
@@ -1126,11 +1127,13 @@ function calendar() {
         end_time1;//可选的 还车日期
     var s0 = startDate.html();
     var e0 = endDate.html();
-    $.ajax({
-        url: maxrent_auto_url,
-        dataType: 'jsonp',
-        success: function (e) {
-            Available_days = e.parameter_value1;//获取 可提前预订天数
+    //$.ajax({
+    //    url: maxrent_auto_url,
+    //    dataType: 'jsonp',
+    //    success: function (e) {
+    //        console.log(e)
+           // Available_days = e.parameter_value1;//获取 可提前预订天数
+            Available_days = 60;//获取 可提前预订天数
             end_time = date_adddays(start_time, Available_days);//可选的 取车日期
             end_time1 = date_adddays(start_time, (Available_days + 7));//可选的 还车日期
             //加载日历
@@ -1145,8 +1148,8 @@ function calendar() {
                 startDate.html(s0);
                 endDate.html(e0);
             }
-        }
-    });
+    //    }
+    //});
     //取车 日期
     function startDateRange() {
         var time = timeCycle(start_time, end_time),
@@ -1301,7 +1304,7 @@ function position() {
         url: "http://api.map.baidu.com/location/ip?ak=G1124lxcYCI56HOSOx1YIN6e",
         dataType: 'jsonp',
         success: function (e) {
-            var city = e.content.address_detail.city;
+            var city = e.content.address_detail.city.replace('市', '');
 
             //初始化加载门店
             $("#takeCity").find(".show>a").html(city);

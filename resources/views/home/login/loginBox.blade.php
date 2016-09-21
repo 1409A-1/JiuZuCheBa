@@ -69,13 +69,13 @@
                     <input type="text" id="login_pw0" maxlength="18" value="我的密码">
                     <i class="icon_login icon_l2"></i>
                 </div>
-                <a target="_blank" class="forgetPw" href="#">忘记密码？</a>
                 <div id="loginError" class="errorPrompt"></div>
-                <button id="login">登 录<i></i></button>
+                <button id="login" style="cursor: pointer">登 录<i></i></button>
             </div>
         </div>
     </div>
-<input type="hidden" value="{{session('path')}}" id="path"/>
+    <input type="hidden" value="{{session('path')}}" id="path"/>
+    <input type="hidden" value="{{ csrf_token() }}" id="token"/>
 </div>
 <script>
     $(function () {
@@ -123,7 +123,8 @@
             }, 1000);
             var loginInfo = {
                 "user_name": phone.val(),
-                "password": pw.val()
+                "password": pw.val(),
+                "_token": $("#token").val()
             };
             if (phone.val() == "") {
                 phone.focus();
@@ -152,7 +153,7 @@
         var error = $("#loginError");
         jQuery.ajax({
             url: "{{ url('loginBoxPro') }}",
-            //dataType: 'jsonp',
+            type: "POST",
             data: loginInfo,
             success: function (result) {
                var path = $("#path").val();
@@ -204,6 +205,5 @@
         }
     }
 </script>
-
 </body>
 </html>

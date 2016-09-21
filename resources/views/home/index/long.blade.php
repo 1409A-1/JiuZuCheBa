@@ -1,7 +1,6 @@
 @include('common.home_header')
 <link type="text/css" rel="stylesheet" href="home/css/longRent.css">
 <script type="text/javascript" src="home/js/longRent.js"></script>
-
 <!--预定框-->
 <div class="bookBox noCopy">
     <div class="book">
@@ -44,17 +43,16 @@
                             </div>
                         </div>
                     </div>
-                   
                     <div class="longLine1_R">
                         <div class="show">
-                            <a lat="30.56421" lng="114.35065" store_id="195">楚河汉街店</a>
+                            <a lat="" lng="" store_id=""></a>
                             <div class="Arrow"></div>
                         </div>
                         <div class="store_list" id="takeStoreList">
                             <!--行政区域-->
-                            <div class="area"><a class="active">请选择门店</a></div>
+                            <div class="area"></div>
                             <!--门店-->
-                            <div class="store"><ul></ul></div>
+                            <div class="store"></div>
                             <!--门店信息-->
                             <div class="storeInfo">
                                 <div>
@@ -63,13 +61,13 @@
                                 </div>
                                 <div>
                                     <a>营业时间：</a>
-                                    <p class="storeTime">08:00—19:30</p>
+                                    <p class="storeTime"></p>
                                 </div>
                                 <div>
                                     <a>交通路线：</a>
                                     <p class="storeWay"></p>
                                 </div>
-                                <a class="toMap">
+                                <a out_in="" storeid="" class="toMap">
                                     <img src="home/images/toMap.png"><br>
                                     查看位置
                                 </a>
@@ -77,7 +75,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!--租赁时长、用车数量-->
                 <span>租赁时长</span>
                 <span class="longTitR">用车数量</span>
@@ -119,19 +116,19 @@
                 <span class="longTitR">取车时间</span>
                 <div class="longLine1">
                     <div class="longLine1_L" id="brand">
-                    <div class="show">
-                        <a>标致</a>
-                        <div class="Arrow"></div>
+                        <div class="show">
+                            <a></a>
+                            <div class="Arrow"></div>
+                        </div>
+                        <div id="brandBox">
+                            <ul></ul>
+                        </div>
                     </div>
-                    <div id="brandBox">
-                        <ul></ul>
-                    </div>
-                    </div>
-                     <hr>
+                    <hr>
                     
                     <!--取车时间-->
                     <div class="longLine1_R" id="longDate">
-                        <a>2016-09-09</a>
+                        <a></a>
                         <div class="Arrow"></div>
                         <div id="calendarLong"></div>
                     </div>
@@ -141,19 +138,15 @@
                 <span>车型</span>
                 <div class="longLine2" id="carType">
                     <div class="show">
-                        <a type_id="40" brand_id="13">508 / 三厢    / 2.0L / 自动   </a>
+                        <a></a>
                         <div class="Arrow"></div>
                     </div>
                     <div id="carTypeBox">
-                        <ul>
-                            <li><a brand_id="13" type_id="40">508 / 三厢    / 2.0L / 自动   </a></li>
-                            <li><a brand_id="13" type_id="45">207 / 三厢    / 1.4L / 手动   </a></li>
-                            <li><a brand_id="13" type_id="61">301 / 三厢    / 1.6L / 自动   </a></li>
-                        </ul>
+                        <ul></ul>
                     </div>
                 </div>
                 <!--预订按钮-->
-                <button id="longBook">
+                <button id="longBook" style="cursor: pointer">
                     开始预订
                     <i></i>
                 </button>
@@ -328,8 +321,8 @@
 <div class="longRentApply">
     <ul class="ul1">
         <li>企业/个人名称</li>
-        <li><a>*</a>联系人</li>
-        <li><a>*</a>联系电话</li>
+        <li><a>*</a> 联系人</li>
+        <li><a>*</a> 联系电话</li>
         <li>Email</li>
     </ul>
     <ul class="ul2">
@@ -354,9 +347,42 @@
 
 <!-- 底部 -->
 @include('common.home_footer')
-<!-- 
-<div move="ok" class="layui-layer-title" style="cursor: move;">联系信息</div>
-<div style="height: 367px;" class="layui-layer-content">
-    
-</div>
-<span class="layui-layer-setwin"><a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;"></a></span> -->
+
+<script type="text/javascript">
+$("#submit").click(function () {
+    var company = $("#company"),
+        name = $("#name"),
+        tel = $("#tel"),
+        email = $("#email"),
+        nameReg = /^([\u4e00-\u9fa5]+|([a-z]+\s?)+)$/,
+        telReg = /^0?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])[0-9]{8}$/,
+        city = $("#longCity").find(".show a").html(),
+        date = $("#longDate").find("a").html(),
+        duration = $("#longDuration").find(".show a").html(),
+        carNum = $("#carNumber").find("input").val(),
+        type_id = $("#carType").find(".show a").attr("type_id"),
+        car_brand = $('#brand').find(".show a").attr("brand_id");
+        
+    if (name.val() == '') {
+        name.focus();
+        layer.tips('姓名不能为空', '#submit', { tips: [3, '#0FA6D8'] });
+    } else {
+        if (nameReg.test(name.val())) {
+            if (tel.val() == '') {
+                tel.focus();
+                layer.tips('手机号不能为空', '#submit', { tips: [3, '#0FA6D8'] });
+            } else {
+                if (telReg.test(tel.val())) {
+                    save(name.val(), tel.val(), city, duration, carNum, type_id, date, car_brand);
+                } else {
+                    tel.focus();
+                    layer.tips('手机号格式不正确', '#submit', { tips: [3, '#0FA6D8'] });
+                }
+            }
+        } else {
+            name.focus();
+            layer.tips('姓名请输入中文', '#submit', { tips: [3, '#0FA6D8'] });
+        }
+    }
+});
+</script>

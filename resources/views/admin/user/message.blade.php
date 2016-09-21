@@ -41,14 +41,6 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -64,15 +56,6 @@
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
-                            <input type="text" class="search" id="search" />
-                            <!-- <a class="btn-flat success new-product" href="{{URL('brandadd')}}">+ 添加车辆品牌</a> -->
                         </div>
                     </div>
 
@@ -222,7 +205,7 @@
                 },'json')
             })
 
-            // Ajax搜索&分页&删除
+            // Ajax分页&删除
             $(document).delegate(".del","click",function(){
                 page=$("#nowpage").val();
                 //search=$("#search").val()?$("#search").val():"all";
@@ -295,6 +278,13 @@
                     }
                 })
             })
+
+            she=$("a[href='{{ url('messageList') }}']");
+            she.parent().siblings(".active").children('.pointer').remove();
+            she.parent().siblings(".active").children(".active").removeClass("active");
+            she.parent().siblings(".active").removeClass("active");
+            she.parent().addClass("active");
+            she.parent().prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
 
             // jQuery Knobs
             $(".knob").knob();

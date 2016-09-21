@@ -61,20 +61,15 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="{{ url('address') }}">服务点添加</a></li>
+                <li><a href="{{ url('serverAdd') }}">服务点添加</a></li>
                 <li><a href="{{ url('addressList') }}">服务点展示</a></li>
+                <li><a href="{{ url('carServer') }}">服务点车辆分配</a></li>
             </ul>
         </li>
         <li>
-            <a href="messageList">
+            <a href="{{ url('messageList') }}">
                 <i class="icon-edit"></i>
                 <span>用户留言管理</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ url('userPack') }}">
-                <i class="icon-calendar-empty"></i>
-                <span>套餐申请审核</span>
             </a>
         </li>
         <li>
@@ -86,14 +81,7 @@
             <ul class="submenu">
                 <li><a href="{{ url('carIns') }}">车辆添加</a></li>
                 <li><a href="{{ url('carList') }}">车辆列表</a></li>
-                <li><a href="{{ url('carServer') }}">服务点车辆分配</a></li>
             </ul>
-        </li>
-        <li>
-            <a href="{{ asset('admin') }}/personal-info.html">
-                <i class="icon-cog"></i>
-                <span>My Info</span>
-            </a>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
@@ -103,9 +91,6 @@
             </a>
             <ul class="submenu">
                 <li><a href="{{ url('packIns') }}">套餐添加</a></li>
-                <li><a href="{{ asset('admin') }}/grids.html">Grids</a></li>
-                <li><a href="{{ asset('admin') }}/signin.html">Sign in</a></li>
-                <li><a href="{{ asset('admin') }}/signup.html">Sign up</a></li>
             </ul>
         </li>
     </ul>

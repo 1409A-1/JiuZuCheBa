@@ -40,16 +40,6 @@
 	<!-- main container -->
     <div class="content">
         
-        <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
-        
         <div class="container-fluid">
             <div id="pad-wrapper" class="new-user">
                 <div class="row-fluid header">
@@ -102,6 +92,9 @@
     <script type="text/javascript">
         $(function () {
             $("input[type=text]").focus();
+            $("input[type=reset]").click(function(){
+                $("input[type=text]").focus();
+            });
             // toggle form between inline and normal inputs
             var $buttons = $(".toggle-inputs button");
             var $form = $("form.new_user_form");
@@ -117,6 +110,14 @@
                     $form.removeClass("inline-input");
                 }
             });
+            she=$("a[href='{{ url('typeList') }}']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
         });
     </script>
 

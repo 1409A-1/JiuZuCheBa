@@ -41,14 +41,6 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -56,7 +48,7 @@
                 <!-- products table-->
                 <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
                 <div class="table-wrapper products-table section">
-                    <div class="row-fluid head">
+                    <div class="row-fluid head" style="height: 70px">
                         <div class="span12">
                             <h4>网站用户</h4>
                         </div>
@@ -64,15 +56,6 @@
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
-                            <input type="text" class="search" id="search" />
-                            <!-- <a class="btn-flat success new-product" href="{{URL('brandadd')}}">+ 添加车辆品牌</a> -->
                         </div>
                     </div>
 
@@ -109,8 +92,7 @@
                                     </td>
                                     <td class="description">
                                        {{$v['credit']}}
-                                    </td>
-                                    
+                                    </td>    
                                 </tr>
                                 @endforeach
                                 <!-- row -->
@@ -294,6 +276,15 @@
                     previousPoint = null;
                 }
             });
+            she=$("a[href='{{ url('userList') }}']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
+
         });
     </script>
 

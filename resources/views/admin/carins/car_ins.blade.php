@@ -40,14 +40,7 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="{{asset('admin')}}/css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
+
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -63,15 +56,7 @@
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                            <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
-                                </select>
-                            </div>
-                            <input type="text" class="search" />
-                            <a class="btn-flat success new-product" id="ins">添加型号</a>
+
                         </div>
                     </div>
                     <script src="{{asset('admin')}}/js/js.js"></script>
@@ -95,7 +80,7 @@
                                 <tr>
                                     <td>车辆类型:</td>
                                     <td>
-                                        <select name="type_id" id="">
+                                        <select name="type_id" style="height: 100%;" id="">
                                             <option value="0">请选择...</option>
                                             <?php foreach($data as $k => $v){?>
                                             <option value="<?php echo $v['type_id']?>"><?php echo $v['type_name']?></option>
@@ -106,7 +91,7 @@
                                 <tr>
                                     <td>车辆品牌:</td>
                                     <td>
-                                        <select name="brand_id" id="">
+                                        <select name="brand_id" style="height: 100%;" id="">
                                             <option value="0">请选择...</option>
                                             <?php foreach($arr as $k => $v){?>
                                             <option value="<?php echo $v['brand_id']?>"><?php echo $v['brand_name']?></option>
@@ -144,6 +129,18 @@
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/js/theme.js"></script>
+    <script>
+        $(function(){
+            she=$("a[href='{{ url('carIns') }}']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
+        })
+    </script>
 
 </body>
 </html>

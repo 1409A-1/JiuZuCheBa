@@ -20,27 +20,44 @@ class AdminController extends Controller
      * */
     public function adminLogin(Request $request)
     {
-        if ($request->has('username')) {
-            $name = $request->input('username');
-            $pwd = $request->input('password');
-            $re = DB::table('admin_user')
-                ->where(['user_name' => $name])
-                ->first();
-            if ($re) {
-                if ($pwd == $re['password']) {
-                    Session::put('name',$re['user_name']);
-                    Session::put('id',$re['user_id']);
-                    echo 1;
+        if (Session::has('name')) {
+            return redirect('indexs');
+        } else{
+            if ($request->has('username')) {
+                $name = $request->input('username');
+                $pwd = $request->input('password');
+                $re = DB::table('admin_user')
+                    ->where(['user_name' => $name])
+                    ->first();
+                if ($re) {
+                    if ($pwd == $re['password']) {
+                        Session::put('name',$re['user_name']);
+                        Session::put('id',$re['user_id']);
+                        echo 1;
+                    } else {
+                        echo 2;
+                    }
                 } else {
-                    echo 2;
+                    echo 3;
                 }
             } else {
-                echo 3;
+                return view('admin.login.admin_login');
             }
-        } else {
-           return view('admin.login.admin_login');
         }
     }
+
+    /*
+     * name:wanghu
+     * time:2016/8/31
+     * @admin_user
+     * */
+    public function logout()
+    {
+        Session::pull('name');
+        Session::pull('id');
+        return redirect('indexs');
+    }
+
     /*
      * username：wanghu
      * time:2016/9/1

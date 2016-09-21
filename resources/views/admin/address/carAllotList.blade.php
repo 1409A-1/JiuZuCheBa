@@ -41,14 +41,6 @@
     <div class="content">
         
         <!-- settings changer -->
-        <div class="skins-nav">
-            <a href="#" class="skin first_nav selected">
-                <span class="icon"></span><span class="text">Default</span>
-            </a>
-            <a href="#" class="skin second_nav" data-file="css/skins/dark.css">
-                <span class="icon"></span><span class="text">Dark skin</span>
-            </a>
-        </div>
         
         <div class="container-fluid">
             <div id="pad-wrapper">
@@ -56,7 +48,7 @@
                 <!-- products table-->
                 <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
                 <div class="table-wrapper products-table section">
-                    <div class="row-fluid head">
+                    <div class="row-fluid head" style="padding-bottom:30px">
                         <div class="span12">
                             <h4>服务点车辆列表</h4>
                         </div>
@@ -65,13 +57,24 @@
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
                             <div class="ui-select">
-                                <select>
-                                  <option />Filter users
-                                  <option />Signed last 30 days
-                                  <option />Active users
+                                <select id="address_one">
+                                  <option value="">请选择城市
+                                  @foreach($address as $k => $v)
+                                  <option value="{{$v['address_id']}}">{{$v['address_name']}}
+                                  @endforeach
                                 </select>
                             </div>
-                            <input type="text" class="search" id="search" />
+                            <div class="ui-select">
+                                <select id="address_two">
+                                  <option value="">请选择地区
+                                </select>
+                            </div>
+                            <div class="ui-select">
+                                <select id="address_three">
+                                  <option value="">请选择服务点
+                                </select>
+                            </div>
+                            <input type="text" placeholder="请输入车辆名称" class="search" id="search" />
                             <a class="btn-flat success new-product" href="{{URL('carServer')}}">服务点车辆分配</a>
                         </div>
                     </div>
@@ -156,7 +159,11 @@
             // Ajax分页
             $(document).delegate(".page","click",function(){
                 page=$(this).attr('page');
-                $.get("carServerPage/"+page,function(msg){
+                search1=$("#address_one").val()?$("#address_one").val():"all";
+                search2=$("#address_two").val()?$("#address_two").val():"all";
+                search3=$("#address_three").val()?$("#address_three").val():"all";
+                search4=$("#search").val()?$("#search").val():"all";
+                $.get("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
                     str="";
                     for(i=0; i<msg.car.length; i++){
                         str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
@@ -177,6 +184,161 @@
                         $(".pagination").append(str2);
                 },'json')
             })
+
+            //地区联动
+            $("#address_one").change(function(){
+                var id = $(this).val();
+                page=1;
+                search1=$("#address_one").val()?$("#address_one").val():"all";
+                search2=$("#address_two").val()?$("#address_two").val():"all";
+                search3=$("#address_three").val()?$("#address_three").val():"all";
+                search4=$("#search").val()?$("#search").val():"all";
+                if (id == '') {
+                    $("#address_three").html("<option value=''>请选择服务点</option>");
+                    $("#address_two").html("<option value=''>请选择地区</option>");
+                } else {
+                    $.getJSON("{{ url('addressTwo') }}",{id:id},function(msg){
+                    //alert(msg);
+                    str ="<option value=''>请选择地区</option>";
+                    for(i=0;i<msg.length;i++){
+                       str +="<option value="+msg[i].address_name+">"+msg[i].address_name+"</option>"
+                    }
+                    $("#address_two").html(str);
+                    $("#address_three").empty();
+                    $("#address_three").html("<option value=''>请选择服务点</option>");
+                    });
+                    $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
+                    str="";
+                    for(i=0; i<msg.car.length; i++){
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                    }
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $("#nowpage").val(msg.page);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                    })
+                }
+            });
+            //服务点联动
+            $("#address_two").change(function(){
+                var id = $(this).val();
+                page=1;
+                search1=$("#address_one").val()?$("#address_one").val():"all";
+                search2=$("#address_two").val()?$("#address_two").val():"all";
+                search3=$("#address_three").val()?$("#address_three").val():"all";
+                search4=$("#search").val()?$("#search").val():"all";
+                if (id == '') {
+                    $("#address_three").html("<option value=''>请选择服务点</option>");
+                } else {
+                    $.getJSON("{{ url('serverSelect') }}/"+search1+'/'+search2,function(msg){
+                    //alert(msg);
+                    str ="<option value=''>请选择服务点</option>";
+                    for(i=0;i<msg.length;i++){
+                       str +="<option value="+msg[i].server_name+">"+msg[i].server_name+"</option>"
+                    }
+                    $("#address_three").html(str);
+                    });
+                    $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
+                    str="";
+                    for(i=0; i<msg.car.length; i++){
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                    }
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $("#nowpage").val(msg.page);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                    })
+                }
+            });
+            //服务点搜索
+            $("#address_three").change(function(){
+                var id = $(this).val();
+                page=1;
+                search1=$("#address_one").val()?$("#address_one").val():"all";
+                search2=$("#address_two").val()?$("#address_two").val():"all";
+                search3=$("#address_three").val()?$("#address_three").val():"all";
+                search4=$("#search").val()?$("#search").val():"all";
+                $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
+                str="";
+                for(i=0; i<msg.car.length; i++){
+                    str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                }
+                $("#tbody").empty();
+                $("#tbody").append(str);
+                $("#nowpage").val(msg.page);
+                $(".pagination").empty();
+                str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                    for (i = 1; i <= msg.pages; i++){
+                        str2+='<li><a class="'
+                        if (msg.page == i){
+                        str2+='active';
+                        }
+                        str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                    }
+                    str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                    $(".pagination").append(str2);
+                })
+            })
+
+            //车辆名称搜索
+            $("#search").keydown(function(e){
+                if (e.keyCode==13) {
+                    page=1;
+                    search1=$("#address_one").val()?$("#address_one").val():"all";
+                    search2=$("#address_two").val()?$("#address_two").val():"all";
+                    search3=$("#address_three").val()?$("#address_three").val():"all";
+                    search4=$("#search").val()?$("#search").val():"all";
+                    $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
+                    str="";
+                    for(i=0; i<msg.car.length; i++){
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                    }
+                    $("#tbody").empty();
+                    $("#tbody").append(str);
+                    $("#nowpage").val(msg.page);
+                    $(".pagination").empty();
+                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
+                        for (i = 1; i <= msg.pages; i++){
+                            str2+='<li><a class="'
+                            if (msg.page == i){
+                            str2+='active';
+                            }
+                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
+                        }
+                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
+                        $(".pagination").append(str2);
+                    })
+                }
+            })
+
+            she=$("a[href='{{ url('carServer') }}']");
+            she.parent().parents('li').siblings(".active").children('.pointer').remove();
+            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
+            she.parent().parents('li').siblings(".active").removeClass("active");
+            she.addClass("active");
+            she.closest('ul').addClass("active");
+            she.parent().parents("li").addClass("active");
+            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
 
             // jQuery Knobs
             $(".knob").knob();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>就租车吧 - 后台</title>
+    <title>就租车吧 - 后台管理</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,14 +11,15 @@
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+
+    <!-- libraries -->
+    <link href="{{asset('admin')}}/css/lib/jquery-ui-1.10.2.custom.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/layer.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 
@@ -30,13 +31,13 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="index.html"><img src="{{asset('admin')}}/img/logo.png" /></a>
+        <a class="brand" href="indexs"><img src="{{asset('admin')}}/img/logo.png" /></a>
 
         <ul class="nav pull-right">
-            <li class="hidden-phone">
-                <input class="search" type="text" />
-            </li>
-            <li class="notification-dropdown hidden-phone">
+           <!-- <li class="hidden-phone">
+               <input class="search" type="text" />
+           </li> -->
+            <!-- <li class="notification-dropdown hidden-phone">
                 <a href="#" class="trigger">
                     <i class="icon-warning-sign"></i>
                     <span class="count">8</span>
@@ -119,28 +120,16 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> -->
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
                     欢迎<?php echo Session::get('name')?>用户登陆
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="../resources/assets/admin/personal-info.html">Personal info</a></li>
-                    <li><a href="#">Account settings</a></li>
-                    <li><a href="#">Billing</a></li>
-                    <li><a href="#">Export your data</a></li>
-                    <li><a href="#">Send feedback</a></li>
-                </ul>
-            </li>
-            <li class="settings hidden-phone">
-                <a href="../resources/assets/admin/personal-info.html" role="button">
-                    <i class="icon-cog"></i>
+                    <!-- <b class="caret"></b> -->
                 </a>
             </li>
             <li class="settings hidden-phone">
-                <a href="../resources/assets/admin/signin.html" role="button">
-                    <i class="icon-share-alt"></i>
+                <a href="{{ url('logout') }}" role="button">
+                    退出
                 </a>
             </li>
         </ul>

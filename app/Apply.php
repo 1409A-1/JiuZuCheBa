@@ -24,14 +24,12 @@ class Apply extends Authenticatable
 //        'password', 'remember_token',
 //    ];
 
-//表名
-    protected $table = 'Apply';
-//默认id
+	//表名
+    protected $table = 'apply';
+	//默认id
     protected $primaryKey = 'apply_id';
-//时间戳
+	//时间戳
     public $timestamps=false;
 
-
-
-
+    protected $guarded = [];
 }

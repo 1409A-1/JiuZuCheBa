@@ -7,6 +7,8 @@
     <div>
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
+            <a href="{{ url('apply') }}">长租申请</a>
+            <a href="">信用查看</a>
             <h5>订单管理</h5>
             <a href="orderList">订单列表</a>
             <a id="topingjia">评价订单</a>
@@ -37,11 +39,11 @@
                                 <input type="text" style="margin-left:20px;" name="mobile_code" id="mobile_code">
                             </li>
                             <li>
-                                <input id="phone" type="button" value="免费获取验证码">
+                                <input id="phone" type="button" value="免费获取验证码" style="cursor: pointer">
                             </li>
                         </ul>
                     </div>
-                    <button id="confirm">确认修改<i></i></button>
+                    <button id="confirm" style="cursor: pointer">确认修改<i></i></button>
                 </div>
                 </form>
             </div>
@@ -131,5 +133,10 @@
                     }
                 }
             })
+        })
+
+        //用户详情中点击订单评论
+        $("#topingjia").click(function(){
+            layer.alert('评价订单正在开发中！敬请期待！');
         })
     </script>
