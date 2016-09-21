@@ -3,28 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Order;
+use DB;
 
 class OrderController extends Controller
 {
     public function orderList()
     {
-        $arr = DB::table('order')
-            ->where('ord_package' ,0)
-            ->get();
-        if (!$arr) {
-            $orderArr = DB::table('order')
-                ->join('user','user.user_id','=','order.user_id')
-                ->join('package','package.pack_id','=','order.ord_package')
-                ->get();
-        } else {
             $orderArr = DB::table('order')
                 ->join('user','user.user_id','=','order.user_id')
                 ->get();
-        }
-
         return view('admin.order.orderList',['data' => $orderArr]);
     }
     public function orderInfo($id)
@@ -175,43 +165,35 @@ class OrderController extends Controller
     //订单查询
     public function orderInquiry(Request $request)
     {
-        $arr = $request->all();
-        if ($arr['orderIn'] == 0) {
-            return redirect('orderLists');
+        $startTime = strtotime($request->input('start'));            //开始时间搓
+        $endTime = strtotime($request->input('end'));                //结束时间搓
+        $status = $request->input('status');                     //订单状态
+        $query = DB::table('order')
+            ->join('user', 'order.ord_id', '=', 'user.user_id');
+        switch($status){
+            case '0' :             //所有订单
+                break;
+            case '1' :             //未付款的
+                $query->where(['ord_pay'=> 0]);
+                break;
+            case '2' :            //已付款
+                $query->where(['ord_pay'=> 1])
+                      ->orwhere(['ord_pay'=> 2])
+                      ->orwhere(['ord_pay'=> 3])
+                      ->orwhere(['ord_pay'=> 4]);
+                break;
+            case '3' :
+                $query->where(['ord_type'=> 2]);   //长租订单
+                break;
+            case '4' :
+                $query->where(['ord_type'=> 1]);    //短租情况
+                break;
         }
-        if ($arr['orderIn'] == 1) {
-            $orderIn = DB::table('order')
-                ->where(['ord_pay' => 0])
-                ->get();
-            return view('admin.order.orderInquiry',['data' => $orderIn]);
-        } else if ($arr['orderIn'] == 2) {
-            $orderIn = DB::table('order')
-                ->join('user','user.user_id','=','order.user_id')
-                ->where(function($query){
-                    $query->where(['ord_pay' => 1])
-                        ->orWhere(function($query){
-                            $query->where(['ord_pay' => 2])
-                            ->orWhere(function($query){
-                                $query->where(['ord_pay' => 3])
-                                    ->orWhere(function($query){
-                                        $query->where(['ord_pay' => 4]);
-                                    });
-                            });
-                        });
-                })->get();
-            return view('admin.order.orderInquiry',['data' => $orderIn]);
-        } else if ($arr['orderIn'] == 3) {
-            $orderIn = DB::table('order')
-                ->join('user','user.user_id','=','order.user_id')
-                ->where(['ord_pay' => 1])
-                ->get();
-            return view('admin.order.orderInquiry',['data' => $orderIn]);
-        } else if ($arr['orderIn'] == 4){
-            $orderIn = DB::table('order')
-                ->join('user','user.user_id','=','order.user_id')
-                ->where(['ord_pay' => 2])
-                ->get();
-            return view('admin.order.orderInquiry',['data' => $orderIn]);
+
+        if ($startTime && $endTime) {        //时间情况
+            $query->whereBetween('add_time',[$startTime, $endTime]);
         }
+        $result = $query->get();
+        return json_encode($result);
     }
 }

@@ -27,7 +27,7 @@
 <!--订单信息-->
 <div class="orderInfoBox">
     <div class="left">
-        <h4>确认订单信息<a href="{{ url('short') }}">重选车辆</a></h4>
+        <h4>确认订单信息<a href="{{ url('short') }}"><span style="font-size: 18px">重选车辆</span></a></h4>
         <!--基本信息-->
         <div class="carInfo">
             <div class="carInfoL">

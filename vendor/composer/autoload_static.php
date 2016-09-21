@@ -264,6 +264,8 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
     );
 
     public static $classMap = array (
+        'AddTypeToMessageTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_164312_add_type_to_message_table.php',
+        'AddUserNameToMessageTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_06_084830_add_user_name_to_message_table.php',
         'CreateAddressTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_070814_create_address_table.php',
         'CreateAdminUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_065712_create_admin_user_table.php',
         'CreateApplyTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_065300_create_apply_table.php',
@@ -787,6 +789,10 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UpdateAddressTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_02_021111_update_address_table.php',
         'UpdateApplyTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_07_162135_update_apply_table.php',
+        'UpdateBenefitTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_190242_update_benefit_table.php',
+        'UpdateCarInfoTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_154120_update_car_info_table.php',
+        'UpdateOrderInfoTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_115344_update_order_info_table.php',
+        'UpdateServerTTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_09_090354_update_serverT_table.php',
         'UpdateServerTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_142206_update_server_table.php',
     );
 

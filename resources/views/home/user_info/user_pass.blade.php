@@ -8,7 +8,7 @@
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
             <a href="{{ url('apply') }}">长租申请</a>
-            <a href="">信用查看</a>
+            <a href="">我的积分</a>
             <h5>订单管理</h5>
             <a href="orderList">订单列表</a>
             <a id="topingjia">评价订单</a>

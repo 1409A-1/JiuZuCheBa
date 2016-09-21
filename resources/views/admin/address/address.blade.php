@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!--[if lt IE 9]>
-      <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -176,7 +176,7 @@
                                });
                            });
 
-                           she=$("a[href='{{ url('address') }}']");
+                           she=$("a[href='{{ url('serverAdd') }}']");
                             she.parent().parents('li').siblings(".active").children('.pointer').remove();
                             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
                             she.parent().parents('li').siblings(".active").removeClass("active");

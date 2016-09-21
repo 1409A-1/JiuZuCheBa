@@ -2,45 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Address;
+use App\Server;
+use DB;
+use Session;
 
 class AddressController extends Controller
 {
-    public function address()
+    public function serverAdd()
     {
-        $arr = DB::table('address')
-            ->where(['parent_id' => 0])
-            ->get();
-        return view('admin.address.address',['data' => $arr]);
+        $address = Address::where('parent_id', 0)->get();
+        return view('admin.address.address', ['data' => $address]);
     }
-    public function addressTwo()
+
+    public function addressTwo(Request $request)
     {
-        $id = $_GET['id'];
+        $id = $request->input('id');
         if($id != 0){
             $arr = DB::table('address')
                 ->where(['parent_id' => $id])
                 ->get();
             $arr = json_encode($arr);
-            echo $arr;
+            return $arr;
         }else{
-            echo 0;
+            return 0;
         }
     }
+
     public function addressList()
     {
-        $arr = DB::table('server')
-            ->join('address','server.address_id','=','address.address_id')
-            ->get();
-        return view('admin.address.addressList',['data' => $arr]);
+        $server = Server::join('address','server.address_id','=','address.address_id')->get();
+        return view('admin.address.addressList',['data' => $server]);
     }
+
     public function addServer(Request $request)
     {
-        $arr = DB::table('server')
-            ->where(['server_name' => $request->input('server_name')])
-            ->first();
+        $arr = Server::where(['server_name' => $request->input('server_name')])->first();
         if ($arr) {
             echo "<script>alert('服务点存在。'); location.href='".url('address')."';</script>";die;
         }
@@ -64,29 +63,51 @@ class AddressController extends Controller
                 'street'  => $request->input('street')
             ]);
         }
-       return redirect('addressList');
+        return redirect('addressList');
     }
-
 
     public function addrList()
     {
-        $arr = DB::table('address')
-            ->where('parent_id',0)
-            ->get();
-        foreach($arr as $k => $val){
-            $arr2 = DB::table('address')
-                ->where('parent_id',$val['address_id'])
-                ->get();
-            $arr[$k]['son'] = $arr2;
+        $address = Address::where('parent_id', 0)->get();
+        foreach ($address as $k => $v) {
+            $son = Address::where('parent_id', $v['address_id'])->get();
+            $address[$k]['son'] = $son;
         }
-        return view('admin.address.addrList',['data' => $arr]);
+        return view('admin.address.addrList', ['data' => $address]);
     }
 
     public function addrIns()
     {
         return view('admin.address.addrIns');
-
     }
+
+    /**
+     * 地区删除
+     */
+    public function addrDel(Request $request)
+    {
+        $address = $request->input('address');
+        $count = Server::where('district', $address)->count();
+
+        // 存在门店禁止删除
+        if ($count) {
+            $isSuccess = 'ban';
+            return $isSuccess;
+        }
+
+        // 若是城市最后一个地区将连同城市一块删除
+        $result = Address::where('address_name', $address)->first();
+        $lastCity = Address::where('parent_id', $result['parent_id'])->count();
+        if ($lastCity == 1) {
+            $result = Address::where('address_name', $address)->orWhere('address_id', $result['parent_id'])->delete();
+            $isSuccess = $result? 'all': 'fail';
+        } else {
+            $result = Address::where('address_name', $address)->delete();
+            $isSuccess = $result? 'one': 'fail';
+        }
+        return $isSuccess;
+    }
+
     /**
      * @param Request $request
      */
@@ -118,8 +139,8 @@ class AddressController extends Controller
                 DB::table('address')
                     ->insert([
                         'address_name' => $arr['county'],
-                        'abridge'       => $str2,
-                        'parent_id'        => $parent_id
+                        'abridge'      => $str2,
+                        'parent_id'    => $parent_id
                     ]);
                 return 0;//添加成功
             }
@@ -164,29 +185,9 @@ class AddressController extends Controller
         }
     }
 
-    public function typeInfo(Request $request)
+    //城市类型的修改
+    public function cityTypeUpdate(Request $request)
     {
-        $id = $request -> input('id');
-        $arr = DB::table('address')
-            ->where('address_id',$id)
-            ->first();
-        $county = json_encode($arr);
-        echo $county;
-    }
-
-//地区城市类型的修改
-    public function changeAddType(Request $request)
-    {
-        $type = $request->input('type');  //要修改的类型 id
-        $a_id = $request->input('a_id');  //要修改的类型 id
-        $result = DB::table('address')
-            ->where('address_id', $a_id)
-            ->update(['type'=> $type]);
-        if ($result) {
-            echo 1;
-        } else {
-            echo 2;
-        }
-
+        return $result = Address::where('address_id', $request->input('id'))->update(['type'=> $request->input('type')]);
     }
 }
