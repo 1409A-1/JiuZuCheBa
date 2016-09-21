@@ -2,33 +2,12 @@
 <html>
 <head>
 	<title>Detail Admin - Tables showcase</title>
-    
-	{{--<meta name="viewport" content="width=device-width, initial-scale=1.0" />--}}
-	
-    <!-- bootstrap -->
-    {{--<link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />--}}
-    {{--<link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />--}}
-    {{--<link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />--}}
 
-    <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    {{--<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />--}}
-    {{--<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />--}}
     {{--引用css样式--}}
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/jquery.datetimepicker.css" />
-
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-    
-    <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
-
-    <!--[if lt IE 9]>
-
-    <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
-
+    <script src="{{asset('admin')}}/dat/WdatePicker.js"></script>
     <!-- navbar -->
     @include('common.admin_header')
     <!-- end navbar -->
@@ -57,8 +36,8 @@
                     <button  class="btn btn-info" style="float: right" id="search"/>搜索</button>
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                            <input type="text"  class="text" style="float: right; width: 120px;margin-right: 40px" placeholder="结束时间" id="end">
-                            <input type="text"  class="text" style="float: right; width: 120px;margin-right: 20px" placeholder="开始时间" id="start">
+                            <input type="text"  class="text" style="float: right; width: 120px;margin-right: 40px" placeholder="结束时间" id="d4322" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4321\',{d:1});}'})">
+                            <input type="text"  class="text" style="float: right; width: 120px;margin-right: 20px" placeholder="开始时间" id="d4321" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\',{d:-1});}'})">
                             <div class="ui-select">
                                 <select id="status">
                                     <option value="0">所有</option>
@@ -182,7 +161,6 @@
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/js/theme.js"></script>
-    <script src="{{asset('admin')}}/js/jquery.datetimepicker.js"></script>
     <script>
         $(function(){
             she=$("a[href='{{ url('orderLists') }}']");
@@ -193,34 +171,17 @@
             she.closest('ul').addClass("active");
             she.parent().parents("li").addClass("active");
             she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
-//引用时间插件
-            $('.text').datetimepicker({
-                step:10,
-                lang:'ch',               //语言
-                timepicker:true,
-                format:'Y-m-d H:i'
-            });
 //搜索
             $("#search").click(function(){
-              var start = $("#start").val();  //开始时间
-              var end =  $("#end").val();     //结束时间
+              var start = $("#d4321").val();  //开始时间
+              var end =  $("#d4322").val();     //结束时间
               var status =  $("#status").val();     //结束时间
-//                if () {
-//
-//                }
-                {{--$.getJSON("{{ url('orderInquiry') }}", {start:start, end:end, status:status}, function(e){--}}
-                    {{--alert(e)--}}
-                {{--});--}}
+              $.getJSON("{{ url('orderInquiry') }}", {start:start, end:end, status:status}, function(e){
+                alert(e)
+              });
             })
 
         })
-
-        function split_time(time){//将当前时间转换成时间搓 例如2013-09-11 12:12:12
-            var arr=time.split(" ");
-            var day=arr[0].split("-");
-            var hour=arr[1].split(":");
-            return Date.UTC(day[0],(day[1]-1),day[2],hour[0],hour[1],hour[2])/1000; //将当前时间转换成时间搓
-        }
     </script>
 
 </body>

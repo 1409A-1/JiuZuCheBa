@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Order;
+use DB;
 
 class OrderController extends Controller
 {
@@ -165,8 +166,15 @@ class OrderController extends Controller
     public function orderInquiry(Request $request)
     {
          $start = strtotime($request->input('start'));            //开始时间搓
-         $end = strtotime($request->input('end'));  //结束时间搓
-         $status = $request->input('status');  //订单状态
+         $end = strtotime($request->input('end'));                   //结束时间搓
+         $status = $request->input('status');                        //订单状态
+        if ($status) {
+//            $a = new Order();
+//            $a = $a->where('ord_pay', $status);
+        } else {
+//            $a = new Order;
+        }
+//        print_r($a);
 //        $arr = $request->all();
 //        if ($arr['orderIn'] == 0) {
 //            return redirect('orderLists');
