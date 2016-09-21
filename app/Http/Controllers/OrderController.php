@@ -165,54 +165,35 @@ class OrderController extends Controller
     //订单查询
     public function orderInquiry(Request $request)
     {
-         $start = strtotime($request->input('start'));            //开始时间搓
-         $end = strtotime($request->input('end'));                   //结束时间搓
-         $status = $request->input('status');                        //订单状态
-        if ($status) {
-//            $a = new Order();
-//            $a = $a->where('ord_pay', $status);
-        } else {
-//            $a = new Order;
+        $startTime = strtotime($request->input('start'));            //开始时间搓
+        $endTime = strtotime($request->input('end'));                //结束时间搓
+        $status = $request->input('status');                     //订单状态
+        $query = DB::table('order')
+            ->join('user', 'order.ord_id', '=', 'user.user_id');
+        switch($status){
+            case '0' :             //所有订单
+                break;
+            case '1' :             //未付款的
+                $query->where(['ord_pay'=> 0]);
+                break;
+            case '2' :            //已付款
+                $query->where(['ord_pay'=> 1])
+                      ->orwhere(['ord_pay'=> 2])
+                      ->orwhere(['ord_pay'=> 3])
+                      ->orwhere(['ord_pay'=> 4]);
+                break;
+            case '3' :
+                $query->where(['ord_type'=> 2]);   //长租订单
+                break;
+            case '4' :
+                $query->where(['ord_type'=> 1]);    //短租情况
+                break;
         }
-//        print_r($a);
-//        $arr = $request->all();
-//        if ($arr['orderIn'] == 0) {
-//            return redirect('orderLists');
-//        }
-//        if ($arr['orderIn'] == 1) {
-//            $orderIn = DB::table('order')
-//                ->join('user','user.user_id','=','order.user_id')
-//                ->where(['ord_pay' => 0])
-//                ->get();
-//            return view('admin.order.orderInquiry',['data' => $orderIn]);
-//        } else if ($arr['orderIn'] == 2) {
-//            $orderIn = DB::table('order')
-//                ->join('user','user.user_id','=','order.user_id')
-//                ->where(function($query){
-//                    $query->where(['ord_pay' => 1])
-//                        ->orWhere(function($query){
-//                            $query->where(['ord_pay' => 2])
-//                            ->orWhere(function($query){
-//                                $query->where(['ord_pay' => 3])
-//                                    ->orWhere(function($query){
-//                                        $query->where(['ord_pay' => 4]);
-//                                    });
-//                            });
-//                        });
-//                })->get();
-//            return view('admin.order.orderInquiry',['data' => $orderIn]);
-//        } else if ($arr['orderIn'] == 3) {
-//            $orderIn = DB::table('order')
-//                ->join('user','user.user_id','=','order.user_id')
-//                ->where(['ord_pay' => 1])
-//                ->get();
-//            return view('admin.order.orderInquiry',['data' => $orderIn]);
-//        } else if ($arr['orderIn'] == 4){
-//            $orderIn = DB::table('order')
-//                ->join('user','user.user_id','=','order.user_id')
-//                ->where(['ord_pay' => 2])
-//                ->get();
-//            return view('admin.order.orderInquiry',['data' => $orderIn]);
-//        }
+
+        if ($startTime && $endTime) {        //时间情况
+            $query->whereBetween('add_time',[$startTime, $endTime]);
+        }
+        $result = $query->get();
+        return json_encode($result);
     }
 }
