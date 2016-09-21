@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
+
 <!-- navbar -->
 @include('common.admin_header')
 <!-- end navbar -->
@@ -5,7 +7,6 @@
 <!-- sidebar -->
 @include('common.admin_left')
 <!-- end sidebar -->
-
     <script src="{{asset('admin')}}/js/js.js"></script>
     <style type="text/css">
         /* 通用自定义按钮组合 */

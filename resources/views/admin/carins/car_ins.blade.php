@@ -50,13 +50,13 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4>Products</h4>
+                            <h4>车辆 添加</h4>
                         </div>
                     </div>
 
                     <div class="row-fluid filter-block">
-                        <div class="pull-right">
-
+                        <div class="pull-right" style="margin-right:300px; ">
+                            <a class="btn-flat success new-product" href="{{ url('carList') }}">车辆列表</a>
                         </div>
                     </div>
                     <script src="{{asset('admin')}}/js/js.js"></script>
@@ -67,35 +67,35 @@
                             });
                         });
                     </script>
-                    <div class="row-fluid" style="width:500px;">
+                    <div class="row-fluid" style="width:500px;margin-left: 100px;">
                         <form action="{{url('carIns')}}" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <table class="table">
                                 <tr>
                                     <td>车辆名称:</td>
                                     <td>
-                                        <input type="text" name="car_name" required=""/>
+                                        <input type="text" name="car_name" required="" placeholder="请输入车辆名称"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>车辆类型:</td>
                                     <td>
-                                        <select name="type_id" style="height: 100%;" id="">
+                                        <select name="type_id" style="height: 150%;" id="">
                                             <option value="0">请选择...</option>
-                                            <?php foreach($data as $k => $v){?>
-                                            <option value="<?php echo $v['type_id']?>"><?php echo $v['type_name']?></option>
-                                            <?php }?>
+                                            @foreach($data as $k => $v)
+                                            <option value="{{ $v['type_id'] }}">{{ $v['type_name'] }}</option>
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>车辆品牌:</td>
                                     <td>
-                                        <select name="brand_id" style="height: 100%;" id="">
+                                        <select name="brand_id" style="height: 150%;" id="">
                                             <option value="0">请选择...</option>
-                                            <?php foreach($arr as $k => $v){?>
-                                            <option value="<?php echo $v['brand_id']?>"><?php echo $v['brand_name']?></option>
-                                            <?php }?>
+                                            @foreach($arr as $k => $v)
+                                            <option value="{{ $v['brand_id'] }}">{{ $v['brand_name'] }}</option>
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr>
@@ -108,7 +108,13 @@
                                 <tr>
                                     <td>单日价格:</td>
                                     <td>
-                                        <input type="text" name="car_price" required=""/>
+                                        <input type="text" name="car_price" required="" placeholder="请输入单日价"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>添加数量</td>
+                                    <td>
+                                        <input type="number" name="car_num" min="1" placeholder="请输入数量"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -131,7 +137,7 @@
     <script src="{{asset('admin')}}/js/theme.js"></script>
     <script>
         $(function(){
-            she=$("a[href='{{ url('carIns') }}']");
+            she=$("a[href='{{ url('carList') }}']");
             she.parent().parents('li').siblings(".active").children('.pointer').remove();
             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
             she.parent().parents('li').siblings(".active").removeClass("active");

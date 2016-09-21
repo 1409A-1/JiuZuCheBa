@@ -188,6 +188,7 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::post('integralManagement', 'OrderController@integralManagement');    //还车
 
     Route::any('carIns', 'CarController@carIns');                               //车辆的添加
+    Route::get('carSel','CarController@carSel');                                //车辆列表的搜索
     Route::get('carList', 'CarController@carList');                             //车辆展示列表
     Route::get('carDel/{car_id}', 'CarController@carDel');                      //车辆删除
     Route::get('carServer', 'CarController@carServer');                         //服务点车辆分配页面
