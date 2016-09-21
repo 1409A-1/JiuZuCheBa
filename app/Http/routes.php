@@ -36,6 +36,8 @@ Route::get('nationalMap', 'IndexController@nationalMap'); //国家地图
 Route::group(['middleware' => ['homelogin']], function(){
 	//前台的个人中心
 	Route::get('userInfo', 'HomeUserController@userInfo');
+    //前台中积分的查看详情
+    Route::get('credit', 'HomeUserController@credit');
 	//修改密码展示页面
 	Route::get('updatePass', 'HomeUserController@updatePass');
 	//修改密码发送短信
@@ -46,6 +48,12 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('onlyPwd', 'HomeUserController@onlyPwd');
 	//前台验证修改手机验证码是否正确
 	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
+    //前台修改用户名验证唯一
+    Route::get('checkUpdaName', 'HomeUserController@checkUpdaName');
+    //前台修改时手机验证唯一
+    Route::get('checkUpdaTel', 'HomeUserController@checkUpdaTel');
+    //前台修改用户名手机号
+    Route::post('updaUser', 'HomeUserController@updaUser');
 	//订单列表的展示
 	Route::get('orderList', 'HomeUserController@orderList');
     //长租申请的查看
@@ -173,7 +181,7 @@ Route::group(['middleware' => ['nologin']], function(){
      * 描述：订单的审核
      */
     Route::get('orderLists', 'OrderController@orderList');
-    Route::post('orderInquiry', 'OrderController@orderInquiry');                //订单搜索
+    Route::get('orderInquiry', 'OrderController@orderInquiry');                //订单搜索
     Route::get('orderInfo/{ord_id}', 'OrderController@orderInfo');
     Route::get('carry/{ord_id}', 'OrderController@carry');                      //提车
     Route::get('still/{ord_id}', 'OrderController@still');                      //还车
