@@ -1,44 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - Tables showcase</title>
-    
-    <!-- this page specific styles -->
+	<title>服务点车辆列表</title>
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
-
-    <!-- open sans font -->
-
-    <!--[if lt IE 9]>
-    <![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
-
-    <!-- navbar -->
     @include('common.admin_header')
-    <!-- end navbar -->
-
-    <!-- sidebar -->
     @include('common.admin_left')
-    <!-- end sidebar -->
-
-
-	<!-- main container -->
     <div class="content">
-        
-        <!-- settings changer -->
-        
         <div class="container-fluid">
             <div id="pad-wrapper">
-                
-                <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head" style="padding-bottom:30px">
                         <div class="span12">
                             <h4>服务点车辆列表</h4>
                         </div>
                     </div>
-
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
                             <div class="ui-select">
@@ -63,7 +41,6 @@
                             <a class="btn-flat success new-product" href="{{URL('carServer')}}">服务点车辆分配</a>
                         </div>
                     </div>
-
                     <div class="row-fluid">
                         <table class="table table-hover">
                             <thead>
@@ -113,15 +90,6 @@
                     </div>
                     <input type="hidden" value="1" id="nowpage">
                 </div>
-                <!-- end products table -->
-
-                <!-- orders table -->
-                
-                <!-- end orders table -->
-
-                <!-- users table -->
-                
-                <!-- end users table -->
             </div>
         </div>
     </div>

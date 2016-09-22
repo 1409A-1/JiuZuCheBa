@@ -45,8 +45,6 @@ class CarController extends Controller
     }
     public function carList()
     {
-        $sel = DB::table('car_info')
-            ->get();
         $cart = DB::table('car_type')
             ->get();
         $carb = DB::table('car_brand')
@@ -55,8 +53,18 @@ class CarController extends Controller
             ->join('car_type','car_info.type_id','=','car_type.type_id')
             ->join('car_brand','car_info.brand_id','=','car_brand.brand_id')
             ->get();
-      //  $num =
-        return view('admin.carins.carList',['data' => $arr,'sel' => $sel,'cart' => $cart,'carb' => $carb]);
+        $num = DB::table('car_number')
+            ->selectRaw('car_id, sum(number) as sum')
+            ->groupBy("car_id")
+            ->get();
+        foreach($arr as $k => $v) {
+            foreach($num as $c) {
+                if ($v['car_id'] == $c['car_id']) {
+                    $arr[$k]['num'] = $v['car_number'] - $c['sum'];
+                }
+            }
+        }
+        return view('admin.carins.carList',['data' => $arr,'cart' => $cart,'carb' => $carb,'num'=>$num]);
     }
     /*
      * name:wanghu
@@ -69,7 +77,7 @@ class CarController extends Controller
             ->where('car_id',$id)
             ->get();
         if($server){
-            echo "<script>alert('该车型被服务点使用，禁止删除。');location.href='".URL('carList')."'</script>";die;
+            return "<script>alert('该车型被服务点使用，禁止删除。');location.href='".URL('carList')."'</script>";
         }else{
             $apply = DB::table('apply')
                 ->where('car_id' , $id)
@@ -80,7 +88,7 @@ class CarController extends Controller
                         });
                 })->get();
             if($apply){
-                echo "<script>alert('该车型被申请或使用，禁止删除。');location.href='".URL('carList')."'</script>";
+                return "<script>alert('该车型被申请或使用，禁止删除。');location.href='".URL('carList')."'</script>";
             }else{
                 $order = DB::table('order_info')
                     ->where('car_id',$id)
@@ -95,7 +103,7 @@ class CarController extends Controller
                             });
                     })->get();
                 if ($ord) {
-                    echo "<script>alert('该车型被被使用，禁止删除。');location.href='".URL('carList')."'</script>";
+                    return "<script>alert('该车型被被使用，禁止删除。');location.href='".URL('carList')."'</script>";
                 } else {
                     DB::table('car_info')
                         ->where(['car_id' => $id])
@@ -111,9 +119,9 @@ class CarController extends Controller
      */
     public function carSel(Request $request)
     {
-         $type_id =  $request->input('type_id');//车辆型号
-         $brand_id = $request->input('brand_id');//车辆品牌
-         $query = DB::table('car_info')
+        $type_id =  $request->input('type_id');   //车辆型号
+        $brand_id = $request->input('brand_id');  //车辆品牌
+        $query = DB::table('car_info')
             ->join('car_type','car_info.type_id','=','car_type.type_id')
             ->join('car_brand','car_info.brand_id','=','car_brand.brand_id');
         if ($type_id && $brand_id) {
@@ -124,7 +132,20 @@ class CarController extends Controller
             $query->where(['car_brand.brand_id' => $brand_id]);
         }
         $arr = $query->get();
-          return json_encode($arr);
+        $car_id = $query->lists('car_id');
+        $num = DB::table('car_number')
+            ->selectRaw('car_id, sum(number) as sum')
+            ->groupBy("car_id")
+            ->whereIn('car_id', $car_id)
+            ->get();
+        foreach($arr as $k => $v) {
+            foreach($num as $c) {
+                if ($v['car_id'] == $c['car_id']) {
+                    $arr[$k]['num'] = $v['car_number'] - $c['sum'];
+                }
+            }
+        }
+        return json_encode($arr);
     }
     /*
      * name:zhaoag
@@ -137,7 +158,6 @@ class CarController extends Controller
         $server = server::get()->toArray()? :array();
         return view("admin.address.carAllot", ['carInfo' => $carInfo, 'server' => $server]);
     }
-
     /*
      * name:zhaoag
      * time:2016/9/8

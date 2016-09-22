@@ -66,7 +66,11 @@ class AdminController extends Controller
      * */
     public function indexs()
     {
-        return view('admin.admin.admin');
+        $user = DB::table('user')->count();                //用户总数
+        $sum = DB::table('car_number')->sum('number');    //车辆总数
+        $order = DB::table('order')->where('ord_pay', 3)->orwhere('ord_pay', 4)->count();   //车辆总数
+        $server = DB::table('server')->count();        //服务点数量
+        return view('admin.admin.admin', ['user'=> $user, 'sum'=> $sum, 'order'=> $order, 'server'=> $server]);
     }
     /*
      * name:wanghu
