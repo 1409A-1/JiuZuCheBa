@@ -173,7 +173,7 @@ class HomeOrderController extends Controller
                 $order_info['price']['money'] = $order_info['ord_price'];
             } else if($order_info['ord_pay']==4){
                 $order_info['status'] ='待评价';
-                $order_info['price']['money'] = 0;
+                $order_info['price']['money'] = $order_info['ord_price'];
             }else if($order_info['ord_pay']==5){
                 $order_info['status'] ='订单已取消';
                 $order_info['price']['money'] = 0;
@@ -244,7 +244,7 @@ class HomeOrderController extends Controller
             ->where(['ord_sn'=> $ord_sn,'user_id'=>$user_id])
             ->first();
         if ($result) {
-            $this->pay($ord_sn);
+            $this->pay($ord_sn,url(''));
         } else {
             return "<script>alert('支付失败');location.href='orderList'</script>";
         }
@@ -265,7 +265,7 @@ class HomeOrderController extends Controller
    * 总价
    * 订单号
    * */
-    public function pay($ord_sn){
+    public function pay($ord_sn,$url){
         // ******************************************************配置 start*************************************************************************************************************************
         //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         //合作身份者id，以2088开头的16位纯数字
@@ -292,8 +292,8 @@ class HomeOrderController extends Controller
             "partner" => $alipay_config['partner'], // 合作身份者id
             "seller_email" => $alipay_config['seller_email'], // 收款支付宝账号
             "payment_type"	=> '1', // 支付类型
-            "notify_url"	=> "http://www.jiuzucheba/error", // 服务器异步通知页面路径
-            "return_url"	=> "http://www.jiuzucheba/paySuccess", // 页面跳转同步通知页面路径
+            "notify_url"	=> $url."/error", // 服务器异步通知页面路径
+            "return_url"	=> $url."/paySuccess", // 页面跳转同步通知页面路径
             "out_trade_no"	=> "$ord_sn", // 商户网站订单系统中唯一订单号
             "subject"	=> "订单"." ".$ord_sn, // 订单名称
             "total_fee"	=> 0.01, // 付款金额
