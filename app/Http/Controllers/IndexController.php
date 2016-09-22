@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\CarType;
+use App\Picture;
 use DB,Session;
 
 class IndexController extends Controller
@@ -11,7 +12,9 @@ class IndexController extends Controller
     //首页
     public function home(){
         $package = DB::table('package')->limit(3)->get();
-        return view('home.index.home', ['package' => $package]);
+        $turn = Picture::where("type", 0)->where("isUse", 0)->get()? Picture::where("type", 0)->where("isUse", 0)->get()->toArray(): array();
+        $active = Picture::where("type", 1)->where("isUse", 0)->get()? Picture::where("type", 1)->where("isUse", 0)->get()->toArray(): array();
+        return view('home.index.home', ['package' => $package, 'turn' => $turn, 'active' => $active]);
     }
     //短租
     public function short(Request $request)

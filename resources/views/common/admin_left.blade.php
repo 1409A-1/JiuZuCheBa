@@ -73,6 +73,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ url('picture') }}">
+                <i class="icon-picture"></i>
+                <span>前台图片管理</span>
+            </a>
+        </li>
+        <li>
             <a class="dropdown-toggle ui-elements" href="#">
                 <i class="icon-code-fork"></i>
                 <span>车辆管理</span>

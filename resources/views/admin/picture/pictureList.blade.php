@@ -6,20 +6,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="<?php echo e(asset('admin')); ?>/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('admin')); ?>/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
 
     <!-- libraries -->
-    <link href="<?php echo e(asset('admin')); ?>/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
     
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="<?php echo e(asset('admin')); ?>/css/compiled/tables.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
 
@@ -29,11 +29,11 @@
 <body>
 
     <!-- navbar -->
-    <?php echo $__env->make('common.admin_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    @include('common.admin_header')
     <!-- end navbar -->
 
     <!-- sidebar -->
-    <?php echo $__env->make('common.admin_left', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    @include('common.admin_left')
     <!-- end sidebar -->
 
 
@@ -48,21 +48,15 @@
                 <!-- products table-->
                 <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
                 <div class="table-wrapper products-table section">
-                    <div class="row-fluid head">
+                    <div class="row-fluid head" style="padding-bottom:30px">
                         <div class="span12">
-                            <h4>车辆品牌</h4>
+                            <h4>前台图片列表</h4>
                         </div>
                     </div>
 
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
-                        </div>
-                    </div>
-
-                    <div class="row-fluid filter-block">
-                        <div class="pull-right">
-                            <input type="text" class="search" id="search" />
-                            <a class="btn-flat success new-product" href="<?php echo e(URL('brandAdd')); ?>">+ 添加车辆品牌</a>
+                            <a class="btn-flat success new-product" href="{{URL('pictureAdd')}}">+ 添加前台图片</a>
                         </div>
                     </div>
 
@@ -71,11 +65,14 @@
                             <thead>
                                 <tr>
                                     <th class="span3">
-                                        车辆品牌
+                                        图片类型
                                     </th>
-                                    <!-- <th class="span3">
-                                        <span class="line"></span>Description
-                                    </th> -->
+                                    <th class="span3">
+                                        <span class="line"></span>预览
+                                    </th>
+                                    <th class="span3">
+                                        <span class="line"></span>图片说明
+                                    </th>
                                     <th class="span3">
                                         <span class="line"></span>操作
                                     </th>
@@ -83,41 +80,50 @@
                             </thead>
                             <tbody id="tbody">
                                 <!-- row -->
-                                <?php foreach($carbrand as $k => $v): ?>
+                                @foreach($data as $k => $v)
                                 <tr class="first">
-                                    <td>
-                                        <?php echo e($v['brand_name']); ?>
-
+                                    <td class="description">
+                                        @if ($v['type'] == 0)
+                                        首页轮播图
+                                        @elseif ($v['type'] == 1)
+                                        活动图片
+                                        @elseif ($v['type'] == 2)
+                                        新闻图片
+                                        @endif
                                     </td>
-                                    <!-- <td class="description">
-                                        if you are going to use a passage of Lorem Ipsum.
-                                    </td> -->
-                                    <td>
-                                        <!-- <span class="label label-success">Active</span> -->
+                                    <td class="description">
+                                        <img src="{{$v['dir']}}" alt="{{$v['alt']}}" height="40px">
+                                    </td>
+                                    <td class="description">
+                                        {{$v['alt']}}
+                                    </td>
+                                    <td class="description">
                                         <ul class="actions" style="float:left">
-                                            <li><a href="brandUpdate/<?php echo e($v['brand_id']); ?>">编辑</a></li>
-                                            <?php if($v['car_id'] == ''): ?>
-                                            <li class="last"><a class="del" href="javascript:void(0)" bid=<?php echo e($v['brand_id']); ?>>删除</a></li>
-                                            <?php endif; ?>
+                                            <li class="last"><a class="del" href="javascript:void(0)" bid="{{$v['picture_id']}}">删除</a></li>
+                                            @if ($v['isUse'] == 0)
+                                            <li class="last"><a class="isUse" href="javascript:void(0)" bid="{{$v['picture_id']}}">不使用</a></li>
+                                            @elseif ($v['isUse'] == 1)
+                                            <li class="last"><a class="isUse" href="javascript:void(0)" bid="{{$v['picture_id']}}">使用</a></li>
+                                            @endif
                                         </ul>
                                     </td>
                                 </tr>
-                                <?php endforeach; ?>
+                                @endforeach
                                 <!-- row -->
                             </tbody>
                         </table>
                     </div>
                     <div class="pagination">
                       <ul>
-                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($prev); ?>">&#8249;</a></li>
-                        <?php for($i = 1; $i <= $pages; $i++): ?>
+                        <li><a href="javascript:void(0)" class="page" page="{{$prev}}">&#8249;</a></li>
+                        @for ($i = 1; $i <= $pages; $i++)
                             <li><a class="
-                            <?php if($page == $i): ?>
+                            @if ($page == $i)
                             active
-                            <?php endif; ?>
-                             page" href="javascript:void(0)" page="<?php echo e($i); ?>"><?php echo e($i); ?></a></li>
-                        <?php endfor; ?>
-                        <li><a href="javascript:void(0)" class="page" page="<?php echo e($next); ?>">&#8250;</a></li>
+                            @endif
+                             page" href="javascript:void(0)" page="{{$i}}">{{$i}}</a></li>
+                        @endfor
+                        <li><a href="javascript:void(0)" class="page" page="{{$next}}">&#8250;</a></li>
                       </ul>
                     </div>
                     <input type="hidden" value="1" id="nowpage">
@@ -137,64 +143,43 @@
     <!-- end main container -->
 
 	<!-- scripts -->
-    <script src="<?php echo e(asset('admin')); ?>/js/jquery-latest.js"></script>
-    <script src="<?php echo e(asset('admin')); ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo e(asset('admin')); ?>/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
+    <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="<?php echo e(asset('admin')); ?>/js/jquery.knob.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.js"></script>
-    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.stack.js"></script>
-    <script src="<?php echo e(asset('admin')); ?>/js/jquery.flot.resize.js"></script>
-    <script src="<?php echo e(asset('admin')); ?>/js/theme.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.stack.js"></script>
+    <script src="{{asset('admin')}}/js/jquery.flot.resize.js"></script>
+    <script src="{{asset('admin')}}/js/theme.js"></script>
 
     <script type="text/javascript">
         $(function () {
-            // Ajax搜索&分页
+            // Ajax分页
             $(document).delegate(".page","click",function(){
                 page=$(this).attr('page');
-                search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
-                $.get("brandListPage/"+page+"/"+search+"/0",function(msg){
-                    alert(msg)
-                    return false;
-                    str="";
-                    for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
-                        if (msg.carbrand[i].car_id == null) {
-                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
-                        }
-                        str+='</ul></td></tr>'
-                    }
-                    $("#tbody").empty();
-                    $("#tbody").append(str);
-                    $("#nowpage").val(msg.page);
-                    $(".pagination").empty();
-                    str2='<ul><li><a href="javascript:void(0)" class="page" page="'+msg.prev+'">&#8249;</a></li>'
-                        for (i = 1; i <= msg.pages; i++){
-                            str2+='<li><a class="'
-                            if (msg.page == i){
-                            str2+='active';
-                            }
-                            str2+=' page" href="javascript:void(0)" page="'+i+'">'+i+'</a></li>'
-                        }
-                        str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
-                        $(".pagination").append(str2);
-                })
-            })
-
-            //Ajax搜索
-            $("#search").keydown(function(e){
-                if (e.keyCode==13) {
-                    search=$(this).val()=="" ? "all" :$(this).val();
-                    //alert(search)
-                    $.get("brandListPage/1/"+search+"/0",function(msg){
+                $.get("pictureDel/"+page+"/0",function(msg){
                     //alert(msg)
+                    //return false;
                     str="";
-                    for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
-                        if (msg.carbrand[i].car_id == null) {
-                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
+                    for(i=0; i<msg.picture.length; i++){
+                        str+='<tr class="first"><td>';
+                        if (msg.picture[i].type == 0) {
+                            str+="首页轮播图";
+                        } else if(msg.picture[i].type == 1) {
+                            str+="活动图片";
+                        } else if(msg.picture[i].type == 2) {
+                            str+="新闻图片";
+                        }
+                        str+='</td><td><img src="'+msg.picture[i].dir+'" alt="'+msg.picture[i].alt+'" height="40px"></td>'
+                        str+='<td>'+msg.picture[i].alt+'</td>';
+                        str+='<td><ul class="actions" style="float:left"><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.picture[i].picture_id+'>删除</a></li>'
+                        if (msg.picture[i].isUse==0) {
+                            str+='<li class="last"><a class="isUse" href="javascript:void(0)" bid="'+msg.picture[i].picture_id+'">不使用</a></li>'
+                        } else if (msg.picture[i].isUse==1) {
+                            str+='<li class="last"><a class="isUse" href="javascript:void(0)" bid="'+msg.picture[i].picture_id+'">使用</a></li>'
                         }
                         str+='</ul></td></tr>'
                     }
@@ -212,23 +197,40 @@
                         }
                         str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
                         $(".pagination").append(str2);
-                    },'json')
-                }
+                },'json')
             })
 
-            // Ajax搜索&分页&删除
+            she=$("a[href='{{ url('picture') }}']");
+            she.parent().siblings(".active").children('.pointer').remove();
+            she.parent().siblings(".active").children(".active").removeClass("active");
+            she.parent().siblings(".active").removeClass("active");
+            she.parent().addClass("active");
+            she.parent().prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
+
+            // Ajax分页&删除
             $(document).delegate(".del","click",function(){
                 page=$("#nowpage").val();
-                search=$("#search").val()?$("#search").val():"all";
                 del=$(this).attr("bid");
                 //alert(search);
-                $.get("brandListPage/"+page+"/"+search+"/"+del,function(msg){
+                $.get("pictureDel/"+page+"/"+del,function(msg){
                     //alert(msg)
                     str="";
-                    for(i=0; i<msg.carbrand.length; i++){
-                        str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
-                        if (msg.carbrand[i].car_id == null) {
-                            str+='<li class="last"><a class="del" href="javascript:void(0)" bid='+msg.carbrand[i].brand_id+'>删除</a></li>'
+                    for(i=0; i<msg.picture.length; i++){
+                        str+='<tr class="first"><td>';
+                        if (msg.picture[i].type == 0) {
+                            str+="首页轮播图";
+                        } else if(msg.picture[i].type == 1) {
+                            str+="活动图片";
+                        } else if(msg.picture[i].type == 2) {
+                            str+="新闻图片";
+                        }
+                        str+='</td><td><img src="'+msg.picture[i].dir+'" alt="'+msg.picture[i].alt+'" height="40px"></td>'
+                        str+='<td>'+msg.picture[i].alt+'</td>';
+                        str+='<td><ul class="actions" style="float:left"><li class="last"><a class="del" href="javascript:void(0)" bid='+msg.picture[i].picture_id+'>删除</a></li>'
+                        if (msg.picture[i].isUse==0) {
+                            str+='<li class="last"><a class="isUse" href="javascript:void(0)" bid="'+msg.picture[i].picture_id+'">不使用</a></li>'
+                        } else if (msg.picture[i].isuse==1) {
+                            str+='<li class="last"><a class="isUse" href="javascript:void(0)" bid="'+msg.picture[i].picture_id+'">使用</a></li>'
                         }
                         str+='</ul></td></tr>'
                     }
@@ -248,15 +250,19 @@
                 },'json')
             })
 
-            she=$("a[href='<?php echo e(url('brandList')); ?>']");
-            she.parent().parents('li').siblings(".active").children('.pointer').remove();
-            she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
-            she.parent().parents('li').siblings(".active").removeClass("active");
-            she.addClass("active");
-            she.closest('ul').addClass("active");
-            she.parent().parents("li").addClass("active");
-            she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
-
+            //修改图片使用状态
+            $(document).delegate('.isUse', 'click', function(){
+                pictureId = $(this).attr("bid");
+                she = $(this);
+                $.get("pictureEdit/"+pictureId, function(msg){
+                    if (msg == "unuse"){
+                        she.replaceWith('<a class="isUse" href="javascript:void(0)" bid="'+pictureId+'">使用</a>');
+                    }else if (msg == "usable"){
+                        she.replaceWith('<a class="isUse" href="javascript:void(0)" bid="'+pictureId+'">不使用</a>');
+                    }
+                })
+            })
+            
             // jQuery Knobs
             $(".knob").knob();
 

@@ -149,13 +149,14 @@
 
     <script type="text/javascript">
         $(function () {
-            // Ajax搜索&分页
+            // Ajax分页
             $(document).delegate(".page","click",function(){
                 page=$(this).attr('page');
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
                 $.get("brandListPage/"+page+"/"+search+"/0",function(msg){
                     //alert(msg)
+                    //return false;
                     str="";
                     for(i=0; i<msg.carbrand.length; i++){
                         str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'

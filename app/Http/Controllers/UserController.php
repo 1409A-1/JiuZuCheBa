@@ -165,7 +165,7 @@ class UserController extends Controller
      */
     public function longOrderList()
     {
-        $data = Apply::select('apply_id', 'tel', 'a.server_id', 'car_info.car_id', 'user_name', 'dep_time', 'des_time', 'type_name', 'brand_name', 'car_name', 'apply_time', 'apply_status', 'a.server_name as start_name', 'b.server_name as end_name', 'a.city_name as start_city', 'a.district as start_dis', 'b.city_name as end_city', 'b.district as end_dis')->leftJoin('server as a', 'apply.departure', '=', 'a.server_id')->leftJoin('server as b', 'apply.destination', '=', 'b.server_id')->leftJoin('user', 'apply.user_id', '=', 'user.user_id')->leftJoin('car_type', 'apply.car_type', '=', 'car_type.type_id')->leftJoin('car_brand', 'apply.car_brand', '=', 'car_brand.brand_id')->leftJoin('car_info', 'apply.car_id', '=', 'car_info.car_id')->get()->toArray();
+        $data = Apply::select('apply_id', 'tel', 'a.server_id', 'car_info.car_id', 'user_name', 'dep_time', 'des_time', 'car_type', 'brand_name', 'car_name', 'apply_time', 'apply_status', 'a.server_name as start_name', 'b.server_name as end_name', 'a.city_name as start_city', 'a.district as start_dis', 'b.city_name as end_city', 'b.district as end_dis')->leftJoin('server as a', 'apply.departure', '=', 'a.server_id')->leftJoin('server as b', 'apply.destination', '=', 'b.server_id')->leftJoin('user', 'apply.user_id', '=', 'user.user_id')->leftJoin('car_brand', 'apply.car_brand', '=', 'car_brand.brand_id')->leftJoin('car_info', 'apply.car_id', '=', 'car_info.car_id')->get()->toArray();
         foreach ($data as $k => $val) {
             $data[$k]['dep_time'] = date("Y/m/d h:i:s", $data[$k]['dep_time']);
             $data[$k]['des_time'] = date("Y/m/d h:i:s", $data[$k]['des_time']);
@@ -187,8 +187,8 @@ class UserController extends Controller
         }else{
             $number = 0;
         }
-        
-        if($number == 0){
+        $needNumber = $date['number'];
+        if($needNumber > $number){
             Apply::where('apply_id', $date['applyId'])->update(['apply_status' => 2]);
             //调用短信接口
             /*$url = "http://api.k780.com:88/?app=sms.send&tempid=50794

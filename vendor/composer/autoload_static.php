@@ -264,6 +264,10 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
     );
 
     public static $classMap = array (
+        'AddAltToPictureTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_152211_add_alt_to_picture_table.php',
+        'AddCarNumberToCarInfo' => __DIR__ . '/../..' . '/database/migrations/2016_09_20_194145_add_car_number_to_car_info.php',
+        'AddTypeToMessageTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_164312_add_type_to_message_table.php',
+        'AddUserNameToMessageTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_06_084830_add_user_name_to_message_table.php',
         'CreateAddressTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_070814_create_address_table.php',
         'CreateAdminUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_065712_create_admin_user_table.php',
         'CreateApplyTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_065300_create_apply_table.php',
@@ -277,6 +281,7 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
         'CreateOrderInfoTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_064756_create_order_info_table.php',
         'CreateOrderTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_064045_create_order_table.php',
         'CreatePackageTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_065930_create_package_table.php',
+        'CreatePictureTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_094011_create_picture_table.php',
         'CreateServerTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_070642_create_server_table.php',
         'CreateUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_054442_create_user_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -787,6 +792,9 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'UpdateAddressTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_02_021111_update_address_table.php',
         'UpdateApplyTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_07_162135_update_apply_table.php',
+        'UpdateBenefitTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_190242_update_benefit_table.php',
+        'UpdateOrderInfoTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_115344_update_order_info_table.php',
+        'UpdateServerTTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_09_090354_update_serverT_table.php',
         'UpdateServerTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_05_142206_update_server_table.php',
     );
 

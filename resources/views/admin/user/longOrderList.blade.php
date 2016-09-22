@@ -80,7 +80,7 @@
                                         <span class="line"></span>还车时间
                                     </th>
                                     <th class="span3">
-                                        <span class="line"></span>车辆类型
+                                        <span class="line"></span>用车数量
                                     </th>
                                     <th class="span3">
                                         <span class="line"></span>车辆品牌
@@ -121,7 +121,7 @@
                                        {{$v['des_time']}}
                                     </td>
                                     <td class="description">
-                                       {{$v['type_name']}}
+                                       {{$v['car_type']}}辆
                                     </td><td class="description">
                                        {{$v['brand_name']}}
                                     </td>
@@ -133,20 +133,22 @@
                                     </td>
                                     <td class="description">
                                     @if ($v['apply_status'] == 0)
-                                        <span class="label label-success">申请中</span>
+                                        <span>申请中</span>
                                     @elseif ($v['apply_status'] == 1)
-                                        <span class="label label-success">申请通过</span>
+                                        <span style="color: green">申请通过</span>
                                     @elseif ($v['apply_status'] == 2)
-                                        <span class="label label-info">申请未通过</span>
+                                        <span style="color: red">申请未通过</span>
                                     @elseif ($v['apply_status'] == 3)
-                                        <span class="label label-info">申请已取消</span>
+                                        <span style="color: blue">申请已取消</span>
                                     @endif
                                     </td>
                                     <td class="description">
                                     @if ($v['apply_status'] == 0)
                                         <ul class="actions" style="float:left">
-                                        <li><a href="javascript:void(0)" class="check" serverId="{{$v['server_id']}}" carId="{{$v['car_id']}}" tel="{{$v['tel']}}" dep_time="{{$v['dep_time']}}" start="{{$v['start_city']}} | {{$v['start_dis']}} | {{$v['start_name']}}" applyId="{{$v['apply_id']}}">审核</a></li>
+                                        <li><a href="javascript:void(0)" class="check" serverId="{{$v['server_id']}}" carId="{{$v['car_id']}}" tel="{{$v['tel']}}" dep_time="{{$v['dep_time']}}" start="{{$v['start_city']}} | {{$v['start_dis']}} | {{$v['start_name']}}" applyId="{{$v['apply_id']}}" number="{{$v['car_type']}}">审核</a></li>
                                         </ul>
+                                    @else
+                                        <a href="javascript:void(0)">已审核</a>
                                     @endif
                                     </td>
                                 </tr>
@@ -231,14 +233,17 @@
                 tel = $(this).attr("tel");
                 dep_time = $(this).attr("dep_time");
                 start = $(this).attr("start");
+                number = $(this).attr("number");
                 _token=$("input[name=_token]").val();
-                $.post("longOrderCheck", {applyId: applyId, serverId: serverId, carId: carId, tel: tel, dep_time: dep_time, start: start, _token: _token}, function (msg) {
+                $.post("longOrderCheck", {number: number, applyId: applyId, serverId: serverId, carId: carId, tel: tel, dep_time: dep_time, start: start, _token: _token}, function (msg) {
                     //alert(msg);
                     if (msg == "success") {
-                        she.parents("td").prev().html('<span class="label label-success">申请通过</span>');
+                        she.parents("td").prev().html('<span style="color: green">申请通过</span>');
+                        she.after('<a href="javascript:void(0)">已审核</a>');
                         she.remove();
                     } else if (msg == "false") {
-                        she.parents("td").prev().html('<span class="label label-info">申请未通过</span>');
+                        she.parents("td").prev().html('<span style="color: red">申请未通过</span>');
+                        she.after('<a href="javascript:void(0)">已审核</a>');
                         she.remove();
                     }
                 })
