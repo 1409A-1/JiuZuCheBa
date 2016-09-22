@@ -58,7 +58,7 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
-                <span>服务点管理</span>
+                <span>服务点</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
@@ -78,17 +78,6 @@
                 <i class="icon-picture"></i>
                 <span>前台图片管理</span>
             </a>
-        </li>
-        <li>
-            <a class="dropdown-toggle ui-elements" href="#">
-                <i class="icon-code-fork"></i>
-                <span>车辆管理</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="{{ url('carIns') }}">车辆添加</a></li>
-                <li><a href="{{ url('carList') }}">车辆列表</a></li>
-            </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">

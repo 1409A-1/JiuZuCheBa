@@ -55,6 +55,7 @@ class CarController extends Controller
             ->join('car_type','car_info.type_id','=','car_type.type_id')
             ->join('car_brand','car_info.brand_id','=','car_brand.brand_id')
             ->get();
+      //  $num =
         return view('admin.carins.carList',['data' => $arr,'sel' => $sel,'cart' => $cart,'carb' => $carb]);
     }
     /*
