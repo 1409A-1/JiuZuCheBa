@@ -814,11 +814,12 @@ function calendar() {
         start_time = now_time,//可选的 租车开始日期
         end_time,//可选的 取车日期
         end_time1;//可选的 还车日期
-    $.ajax({
-        url: maxrent_auto_url,
-        dataType: 'jsonp',
-        success: function (e) {
-            Available_days = e.parameter_value1;//获取 可提前预订天数
+    //$.ajax({
+    //    url: maxrent_auto_url,
+    //    dataType: 'jsonp',
+    //    success: function (e) {
+    //        Available_days = e.parameter_value1;//获取 可提前预订天数
+            Available_days = 60;//获取 可提前预订天数
             end_time = date_adddays(start_time, Available_days);//可选的 取车日期
             end_time1 = date_adddays(start_time, (Available_days + 7));//可选的 还车日期
             //加载日历
@@ -828,8 +829,8 @@ function calendar() {
             //初始化默认日期
             startDate.html(date_format(out_time, "yyyy-MM-dd"));
             endDate.html(date_format(in_time, "yyyy-MM-dd"));
-        }
-    });
+    //    }
+    //});
     //取车 日期
     function startDateRange() {
         var time = timeCycle(start_time, end_time),
@@ -938,7 +939,7 @@ function Duration(D1, H1, D2, H2) {
 //城市
 function City() {
     //加载城市
-    $.post(city, {'_token': _token}, function(result){
+    $.post(getCityList, {'_token': _token}, function(result){
         var hotCity = "",//热门城市
             touristCity = '',//旅游城市
             letter = [],//首字母集合
@@ -1313,7 +1314,7 @@ function storeMap(lng, lat, id, name) {
         map.addOverlay(storeMarker);
     //添加地图标注 点击 打开窗口信息
     var infoWindow, url, html;
-    url = "http://www.dafang24.com/home/doom?shop_id=" + id;
+    url = "short?shop_id=" + id;
     html = "<div class='box' id='" + id + "'>" +
       "<a class='title' href='" + url + "'>就租车吧 " + name + "</a>" +
       "<a class='comments' href='#" + id + "'>查看评论</a>" +

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>就租车吧 - 后台</title>
+    <title>就租车吧 - 后台管理</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,14 +11,15 @@
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
+
+    <!-- libraries -->
+    <link href="{{asset('admin')}}/css/lib/jquery-ui-1.10.2.custom.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin')}}/css/layer.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 
@@ -30,7 +31,7 @@
             <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="indexs"><img src="{{asset('admin')}}/img/logo.png" /></a>
+        <a class="brand" href="{{ url('indexs') }}"><img src="{{asset('admin')}}/img/logo.png" /></a>
 
         <ul class="nav pull-right">
            <!-- <li class="hidden-phone">

@@ -45,8 +45,21 @@
     <form>
         <h2>提建议 , 送优惠券</h2>
         <div>
-            <input id="userName" class="f-text" value="" />
+            <table>
+            <tr>
+            <td class="f-text">
+                <b style="color: #8C7853;font-size: 20px;">当前登录->{{ Session::get('user_name') }}</b>
+            </td>
+            <td class="f-text">
+                <input type="checkbox" name="userName" value="1"> 是否匿名
+            </td>
+            </tr>
+            </table>
+
         </div>
+
+
+
         <div><textarea id="conBox" class="f-text"></textarea></div>
         <div class="tr">
             <p>
@@ -57,21 +70,20 @@
         </div>
     </form>
     <div class="list">
+
+
         <h3><span>大家在说</span></h3>
         <ul>
                @foreach($message as $k=>$v)
                     <li id="cha">
                         <div><font style="color: #ff0000;font-size: 20px">{{$v['user_name']}} : </font></div>
                         <div class="content">
-                            <div class="msgInfo">{{$v['message_con']}}。</div>
+                            <div class="msgInfo">{{$v['message_con']}}</div>
                             <div class="times"><span>{{date('Y/m/d H:i',$v['add_time'])}}</span></div>
                         </div>
                     </li>
                 @endforeach
         </ul>
-    </div>
-</div>
-
 </body>
 </html>
 
@@ -176,16 +188,28 @@
                     alert("\u4f60\u8f93\u5165\u7684\u5185\u5bb9\u5df2\u8d85\u51fa\u9650\u5236\uff0c\u8bf7\u68c0\u67e5\uff01");
                     oConBox.focus()
                 } else {
-                    var name = $('#userName').val();              //用户名
-                    if(name==''){
-                         name = $('#user_Name').html() ;
+                    var name = $('input[name="userName"]:checked').val();              //用户名
+                    
+
+                    if(name=='1'){
+                         name = "匿名";
+                    }else
+                    {
+                       name = "{{ Session::get('user_name') }}"; 
                     }
+
                     var con = $('#conBox').val();                 //评论内容
+
+                    // 正则过滤
+                    var pattern = new RegExp("尼玛|傻逼|大哥", 'gm');
+                    con = con.replace(pattern, '**');
+
                     var str = "<li><div><font style=\"color: #ff0000;font-size: 20px\">"+name+" : </font></div><div class=\"content\">"+
-                              "<div class=\"msgInfo\">"+con+"</div> <div class=\"times\"><span>"+getLocalTime(1473130950)+"</span></div></div></li>";
-                    $("#cha").before( str );
+                              "<div class=\"msgInfo\">"+con+"</div> <div class=\"times\"><span>"+getLocalTime('{{ time() }}')+"</span></div></div></li>";
+                    $("#cha").prepend( str );
                     get.byTagName("form", oMsgBox)[0].reset();
-        //ajax进行提交
+                    
+                    //ajax进行提交
                     $.get("{{URL('messageAdd')}}", { name: name, con: con } );
 
                 }

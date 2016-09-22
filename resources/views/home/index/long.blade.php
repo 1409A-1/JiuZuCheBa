@@ -1,11 +1,9 @@
 @include('common.home_header')
 <link type="text/css" rel="stylesheet" href="home/css/longRent.css">
 <script type="text/javascript" src="home/js/longRent.js"></script>
-
 <!--预定框-->
 <div class="bookBox noCopy">
     <div class="book">
-
         <div class="bookTit">
             长租服务<a>(30天以上)</a>
         </div>
@@ -45,7 +43,6 @@
                             </div>
                         </div>
                     </div>
-                   
                     <div class="longLine1_R">
                         <div class="show">
                             <a lat="" lng="" store_id=""></a>
@@ -77,9 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-
                 <!--租赁时长、用车数量-->
                 <span>租赁时长</span>
                 <span class="longTitR">用车数量</span>
@@ -130,7 +125,6 @@
                         </div>
                     </div>
                     <hr>
-                    
                     <!--取车时间-->
                     <div class="longLine1_R" id="longDate">
                         <a></a>
@@ -138,7 +132,6 @@
                         <div id="calendarLong"></div>
                     </div>
                 </div>
-
                 <!--车型-->
                 <span>车型</span>
                 <div class="longLine2" id="carType">
@@ -151,7 +144,7 @@
                     </div>
                 </div>
                 <!--预订按钮-->
-                <button id="longBook">
+                <button id="longBook" style="cursor: pointer">
                     开始预订
                     <i></i>
                 </button>
@@ -212,116 +205,116 @@
     </div>
 </div>
 <!--推荐车型-->
-<div class="recommend">
-    <div class="recTit">
-        <h3>推荐车型</h3>
-        <p>长租优惠，从这里开始</p>
-    </div>
-    <div class="recCar">
-        <div class="p1 L0">
-            <img src="home/images/long/1.jpg">
-            <div class="text">
-                <h2>起亚 K2</h2>
-                <div>
-                    <span>
-                        三个月租金<br><b>3600元/月</b>
-                    </span>
-                    <span>
-                        半年租金<br><b>3300元/月</b>
-                    </span>
-                    <span>
-                        一年租金<br><b>3100元/月</b>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="p2">
-            <img src="home/images/long/2.jpg">
-            <div class="text">
-                <h2>风神 S30</h2>
-                <div>
-                    <span>
-                        三个月租金<br><b>3100元/月</b>
-                    </span>
-                    <span>
-                        半年租金<br><b>3000元/月</b>
-                    </span>
-                    <span>
-                        一年租金<br><b>2900元/月</b>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="p2">
-            <img src="home/images/long/3.jpg">
-            <div class="text">
-                <h2>雪铁龙 爱丽舍</h2>
-                <div>
-                    <span>
-                        三个月租金<br><b>3300元/月</b>
-                    </span>
-                    <span>
-                        半年租金<br><b>3200元/月</b>
-                    </span>
-                    <span>
-                        一年租金<br><b>3000元/月</b>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="p2 L0">
-            <img src="home/images/long/4.jpg">
-            <div class="text">
-                <h2>大众 新捷达</h2>
-                <div>
-                    <span>
-                        三个月租金<br><b>3700元/月</b>
-                    </span>
-                    <span>
-                        半年租金<br><b>3400元/月</b>
-                    </span>
-                    <span>
-                        一年租金<br><b>3200元/月</b>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="p2">
-            <img src="home/images/long/5.jpg">
-            <div class="text">
-                <h2>标致 301</h2>
-                <div>
-                    <span>
-                        三个月租金<br><b>3700元/月</b>
-                    </span>
-                    <span>
-                        半年租金<br><b>3400元/月</b>
-                    </span>
-                    <span>
-                        一年租金<br><b>3200元/月</b>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="p1">
-            <img src="home/images/long/6.jpg">
-            <div class="text">
-                <h2>大众 新桑塔纳</h2>
-                <div>
-                    <span>
-                        三个月租金<br><b>3800元/月</b>
-                    </span>
-                    <span>
-                        半年租金<br><b>3500元/月</b>
-                    </span>
-                    <span>
-                        一年租金<br><b>3200元/月</b>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{--<div class="recommend">--}}
+    {{--<div class="recTit">--}}
+        {{--<h3>推荐车型</h3>--}}
+        {{--<p>长租优惠，从这里开始</p>--}}
+    {{--</div>--}}
+    {{--<div class="recCar">--}}
+        {{--<div class="p1 L0">--}}
+            {{--<img src="home/images/long/1.jpg">--}}
+            {{--<div class="text">--}}
+                {{--<h2>起亚 K2</h2>--}}
+                {{--<div>--}}
+                    {{--<span>--}}
+                        {{--三个月租金<br><b>3600元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--半年租金<br><b>3300元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--一年租金<br><b>3100元/月</b>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="p2">--}}
+            {{--<img src="home/images/long/2.jpg">--}}
+            {{--<div class="text">--}}
+                {{--<h2>风神 S30</h2>--}}
+                {{--<div>--}}
+                    {{--<span>--}}
+                        {{--三个月租金<br><b>3100元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--半年租金<br><b>3000元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--一年租金<br><b>2900元/月</b>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="p2">--}}
+            {{--<img src="home/images/long/3.jpg">--}}
+            {{--<div class="text">--}}
+                {{--<h2>雪铁龙 爱丽舍</h2>--}}
+                {{--<div>--}}
+                    {{--<span>--}}
+                        {{--三个月租金<br><b>3300元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--半年租金<br><b>3200元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--一年租金<br><b>3000元/月</b>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="p2 L0">--}}
+            {{--<img src="home/images/long/4.jpg">--}}
+            {{--<div class="text">--}}
+                {{--<h2>大众 新捷达</h2>--}}
+                {{--<div>--}}
+                    {{--<span>--}}
+                        {{--三个月租金<br><b>3700元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--半年租金<br><b>3400元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--一年租金<br><b>3200元/月</b>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="p2">--}}
+            {{--<img src="home/images/long/5.jpg">--}}
+            {{--<div class="text">--}}
+                {{--<h2>标致 301</h2>--}}
+                {{--<div>--}}
+                    {{--<span>--}}
+                        {{--三个月租金<br><b>3700元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--半年租金<br><b>3400元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--一年租金<br><b>3200元/月</b>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="p1">--}}
+            {{--<img src="home/images/long/6.jpg">--}}
+            {{--<div class="text">--}}
+                {{--<h2>大众 新桑塔纳</h2>--}}
+                {{--<div>--}}
+                    {{--<span>--}}
+                        {{--三个月租金<br><b>3800元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--半年租金<br><b>3500元/月</b>--}}
+                    {{--</span>--}}
+                    {{--<span>--}}
+                        {{--一年租金<br><b>3200元/月</b>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!--长租申请框-->
 <div class="longRentApply">
     <ul class="ul1">

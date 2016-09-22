@@ -25,7 +25,6 @@ class CarController extends Controller
                 ->get();
             return view('admin.carins.car_ins',['data' => $arr,'arr' => $carbrand]);
         }else{
-            //$file = Request::file('car_img');
             $file = $request->file('car_img');
             $hou = $file->getClientOriginalExtension();//文件后缀
             $path = './admin/public/';
@@ -38,18 +37,25 @@ class CarController extends Controller
                     'type_id'   =>  $request->input('type_id'),
                     'brand_id'  =>  $request->input('brand_id'),
                     'car_img'   =>  $car_img,
-                    'car_price' =>  $request->input('car_price')
+                    'car_price' =>  $request->input('car_price'),
+                    'car_number'   =>  $request->input('car_num')
                 ]);
             return redirect('carList');
         }
     }
     public function carList()
     {
+        $sel = DB::table('car_info')
+            ->get();
+        $cart = DB::table('car_type')
+            ->get();
+        $carb = DB::table('car_brand')
+            ->get();
         $arr = DB::table('car_info')
             ->join('car_type','car_info.type_id','=','car_type.type_id')
             ->join('car_brand','car_info.brand_id','=','car_brand.brand_id')
             ->get();
-        return view('admin.carins.carList',['data' => $arr]);
+        return view('admin.carins.carList',['data' => $arr,'sel' => $sel,'cart' => $cart,'carb' => $carb]);
     }
     /*
      * name:wanghu
@@ -98,7 +104,27 @@ class CarController extends Controller
             }
         }
     }
-
+    /*
+     * 2016-9-21
+     * 车辆列表的搜索
+     */
+    public function carSel(Request $request)
+    {
+         $type_id =  $request->input('type_id');//车辆型号
+         $brand_id = $request->input('brand_id');//车辆品牌
+         $query = DB::table('car_info')
+            ->join('car_type','car_info.type_id','=','car_type.type_id')
+            ->join('car_brand','car_info.brand_id','=','car_brand.brand_id');
+        if ($type_id && $brand_id) {
+            $query->where(['car_type.type_id' => $type_id , 'car_brand.brand_id' => $brand_id]);
+        } elseif($type_id && !$brand_id) {
+            $query->where(['car_type.type_id' => $type_id]);
+        } elseif(!$type_id && $brand_id) {
+            $query->where(['car_brand.brand_id' => $brand_id]);
+        }
+        $arr = $query->get();
+          return json_encode($arr);
+    }
     /*
      * name:zhaoag
      * time:2016/9/8

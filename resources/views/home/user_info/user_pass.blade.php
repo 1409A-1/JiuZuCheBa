@@ -7,6 +7,8 @@
     <div>
         <div class="left">
             <h5 id="toIndex">我的主页</h5>
+            <a href="{{ url('apply') }}">长租申请</a>
+            <a href="">我的积分</a>
             <h5>订单管理</h5>
             <a href="orderList">订单列表</a>
             <a id="topingjia">评价订单</a>
@@ -131,5 +133,10 @@
                     }
                 }
             })
+        })
+
+        //用户详情中点击订单评论
+        $("#topingjia").click(function(){
+            layer.alert('评价订单正在开发中！敬请期待！');
         })
     </script>

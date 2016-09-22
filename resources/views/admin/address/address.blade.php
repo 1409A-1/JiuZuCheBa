@@ -2,27 +2,11 @@
 <html>
 <head>
 	<title>Detail Admin - Tables showcase</title>
-    
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-    <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
-    <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
-
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-    
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
     <!--[if lt IE 9]>
-      <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
@@ -73,9 +57,9 @@
                                     <td>
                                         <select name="one" id="address_one" style="height: 30px" class="map">
                                             <option value="0">请选择...</option>
-                                            <?php foreach($data as $k => $v){?>
-                                            <option id="address" value="<?php echo $v['address_id']?>" s="{{$v['address_name']}}"><?php echo $v['address_name']?></option>
-                                            <?php }?>
+                                            @foreach($data as $k => $v)
+                                            <option id="address" value="{{ $v['address_id'] }} " s="{{ $v['address_name'] }}">{{ $v['address_name'] }}</option>
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr>
@@ -192,7 +176,7 @@
                                });
                            });
 
-                           she=$("a[href='{{ url('address') }}']");
+                           she=$("a[href='{{ url('serverAdd') }}']");
                             she.parent().parents('li').siblings(".active").children('.pointer').remove();
                             she.parent().parents('li').siblings(".active").children(".active").removeClass("active");
                             she.parent().parents('li').siblings(".active").removeClass("active");

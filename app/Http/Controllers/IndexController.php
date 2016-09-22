@@ -16,6 +16,7 @@ class IndexController extends Controller
         $active = Picture::where("type", 1)->where("isUse", 0)->get()? Picture::where("type", 1)->where("isUse", 0)->get()->toArray(): array();
         return view('home.index.home', ['package' => $package, 'turn' => $turn, 'active' => $active]);
     }
+
     //短租
     public function short(Request $request)
     {
@@ -23,6 +24,7 @@ class IndexController extends Controller
         Session::put('path', $path);
 		// 车辆类型
         $type = CarType::all();
+        
         $fast['take_id'] = $request->input('take_id', '');
         $fast['takeWeek'] = $request->input('takeWeek', '');
         $fast['startHours1'] = $request->input('startHours1', '');
@@ -43,12 +45,26 @@ class IndexController extends Controller
         $fast = json_encode($fast, JSON_UNESCAPED_UNICODE);
         return view('home.index.short', ['type' => $type, 'fast' => $fast]);
     }
+
     //长租
     public function long(){
         $type = DB::table('car_type')->get();
         return view('home.index.long', compact('type'));
     }
 
+    //城市地图
+    public function cityMap(Request $request){
+        if ($request->has('cityName')) {
+            $cityName = $request->input('cityName');
+        }
+        return view('home.index.cityMap', compact('cityName'));
+    }
+
+    //国家地图
+    public function nationalMap(){
+        return view('home.index.nationalMap');
+    }
+    
     //404页面
     public function err404(){
         return view('home.404.404');

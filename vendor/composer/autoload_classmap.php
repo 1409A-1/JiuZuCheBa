@@ -535,6 +535,7 @@ return array(
     'UpdateAddressTable' => $baseDir . '/database/migrations/2016_09_02_021111_update_address_table.php',
     'UpdateApplyTable' => $baseDir . '/database/migrations/2016_09_07_162135_update_apply_table.php',
     'UpdateBenefitTable' => $baseDir . '/database/migrations/2016_09_05_190242_update_benefit_table.php',
+    'UpdateCarInfoTable' => $baseDir . '/database/migrations/2016_09_21_154120_update_car_info_table.php',
     'UpdateOrderInfoTable' => $baseDir . '/database/migrations/2016_09_05_115344_update_order_info_table.php',
     'UpdateServerTTable' => $baseDir . '/database/migrations/2016_09_09_090354_update_serverT_table.php',
     'UpdateServerTable' => $baseDir . '/database/migrations/2016_09_05_142206_update_server_table.php',
