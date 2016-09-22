@@ -25,7 +25,12 @@ var autoinfomation_class_url = api_url + "/api/AutoInformation/GetAutoListByClas
 var autoinfomation_reserve_url = api_url + "/api/AutoInformation/AutoReserve";//二手车预约看车
 var autoinfomation_recommend_url = api_url + "/api/AutoInformation/GetRecommendAuto";//二手车推荐车辆
 var register_customer_url = api_url + "/api/customer/register";//会员注册API
+
+// ----------
 var login_customer_url = api_url + "/api/customer/login";//会员登录API
+var loginPro = 'loginPro';//会员登录API
+// ----------
+
 var phone_customer_url = api_url + "/api/customer/IsExistsPhone";//会员API手机号唯一验证
 var email_customer_url = api_url + "/api/customer/IsExistsEmail";//会员API邮箱唯一验证
 var category_auto_url = api_url + "/api/AutoConfig/GetCategoryList";//车辆类型

@@ -76,7 +76,6 @@
                             取车时间：<a></a><br>
                             取车地址：<a></a>
                         </p>
-
                         <h5></h5>
                         <p>
                             还车时间：<a></a><br>
@@ -95,12 +94,12 @@
                 </ul>
 
                 @if(!empty($benefit))
-                  <div id="test">
+                    <div id="test">
                     @foreach($benefit as $k=>$v)
                         <input type="checkbox" stats="0" benefit_price="{{ $v['ord_price'] }}" benefit_name="{{ $v['benefit_name'] }}" num = {{ $k }}>&nbsp;&nbsp;
-                        <h3 style="display: inline">{{ $v['ord_price'] .'    '.$v['benefit_name'] }}</h3><br><br>
+                        <h3 style="display: inline">{{ $v['ord_price'] . '&nbsp;&nbsp;' . $v['benefit_name'] }}</h3><br><br>
                     @endforeach
-                  </div>
+                    </div>
                 @else
                    暂无优惠券
                 @endif
@@ -126,12 +125,15 @@
         <h4 style="text-align: center">费用明细</h4>
         <ul>
             <li>
-                基本租车费<a id="discount"><!--优惠金额--></a>
+                基本租车费<a id="discount"></a>
+                <!--优惠金额-->
                 <div class="basicPrice">
-                    <b><!--基本租车费--></b>
+                    <!--基本租车费-->
+                    <b></b>
                     <div></div>
                 </div>
-                <ul class="priceDetail"><!--每日价格--></ul>
+                <!--每日价格-->
+                <ul class="priceDetail"></ul>
             </li>
             <li id="basic">
                 基本保险费<a></a>
@@ -158,7 +160,19 @@
 </div>
 <!--底部-->
 @include('common.home_footer')
-{{--防止后退--}}
+
 <script language="JavaScript">
+    // 禁止后退
     javascript:window.history.forward(1);
+
+    // 每日价格明细的小箭头
+    $(function(){
+        $('.basicPrice').click(function(){
+            if ($('.priceDetail').css('height') == '1px') {
+                $('.basicPrice>div').css('transform', 'rotate(180deg)');
+            } else {
+                $('.basicPrice>div').css('transform', 'rotate(0deg)');
+            }
+        });
+    });
 </script>
