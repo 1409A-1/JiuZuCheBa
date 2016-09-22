@@ -3,21 +3,6 @@
 <head>
 	<title>Detail Admin - Tables showcase</title>
     
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-    <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
-    <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
-
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-    
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
@@ -101,11 +86,11 @@
                                     <td class="description">
                                         {{$v['city_name']." | ".$v['district']." | ".$v['server_name']}}
                                     </td>
-                                    <td class="description">
+                                    <td class="description" serverId="{{$v['server_id']}}" carId="{{$v['car_id']}}" carNumber="{{$v['number']}}">
                                         {{$v['car_name']}}
                                     </td>
                                     <td class="description">
-                                        {{$v['number']}}辆
+                                        <span class="number">{{$v['number']}}</span>辆
                                     </td>
                                 </tr>
                                 @endforeach
@@ -166,7 +151,7 @@
                 $.get("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
                     str="";
                     for(i=0; i<msg.car.length; i++){
-                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description" serverId="'+msg.car[i].server_id+'" carId="'+msg.car[i].car_id+'" carNumber="'+msg.car[i].number+'">'+msg.car[i].car_name+'</td><td class="description"><span class="number">'+msg.car[i].number+'</span>辆</td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -210,7 +195,7 @@
                     $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
                     str="";
                     for(i=0; i<msg.car.length; i++){
-                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description" serverId="'+msg.car[i].server_id+'" carId="'+msg.car[i].car_id+'" carNumber="'+msg.car[i].number+'">'+msg.car[i].car_name+'</td><td class="description"><span class="number">'+msg.car[i].number+'</span>辆</td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -251,7 +236,7 @@
                     $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
                     str="";
                     for(i=0; i<msg.car.length; i++){
-                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description" serverId="'+msg.car[i].server_id+'" carId="'+msg.car[i].car_id+'" carNumber="'+msg.car[i].number+'">'+msg.car[i].car_name+'</td><td class="description"><span class="number">'+msg.car[i].number+'</span>辆</td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -281,7 +266,7 @@
                 $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
                 str="";
                 for(i=0; i<msg.car.length; i++){
-                    str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                    str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description" serverId="'+msg.car[i].server_id+'" carId="'+msg.car[i].car_id+'" carNumber="'+msg.car[i].number+'">'+msg.car[i].car_name+'</td><td class="description"><span class="number">'+msg.car[i].number+'</span>辆</td></tr>'
                 }
                 $("#tbody").empty();
                 $("#tbody").append(str);
@@ -311,7 +296,7 @@
                     $.getJSON("carServerPage/"+page+"/"+search1+"/" +search2+"/"+search3+"/"+search4,function(msg){
                     str="";
                     for(i=0; i<msg.car.length; i++){
-                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description">'+msg.car[i].car_name+'</td><td class="description">'+msg.car[i].number+'辆</td></tr>'
+                        str+='<tr class="first"><td class="description">'+msg.car[i].city_name+' | '+msg.car[i].district+' | '+msg.car[i].server_name+'</td><td class="description" serverId="'+msg.car[i].server_id+'" carId="'+msg.car[i].car_id+'" carNumber="'+msg.car[i].number+'">'+msg.car[i].car_name+'</td><td class="description"><span class="number">'+msg.car[i].number+'</span>辆</td></tr>'
                     }
                     $("#tbody").empty();
                     $("#tbody").append(str);
@@ -340,6 +325,36 @@
             she.parent().parents("li").addClass("active");
             she.parent().parents("li").prepend('<div class="pointer"><div class="arrow"></div><div class="arrow_border"></div></div>');
 
+            //服务点车辆数量点击后变为输入框
+            $(document).delegate(".number", 'click', function(){
+                carNumber = $(this).html();
+                str="<input type='text' class='newNumber' value='"+carNumber+"'/>";
+                $(this).replaceWith(str);
+            })
+
+            //输入框失焦事件
+            $(document).delegate(".newNumber", 'blur', function(){
+                serverId = $(this).parent().prev().attr("serverId");
+                carId = $(this).parent().prev().attr("carId");
+                carNumber = $(this).parent().prev().attr("carNumber");
+                //alert(carId)
+                reg = /^\d+$/;
+                newNumber = $(this).val();
+                if (!reg.test(newNumber)) {
+                    $(this).next("span").remove();
+                    $(this).parent().append("<span style='color: red'>请输入正确的车辆数量");
+                } else {
+                    $(this).next("span").remove();
+                    if (carNumber == newNumber){
+                        $(this).replaceWith("<span class='number'>"+carNumber+"</span>");
+                    } else {
+                        $(this).replaceWith("<span class='number'>"+newNumber+"</span>");
+                        $.get("carServerUpdate/"+serverId+"/"+carId+"/"+newNumber, function(){
+                        })
+                    }
+                }
+            })
+            
             // jQuery Knobs
             $(".knob").knob();
 

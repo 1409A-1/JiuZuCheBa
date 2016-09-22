@@ -34,6 +34,8 @@ Route::get('nationalMap', 'IndexController@nationalMap'); //国家地图
 Route::group(['middleware' => ['homelogin']], function(){
 	//前台的个人中心
 	Route::get('userInfo', 'HomeUserController@userInfo');
+    //前台中积分的查看详情
+    Route::get('credit', 'HomeUserController@credit');
 	//修改密码展示页面
 	Route::get('updatePass', 'HomeUserController@updatePass');
 	//修改密码发送短信
@@ -44,6 +46,12 @@ Route::group(['middleware' => ['homelogin']], function(){
 	Route::get('onlyPwd', 'HomeUserController@onlyPwd');
 	//前台验证修改手机验证码是否正确
 	Route::get('onlyMobileCode', 'HomeUserController@onlyMobileCode');
+    //前台修改用户名验证唯一
+    Route::get('checkUpdaName', 'HomeUserController@checkUpdaName');
+    //前台修改时手机验证唯一
+    Route::get('checkUpdaTel', 'HomeUserController@checkUpdaTel');
+    //前台修改用户名手机号
+    Route::post('updaUser', 'HomeUserController@updaUser');
 	//订单列表的展示
 	Route::get('orderList', 'HomeUserController@orderList');
     //长租申请的查看
@@ -171,13 +179,14 @@ Route::group(['middleware' => ['nologin']], function(){
      * 描述：订单的审核
      */
     Route::get('orderLists', 'OrderController@orderList');
-    Route::post('orderInquiry', 'OrderController@orderInquiry');                //订单搜索
+    Route::get('orderInquiry', 'OrderController@orderInquiry');                //订单搜索
     Route::get('orderInfo/{ord_id}', 'OrderController@orderInfo');
     Route::get('carry/{ord_id}', 'OrderController@carry');                      //提车
     Route::get('still/{ord_id}', 'OrderController@still');                      //还车
     Route::post('integralManagement', 'OrderController@integralManagement');    //还车
 
     Route::any('carIns', 'CarController@carIns');                               //车辆的添加
+    Route::get('carSel','CarController@carSel');                                //车辆列表的搜索
     Route::get('carList', 'CarController@carList');                             //车辆展示列表
     Route::get('carDel/{car_id}', 'CarController@carDel');                      //车辆删除
     Route::get('carServer', 'CarController@carServer');                         //服务点车辆分配页面
@@ -186,6 +195,12 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('carServerList', 'CarController@carServerList');                 //服务点车辆信息列表
     Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}', 'CarController@carServerPage');//服务点车辆信息分页
     Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
+    Route::get('carServerUpdate/{serverId}/{carId}/{newNumber}', 'CarController@carServerUpdate');//服务点联动查询
+    Route::get('picture', 'HomePictureController@manage');//前台图片展示列表
+    Route::match(['get', 'post'],'pictureAdd', 'HomePictureController@pictureAdd');//前台图片展示列表
+    Route::get('pictureDel/{page}/{del}', 'HomePictureController@pictureDel');//前台图片展示列表
+    Route::get('pictureEdit/{pictureId}/', 'HomePictureController@pictureEdit');//前台图片展示列表
+
 });
 
 // 微信对接 授权登录

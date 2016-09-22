@@ -156,7 +156,8 @@
                 search=$("#search").val()?$("#search").val():"all";
                 //alert(search);
                 $.get("brandListPage/"+page+"/"+search+"/0",function(msg){
-                    //alert(msg)
+                    alert(msg)
+                    return false;
                     str="";
                     for(i=0; i<msg.carbrand.length; i++){
                         str+='<tr class="first"><td>'+msg.carbrand[i].brand_name+'</td><td><ul class="actions" style="float:left"><li><a href="brandUpdate/'+msg.carbrand[i].brand_id+'">编辑</a></li>'
@@ -179,7 +180,7 @@
                         }
                         str2+='<li><a href="javascript:void(0)" class="page" page="'+msg.next+'">&#8250;</a></li></ul>'
                         $(".pagination").append(str2);
-                },'json')
+                })
             })
 
             //Ajax搜索

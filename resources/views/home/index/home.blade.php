@@ -224,11 +224,9 @@
     <!--图片-->
     <div class="bd">
         <ul class="img">
-            <li><a href="#" style="background:url(home/images/home-ppt-1.jpg);background-size:100% 100%;" target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/home-ppt-2.jpg);background-size:100% 100%;" target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/home-ppt-3.jpg);background-size:100% 100%;" target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/home-ppt-4.jpg);background-size:100% 100%;" target="_blank"></a></li>
-            <li><a href="#" style="background:url(home/images/home-ppt-5.jpg);background-size:100% 100%;" target="_blank"></a></li>
+            @foreach ($turn as $k => $v)
+            <li><a href="#" style="background:url({{$v['dir']}});background-size:100% 100%;" target="_blank"></a></li>
+            @endforeach
         </ul>
     </div>
     <!--索引-->
@@ -290,24 +288,14 @@
             <a class="o_tit">优惠活动</a>
             <div class="discountBox oBox2">
                 <ul>
+                    @foreach ($active as $k => $v)
                     <li>
-                    <a href="http://www.dafang24.com/home/newsdetail/93" target="_blank">
-                    <img src="home/images/20160122055927177.jpg">
-                    <div>早订更省钱，提前预订享特价！</div>
+                    <a href="javascript:void(0)" target="_blank">
+                    <img src="{{$v['dir']}}">
+                    <div>{{$v['alt']}}</div>
                     </a>
                     </li>
-                    <li>
-                    <a href="http://phone.dafang24.com/" target="_blank">
-                    <img src="home/images/20160118080407266.jpg">
-                    <div>微信下单立减10元</div>
-                    </a>
-                    </li>
-                    <li class="active">
-                    <a href="http://www.dafang24.com/home/newsdetail/1533" target="_blank">
-                    <img src="home/images/20160824094140057.jpg">
-                    <div>节假日不涨价！长租最划算！</div>
-                    </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -329,7 +317,7 @@
             </div>
         </div>
         <!--就租车吧新闻-->
-        <div class="news1">
+        <!-- <div class="news1">
             <a class="o_tit">就租车吧新闻</a>
             <div class="news1Box oBox2">
                     <a href="http://www.dafang24.com/Home/NewsDetail/1117" target="_blank">
@@ -388,9 +376,9 @@
                     <span>2016-07-26</span>
                    </div>
             </div>
-        </div>
+        </div> -->
         <!--租车体验-->
-        <div class="experience1">
+        <!-- <div class="experience1">
             <a class="o_tit">就租车吧用户与您分享不同的租车体验</a>
             <div class="experience1Box oBox2">
                 <div class="evaluate1">
@@ -427,7 +415,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div> -->
         <!--城市列表-->
         @include('common.home_city_list')
     </div>

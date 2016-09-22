@@ -25,11 +25,10 @@ class CarController extends Controller
                 ->get();
             return view('admin.carins.car_ins',['data' => $arr,'arr' => $carbrand]);
         }else{
-            //$file = Request::file('car_img');
             $file = $request->file('car_img');
             $hou = $file->getClientOriginalExtension();//文件后缀
             $path = './admin/public/';
-            $filename = rand(1, 999) . "." . $hou;;
+            $filename = rand(1, 999) . "." . $hou;
             $car_img = $path . $filename;     //文件路径
             $file->move($path, $filename);  // 移动文件到指定目录
             DB::table('car_info')
@@ -38,18 +37,26 @@ class CarController extends Controller
                     'type_id'   =>  $request->input('type_id'),
                     'brand_id'  =>  $request->input('brand_id'),
                     'car_img'   =>  $car_img,
-                    'car_price' =>  $request->input('car_price')
+                    'car_price' =>  $request->input('car_price'),
+                    'car_number'   =>  $request->input('car_num')
                 ]);
             return redirect('carList');
         }
     }
     public function carList()
     {
+        $sel = DB::table('car_info')
+            ->get();
+        $cart = DB::table('car_type')
+            ->get();
+        $carb = DB::table('car_brand')
+            ->get();
         $arr = DB::table('car_info')
             ->join('car_type','car_info.type_id','=','car_type.type_id')
             ->join('car_brand','car_info.brand_id','=','car_brand.brand_id')
             ->get();
-        return view('admin.carins.carList',['data' => $arr]);
+      //  $num =
+        return view('admin.carins.carList',['data' => $arr,'sel' => $sel,'cart' => $cart,'carb' => $carb]);
     }
     /*
      * name:wanghu
@@ -98,7 +105,27 @@ class CarController extends Controller
             }
         }
     }
-
+    /*
+     * 2016-9-21
+     * 车辆列表的搜索
+     */
+    public function carSel(Request $request)
+    {
+         $type_id =  $request->input('type_id');//车辆型号
+         $brand_id = $request->input('brand_id');//车辆品牌
+         $query = DB::table('car_info')
+            ->join('car_type','car_info.type_id','=','car_type.type_id')
+            ->join('car_brand','car_info.brand_id','=','car_brand.brand_id');
+        if ($type_id && $brand_id) {
+            $query->where(['car_type.type_id' => $type_id , 'car_brand.brand_id' => $brand_id]);
+        } elseif($type_id && !$brand_id) {
+            $query->where(['car_type.type_id' => $type_id]);
+        } elseif(!$type_id && $brand_id) {
+            $query->where(['car_brand.brand_id' => $brand_id]);
+        }
+        $arr = $query->get();
+          return json_encode($arr);
+    }
     /*
      * name:zhaoag
      * time:2016/9/8
@@ -132,13 +159,22 @@ class CarController extends Controller
      * */
     public function carUnique(Request $request)
     {
-        $date=$request->all();
+        $date = $request->all();
         //print_r($date);die;
         unset($date['_token']);
-        $car_number=Car_number::where(['server_id' => $date['server_id'], 'car_id' => $date['car_id']])->first();
+        $car_number = Car_number::where(['server_id' => $date['server_id'], 'car_id' => $date['car_id']])->first();
         if ($car_number) {
             return "no";
-        } 
+        } else {
+            $carTotal = Car_info::where("car_id", $date['car_id'])->first()->toArray();
+            $carUse = Car_number::selectRaw('sum(number) as sum')->where("car_id", $date['car_id'])->groupBy("car_id")->get()? Car_number::selectRaw('sum(number) as sum')->where("car_id", $date['car_id'])->groupBy("car_id")->get()->toArray(): array();
+            if ($carUse) {
+                $carUsable = $carTotal['car_number']-$carUse[0]['sum'];
+            } else {
+                $carUsable = $carTotal['car_number'];
+            }
+            return $carUsable;
+        }
     }
 
     /*
@@ -193,5 +229,16 @@ class CarController extends Controller
         $search1=$address['address_name'];
         $data=Server::where("city_name", $search1)->where("district", $search2)->get()->toArray();
         return json_encode($data);
+    }
+
+    /*
+        服务点车辆数量修改
+     */
+    public function carServerUpdate($serverId, $carId, $newNumber)
+    {
+        Car_number::where("server_id", $serverId)
+                    ->where("car_id", $carId)
+                    ->update(["number" => $newNumber]);
+        return "success";
     }
 }

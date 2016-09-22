@@ -64,7 +64,52 @@ class HomeUserController extends Controller
         }
 
     }
-
+//前台修改用户名验证唯一
+    public function checkUpdaName(Request $request)
+    {
+        $user_name = $request->input('user_name');
+        $user_id = session('user_id');
+        $name = DB::table('user')
+            ->where(['user_name'=> $user_name])
+            ->where('user_id', '<>', $user_id)
+            ->first();
+        if ($name) {
+            return 'false';
+        } else {
+            return 'true';
+        }
+    }
+//前台修改手机号验证唯一
+    public function checkUpdaTel(Request $request)
+    {
+        $user_name = $request->input('tel');
+        $user_id = session('user_id');
+        $name = DB::table('user')
+            ->where(['tel'=> $user_name])
+            ->where('user_id', '<>', $user_id)
+            ->first();
+        if ($name) {
+            return 'false';
+        } else {
+            return 'true';
+        }
+    }
+//post接值验证用户修改用户名
+    public function updaUser(Request $request)
+    {
+        $info = $request->except('_token');
+        $user_id = session('user_id');
+        $result = DB::table('user')
+             ->where(['user_id'=> $user_id])
+             ->update($info);
+        if ($result) {
+            $request->session()->forget('user_name');
+            $request->session()->forget('user_id');
+            return redirect('login');
+        } else {
+            return redirect('userInfo');
+        }
+    }
  //调用短息发送
     public function phone(){
             $info = $this->u_info();
@@ -88,7 +133,8 @@ class HomeUserController extends Controller
             ->leftJoin('order_info','order.ord_id','=','order_info.ord_id')
             ->leftJoin('car_info','order_info.car_id','=','car_info.car_id')
             ->where('order.user_id',$id)
-            ->get();
+            ->orderBy('order.ord_id', 'desc')
+               ->get();
        if ($order) {
             foreach($order as $k=>$v) {
                 $arr['all'][$k]=$v;           //全部的订单

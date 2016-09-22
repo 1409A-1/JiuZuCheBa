@@ -157,7 +157,7 @@
 .button:hover{background: #24354b;color: #fff}
 .noImg{width: 166px;height: 66px;margin: 60px auto 0 auto;background: url("../images/333.png");}
 /*其他*/
-.other{width: 100%;height: 1550px;background: #E8E6E6}
+.other{width: 100%;height: 700px;background: #E8E6E6}
 .oBox1{width: 1180px;margin: auto}
 .oBox1>div{float: left;position: relative}
 .oBox1_L{width: 732px;height: 372px;}
