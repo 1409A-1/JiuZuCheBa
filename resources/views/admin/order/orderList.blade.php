@@ -2,22 +2,13 @@
 <html>
 <head>
 	<title>Detail Admin - Tables showcase</title>
-
-    {{--引用css样式--}}
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
     <script src="{{asset('admin')}}/dat/WdatePicker.js"></script>
-    <!-- navbar -->
     @include('common.admin_header')
-    <!-- end navbar -->
-
-    <!-- sidebar -->
     @include('common.admin_left')
-    <!-- end sidebar -->
-
-
-	<!-- main container -->
     <div class="content">
         
         <!-- settings changer -->
@@ -108,7 +99,6 @@
                                         <a href="{{ url('orderInfo') }}/{{ $val['ord_id'] }}">查看详情</a>
                                     @endif
                                 </td>
-
                             </tr>
                             @endforeach
                         </table>
@@ -161,13 +151,13 @@
                        html += "<td>订单已取消</td><td>无</td><td>"+getLocalTime(e[i]['add_time'])+"</td><td>无</td>"
                     }
                     if(e[i]['ord_pay'] == 0){
-                       html+=  "<td><a href=''>提醒付款</a>||<a href=\"{{ url('orderInfo') }}/{{ $val['ord_id'] }}\">查看详情</a></td></tr>"
+                       html+=  "<td><a href=''>提醒付款</a>||<a href=\"{{ url('orderInfo') }}/"+e[i]['ord_id']+"\">查看详情</a></td></tr>"
                     }else if(e[i]['ord_pay'] == 1){
-                       html+=  "<td><a href=''>提醒取车</a>||<a href=\"{{ url('orderInfo') }}/{{ $val['ord_id'] }}\">查看详情</a></td></tr>"
+                       html+=  "<td><a href=''>提醒取车</a>||<a href=\"{{ url('orderInfo') }}/"+e[i]['ord_id']+"\">查看详情</a></td></tr>"
                     }else if(e[i]['ord_pay'] == 2){
-                       html+=  "<td><a href=''>提醒还车</a>||<a href=\"{{ url('orderInfo') }}/{{ $val['ord_id'] }}\">查看详情</a></td></tr>"
+                       html+=  "<td><a href=''>提醒还车</a>||<a href=\"{{ url('orderInfo') }}/"+e[i]['ord_id']+"\">查看详情</a></td></tr>"
                     }else{
-                       html+=  "<td><a href=\"{{ url('orderInfo') }}/{{ $val['ord_id'] }}\">查看详情</a></td></tr>"
+                       html+=  "<td><a href=\"{{ url('orderInfo') }}/"+e[i]['ord_id']+"\">查看详情</a></td></tr>"
                     }
                   })
                      html += "</table>";

@@ -123,7 +123,8 @@ function loginProving(loginInfo) {
                 if (localStorage.getItem("page_jump") == 501) {
                     location.href = '/usercenter/myorder';//回到订单页
                 } else {
-                    window.location.href = "/";
+                    //window.location.href = "/";
+                    window.location.reload();
                 }
             } else {
                 var msg = "";

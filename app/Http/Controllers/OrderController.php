@@ -12,9 +12,9 @@ class OrderController extends Controller
 {
     public function orderList()
     {
-            $orderArr = DB::table('order')
-                ->join('user','user.user_id','=','order.user_id')
-                ->get();
+        $orderArr = DB::table('order')
+            ->join('user','user.user_id','=','order.user_id')
+            ->get();
         return view('admin.order.orderList',['data' => $orderArr]);
     }
     public function orderInfo($id)
@@ -76,7 +76,7 @@ class OrderController extends Controller
         if($re){
             return redirect(url('orderLists'));
         }else{
-            echo "<script>alert('发生未知错误。'); location.href='".url('orderInfo')."';</script>";die;
+            return "<script>alert('发生未知错误。'); location.href='".url('orderInfo')."';</script>";die;
         }
     }
     public function integralManagement(Request $request)

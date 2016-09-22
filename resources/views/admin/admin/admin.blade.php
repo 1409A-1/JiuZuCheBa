@@ -1,47 +1,36 @@
-﻿<!-- this page specific styles -->
+﻿<style>
+
+</style>
 <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/index.css" type="text/css" media="screen" />
-<!-- navbar -->
 @include('common.admin_header')
-<!-- end navbar -->
-
-<!-- sidebar -->
 @include('common.admin_left')
-<!-- end sidebar -->
-
-<!-- main container -->
 <div class="content">
     <div class="container-fluid">
-
-        <!-- upper main stats -->
         <div id="main-stats">
             <div class="row-fluid stats-row">
                 <div class="span3 stat">
                     <div class="data">
-                        <span class="number">2457</span>
-                        visits
+                        <span class="number">{{ $sum }}</span>
+                        <a href="{{ url('carList') }}" style="color: #000000">车辆总数</a>
                     </div>
-                    <span class="date">Today</span>
                 </div>
                 <div class="span3 stat">
                     <div class="data">
-                        <span class="number">3240</span>
-                        users
+                        <span class="number">{{ $user }}</span>
+                        <a href="{{ url('adminList') }}" style="color: #000000">用户数量</a>
                     </div>
-                    <span class="date">February 2014</span>
                 </div>
                 <div class="span3 stat">
                     <div class="data">
-                        <span class="number">322</span>
-                        orders
+                        <span class="number">{{ $order }}</span>
+                        <a href="{{ url('orderLists') }}" style="color: #000000">订单数量</a>
                     </div>
-                    <span class="date">This week</span>
                 </div>
                 <div class="span3 stat last">
                     <div class="data">
-                        <span class="number">$2,340</span>
-                        sales
+                        <span class="number">{{ $server }}</span>
+                        <a href="{{ url('addressList') }}" style="color: #000000">服务点数量</a>
                     </div>
-                    <span class="date">last 30 days</span>
                 </div>
             </div>
         </div>

@@ -2,29 +2,11 @@
 <html>
 <head>
 	<title>Detail Admin - Tables showcase</title>
-    
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-    <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
-    <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
-
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-    
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
 
     <!-- navbar -->
@@ -40,13 +22,9 @@
     <div class="content">
         
         <!-- settings changer -->
-
-        
         <div class="container-fluid">
             <div id="pad-wrapper">
-                
                 <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
@@ -119,22 +97,21 @@
                             var type_id = $("#car1").val();
                             var brand_id = $("#car2").val();
                                 $.getJSON("{{ url('carSel') }}",{type_id:type_id,brand_id:brand_id},function(msg){
-                                        str = "<table class=\"table\"><tr><th>车辆名字</th><th></th><th>车辆数量详情</th><th>车辆品牌</th><th>车辆类型</th>"+
-                                             "<th>车辆单日价格</th><th>操作</th></tr>";
-                                        $.each(msg,function(i,v){
-                                            str +="<tr>" +
-                                            "<td>"+msg[i].car_name+"</td>" +
-                                            "<td><img src='"+msg[i].car_img+"' width='50' height=\"50\"/></td>" +
-                                            "<td></td>" +
-                                            "<td>"+msg[i].type_name+"</td>" +
-                                            "<td>"+msg[i].brand_name+"</td>" +
-                                            "<td>"+msg[i].car_price+"</td>" +
-                                            "<td><a href='carDel/"+msg[i].car_id+"'>删除</a></td>" +
-                                            "</tr>"
-                                        });
-                                        $("#look").html(str);
-                                    }
-                                );
+                                    str = "<table class=\"table\"><tr><th>车辆名字</th><th>图片</th><th>车辆数量详情</th><th>车辆品牌</th><th>车辆类型</th>"+
+                                          "<th>车辆单日价格</th><th>操作</th></tr>";
+                                    $.each(msg,function(i,v){
+                                        str +="<tr><td>"+msg[i].car_name+"</td><td><img src='"+msg[i].car_img+"' width='50' height=\"50\"/></td>" ;
+                                        if(msg[i].num){
+                                            str+="<td>总数量"+msg[i].car_number+"&nbsp;&nbsp;&nbsp;&nbsp;未分配车辆:"+msg[i].num+"</td>" ;
+                                        } else {
+                                            str+="<td>总数量"+msg[i].car_number+"&nbsp;&nbsp;&nbsp;&nbsp;未分配车辆:"+msg[i].car_number+"</td>" ;
+                                        }
+                                        str+="<td>"+msg[i].type_name+"</td><td>"+msg[i].brand_name+"</td><td>"+msg[i].car_price+"</td>" +
+                                             "<td><a href='carDel/"+msg[i].car_id+"'>删除</a></td></tr>" ;
+                                    });
+                                    $("#look").html(str);
+                                }
+                            );
                         });
                         $("#car_brand").change(function(){
                             var type_id = $("#carType").val();
