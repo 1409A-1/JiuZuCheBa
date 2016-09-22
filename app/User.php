@@ -2,36 +2,26 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-//    protected $fillable = [
-//        'name', 'email', 'password',
-//    ];
-//
-//    /**
-//     * The attributes that should be hidden for arrays.
-//     *
-//     * @var array
-//     */
-//    protected $hidden = [
-//        'password', 'remember_token',
-//    ];
-
-//表名
-    protected $table = 'user';
-//默认id
+    //数据库
+    protected $table='user';
+    //默认id
     protected $primaryKey = 'user_id';
-//时间戳
+    //时间戳
     public $timestamps=false;
 
+    //前台验证用户名唯一
+    public static function onlyName(string $name)
+    {
+    	return self::where('user_name', $name)->first();
+    }
 
-
-
+    //前台验证手机号唯一
+    public static function onlyPhone(string $phone)
+    {
+    	return self::where('tel', $phone)->first();
+    }
 }

@@ -101,7 +101,11 @@ var payment_order_by_score_url = api_url + "/api/Order/PaymentByScore";
 var get_my_coupons_url = api_url + "/api/Order/GetMyCoupons";
 var payment_order_by_coupon_url = api_url + "/api/Order/PaymentByCoupons";
 
+// ----------
 var register_customer_url_new = api_url + "/api/customer/RegisterNew";//会员注册API[新]
+var registerPro = 'registerPro';//会员注册API[新]
+// ----------
+
 var check_driver_url = api_url + "/api/Customer/CheckDriver";//驾照、身份证验证
 var show_driver_url = api_url + "/api/Customer/ShowDriver";//查看驾照、身份证信息
 var cancel_order = api_url + "/api/Customer/CancelOrder";//取消订单

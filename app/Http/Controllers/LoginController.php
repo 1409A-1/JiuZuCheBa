@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     //注册的方法
     public function register(){
-        return view('home.login.login_reg');
+        return view('home.login.register');
     }
     
     //前台登录
@@ -53,17 +53,29 @@ class LoginController extends Controller
     }
     
     //进行注册接值
-    public function regPro(Request $request){
+    public function registerPro(Request $request){
+        // print_r($this->onlyName($request->input('name')));die;
+        // 验证用户名是否可用
+        if (User::onlyName($request->input('name'))) {
+            return -1;
+        }
+
+        // 验证手机号是否可用
+        if (User::onlyPhone($request->input('phone'))) {
+            return -2;
+        }
+
         $user = new User();
-        $user->tel = $request->input('tel');
-        $name = $user->user_name = $request->input('user_name');
+        $user->user_name = $request->input('name');
+        $user->tel = $request->input('phone');
         $user->password = md5($request->input('password'));
         $user->reg_time = time();
         $result = $user->save();
-        $user_id = $user->user_id;               //获取刚添加的自增的id
+
+        $user_id = $user->user_id;                //获取刚添加的自增的id
         if ($result) {
             $benefit = new Benefit();             //实例化优惠券表
-            Session::put('user_name', $name);
+            Session::put('user_name', $request->input('name'));
             Session::put('user_id', $user_id);
             $benefit->user_id = $user_id;
             $benefit->benefit_name = '新人大礼包';
@@ -71,34 +83,9 @@ class LoginController extends Controller
             $benefit->begin_time = time();
             $benefit->end_time = strtotime('+1 month');
             $benefit->save();
-            return redirect('/');
+            return 1;
         } else {
-            echo "<script>alert('注册失败');location.href='register'</script>";
-        }
-    }
-    
-    //前台验证用户名唯一
-    public function onlyName(Request $request){
-        $user = new User();
-        $name = $request->input('name');
-        $result =  $user->where('user_name',$name)->first();
-        if ($result) {
-            return 'false';
-        } else {
-            return 'true';
-        }
-
-    }
-    
-    //前台验证用户名唯一
-    public function onlyTel(Request $request){
-        $user = new User();
-        $tel = $request->input('tel');
-        $result =  $user->where('tel',$tel)->first();
-        if ($result) {
-            return 'false';
-        } else {
-            return 'true';
+            return -10;
         }
     }
 }

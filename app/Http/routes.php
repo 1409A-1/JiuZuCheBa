@@ -1,13 +1,9 @@
 <?php
 // ---------------------------------- 前台注册、登录、退出
 //注册
-Route::get('loginReg', 'LoginController@register');
+Route::get('register', 'LoginController@register');
 //注册接值处理
-Route::post('regPro', 'LoginController@regPro');
-//前台验证注册用户名唯一
-Route::get('onlyName', 'LoginController@onlyName');
-//前台验证注册手机号唯一
-Route::get('onlyTel', 'LoginController@onlyTel');
+Route::post('registerPro', 'LoginController@registerPro');
 //前台登陆页面的展示
 Route::get('login', 'LoginController@login');
 //前台盒子登录
