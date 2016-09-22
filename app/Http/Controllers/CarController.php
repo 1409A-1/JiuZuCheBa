@@ -45,8 +45,6 @@ class CarController extends Controller
     }
     public function carList()
     {
-        $sel = DB::table('car_info')
-            ->get();
         $cart = DB::table('car_type')
             ->get();
         $carb = DB::table('car_brand')
@@ -55,8 +53,18 @@ class CarController extends Controller
             ->join('car_type','car_info.type_id','=','car_type.type_id')
             ->join('car_brand','car_info.brand_id','=','car_brand.brand_id')
             ->get();
-      //  $num =
-        return view('admin.carins.carList',['data' => $arr,'sel' => $sel,'cart' => $cart,'carb' => $carb]);
+        $num = DB::table('car_number')
+            ->selectRaw('car_id, sum(number) as sum')
+            ->groupBy("car_id")
+            ->get();
+        foreach($arr as $k => $v) {
+            foreach($num as $c) {
+                if ($v['car_id'] == $c['car_id']) {
+                    $arr[$k]['num'] = $v['car_number'] - $c['sum'];
+                }
+            }
+        }
+        return view('admin.carins.carList',['data' => $arr,'cart' => $cart,'carb' => $carb,'num'=>$num]);
     }
     /*
      * name:wanghu

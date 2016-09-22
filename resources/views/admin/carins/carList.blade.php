@@ -88,7 +88,7 @@
                         <table class="table" id="look">
                             <tr>
                                 <th>车辆名字</th>
-                                <th></th>
+                                <th>车辆图片</th>
                                 <th>车辆数量详情</th>
                                 <th>车辆类型</th>
                                 <th>车辆品牌</th>
@@ -99,7 +99,7 @@
                             <tr>
                                 <td>{{ $v['car_name'] }}</td>
                                 <td><a href="{{ $v['car_img'] }}" target="_Blank"><img src="{{ $v['car_img'] }}" alt="" width="50" height="50"/></a></td>
-                                <td>总数量:{{ $v['car_number'] }}&nbsp;&nbsp;&nbsp;&nbsp;剩余车辆:</td>
+                                <td>总数量:{{ $v['car_number'] }}&nbsp;&nbsp;&nbsp;&nbsp;未分配车辆:{{ $v['num'] or $v['car_number'] }}</td>
                                 <td>{{ $v['type_name'] }}</td>
                                 <td>{{ $v['brand_name'] }}</td>
                                 <td>{{ $v['car_price'] }}</td>
