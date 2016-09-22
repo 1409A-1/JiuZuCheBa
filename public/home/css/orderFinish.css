@@ -25,9 +25,9 @@ body{background: #f2f2f2;color: #24354b}
 .orderInfo{border-top:none;}
 .orderList{padding-bottom: 20px;border-bottom:none;}
 .orderList h2 { width:1128px; height:41px; background:#90d563; position:relative;line-height:41px; }
-.orderList h2 p { height:62px; background:url(../images/PxCook/h2_bg.gif) no-repeat center top; }
+.orderList h2 p { height:62px; background:url(../images/h2_bg.gif) no-repeat center top; }
 .orderList h2 a { color:#fff; font-size:14px; position:absolute; right:16px; top:20px; }
-.orderList h3 { width:354px; height:26px; text-indent:42px; font-size:22px; color:#90d563; line-height:26px; margin:42px auto 24px auto; background:url(../images/PxCook/h3_bg.gif) no-repeat; }
+.orderList h3 { width:354px; height:26px; text-indent:42px; font-size:22px; color:#90d563; line-height:26px; margin:42px auto 24px auto; background:url(../images/h3_bg.gif) no-repeat; }
 .orderList ul {margin: 40px 0 10px 50px}
 .orderList ul li { background:#eee; margin-right:8px; line-height:38px;font-size:14px; float:left;text-align: center}
 .l1{width: 177px}
@@ -49,7 +49,7 @@ body{background: #f2f2f2;color: #24354b}
 
 /* 取还车的信息 */
 .timeCar { width:260px; margin:24px 40px 0 0; float:left; }
-.timeCar h4 { height:21px; text-indent:28px; background:url(../images/PxCook/ok_bg.gif) no-repeat; }
+.timeCar h4 { height:21px; text-indent:28px; background:url(../images/ok_bg.gif) no-repeat; }
 .timeCar .carBack { background-position:0 -21px; }
 .timeCar h4 p { color:#ea5506; font-size:14px; }
 .timeCar ul { margin-left:24px; }
