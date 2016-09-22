@@ -304,9 +304,9 @@
             <a class="o_tit">附近门店</a>
             <div class="aroundBox oBox2">
                 <div id="map"></div>
-                <a class="moreStore" href="citymap">更多门店</a>
+                <a class="moreStore" href="{{ url('cityMap') }}">更多门店</a>
                 <div class="aroundStore">
-                    <a>当前城市：<b>北京市</b></a>
+                    <a>当前城市：<b></b></a>
                     <ul>
                         <li></li>
                         <li></li>

@@ -10,12 +10,10 @@ Route::get('onlyName', 'LoginController@onlyName');
 Route::get('onlyTel', 'LoginController@onlyTel');
 //前台登陆页面的展示
 Route::get('login', 'LoginController@login');
-//前台登录接值验证
-Route::post('loginPro', 'LoginController@loginPro');
 //前台盒子登录
 Route::get('loginBox', 'LoginController@loginBox');
-//前台盒子登录的验证
-Route::post('loginBoxPro', 'LoginController@loginBoxPro');
+//前台登录接值验证
+Route::post('loginPro', 'LoginController@loginPro');
 //前台退出登录
 Route::get('logOut', 'LoginController@loginOut');
 // -------------------------------------------------
