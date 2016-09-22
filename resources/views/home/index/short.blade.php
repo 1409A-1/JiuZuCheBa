@@ -252,9 +252,8 @@
                 共 <b id="carNum">0</b> 种可租车型
             </span>
         </div>
-        <ul class="carList">
-        </ul>
-       <div class="Prompt">
+        <ul class="carList"></ul>
+        <div class="Prompt">
             <!--加载提示-->
             <div class="load">
                 <img src="home/images/car.gif">
@@ -276,32 +275,32 @@
             <div class="carInfoTit" id="returnCarTit">还车</div>
             <hr>
             <div class="carInfo" id="takeCarInfo">
-                <h4>楚河汉街店</h4>
+                <h4></h4>
                 <p>
                     <a>取车地址：</a>
-                    <span id="takeAddress">武汉市武昌区中北路周家大湾楚河汉街领寓大厦广场</span>
+                    <span id="takeAddress"></span>
                 </p>
                 <p>
                     <a>交通路线：</a>
-                    <span id="takeWay">19; 64; 64; 530; 537; 540; 577; 581; 583; 601; 702</span>
+                    <span id="takeWay"></span>
                 </p>
                 <div class="evaluate">
-                    <a href="http://www.dafang24.com/home/appraise/195" id="takeEva">1385条评论</a>
+                    <a href="" id="takeEva"></a>
                     <i class="icon_eva icon_eva5 icon_eva4"></i>
                 </div>
             </div>
             <div class="carInfo" id="returnCarInfo">
-                <h4>楚河汉街店</h4>
+                <h4></h4>
                 <p>
                     <a>取车地址：</a>
-                    <span id="returnAddress">武汉市武昌区中北路周家大湾楚河汉街领寓大厦广场</span>
+                    <span id="returnAddress"></span>
                 </p>
                 <p>
                     <a>交通路线：</a>
-                    <span id="returnWay">19; 64; 64; 530; 537; 540; 577; 581; 583; 601; 702</span>
+                    <span id="returnWay"></span>
                 </p>
                 <div class="evaluate">
-                    <a href="#195" id="returnEva">1385条评论</a>
+                    <a href="" id="returnEva"></a>
                     <i class="icon_eva icon_eva4"></i>
                 </div>
             </div>
@@ -365,8 +364,8 @@
                 offers_id = [];
 
             var nowTime = new Date(), outTime, inTime;
-            nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
-            outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
+                nowTime = date_format(nowTime, "yyyy-MM-dd HH-mm-ss");
+                outTime = date_format(out_time, "yyyy-MM-dd HH-mm-ss");
            // inTime = date_format(in_time, "yyyy-MM-dd HH-mm-ss");
             //春节等特殊时期 租期限制！
 //            if (checked_price_list(CarList[n].prices, outTime, inTime)) {

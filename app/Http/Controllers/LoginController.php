@@ -10,58 +10,39 @@ use DB,Session;
 
 class LoginController extends Controller
 {
-
-//注册的方法
+    //注册的方法
     public function register(){
         return view('home.login.login_reg');
     }
-//前台登录
+    
+    //前台登录
     public function login()
     {
         return view('home.login.login');
     }
-//前台登录盒子窗口
+    
+    //前台登录盒子窗口
     public function loginBox()
     {
         return view('home.login.loginBox');
     }
-//前台登录检验用户名密码
+    
+    //前台登录检验用户名密码
     public function loginPro(Request $request)
     {
-//输出提示
-        switch ($_REQUEST) {
-            case empty($_REQUEST['user_name']):break;
-            case empty($_REQUEST['password']):break;
-        }
-        $info['user_name'] = $request->input('user_name');
+        $info['user_name'] = $request->input('account');
         $info['password'] = md5($request->input('password'));
-        $login = new Login();
-        $re = $login->where($info)->first();
-        if ($re) {
+        $result = Login::where($info)->first();
+        if ($result) {
             Session::put('user_name', $info['user_name']);
-            Session::put('user_id', $re['user_id']);
-            return redirect('/');
+            Session::put('user_id', $result['user_id']);
+            return 1;
         } else {
-            echo "<script>alert('登录失败');location.href='login';</script>";
+            return -1;
         }
     }
-//前台选车登录的loginBox登录接值
-    public function loginBoxPro(Request $request)
-    {
-      $user_name = $request->input('user_name');
-      $password = md5($request->input('password'));
-      $result = DB::table('user')
-              ->where(['user_name'=>$user_name,'password'=>$password])
-              ->first();
-      if ($result) {
-          Session::put('user_name', $result['user_name']);
-          Session::put('user_id', $result['user_id']);
-          return 1;
-      } else {
-          return 2;
-      }
-    }
-//前台登录退出
+    
+    //前台登录退出
     public function loginOut(Request $request)
     {
         if ($request->session()->has('user_name')) {
@@ -70,15 +51,16 @@ class LoginController extends Controller
             return redirect('/');
         }
     }
-//进行注册接值
+    
+    //进行注册接值
     public function regPro(Request $request){
-      $user = new User();
-      $user->tel = $request->input('tel');
-      $name = $user->user_name = $request->input('user_name');
-      $user->password = md5($request->input('password'));
-      $user->reg_time = time();
-      $result = $user->save();
-      $user_id = $user->user_id;               //获取刚添加的自增的id
+        $user = new User();
+        $user->tel = $request->input('tel');
+        $name = $user->user_name = $request->input('user_name');
+        $user->password = md5($request->input('password'));
+        $user->reg_time = time();
+        $result = $user->save();
+        $user_id = $user->user_id;               //获取刚添加的自增的id
         if ($result) {
             $benefit = new Benefit();             //实例化优惠券表
             Session::put('user_name', $name);
@@ -94,28 +76,29 @@ class LoginController extends Controller
             echo "<script>alert('注册失败');location.href='register'</script>";
         }
     }
-//前台验证用户名唯一
+    
+    //前台验证用户名唯一
     public function onlyName(Request $request){
         $user = new User();
         $name = $request->input('name');
-       $result =  $user->where('user_name',$name)->first();
+        $result =  $user->where('user_name',$name)->first();
         if ($result) {
-            echo 'false';
+            return 'false';
         } else {
-            echo 'true';
+            return 'true';
         }
 
     }
-//前台验证用户名唯一
+    
+    //前台验证用户名唯一
     public function onlyTel(Request $request){
         $user = new User();
         $tel = $request->input('tel');
         $result =  $user->where('tel',$tel)->first();
         if ($result) {
-            echo 'false';
+            return 'false';
         } else {
-            echo 'true';
+            return 'true';
         }
-
     }
 }

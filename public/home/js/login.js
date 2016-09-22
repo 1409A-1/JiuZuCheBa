@@ -1,3 +1,5 @@
+var _token = $('meta[name=_token]').attr('content');
+
 $(function(){
     if(Customer&&Customer.customer_id){
         //location.href='userIndex.html'
@@ -20,7 +22,8 @@ function login() {
         phoneBox = $("#login_name_box"),
         pwBox = $("#login_pw_box"),
         error = $("#loginError"),
-        phoneReg = /^0?(13[0-9]|15[0-35-9]|18[0-9]|14[57]|17[0678])[0-9]{8}$/;
+        // phoneReg = /^0?(13[0-9]|15[0-35-9]|18[0-9]|14[57]|17[0678])[0-9]{8}$/;
+        phoneReg = /^[\w_]{1,10}$/;
 
     //手机号
     phone.focus(function () {
@@ -59,14 +62,15 @@ function login() {
         }, 1000);
         var loginInfo = {
             "account": phone.val(),
-            "login_ip": loginIP,
+            // "login_ip": loginIP,
             "password": pw.val(),
             "isbind": '',
-            "openid": ''
+            "openid": '',
+            "_token": _token
         };
         if (phone.val() == "") {
             phone.focus();
-            error.html("请输入手机号码");
+            error.html("请输入用户名");
             phoneBox.addClass("error");
         } else {
             if (phoneReg.test(phone.val())) {
@@ -86,7 +90,7 @@ function login() {
             }
             else {
                 phone.focus();
-                error.html("手机号码不正确");
+                error.html("用户名不符合要求！只能使用数字、字母、下划线！");
                 phoneBox.addClass("error");
             }
         }
@@ -104,34 +108,37 @@ function login() {
 function loginProving(loginInfo) {
     var error=$("#loginError");
     jQuery.ajax({
-        url: login_customer_url,
-        dataType: 'jsonp',
+        // url: login_customer_url,
+        // dataType: 'jsonp',
+        url: loginPro,
+        dataType: 'json',
         data: loginInfo,
+        type: 'post',
         success: function (result) {
-            if (result.state > 0) {
-                error.html("登录成功");
-                $.cookie("login_user", JSON.stringify(result.customer), { expires: 7, path: "/" });
-                $.cookie("login_token", result.token, { expires: 7, path: "/" });
-                $.cookie("login_hyzxcx", JSON.stringify(result.checkstatus), { expires: 7, path: "/" });
+            if (result > 0) {
+                error.html("登录成功！");
+                // $.cookie("login_user", JSON.stringify(result.customer), { expires: 7, path: "/" });
+                // $.cookie("login_token", result.token, { expires: 7, path: "/" });
+                // $.cookie("login_hyzxcx", JSON.stringify(result.checkstatus), { expires: 7, path: "/" });
                 if (localStorage.getItem("page_jump") == 501) {
                     location.href = '/usercenter/myorder';//回到订单页
                 } else {
-                    window.location.href = "/home/index";
+                    window.location.href = "/";
                 }
             } else {
                 var msg = "";
-                switch (result.state) {
+                switch (result) {
                     case -1:
-                        msg = "账号或密码错误.";
+                        msg = "账号或密码错误！";
                         break;
                     case -2:
-                        msg = "连续尝试5次登录失败，已经被锁定，请10分钟之后再试.";
+                        msg = "连续尝试5次登录失败，已经被锁定，请10分钟之后再试！";
                         break;
                     case -3:
-                        msg = "今天连续10次尝试登录失败，账户将自动锁定，请明天再试.";
+                        msg = "今天连续10次尝试登录失败，账户将自动锁定，请明天再试！";
                         break;
                     default:
-                        msg = "服务器出错.";
+                        msg = "服务器出错！";
                         break;
                 }
                 error.html(msg);

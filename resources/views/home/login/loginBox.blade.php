@@ -43,7 +43,7 @@
         .login .errorPrompt{margin-top: 30px}
 
         /*icon*/
-        .icon_login{display:inline-block;background: url("/content/images/login/icon.png") no-repeat;float: right;}
+        .icon_login{display:inline-block;background: url("home/images/login/icon.png") no-repeat;float: right;}
         .icon_l1{width: 12px;height: 18px;background-position:-21px 0;margin-top: 6px;margin-right: 10px}
         .icon_l11{width: 12px;height: 18px;background-position:-21px -19px;margin-top: 6px;margin-right: 10px}
         .icon_l2{width: 20px;height: 12px;background-position:-33px -3px;margin-top: 9px;margin-right: 6px}
@@ -62,12 +62,12 @@
             <div class="input_body">
                 <div id="login_name_box" class="inputBox">
                     <input type="tel" id="login_name" maxlength="11" placeholder="我的用户名">
-                    <i class="icon_login icon_l1"></i>
+                    <!-- <i class="icon_login icon_l1"></i> -->
                 </div>
                 <div id="login_pw_box" class="inputBox">
                     <input type="password" id="login_pw" maxlength="18" placeholder="我的密码">
                     <input type="text" id="login_pw0" maxlength="18" value="我的密码">
-                    <i class="icon_login icon_l2"></i>
+                    <!-- <i class="icon_login icon_l2"></i> -->
                 </div>
                 <div id="loginError" class="errorPrompt"></div>
                 <button id="login" style="cursor: pointer">登 录<i></i></button>
@@ -75,7 +75,6 @@
         </div>
     </div>
     <input type="hidden" value="{{session('path')}}" id="path"/>
-    <input type="hidden" value="{{ csrf_token() }}" id="token"/>
 </div>
 <script>
     $(function () {
@@ -85,7 +84,8 @@
                 phoneBox = $("#login_name_box"),
                 pwBox = $("#login_pw_box"),
                 error = $("#loginError"),
-                phoneReg = /^0?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])[0-9]{8}$/;
+                // phoneReg = /^0?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])[0-9]{8}$/;
+                phoneReg = /^[\w_]{1,10}$/;
 
         //手机号
         phone.focus(function () {
@@ -96,10 +96,10 @@
                 error.html("");
             });
         })
-                .blur(function () {
-                    phoneBox.removeClass("active error")
-                            .find("i").removeClass("icon_l11").addClass("icon_l1");
-                });
+            .blur(function () {
+                phoneBox.removeClass("active error")
+                    .find("i").removeClass("icon_l11").addClass("icon_l1");
+            });
         //密码
         pw.focus(function () {
             pwBox.addClass("active")
@@ -109,10 +109,10 @@
                 error.html("");
             });
         })
-                .blur(function () {
-                    pwBox.removeClass("active error")
-                            .find("i").removeClass("icon_l22").addClass("icon_l2");
-                });
+            .blur(function () {
+                pwBox.removeClass("active error")
+                    .find("i").removeClass("icon_l22").addClass("icon_l2");
+            });
 
         //登录按钮
         $("#login").click(function () {
@@ -122,15 +122,16 @@
                 $("#login").find("i").removeClass("hover");
             }, 1000);
             var loginInfo = {
-                "user_name": phone.val(),
+                "account": phone.val(),
                 "password": pw.val(),
-                "_token": $("#token").val()
+                "_token": '{{ csrf_token() }}'
             };
             if (phone.val() == "") {
                 phone.focus();
                 error.html("请输入用户名");
                 phoneBox.addClass("error");
             } else {
+                if (phoneReg.test(phone.val())) {
                     if (pw.val() == "") {
                         pw.focus();
                         error.html("请输入密码");
@@ -144,27 +145,52 @@
                             loginProving(loginInfo);//判断账号密码是否匹配
                         }
                     }
+                }
+                else {
+                    phone.focus();
+                    error.html("用户名不符合要求！只能使用数字、字母、下划线！");
+                    phoneBox.addClass("error");
+                }
             }
             $(this).attr("disabled", false);
         });
     });
-//登录验证
+    //登录验证
     function loginProving(loginInfo) {
-        var error = $("#loginError");
+        var error=$("#loginError");
         jQuery.ajax({
-            url: "{{ url('loginBoxPro') }}",
-            type: "POST",
+            // url: login_customer_url,
+            // dataType: 'jsonp',
+            url: "{{  url('loginPro') }}",
+            dataType: 'json',
             data: loginInfo,
+            type: 'post',
             success: function (result) {
-               var path = $("#path").val();
-                if (result == 1) {
-                 //   error.html("登录成功");
-                    top.location.href=path ;  // 当前页面打开URL页面
+                if (result > 0) {
+                    error.html("登录成功！");
+                    // $.cookie("login_user", JSON.stringify(result.customer), { expires: 7, path: "/" });
+                    // $.cookie("login_token", result.token, { expires: 7, path: "/" });
+                    // $.cookie("login_hyzxcx", JSON.stringify(result.checkstatus), { expires: 7, path: "/" });
+                    top.location.href = 'short';
                 } else {
-                     msg = "账号或密码错误.";
-                     error.html(msg);
+                    var msg = "";
+                    switch (result) {
+                        case -1:
+                            msg = "账号或密码错误！";
+                            break;
+                        case -2:
+                            msg = "连续尝试5次登录失败，已经被锁定，请10分钟之后再试！";
+                            break;
+                        case -3:
+                            msg = "今天连续10次尝试登录失败，账户将自动锁定，请明天再试！";
+                            break;
+                        default:
+                            msg = "服务器出错！";
+                            break;
                     }
+                    error.html(msg);
                 }
+            }
         });
     }
     //IE8、9下input placeholder属性不兼容
