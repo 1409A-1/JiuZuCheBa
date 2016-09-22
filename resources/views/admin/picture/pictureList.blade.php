@@ -255,12 +255,16 @@
                 pictureId = $(this).attr("bid");
                 she = $(this);
                 $.get("pictureEdit/"+pictureId, function(msg){
-                    if (msg == "unuse"){
+                    if (msg.status == "unuse"){
                         she.replaceWith('<a class="isUse" href="javascript:void(0)" bid="'+pictureId+'">使用</a>');
-                    }else if (msg == "usable"){
+                    }else if (msg.status == "usabled") {
                         she.replaceWith('<a class="isUse" href="javascript:void(0)" bid="'+pictureId+'">不使用</a>');
+                    }else if (msg.status == "turnFull") {
+                        alert("轮播图最多显示5张")
+                    }else if (msg.status == "activeFull") {
+                        alert("活动图片最多显示3张")
                     }
-                })
+                },'json')
             })
             
             // jQuery Knobs

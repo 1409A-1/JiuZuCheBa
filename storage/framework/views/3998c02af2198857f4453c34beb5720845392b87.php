@@ -5,7 +5,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="indexs">
+            <a href="<?php echo e(url('indexs')); ?>">
                 <i class="icon-home"></i>
                 <span>主页</span>
             </a>
@@ -35,12 +35,13 @@
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-cog"></i>
-                <span>车辆类型</span>
+                <span>车辆管理</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
                 <li><a href="<?php echo e(url('typeList')); ?>">车辆类型管理</a></li>
                 <li><a href="<?php echo e(url('brandList')); ?>">车辆品牌管理</a></li>
+                <li><a href="<?php echo e(url('carList')); ?>">车辆列表</a></li>
             </ul>
         </li>
         <li>
@@ -61,7 +62,7 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="<?php echo e(url('address')); ?>">服务点添加</a></li>
+                <li><a href="<?php echo e(url('serverAdd')); ?>">服务点添加</a></li>
                 <li><a href="<?php echo e(url('addressList')); ?>">服务点展示</a></li>
                 <li><a href="<?php echo e(url('carServer')); ?>">服务点车辆分配</a></li>
             </ul>
