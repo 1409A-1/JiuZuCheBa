@@ -32,8 +32,8 @@
             <li class="top_user">
                 @if(empty(Session::get('user_name')))
                 <div class="no_user" style="display: block;">
-                    <a href="loginReg" rel="nofollw">注册</a>
-                    <a href="login" rel="nofollw">登录</a>
+                    <a href="{{ url('register') }}" rel="nofollw">注册</a>
+                    <a href="{{ url('login') }}" rel="nofollw">登录</a>
                 </div>
                 @else
                 <div class="yes_user" style="display: block;">

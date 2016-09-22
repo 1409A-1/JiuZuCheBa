@@ -92,7 +92,7 @@
                                         @endif
                                     </td>
                                     <td class="description">
-                                        <img src="{{$v['dir']}}" alt="{{$v['alt']}}" height="40px">
+                                        <img src="{{$v['dir']}}" alt="{{$v['alt']}}" width="300">
                                     </td>
                                     <td class="description">
                                         {{$v['alt']}}
