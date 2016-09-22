@@ -117,15 +117,6 @@
                     </div>
                     <input type="hidden" value="1" id="nowpage">
                 </div>
-                <!-- end products table -->
-
-                <!-- orders table -->
-                
-                <!-- end orders table -->
-
-                <!-- users table -->
-                
-                <!-- end users table -->
             </div>
         </div>
     </div>

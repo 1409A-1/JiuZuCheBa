@@ -99,7 +99,7 @@
                             <tr>
                                 <td>{{ $v['car_name'] }}</td>
                                 <td><a href="{{ $v['car_img'] }}" target="_Blank"><img src="{{ $v['car_img'] }}" alt="" width="50" height="50"/></a></td>
-                                <td></td>
+                                <td>总数量:{{ $v['car_number'] }}&nbsp;&nbsp;&nbsp;&nbsp;剩余车辆:</td>
                                 <td>{{ $v['type_name'] }}</td>
                                 <td>{{ $v['brand_name'] }}</td>
                                 <td>{{ $v['car_price'] }}</td>
