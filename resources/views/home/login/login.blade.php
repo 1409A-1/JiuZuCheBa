@@ -10,7 +10,7 @@
                 <div class="login">
                     <div class="title">
                         <div>登录</div>
-                        <span>没有账号？<a href="{{ URL('loginReg') }}">立即注册</a></span>
+                        <span>没有账号？<a href="{{ url('register') }}">立即注册</a></span>
                     </div>
                     <div class="input_body">
                         <div class="inputBox" id="login_name_box">
