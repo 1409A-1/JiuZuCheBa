@@ -10,7 +10,7 @@
     <link type="text/css" rel="stylesheet" href="<?php echo e(asset('home')); ?>/css/calendar.css">
     <link type="text/css" rel="stylesheet" href="<?php echo e(asset('home')); ?>/css/layer.css">
 
-    <script type="text/javascript" src="<?php echo e(asset('home')); ?>/js/jquery-1.7.2.min.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo e(asset('home')); ?>/js/jquery-1.7.2.min.js"></script> -->
     <script type="text/javascript" src="<?php echo e(asset('home')); ?>/js/jquery-1.js"></script>
     <script type="text/javascript" src="<?php echo e(asset('home')); ?>/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo e(asset('home')); ?>/js/api"></script>
@@ -33,7 +33,7 @@
                 <?php if(empty(Session::get('user_name'))): ?>
                 <div class="no_user" style="display: block;">
                     <a href="loginReg" rel="nofollw">注册</a>
-                    <a href="login" rel="nofollw">登陆</a>
+                    <a href="login" rel="nofollw">登录</a>
                 </div>
                 <?php else: ?>
                 <div class="yes_user" style="display: block;">
@@ -70,12 +70,13 @@
             <li class=" on_menu"><a href="<?php echo e(url('/')); ?>">首页</a></li>
             <li class=""><a href="<?php echo e(url('short')); ?>">短租自驾</a></li>
             <li class=""><a href="<?php echo e(url('long')); ?>">长租服务</a></li>
+            <li class=""><a href="<?php echo e(url('cityMap')); ?>">门店查询</a></li>
         </ul>
     </div>
 </div>
 
 <script>
-    var page = ['index', 'short', 'long'];
+    var page = ['index', 'short', 'long', 'citymap'];
     jQuery(".menu_box li")[0].className = " on_menu";
     jQuery(page).each(function (i, obj) {
         jQuery(".menu_box li")[i].className = jQuery(".menu_box li")[i].className.replace("on_menu", " ");
