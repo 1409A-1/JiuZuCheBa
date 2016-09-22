@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAltToPictureTable' => $baseDir . '/database/migrations/2016_09_21_152211_add_alt_to_picture_table.php',
+    'AddCarNumberToCarInfo' => $baseDir . '/database/migrations/2016_09_20_194145_add_car_number_to_car_info.php',
     'AddTypeToMessageTable' => $baseDir . '/database/migrations/2016_09_05_164312_add_type_to_message_table.php',
     'AddUserNameToMessageTable' => $baseDir . '/database/migrations/2016_09_06_084830_add_user_name_to_message_table.php',
     'CreateAddressTable' => $baseDir . '/database/migrations/2016_08_31_070814_create_address_table.php',
@@ -21,6 +23,7 @@ return array(
     'CreateOrderInfoTable' => $baseDir . '/database/migrations/2016_08_31_064756_create_order_info_table.php',
     'CreateOrderTable' => $baseDir . '/database/migrations/2016_08_31_064045_create_order_table.php',
     'CreatePackageTable' => $baseDir . '/database/migrations/2016_08_31_065930_create_package_table.php',
+    'CreatePictureTable' => $baseDir . '/database/migrations/2016_09_21_094011_create_picture_table.php',
     'CreateServerTable' => $baseDir . '/database/migrations/2016_08_31_070642_create_server_table.php',
     'CreateUserTable' => $baseDir . '/database/migrations/2016_08_31_054442_create_user_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',

@@ -158,13 +158,22 @@ class CarController extends Controller
      * */
     public function carUnique(Request $request)
     {
-        $date=$request->all();
+        $date = $request->all();
         //print_r($date);die;
         unset($date['_token']);
-        $car_number=Car_number::where(['server_id' => $date['server_id'], 'car_id' => $date['car_id']])->first();
+        $car_number = Car_number::where(['server_id' => $date['server_id'], 'car_id' => $date['car_id']])->first();
         if ($car_number) {
             return "no";
-        } 
+        } else {
+            $carTotal = Car_info::where("car_id", $date['car_id'])->first()->toArray();
+            $carUse = Car_number::selectRaw('sum(number) as sum')->where("car_id", $date['car_id'])->groupBy("car_id")->get()? Car_number::selectRaw('sum(number) as sum')->where("car_id", $date['car_id'])->groupBy("car_id")->get()->toArray(): array();
+            if ($carUse) {
+                $carUsable = $carTotal['car_number']-$carUse[0]['sum'];
+            } else {
+                $carUsable = $carTotal['car_number'];
+            }
+            return $carUsable;
+        }
     }
 
     /*
@@ -219,5 +228,16 @@ class CarController extends Controller
         $search1=$address['address_name'];
         $data=Server::where("city_name", $search1)->where("district", $search2)->get()->toArray();
         return json_encode($data);
+    }
+
+    /*
+        服务点车辆数量修改
+     */
+    public function carServerUpdate($serverId, $carId, $newNumber)
+    {
+        Car_number::where("server_id", $serverId)
+                    ->where("car_id", $carId)
+                    ->update(["number" => $newNumber]);
+        return "success";
     }
 }

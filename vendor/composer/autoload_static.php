@@ -279,6 +279,7 @@ class ComposerStaticInit4bac2c17c94ab5319ae2d67d3f19b1f5
         'CreateOrderInfoTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_064756_create_order_info_table.php',
         'CreateOrderTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_064045_create_order_table.php',
         'CreatePackageTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_065930_create_package_table.php',
+        'CreatePictureTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_21_094011_create_picture_table.php',
         'CreateServerTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_070642_create_server_table.php',
         'CreateUserTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_31_054442_create_user_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

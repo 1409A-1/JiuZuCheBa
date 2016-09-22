@@ -197,6 +197,12 @@ Route::group(['middleware' => ['nologin']], function(){
     Route::get('carServerList', 'CarController@carServerList');                 //服务点车辆信息列表
     Route::get('carServerPage/{page}/{search1}/{search2}/{search3}/{search4}', 'CarController@carServerPage');//服务点车辆信息分页
     Route::get('serverSelect/{search1}/{search2}', 'CarController@serverSelect');//服务点联动查询
+    Route::get('carServerUpdate/{serverId}/{carId}/{newNumber}', 'CarController@carServerUpdate');//服务点联动查询
+    Route::get('picture', 'HomePictureController@manage');//前台图片展示列表
+    Route::match(['get', 'post'],'pictureAdd', 'HomePictureController@pictureAdd');//前台图片展示列表
+    Route::get('pictureDel/{page}/{del}', 'HomePictureController@pictureDel');//前台图片展示列表
+    Route::get('pictureEdit/{pictureId}/', 'HomePictureController@pictureEdit');//前台图片展示列表
+
 });
 
 // 微信对接 授权登录

@@ -77,10 +77,11 @@
                                     <td colspan="2">
                                     <input type="submit" class="btn-glow primary" style="margin-left:180px" value="确认添加" />
                                     <span>OR</span>
-                                    <input type="reset" value="放弃" class="reset" />
+                                    <input type="reset" value="重置" class="reset" />
                                     </td>
                                 </tr>
                             </table>
+                            <input type="hidden" id="usable">
                     </div>
                 </div>
                 <!-- end products table -->
@@ -119,9 +120,14 @@
                         success:function(msg){
                             if (msg=="no") {
                             $("select[name=car_id]").next().remove();
-                            $("select[name=car_id]").after("<font style='color:red'>该车辆信息已存在</font>");
+                            $("select[name=car_id]").after("<font style='color:red'>此车型已添加至该服务点</font>");
+                            } else {
+                                $("input[name='number']").nextAll("font").remove();
+                                note="<font style='color: blue'>该车型还有"+msg+"辆可以添加</font>"
+                                $("input[name='number']").parent().append(note)
+                                $("#usable").val(msg);
                             }
-                        }  
+                        }
                     })
                 }
             }
@@ -145,7 +151,12 @@
                         success:function(msg){
                             if (msg=="no") {
                             she.next().remove();
-                            she.after("<font style='color:red'>该车辆信息已存在</font>");
+                            she.after("<font style='color:red'>此车型已添加至该服务点</font>");
+                            } else {
+                                $("input[name='number']").nextAll("font").remove();
+                                note="<font style='color: blue'>该车型还有"+msg+"辆可以添加</font>"
+                                $("input[name='number']").parent().append(note)
+                                $("#usable").val(msg);
                             }
                         }  
                     })
@@ -161,6 +172,9 @@
             } else {
                 if (reg.test($(this).val())) {
                     $(this).nextAll('font').remove();
+                    if ($(this).val()>$("#usable").val()) {
+                        $(this).next().after("<font style='color: red'>该车型只有"+$("#usable").val()+"辆可以添加</font>");
+                    }
                 } else {
                     $(this).nextAll('font').remove();
                     $(this).next().after("<font style='color:red'>请输入车辆数量</font>");

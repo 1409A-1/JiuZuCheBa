@@ -71,7 +71,7 @@
                                 <div class="span11 field-box actions">
                                     <input type="submit" class="btn-glow primary" value="确认修改" />
                                     <span>OR</span>
-                                    <input type="reset" value="放弃" class="reset" />
+                                    <input type="reset" value="重置" class="reset" />
                                 </div>
                             </form>
                         </div>
