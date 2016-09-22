@@ -1031,7 +1031,7 @@ function position() {
             $("#takeCity .show>a").html(city);
             $("#returnCity .show>a").html(city);
 
-            $(".aroundStore>a>b").html(city);//附近门店 显示城市
+            $(".aroundStore>a>b").html(city + '市');//附近门店 显示城市
             initMap(point, city);
             $(".hotCity b").html(city);
             bind_tuijian(city);

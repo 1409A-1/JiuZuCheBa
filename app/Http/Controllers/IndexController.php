@@ -17,8 +17,6 @@ class IndexController extends Controller
     //短租
     public function short(Request $request)
     {
-        $path = $request->path();            //当前的路由的名字
-        Session::put('path', $path);
 		// 车辆类型
         $type = CarType::all();
         

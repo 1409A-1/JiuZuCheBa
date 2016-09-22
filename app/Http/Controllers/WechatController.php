@@ -16,6 +16,20 @@ class WechatController extends Controller
     private $appsecret = 'e7ad8d8556b7412d58eb61f3fcfec26a';
     //AzbrJY_RikmHiTGXWbWS7-TZR729AOJnhJevNF2nDaAW0VV5zfKG3gBGnCpXdQQzzE7xJ3y1Sk81CaseKlXu-LOZzIEuN8wNAJM8hphnfg6QLf31ltlwkEF1EOWAKANvLVEdAIAPZI
 
+    /**
+     * 点击微信登录按钮，展示二维码页面
+     */
+    public function oAuth()
+    {
+        // 生成二维码
+        /*$scope = 'snsapi_userinfo';
+        $redirect_uri = urlencode('http://611a9343.ngrok.natapp.cn/JiuZuCheBa/public/weChatLogin');
+        $code_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appid&redirect_uri=$redirect_uri&response_type=code&scope=$scope&state=STATE#wechat_redirect";
+        $qrCode = file_get_contents('http://api.k780.com:88/?app=qr.get&data=' . $code_url . '&level=L&size=10');
+        file_put_contents('home/images/login/qrcode.png', $qrCode);*/
+        return view('home.login.qrCode');
+    }
+
     public function valid(Request $request)
     {
         // 微信服务器发来的字符串
@@ -50,14 +64,6 @@ class WechatController extends Controller
         }else{
             return false;
         }
-    }
-
-    public function oAuth()
-    {
-        $redirect_uri = urlencode('http://611a9343.ngrok.natapp.cn/JiuZuCheBa/public/weChatLogin');
-        $scope = 'snsapi_userinfo';
-        $code_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appid&redirect_uri=$redirect_uri&response_type=code&scope=$scope&state=STATE#wechat_redirect";
-        header('location:' . $code_url);
     }
 
     public function weChatLogin(Request $request)
