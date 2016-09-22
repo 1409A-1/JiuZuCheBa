@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - Tables showcase</title>
-    <!-- this page specific styles -->
+	<title>服务点车辆分配</title>
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
-
-    <!-- navbar -->
     @include('common.admin_header')
-    <!-- end navbar -->
-
-    <!-- sidebar -->
     @include('common.admin_left')
-    <!-- end sidebar -->
-
-
-	<!-- main container -->
     <div class="content">
-        
-        <!-- settings changer -->
-        
         <div class="container-fluid">
             <div id="pad-wrapper">
-                
-                <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">

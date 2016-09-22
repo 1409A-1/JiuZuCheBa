@@ -1,66 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - Tables showcase</title>
-    <!-- this page specific styles -->
+	<title>地区添加</title>
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
-
     <!--三级联动插件-->
     <script type="text/javascript" src="{{ asset('admin') }}/js/area.js"></script>
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
-
-    <!-- navbar -->
     @include('common.admin_header')
-    <!-- end navbar -->
-
-    <!-- sidebar -->
     @include('common.admin_left')
-    <!-- end sidebar -->
-	<!-- main container -->
     <div class="content">
         <div class="container-fluid">
             <div id="pad-wrapper">
-                <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in {{asset('admin')}}/js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
                             <h4>地区添加</h4>
                         </div>
                     </div>
-
                     <div class="row-fluid filter-block">
-
                     </div>
                     <div class="row-fluid" style="width:100%;">
-                        {{--<form action="{{ url('typeIns') }}" method="post">--}}
-                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                            <table class="table table-hover">
-                                <tr>
-                                    <td>请选择省：</td>
-                                    <td><select id="province" runat="server" name="province" style="height: 100%;"></select></td>
-                                </tr>
-                                <tr>
-                                    <td>请选择市：</td>
-                                    <td><select id="city" runat="server" name="city" style="height: 100%;"></select>&nbsp;&nbsp;<span id="citys" style="color: #fd6f16;"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>请选择县：</td>
-                                    <td><select id="county" runat="server" name="county" style="height: 100%;"></select>&nbsp;&nbsp;<span id="countys" style="color: #fd6f16;"></span></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <input type="submit" id="sub" value="添加城市" class="btn btn-info"/>&nbsp;&nbsp;<span id="subs" style="color: #fd6f16;"></span>
-                                    </td>
-                                </tr>
-                            </table>
-                        {{--</form>--}}
+                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                        <table class="table table-hover">
+                            <tr>
+                                <td>请选择省：</td>
+                                <td><select id="province" runat="server" name="province" style="height: 100%;"></select></td>
+                            </tr>
+                            <tr>
+                                <td>请选择市：</td>
+                                <td><select id="city" runat="server" name="city" style="height: 100%;"></select>&nbsp;&nbsp;<span id="citys" style="color: #fd6f16;"></span></td>
+                            </tr>
+                            <tr>
+                                <td>请选择县：</td>
+                                <td><select id="county" runat="server" name="county" style="height: 100%;"></select>&nbsp;&nbsp;<span id="countys" style="color: #fd6f16;"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" id="sub" value="添加城市" class="btn btn-info"/>&nbsp;&nbsp;<span id="subs" style="color: #fd6f16;"></span>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <!-- end products table -->
@@ -107,9 +88,6 @@
                 </script>
         </div>
     </div>
-    <!-- end main container -->
-
-	<!-- scripts -->
     <script src="{{asset('admin')}}/js/jquery-latest.js"></script>
     <script src="{{asset('admin')}}/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/js/theme.js"></script>

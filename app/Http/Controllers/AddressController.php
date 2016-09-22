@@ -41,13 +41,13 @@ class AddressController extends Controller
     {
         $arr = Server::where(['server_name' => $request->input('server_name')])->first();
         if ($arr) {
-            echo "<script>alert('服务点存在。'); location.href='".url('address')."';</script>";die;
+            return "<script>alert('服务点存在。'); location.href='".url('address')."';</script>";die;
         }
         if($request->input('one') == 0){
-            echo "<script>alert('请选择省/直辖市'); location.href='".url('address')."';</script>";die;
+            return "<script>alert('请选择省/直辖市'); location.href='".url('address')."';</script>";die;
         }
         if($request->input('two') == '0'){
-            echo "<script>alert('请选择市/区'); location.href='address';</script>";die;
+            return "<script>alert('请选择市/区'); location.href='address';</script>";die;
         }else{
             $coordinate1 = $request->input('coordinate1');
             $coordinate2 = $request->input('coordinate2');
@@ -176,7 +176,7 @@ class AddressController extends Controller
             ->where('server_id',$id)
             ->first();
         if ($arr1) {
-            echo "<script>alert('该服务点下有车辆，不能删除。');location.href='".URL('addressList')."'</script>";
+            return "<script>alert('该服务点下有车辆，不能删除。');location.href='".URL('addressList')."'</script>";
         } else {
             DB::table('server')
                 ->where('server_id',$id)

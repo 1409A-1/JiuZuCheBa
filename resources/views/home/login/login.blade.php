@@ -23,7 +23,7 @@
                         </div>
                         <span class="forgetPw">忘记密码？</span>
                         <div class="errorPrompt" id="loginError"><!--错误提示--></div>
-                        <button id="login">登 录<i></i></button>
+                        <button id="login" style="cursor: pointer">登 录<i></i></button>
                         <button style="cursor: pointer; background-color: #00aa00" onclick="location='{{ url('oAuth') }}'">微 信 登 录</button>
                     </div>
                 </div>

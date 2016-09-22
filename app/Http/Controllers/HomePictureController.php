@@ -56,6 +56,12 @@ class HomePictureController extends Controller
             //print_r($date);die;
             unset($date['_token']);
             $date['isUse'] = 0;
+            $num = $this->imgNum($date['type']);
+            if ($date['type'] == 0 && $num>=5) {
+                $date['isUse'] = 1;
+            }elseif ($date['type'] == 1 && $num>=3) {
+                $date['isUse'] = 1;
+            }
             $file = $request->file('img');
             $hou = $file->getClientOriginalExtension();//文件后缀
             $url = url('');
@@ -76,12 +82,28 @@ class HomePictureController extends Controller
     public function pictureEdit(Request $request, $pictureId)
     {
         $picture = Picture::where("picture_id", $pictureId)->first()->toArray();
-        if ($picture['isUse'] == 0){
-            Picture::where("picture_id", $pictureId)->update(['isUse' => 1]);
-            return "unuse";
+        $num = $this->imgNum($picture['type']);
+        if ($picture ['type'] == 0 && $num>=5) {
+            return json_encode(['status' => "turnFull"]);
+        }elseif ($picture ['type'] == 1 && $num>=3) {
+            return json_encode(['status' => "activeFull"]);
         }else{
-            Picture::where("picture_id", $pictureId)->update(['isUse' => 0]);
-            return "usable";
+            if ($picture['isUse'] == 0){
+                Picture::where("picture_id", $pictureId)->update(['isUse' => 1]);
+                return json_encode(['status' => "unuse"]);
+            }else{
+                Picture::where("picture_id", $pictureId)->update(['isUse' => 0]);
+                return json_encode(['status' => "usabled"]);
+            }
         }
+        
+    }
+
+    /*
+        查询使用中图片数量
+     */
+    public function imgNum($type)
+    {
+        return Picture::where("type", $type)->where('isUse', 0)->count();
     }
 }
