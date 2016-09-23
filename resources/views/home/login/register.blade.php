@@ -33,7 +33,7 @@
                    
                     <!-- <div style="font-size:12px;color:#615656;margin-top:5px;">*如果一分钟内没有收到校验短信，您可以再次点击获取“语音验证码”，此服务免费。</div> -->
                     <div class="errorPrompt" id="regError"><!--错误提示--></div>
-                    <button id="reg">注 册<i></i></button>
+                    <button id="reg" style="cursor: pointer">注 册<i></i></button>
                     <div class="Prompt">
                         点击注册即表示您同意并愿意遵守就租车吧<b id="win">用户协议</b>
                     </div>

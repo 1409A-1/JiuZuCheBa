@@ -120,7 +120,7 @@ function registerEvent() {
         }
         if(!nameReg.test(name.val())){
             name.focus();
-            error.html("用户名不正确");
+            error.html("用户名不符合要求！只能使用数字、字母、下划线！");
             nameBox.addClass("error");
             return;
         }
@@ -257,7 +257,7 @@ function register(data) {
                 
                 msg = '注册成功！';
                 layer.tips(msg, '#reg', { tips: [2, '#0FA6D8'] });
-                setTimeout(function () { location.href = '/' }, 2000);
+                setTimeout(function () { location.href = 'short' }, 2000);
             }
             else {
                 //此处加一个 短信验证码错误  的状态

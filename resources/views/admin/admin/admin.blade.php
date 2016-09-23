@@ -17,7 +17,7 @@
                 <div class="span3 stat">
                     <div class="data">
                         <span class="number">{{ $user }}</span>
-                        <a href="{{ url('adminList') }}" style="color: #000000">用户数量</a>
+                        <a href="{{ url('userList') }}" style="color: #000000">用户数量</a>
                     </div>
                 </div>
                 <div class="span3 stat">
@@ -41,7 +41,6 @@
             </div>
         </div>
     </div>
-    </iframe>  
 </div>
 
 

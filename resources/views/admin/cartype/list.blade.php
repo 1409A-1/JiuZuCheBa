@@ -1,67 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - Tables showcase</title>
-    
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-    <!-- bootstrap -->
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="{{asset('admin')}}/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
-
-    <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/icons.css" />
-
-    <!-- libraries -->
-    <link href="{{asset('admin')}}/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
-    
-    <!-- this page specific styles -->
+	<title>车辆类型</title>
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
-
-    <!-- open sans font -->
-
-
-    <!--[if lt IE 9]>
-    <![endif]-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
-
-    <!-- navbar -->
     @include('common.admin_header')
-    <!-- end navbar -->
-
-    <!-- sidebar -->
     @include('common.admin_left')
-    <!-- end sidebar -->
-
-
-	<!-- main container -->
     <div class="content">
-        
-        <!-- settings changer -->
-        
         <div class="container-fluid">
             <div id="pad-wrapper">
-                
-                <!-- products table-->
-                <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
                             <h4>车辆类型</h4>
                         </div>
                     </div>
-
                     <div class="row-fluid filter-block">
                         <div class="pull-right">
                             <input type="text" class="search" id="search" />
                             <a class="btn-flat success new-product" href="typeAdds">+ 添加车辆类型</a>
                         </div>
                     </div>
-
                     <div class="row-fluid">
                         <table class="table table-hover">
                             <thead>
@@ -69,9 +30,6 @@
                                     <th class="span3">
                                         车辆类型
                                     </th>
-                                    <!-- <th class="span3">
-                                        <span class="line"></span>Description
-                                    </th> -->
                                     <th class="span3">
                                         <span class="line"></span>操作
                                     </th>
