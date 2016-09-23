@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - Tables showcase</title>
+	<title>订单管理</title>
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/tables.css" type="text/css" media="screen" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-    <script src="{{asset('admin')}}/dat/WdatePicker.js"></script>
+    <script src="{{ asset('admin') }}/dat/WdatePicker.js"></script>
     @include('common.admin_header')
     @include('common.admin_left')
     <div class="content">
-        
-        <!-- settings changer -->
-        
         <div class="container-fluid">
             <div id="pad-wrapper">
-                
-                <!-- products table-->
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
                             <h4>订单管理</h4>
                         </div>
                     </div>
-
                     <button  class="btn btn-info" style="float: right" id="search"/>搜索</button>
                     <div class="row-fluid filter-block">
                         <div class="pull-right">

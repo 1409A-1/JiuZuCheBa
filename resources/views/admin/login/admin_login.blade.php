@@ -2,10 +2,10 @@
 <html class="login-bg">
 <head>
 	<title>就租车吧 - 登录</title>
-    
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
+
     <!-- bootstrap -->
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="{{asset('admin')}}/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
@@ -22,10 +22,6 @@
     
     <!-- this page specific styles -->
     <link rel="stylesheet" href="{{asset('admin')}}/css/compiled/signin.css" type="text/css" media="screen" />
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 </head>
 <body>
 
@@ -127,6 +123,5 @@
 
         });
     </script>
-
 </body>
 </html>
