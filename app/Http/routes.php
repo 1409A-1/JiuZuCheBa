@@ -12,6 +12,8 @@ Route::get('loginBox', 'LoginController@loginBox');
 Route::post('loginPro', 'LoginController@loginPro');
 //前台退出登录
 Route::get('logOut', 'LoginController@loginOut');
+//发送手机验证码
+Route::get('phoneCode', 'LoginController@phoneCode');
 // -------------------------------------------------
 
 // ---------------------------------- 前台菜单

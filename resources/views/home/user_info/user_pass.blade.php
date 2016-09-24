@@ -60,7 +60,11 @@
                 type:'get',
                 url:'{{URL('phone')}}',
                 success: function(msg){
-                    alert( "Data Saved: " + msg );
+                   if (msg==2){
+                       layer.alert('发送成功');
+                   } else {
+                       layer.alert('发送失败');
+                   }
                 }
             });
             var wait=60;

@@ -169,7 +169,7 @@ class OrderController extends Controller
         $endTime = strtotime($request->input('end'));                //结束时间搓
         $status = $request->input('status');                     //订单状态
         $query = DB::table('order')
-            ->join('user', 'order.ord_id', '=', 'user.user_id');
+            ->join('user', 'order.user_id', '=', 'user.user_id');
         switch($status){
             case '0' :             //所有订单
                 break;

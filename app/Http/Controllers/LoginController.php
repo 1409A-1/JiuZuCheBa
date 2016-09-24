@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
 use App\Benefit;
@@ -64,7 +65,10 @@ class LoginController extends Controller
         if (User::onlyPhone($request->input('phone'))) {
             return -2;
         }
-
+        //验证码是否正确
+        if ($request->input('dx_code') != session($request->input('phone'))) {
+            return -3;
+        }
         $user = new User();
         $user->user_name = $request->input('name');
         $user->tel = $request->input('phone');
@@ -88,4 +92,22 @@ class LoginController extends Controller
             return -10;
         }
     }
+//发送手机验证码
+   public function phoneCode(Request $request)
+   {
+       $phone = $request->input('phone');
+       if ($phone=='') {
+           return -2;  //手机号不为空
+       }
+       if (User::onlyPhone($phone)) {
+           return -3;  //手机号已存在
+       }
+       $phoneCode = new HomeUserController();
+       $result = $phoneCode->phone($phone);
+       if ($result == 2) {
+           return 1;
+       } else {
+           return -10;
+       }
+   }
 }
