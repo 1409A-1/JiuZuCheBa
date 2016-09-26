@@ -57,7 +57,7 @@
         <div class="login">
             <div class="title">
                 <div>登录</div>
-                <span>没有账号？<a target="_blank" href="{{ url('loginReg') }}">立即注册</a></span>
+                <span>没有账号？<a target="_blank" href="{{ url('register') }}">立即注册</a></span>
             </div>
             <div class="input_body">
                 <div id="login_name_box" class="inputBox">
