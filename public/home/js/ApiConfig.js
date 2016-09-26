@@ -62,7 +62,7 @@ var password_change = api_url + '/api/customer/changepassword';//修改密码
 var order_cancel = api_url + '/api/Order/Cancel';//订单取消
 
 var lookpassword = api_url + '/api/Customer/LookPassword';  //发送修改密码的验证码
-var sendnumreg = api_url + '/api/Customer/send_num_reg';//发送验证码（注册使用）
+var sendnumreg = "phoneCode";       //发送验证码（注册使用）
 var updatepassword = api_url + '/api/Customer/UpdatePassword';//修改密码
 var shop_appraise_by_cus = api_url + '/api/shoplist/GetShopByCusScore';//门店会员评价
 var shop_appraiselist_by_cus = api_url + '/api/shoplist/GetShopByCusAppraise';//门店会员评价

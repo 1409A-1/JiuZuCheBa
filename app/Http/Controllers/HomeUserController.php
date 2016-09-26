@@ -111,18 +111,18 @@ class HomeUserController extends Controller
         }
     }
  //调用短息发送
-    public function phone(){
+    public function phone($phone = ''){
             $info = $this->u_info();
             $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
-            $mobile = $info['tel'];//接值（手机号码）
-            $mobile_code = $this->random(4,1);
+            $mobile = empty($phone)?$info['tel']:$phone;      //接值（手机号码）
+            $mobile_code = $this->random(6,1);
             $post_data = "account=cf_hhy&password=hhyhhy&mobile=".$mobile."&content=".rawurlencode("您的验证码是：".$mobile_code."。请不要把验证码泄露给其他人。");
 //密码可以使用明文密码或使用32位MD5加密
             $gets =  $this->xml_to_array($this->Post($post_data, $target));
             if($gets['SubmitResult']['code']==2){
-                session([$info['tel'] => $mobile_code]);
+                session([$mobile => $mobile_code]);
             }
-            echo $gets['SubmitResult']['msg'];
+            return $gets['SubmitResult']['code'];
         }
 
 //订单列表的展示

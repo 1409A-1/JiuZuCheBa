@@ -93,12 +93,14 @@ function registerEvent() {
         if(pw.val()==""){
             pw.focus();
             error.html("请输入密码");
-            pwBox.addClass("error");return;
+            pwBox.addClass("error");
+            return;
         }
         if(pw.val().length<6){
             pw.focus();
             error.html("密码至少6位");
-            pwBox.addClass("error");return;
+            pwBox.addClass("error");
+            return;
         }
         code.attr("disabled", true).html("发送中");
         sendCode(phone.val());//发送验证码
@@ -120,7 +122,7 @@ function registerEvent() {
         }
         if(!nameReg.test(name.val())){
             name.focus();
-            error.html("用户名不正确");
+            error.html("用户名不符合要求！只能使用数字、字母、下划线！");
             nameBox.addClass("error");
             return;
         }
@@ -170,8 +172,7 @@ function registerEvent() {
             // "shopkey": num,
             "_token": _token
         };
-        // data.dx_code=reg_code.val();//用户输入的短信验证码
-
+        data.dx_code=reg_code.val();//用户输入的短信验证码
         register(data);//注册请求
     });
 
@@ -192,12 +193,12 @@ function registerEvent() {
 function sendCode(phone){
     var button=$("#reg_send_code");
     $.ajax({
-        url: sendnumreg,//注册短信验证码发送  接口
+        url: sendnumreg,    //注册短信验证码发送  接口
         data: { "phone": phone },
-        dataType: 'jsonp',
+        dataType: 'json',
         success: function (result) {
             //判断发送是否成功
-            if (result.state == 1) {
+            if (result == 1) {
                 //发送成功
                 layer.tips('短信发送成功', button,{tips: [2, '#0FA6D8']});
                 var sec=60,
@@ -210,21 +211,20 @@ function sendCode(phone){
                         sec--;
                     },1000);
             } else {
-                //var msg = "验证码发送失败";
-                //layer.tips(msg, button, { tips: [2, '#0FA6D8'] });
-                //button.html("发送验证码");
-                //button.attr("disabled", false);
-
-                switch (result.state) {
+                var msg = "验证码发送失败";
+                layer.tips(msg, button, { tips: [2, '#0FA6D8'] });
+                button.html("发送验证码");
+                button.attr("disabled", false);
+                switch (result) {
                     case -2:
                         msg = "手机号不能为空.";
                         break;
                     case -3:
                         msg = "手机号已被注册.";
                         break;
-                    case -4:
-                        msg = "验证码错误.";
-                        break;
+                    //case -4:
+                    //    msg = "验证码错误.";
+                    //    break;
                     default:
                         msg = "服务器错误,请稍候再试.";
                 }
@@ -257,7 +257,7 @@ function register(data) {
                 
                 msg = '注册成功！';
                 layer.tips(msg, '#reg', { tips: [2, '#0FA6D8'] });
-                setTimeout(function () { location.href = '/' }, 2000);
+                setTimeout(function () { location.href = 'short' }, 2000);
             }
             else {
                 //此处加一个 短信验证码错误  的状态
